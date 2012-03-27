@@ -1,0 +1,54 @@
+<examples name="Tree Dragdrop Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Move the items in a folder of choice, or move the folder itself. View the view on the xml of the model on the right to see what the drag&#38;drop actions do to the data.</description>
+        <source><![CDATA[
+            <a:bar skin="basic" height="300" margin="0">
+                <a:tree id="trTest" align="left-splitter" width="200" 
+                  model="mdlTree" startcollapsed="false" canrename="false"> 
+                    <a:each match="[item|folder|root]">
+                        <a:caption match = "[@caption]" />
+                        <a:caption                  value = "[text()]" />
+                        <a:icon    match = "[item]" value = "note_b.png" />
+                        <a:icon                     value = "Famfolder.gif" />
+                
+                        <a:drag match="[folder|item]" /> 
+                        <a:drop 
+                          match  = "[folder]" 
+                          target = "[root]" 
+                          action = "tree-append" />
+                        <a:drop 
+                          match  = "[folder]" 
+                          target = "[folder]" 
+                          action = "insert-before" />
+                        <a:drop 
+                          match  = "[folder]" 
+                          target = "[item]" 
+                          action = "list-append" />
+                        <a:drop 
+                          match  = "[item]" 
+                          target = "[folder|root]" 
+                          action = "tree-append" />
+                        <a:drop 
+                          match  = "[item]" 
+                          target = "[item]" 
+                          action = "insert-before" />
+                    </a:each>
+                </a:tree>
+                
+                <a:model id="mdlTree" src="demo/xml/treedata.xml" />
+                
+                <a:bar id="bar" skin="basic" class="basic smalljslt" align="right"><?lm
+                    <pre id="pre" class="code" style="overflow-y:auto">{
+                        var node = %[mdlTree::root];
+                        if (node)
+                            apf.highlightXml(apf.formatXml(apf.getCleanCopy(node).xml));
+                    }</pre>
+                ?></a:bar>
+            </a:bar>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

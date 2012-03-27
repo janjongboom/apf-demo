@@ -1,0 +1,105 @@
+<examples name="Translate Google" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Google Translate</description>
+        <source><![CDATA[
+            <a:window
+              visible = "true"
+              width   = "400"
+              height  = "150"
+              title   = "Google Translate"
+              icon      = "help.png">
+                <a:table columns="120, *" padding="5" margin="10">
+                    <a:label>Text to translate</a:label>
+                    <a:textbox id="to_translate" value="你好，很高興見到你。"></a:textbox>
+                    <a:label>Translated text</a:label>
+                    <a:textbox id="translated" value=""></a:textbox>
+                    <a:label>Output language</a:label>
+                    <a:dropdown id="language">
+                        <a:item value="sq">Albanian</a:item>
+                        <a:item value="ar">Arabic</a:item>
+                        <a:item value="bg">Bulgarian</a:item>
+                        <a:item value="ca">Catalan</a:item>
+                        <a:item value="zh-CN">Chinese</a:item>
+                        <a:item value="hr">Croatian</a:item>
+                        <a:item value="cs">Czech</a:item>
+                        <a:item value="da">Danish</a:item>
+                        <a:item value="nl">Dutch</a:item>
+                        <a:item value="en">English</a:item>
+                        <a:item value="et">Estonian</a:item>
+                        <a:item value="tl">Filipino</a:item>
+                        <a:item value="fi">Finnish</a:item>
+                        <a:item value="fr">French</a:item>
+                        <a:item value="gl">Galician</a:item>
+                        <a:item value="de">German</a:item>
+                        <a:item value="el">Greek</a:item>
+                        <a:item value="iw">Hebrew</a:item>
+                        <a:item value="hi">Hindi</a:item>
+                        <a:item value="hu">Hungarian</a:item>
+                        <a:item value="id">Indonesian</a:item>
+                        <a:item value="it">Italian</a:item>
+                        <a:item value="ja">Japanese</a:item>
+                        <a:item value="ko">Korean</a:item>
+                        <a:item value="lv">Latvian</a:item>
+                        <a:item value="lt">Lithuanian</a:item>
+                        <a:item value="mt">Maltese</a:item>
+                        <a:item value="no">Norwegian</a:item>
+                        <a:item value="pl">Polish</a:item>
+                        <a:item value="pt">Portuguese</a:item>
+                        <a:item value="ro">Romanian</a:item>
+                        <a:item value="ru">Russian</a:item>
+                        <a:item value="sr">Serbian</a:item>
+                        <a:item value="sk">Slovak</a:item>
+                        <a:item value="sl">Slovenian</a:item>
+                        <a:item value="es">Spanish</a:item>
+                        <a:item value="sv">Swedish</a:item>
+                        <a:item value="th">Thai</a:item>
+                        <a:item value="tr">Turkish</a:item>
+                        <a:item value="uk">Ukrainian</a:item>
+                        <a:item value="vi">Vietnamese</a:item>
+                    </a:dropdown>
+                </a:table>
+                <a:button bottom="10" right="10"
+                  onclick="translate()">
+                    Translate
+                </a:button>
+            </a:window>
+            <a:script src="demo/google/translate/code.js"></a:script>
+        ]]></source>
+        <js>
+            <caption>code.js</caption>
+            <source><![CDATA[
+                function translate() {
+                    if (!self.google) return;
+
+                    var text = to_translate.getValue();
+                    google.language.detect(text, function(result) {
+                        if (result.error || !result.language) return;
+                        google.language.translate(text, result.language, language.value, function(result) {
+                            if (result.translation)
+                                translated.setValue(result.translation);
+                        });
+                    });
+                }
+
+                document.write = function(str){
+                    str = str.replace(/<scr.pt.*?src="(.*?)".*?>.*?<\/scr.pt>/g, function(m, src){
+                        apf.include(src, null, "banner");
+                        return "";
+                    });
+                };
+
+                var script  = document.createElement("script");
+                script.type = "text/javascript";
+                script.src  = "http://www.google.com/jsapi?key=ABQIAAAAuvG0LHN7Q8s8C5HGKxmlbhT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQXy5tpLE2vU6SI5O348wkQ6Py4cw";
+                document.body.appendChild(script);
+
+                var googleTranslateTimer = setInterval(function(){
+                    if(!self.google) return;
+
+                    clearTimeout(googleTranslateTimer);
+                    google.load("language", "1");
+                }, 100);
+            ]]></source>
+        </js>
+    </example>
+</examples>

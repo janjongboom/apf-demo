@@ -1,0 +1,12 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <!-- 
+        Add the global models you use in this file:
+        
+        <a:model id="mdlExample">
+            <data />
+        </a:model>
+    -->
+    
+    <a:model id="mdlLangEn" src="i18n/en_GB.xml" />
+    <a:model id="mdlLangNl" src="i18n/nl_NL.xml" />
+</a:application>

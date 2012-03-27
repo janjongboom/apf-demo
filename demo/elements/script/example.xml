@@ -1,0 +1,28 @@
+<examples name="Script Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Two ways to load javascript code.</description>
+        <source><![CDATA[
+            <a:table columns="100, 100" cellheight="24">
+                <a:button id="btnScript1">Click me</a:button>
+                <a:button id="btnScript2">Focus me</a:button>
+            </a:table>
+            <a:script>//<!-- 
+                btnScript1.onclick = function() {
+                    alert("Button has been clicked");
+                }
+            //--></a:script>
+            <a:script src="demo/elements/script/code.js"></a:script>
+        ]]></source>
+        <js>
+            <caption>code.js</caption>
+            <source><![CDATA[
+                btnScript2.onfocus = function() {
+                    alert("Button has been focussed");
+                }
+            ]]></source>
+        </js>
+    </example>
+
+    <seealso menu="elements" sub="d" name="dropdown" display="Dropdown" title="See dropdown element" />
+    <seealso menu="elements" sub="p" name="progressbar" display="Progressbar" title="See progressbar element" />
+</examples>

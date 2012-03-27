@@ -1,0 +1,37 @@
+<examples name="Errorbox Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Form validation.</description>
+        <source><![CDATA[
+            <a:table 
+              columns    = "100, 150"
+              cellheight = "19" 
+              padding    = "5"
+              validgroup = "vgExample">
+                <a:label>Email</a:label>
+                <a:textbox
+                  required   = "true"
+                  datatype   = "a:email"
+                  invalidmsg = "Invalid Entry;Please enter a correct email address" />
+                <a:label>Password</a:label>
+                <a:textbox 
+                  id         = "txtPasswordDemo"
+                  required   = "true" 
+                  mask       = "password"
+                  minlength  = "8"
+                  invalidmsg = "Invalid Password;A password is at least 8 characters" />
+                <a:label>Repeat Password</a:label>
+                <a:textbox 
+                  required   = "true" 
+                  mask       = "password"
+                  checkequal = "txtPasswordDemo"
+                  invalidmsg = "Passwords don't match" />
+            </a:table>
+            <a:hbox width="262" height="44" lean="right" margin="10 0">
+                <a:button width="100" onclick="vgExample.validate()">Validate</a:button>
+            </a:hbox>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="t" name="textarea" display="Textarea" title="See textarea element" />
+    <seealso menu="elements" sub="t" name="textbox" display="Textbox" title="See textbox element" />
+</examples>

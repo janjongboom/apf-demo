@@ -1,0 +1,191 @@
+<examples name="Placemaker Yahoo" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Yahoo Placemaker</description>
+        <source><![CDATA[
+            <a:teleport>
+                <a:rpc
+                  id           = "comm7"
+                  protocol     = "cgi"
+                  http-method  = "get"
+                  route-server = "rpcproxy.php"
+                  autoroute    = "true">
+                    <a:method
+                      name    = "placemaker"
+                      receive = "afterPlacemaker"
+                      url     = "http://query.yahooapis.com/v1/public/yql">
+                        <a:param
+                          name  = "q"
+                          value = "{apf.placemaker.getQuery()}"></a:param>
+                        <a:param
+                          name  = "format"
+                          value = "{apf.placemaker.getFormat()}"></a:param>
+                        <a:param
+                          name  = "env"
+                          value = "{apf.placemaker.getEnv()}"></a:param>
+                    </a:method>
+                </a:rpc>
+            </a:teleport>
+
+            <a:window
+                visible = "true"
+                width   = "406"
+                height  = "630"
+                title   = "Yahoo! Placemaker - Free geoparsing service"
+                icon    = "connect.png">
+                <div id="map_canvas2"
+                  style = "
+                    left   : 0; top : 0; width : 400px;
+                    height : 300px; border-bottom : 3px solid black;
+                "></div>
+                <a:table
+                  columns = "120, 50, 50, *"
+                  margin  = "10 10 10 10"
+                  padding = "5">
+                    <a:datagrid
+                      options       = "size"
+                      id            = "dg_placemaker"
+                      span          = "*"
+                      empty-message = "No items"
+                      height        = "120"
+                      onafterselect = "
+                        google_maps_initialize2();
+                        google_maps_choose2();
+                      ">
+                        <a:bindings>
+                            <a:column caption="Type" value="[type]" width="70" />
+                            <a:column caption="Name" value="[name]" width="100%" />
+                            <a:column
+                              caption = "Latitude"
+                              value   = "[centroid/latitude]"
+                              width   = "80" />
+                            <a:column
+                              caption = "Longitude"
+                              value   = "[centroid/longitude/]"
+                              width   = "80" />
+                            <a:each match="[place]" />
+                        </a:bindings>
+                        <a:model>
+                            <data />
+                        </a:model>
+                    </a:datagrid>
+                    <a:label>Response format:</a:label>
+                    <a:radiobutton
+                      group   = "g2"
+                      checked = "true"
+                      value   = "xml"
+                      onafterchange = "apf.placemaker.setFormat(this.value)">
+                    XML</a:radiobutton>
+                    <a:radiobutton
+                      group = "g2"
+                      span  = "2"
+                      value = "json">Json</a:radiobutton>
+                    <a:label>Free-form text:</a:label>
+                    <a:textarea
+                      span      = "3"
+                      height    = "70"
+                      multiline = "optional"
+                      id        = "txtPm_text"></a:textarea>
+                </a:table>
+
+                <a:label
+                  bottom = "40"
+                  left   = "15">
+                    Click on button below to set prepared text.</a:label>
+                <a:hbox height="39" margin="5 0 10 10" bottom="0" width="300">
+                    <a:button
+                      edge    = "5"
+                      width   = "65"
+                      onclick = "
+                        txtPm_text.setValue('I lived in New York and in Los Angeles.')
+                      ">Text 1</a:button>
+                    <a:button
+                      edge    = "5"
+                      width   = "65"
+                      onclick = "
+                        txtPm_text.setValue('Moscow is the capital of Russia.')
+                      ">Text 2</a:button>
+                    <a:button
+                      width   = "65"
+                      onclick = "txtPm_text.setValue(
+                        'Amsterdam is the biggest city of Holland.'
+                      )">Text 3</a:button>
+                </a:hbox>
+
+                <a:button
+                  bottom  = "10"
+                  right   = "10"
+                  width   = "70"
+                  default = "true"
+                  onclick = "
+                    apf.placemaker.setText(txtPm_text.getValue());
+                    comm7.placemaker()
+                  ">Change</a:button>
+            </a:window>
+            <a:script src="demo/yahoo/placemaker/code.js"></a:script>
+        ]]></source>
+        <js>
+            <caption>code.js</caption>
+            <source><![CDATA[
+                var map2;
+
+                function google_maps_initialize2() {
+                    if (GBrowserIsCompatible()) {
+                        map2 = new GMap2(document.getElementById("map_canvas2"), { size: new GSize(400, 300) } );
+                        map2.setCenter(new GLatLng(52.425035,4.924622), 14);
+                        var customUI = map2.getDefaultUI();
+                        customUI.controls.scalecontrol = false;
+                        map2.setUI(customUI);
+                    }
+                }
+
+                function google_maps_choose2() {
+                    if (map2 && map2.setCenter) {
+                        var selRow = dg_placemaker.selected;
+                        var la = apf.getXmlValue(selRow, "centroid/latitude/text()") || 0;
+                        var lo = apf.getXmlValue(selRow, "centroid/longitude/text()") || 0;
+                        map2.setCenter(new GLatLng(la, lo), 11);
+                    }
+                }
+
+                function afterPlacemaker(data, state, extra) {
+                    if (state == apf.SUCCESS) {
+                        var items = apf.getXml(data).getElementsByTagName("place");
+
+                        var strXml = ["<data>"],
+                            i      = 0,
+                            l      = items.length;
+                        for(; i < l; i++)
+                            strXml.push(items[i].xml.replace(/xmlns=["]http:\/\/wherein.yahooapis.com\/v1\/schema["]/g, ""));
+                        strXml.push('</data>');
+
+                        dg_placemaker.getModel().load(strXml.join(""));
+                    }
+                    else {
+                        alert("Connection problems. Please try again");
+                    }
+                }
+
+                var googleTimer4 = setInterval(function(){
+                    if (!self.GMap2) return;
+
+                    clearTimeout(googleTimer4);
+
+                    apf.placemaker.init(
+                        "O2NGxHbV34GJcwos_DRFt8wuS1yNgJq_YrubQ1lRZfhpzVFp4sNma.IltD85fg--",
+                        "Example: Hi I am Lucas, I live in Poland.",
+                        "en-uk"
+                    );
+
+                    comm7.placemaker();
+                }, 100);
+
+                if (!self.GMap2) {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "http://maps.google.com/maps?file=api&v=2.x&key=ABQIAAAAuvG0LHN7Q8s8C5HGKxmlbhTWIP0AdN_is5rS2v9BfJMtILoqURRzDtvTKeWAO68QibM4gtmiohUv-w&async=2&callback=google_maps_initialize2";
+                    document.body.appendChild(script);
+                }
+            ]]></source>
+        </js>
+    </example>
+</examples>

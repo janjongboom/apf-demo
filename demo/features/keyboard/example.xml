@@ -1,0 +1,49 @@
+<examples name="Keyboard Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This demo is intended to guide you through some of the keyboard interaction build into Ajax.org Platform. After loading the demo try no to click anywhere (or some other element will get the focus). Start by using the arrows on your keyboard to switch tabs. On the second tab you'll find a list element. Use tab to reach it and use the arrow keys to navigate among the list items. By pressing F2 you can rename an item. Press Del te remove an item. Use Ctrl-Z and Ctrl-Y to undo and redo your last actions. Use Shift-Tab to get back to the tab control and navigatie back to the first tab. By pressing tab now you can navigate to the slider and use the arrows to manipulate its position. Press tab again to go to the textbox, button and dropdown. Choose an item in the dropdown by using the arrow keys.</description>
+        <source><![CDATA[
+            <a:window
+              title   = "Keyboard interaction"
+              icon    = "application_view_icons.png"
+              visible = "true"
+              width   = "320"
+              height  = "200">
+                <a:tab id="tabExample" anchors="10 10 10 10">
+                    <a:page caption="General" id="General">
+                        <a:table columns="60, *" padding="5">
+                            <a:label>Height</a:label>
+                            <a:slider id="sld1" skin="slider16" height="16"/>
+                            <a:label>Width</a:label>
+                            <a:textbox value="{sld1.value}" realtime="true" />
+                            <a:button height="24" width="120">Click me</a:button>
+                        </a:table>
+                
+                        <a:dropdown>
+                            <a:item value="0">General</a:item>
+                            <a:item value="1">Advanced</a:item>
+                            <a:item value="2">Ajax.org</a:item>
+                        </a:dropdown>
+                    </a:page>
+                    <a:page caption="Advanced" id="Advanced">
+                        <a:list anchors="5 5 5 5">
+                            <a:item icon="nl.png">The Netherlands</a:item>
+                            <a:item icon="us.png">United States of America</a:item>
+                            <a:item icon="pl.png">Poland</a:item>
+                        </a:list>
+                    </a:page>
+                    <a:page caption="Ajax.org" id="Ajax.org">
+                    </a:page>
+                </a:tab>
+            </a:window>
+            
+            <a:script>//<!--
+                tabExample.focus();
+            
+                apf.appsettings.undokeys = true;
+            //--></a:script>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

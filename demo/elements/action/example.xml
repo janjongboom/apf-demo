@@ -1,0 +1,102 @@
+<examples name="Action Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Actions: remove, rename and add</description>
+        <source><![CDATA[
+            <a:datagrid id="ss1"
+              width         = "400"
+              height        = "100"
+              actiontracker = "dgAt1">
+                <a:each match="[element]">
+                    <a:column caption="Caption 1" value="[@caption1]" width="50%" />
+                    <a:column caption="Caption 2" value="[@caption2]" width="50%" />
+                </a:each>
+                <a:actions>
+                    <a:remove set  = "demo/remove.php?id=[@id]" 
+                              undo = "demo/unremove.php?id=[@id]" /> 
+                    <a:rename set  = "demo/rename.php?id=[@id]" />
+                    <a:add    set  = "demo/add.php?id=[@id]" >
+                        <element caption1="Hi" caption2="Bonjour" id="3" />
+                    </a:add>
+                </a:actions>
+                <a:model>
+                    <data>
+                        <element caption1="Text 1" caption2="Text2" id="1"/>
+                        <element caption1="Text 21" caption2="Text22" id="2"/>
+                    </data>
+                </a:model>
+            </a:datagrid>
+            <a:table columns="100, 150, 70, 70" cellheight="24">
+                <a:button action="add" target="ss1">Add new row</a:button>
+                <a:button action="remove" target="ss1">Remove selected row</a:button>
+                <a:button 
+                  disabled = "{!dgAt1.undolength}" 
+                  action   = "undo" 
+                  target   = "dgAt1">Undo</a:button>
+                <a:button 
+                  disabled = "{!dgAt1.redolength}" 
+                  action   = "redo" 
+                  target   = "dgAt1">Redo</a:button>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>This demo shows how actions can be used to communicate changes back to the server directly. Undo actions are also communicated. Use fiddler or firebug to see the calls being made.</description>
+        <source><![CDATA[
+            <a:rpc protocol="cgi" id="fs">
+                <a:method name="rename" url="demo/rename.php">
+                    <a:param name="id" />
+                    <a:param name="name" />
+                </a:method>
+                <a:method name="remove" url="demo/remove.php">
+                    <a:param name="id" />
+                </a:method>
+                <a:method name="unremove" url="demo/unremove.php">
+                    <a:param name="id" />
+                </a:method>
+            </a:rpc>
+            
+            <a:tree id="tree" height="200" width="250"
+              model          = "demo/xml/filesystem.xml"
+              actiontracker  = "atExample"
+              startcollapsed = "false"
+              onerror        = "return false">
+                <a:each match="[folder|drive]">
+                    <a:caption match="[@caption]" />
+                    <a:icon value="Famfolder.gif" />
+                </a:each>
+                <a:actions>
+                    <a:remove set  = "{fs.remove([@fid])}"
+                              undo = "{fs.unremove([@fid])}" />
+                    <a:rename set  = "{fs.rename([@fid], [@caption|@filename])}" />
+                </a:actions>
+            </a:tree>
+            
+            <a:button
+              caption = "Rename"
+              right   = "10"
+              top     = "10"
+              onclick = "tree.startRename()" />
+            <a:button
+              caption  = "Remove"
+              right    = "10"
+              top      = "40"
+              onclick  = "tree.remove()" />
+            <a:button
+              caption  = "Undo"
+              right    = "10"
+              top      = "70"
+              disabled = "{!atExample.undolength}"
+              onclick  = "atExample.undo()" />
+            <a:button
+              caption  = "Redo"
+              right    = "10"
+              top      = "100"
+              disabled = "{!atExample.redolength}"
+              onclick  = "atExample.redo()" />
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="b" name="button" display="Button" title="See button element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

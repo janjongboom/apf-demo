@@ -1,0 +1,6 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:appsettings name   = "appname"
+      baseurl             = "{apf.host ? apf.host + '/' : 'http://test.example.com/'}"
+      resize-outline      = "{apf.isIE &lt; 8}"
+      language            = "mdlLangEn" />
+</a:application>

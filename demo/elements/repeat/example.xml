@@ -1,0 +1,34 @@
+<examples name="Repeat Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Simple example of some jml which is repeated. The button removes an item from the model when pressed.</description>
+        <source><![CDATA[
+            <a:model id="mdlRepeat">
+                <data>
+                    <item>label 1</item>
+                    <item>label 2</item>
+                    <item>label 3</item>
+                    <item>label 4</item>
+                    <item>label 5</item>
+                    <item>label 6</item>
+                </data>
+            </a:model>
+            <a:repeat model="mdlRepeat" nodeset="item">
+                <a:hbox height="24" width="200">
+                    <a:label ref="[text()]" /> 
+                    <a:button>Ok</a:button>
+                </a:hbox>
+            </a:repeat>
+            <a:button 
+              onclick = "
+                  apf.xmldb.removeNode(mdlRepeat.queryNode('item[2]'));
+                  this.disable()
+              ">Remove item</a:button>
+            <a:button 
+              onclick = "
+                  mdlRepeat.appendXml('&lt;item&gt;new label&lt;/item&gt;');
+              ">Add item</a:button>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

@@ -1,0 +1,19 @@
+<examples name="Alert window" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Alert window.</description>
+        <source><![CDATA[
+            <a:window id="win4"
+              buttons   = "close" 
+              title     = "Information"
+              visible   = "true" 
+              skin      = "alert"
+              width     = "140"
+              height    = "55"> 
+                Page not found!
+            </a:window>
+            <a:button visible="{!win4.visible}" onclick="win4.show()">
+                Show Window
+            </a:button>
+        ]]></source>
+    </example>
+</examples>

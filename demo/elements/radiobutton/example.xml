@@ -1,0 +1,37 @@
+<examples name="Radiobutton Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This example shows radio buttons with an explicit group set.</description>
+        <source><![CDATA[
+            <a:table columns="100, 150" cellheight="20">
+                <a:label>Options</a:label> 
+                <a:label>Choices</a:label> 
+                <a:radiobutton group="g2">Option 1</a:radiobutton> 
+                <a:radiobutton group="g3">Choice 1</a:radiobutton> 
+                <a:radiobutton group="g2">Option 2</a:radiobutton>
+                <a:radiobutton group="g3">Choice 2</a:radiobutton>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>First option is checked as default, third is disabled.</description>
+        <source><![CDATA[
+            <a:table columns="140" cellheight="20">
+                <a:label>Choose Your favourite car:</a:label>
+                <a:radiobutton 
+                  group   = "g4" 
+                  label   = "Audi A6" 
+                  checked = "true" 
+                  tooltip = "RS6 is the best :)"></a:radiobutton>
+                <a:radiobutton 
+                  group   = "g4" 
+                  label   = "Audi A4" 
+                  tooltip = "Nicee"></a:radiobutton>
+                <a:radiobutton 
+                  group    = "g4"
+                  label    = "Volvo"
+                  tooltip  = "Not bad"
+                  disabled = "true"></a:radiobutton>
+            </a:table>
+        ]]></source>
+    </example>
+</examples>

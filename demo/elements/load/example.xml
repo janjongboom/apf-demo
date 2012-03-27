@@ -1,0 +1,29 @@
+<examples name="Load Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Loading data to datagrid depends on data selected on list.</description>
+        <source><![CDATA[
+            <a:table columns="200, 200" cellheight="150">
+                <a:list 
+                  id    = "list"
+                  model = "demo/xml/friends.xml">
+                    <a:each match="[friend]">
+                        <a:caption match="[@name]" />
+                        <a:icon match="[@icon]"/>
+                    </a:each>
+                </a:list>
+                <a:datagrid 
+                  id    = "dg1"
+                  model = "{list.selected}"> 
+                    <a:each match="[surname]" >
+                        <a:column caption="Surname" value="[@surname]" width="100%" /> 
+                        <a:load get="demo/load.php?name=[@name]" />
+                        <a:value match="[surname]" />
+                    </a:each> 
+                </a:datagrid>
+            </a:table>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

@@ -1,0 +1,93 @@
+<examples name="Table Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Form.</description>
+        <source><![CDATA[
+            <a:window 
+              visible   = "true"
+              width     = "400"
+              height    = "300" 
+              resizable = "true"
+              title     = "Table Example"
+              icon      = "application.png">
+                <a:table
+                  columns = "80, *"
+                  margin  = "10 10 10 10"
+                  padding = "5"
+                  height  = "100%"> 
+                    <a:label>Name</a:label> 
+                    <a:textbox /> 
+                    <a:label>Address</a:label> 
+                    <a:textarea height="50" /> 
+                    <a:label>Country</a:label> 
+                    <a:dropdown>
+                        <a:item>The Netherlands</a:item>
+                    </a:dropdown>
+                    <a:label span="*" >Message</a:label> 
+                    <a:textarea height="*" span="*" /> 
+                </a:table> 
+            </a:window>
+        ]]></source>
+    </example>
+    <example>
+        <description>A more complex table example</description>
+        <source><![CDATA[
+            <a:window 
+              visible   = "true"
+              width     = "400"
+              height    = "350" 
+              minwidth  = "300"
+              minheight = "300"
+              resizable = "true"
+              title     = "Table Example"
+              icon      = "application.png">
+                <a:table id="tblExample"
+                  columns    = "30%,40%,30%"
+                  margin     = "10 10 80 10"
+                  cellheight = "40"
+                  padding    = "{sldPadding.value}"
+                  height     = "100%">
+                    <a:textbox /> 
+                    <a:textbox />
+                    <a:textbox />
+                    <a:textbox span="2" />
+                    <a:textbox />
+                    <a:textbox />
+                    <a:textbox span="2" margin="{sldMargin.value}" />
+                    <a:textbox span="3" height="*"/>
+                </a:table>
+                <a:table columns="120,150" padding="2" bottom="10" margin="0 0 0 15">
+                    <a:label>Padding</a:label>
+                    <a:slider id="sldPadding" 
+                      height = "8" 
+                      margin = "5" 
+                      value  = "5"
+                      step   = "1" 
+                      min    = "0" 
+                      max    = "20" 
+                      mask   = "#" />
+                    <a:label>Size of first column</a:label>
+                    <a:slider 
+                      height = "8" 
+                      margin = "4"
+                      value  = "30" 
+                      step   = "1" 
+                      min    = "10" 
+                      max    = "50" 
+                      mask   = "#" 
+                      onafterchange="
+                        tblExample.setAttribute('columns', this.value + '%,40%,*');
+                      " />
+                    <a:label>Margin of textbox</a:label>
+                    <a:slider id="sldMargin"
+                      height = "8" 
+                      margin = "4" 
+                      value  = "5"
+                      step   = "1" 
+                      min    = "0" 
+                      max    = "10" 
+                      mask   = "#" />
+                </a:table>
+            </a:window>
+        ]]></source>
+    </example>
+</examples>

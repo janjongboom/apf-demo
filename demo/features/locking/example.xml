@@ -1,0 +1,87 @@
+<examples name="Locking Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Ajax.org Platform has support for locking build into the UI interaction. This way a server can tell the user interface that an element is locked and the application can respond accordingly. In this example all items are locked for demo purpose.  This type of locking is called pessimistic locking. Ajax.org Platform also has support for optimistic locking, see the demo below. Use an http debugger like fiddler or firebug to watch the server communication.</description>
+        <source><![CDATA[ 
+            <a:rpc protocol="cgi" id="fs3" baseurl="http://www.ajax.org/">
+                <a:method name="rename" url="demo/rename.php">
+                    <a:param name="id" />
+                    <a:param name="name" />
+                </a:method>
+                <a:method name="lockfail" url="demo/500.php">
+                    <a:param name="id" />
+                </a:method>
+                <a:method name="lock" url="demo/lock.php">
+                    <a:param name="id" />
+                </a:method>
+            </a:rpc>
+            
+            <a:tree 
+              id             = "tree2" 
+              height         = "200" 
+              width          = "250"
+              model          = "demo/features/locking/filesystem.xml"
+              actiontracker  = "atExample"
+              startcollapsed = "false"
+              onlockfailed   = "alert('Sorry, this record is currently locked')">
+                <a:each match="[folder|drive]">
+                    <a:caption match="[@caption]" />
+                    <a:icon value="note_b.png" />
+                </a:each>
+                <a:actions>
+                    <a:rename 
+                      set="{fs3.rename([@fid], [@caption])}" 
+                      lock="{fs3.lockfail([@fid], unlock)}" />
+                </a:actions>
+            </a:tree>
+            
+            <a:button
+              caption = "Rename"
+              right   = "10"
+              top     = "10"
+              onclick = "tree2.startRename()" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Ajax.org Platform has a feature called auto undo. This allows the server to control user actions (for instance for optimistic locking) and have the the user interface respond accordingly. In this example each rename and remove action will fail. Use fiddler to see that it is the server that handles the validation.</description>
+        <source><![CDATA[
+            <a:rpc protocol="cgi" id="fs2">
+                <a:method name="rename" url="demo/500.php">
+                    <a:param name="id" />
+                    <a:param name="name" />
+                </a:method>
+                <a:method name="remove" url="demo/500.php">
+                    <a:param name="id" />
+                </a:method>
+            </a:rpc>
+            
+            <a:tree id="tree" height="200" width="250"
+              model          = "demo/xml/filesystem.xml"
+              actiontracker  = "atExample"
+              startcollapsed = "false" 
+              onerror        = "alert('Sorry this action is not permitted');return false">
+                <a:each match="[folder|drive]">
+                    <a:caption match="[@caption]" />
+                    <a:icon value="Famfolder.gif" />
+                </a:each>
+                <a:actions>
+                    <a:remove set="{fs2.remove([@fid])}" />
+                    <a:rename set="{fs2.rename([@fid], [@caption])}" />
+                </a:actions>
+            </a:tree>
+            
+            <a:button 
+              caption = "Rename"
+              right   = "10" 
+              top     = "10"
+              onclick = "tree.startRename()" />
+            <a:button 
+              caption  = "Remove"
+              right    = "10"
+              top      = "40"
+              onclick  = "tree.remove()" />
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

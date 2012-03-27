@@ -1,0 +1,1251 @@
+<?xml version='1.0'?>
+<a:skin xmlns:a="http://ajax.org/2005/aml" xmlns="http://www.w3.org/1999/xhtml">
+<a:button name="button">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .aristo_btn {
+            color       : #4f4f4f;
+            font-family : Arial;
+            font-size   : 12px;
+            font-weight : bold;
+            height      : 32px;
+            width       : 100px;
+            overflow    : hidden;
+            cursor      : default;
+        }
+        
+        .aristo_btn .left {
+            float         : left;
+            width         : 8px;
+            height        : 32px;
+            _margin-right : -3px; /* IE6 bug fix */
+        }
+        
+        .aristo_btn .lbl {
+            height        : 28px;
+            padding-top   : 9px;
+            text-align    : center;
+            margin        : 0;
+            _margin       : 0; /* IE6 fix */
+            white-space   : nowrap;
+            overflow      : hidden;
+            text-overflow : ellipsis;
+            text-shadow   : rgba(255, 255, 255, 0.8) 0px 1px 0;
+        }
+        
+        .aristo_btn .right {
+            float       : right;
+            width       : 8px;
+            height      : 32px;
+           _margin-left : -3px; /* IE6 bug fix */
+        }
+        
+        .aristo_btn .left,
+        .aristo_btnDefault .left {
+            background : url(images/button_borders.png) no-repeat 0 0;
+        }
+        
+        .aristo_btn .lbl,
+        .aristo_btnDefault .lbl {
+            background : url(images/button_borders.png) repeat-x 0 -32px;
+        }
+        
+        .aristo_btn .right,
+        .aristo_btnDefault .right {
+            background : url(images/button_borders.png) no-repeat 0 -64px;
+        }
+        
+        .aristo_btn span {
+            padding  : 1px 3px 1px 3px;
+            border   : 1px solid transparent;
+            position : relative;
+            _border  : 0;
+            _padding : 2px 4px 2px 4px;
+            _margin  : 0;
+        }
+        
+        .aristo_btnDisabled  {
+            color : #a7a7a7;
+        }
+                
+        .aristo_btnDisabled .left {
+            background : url(images/button_borders.png) no-repeat 0 -288px;
+        }
+        
+        .aristo_btnDisabled .lbl {
+            background : url(images/button_borders.png) repeat-x 0 -320px;
+        }
+    
+        .aristo_btnDisabled .right {
+            background : url(images/button_borders.png) no-repeat 0 -352px;
+        }
+        
+        .aristo_btnDown .left {
+            background : url(images/button_borders.png) no-repeat 0 -192px;
+        }
+    
+        .aristo_btnDown .lbl {
+            background : url(images/button_borders.png) repeat-x 0 -224px;
+        }
+        
+        .aristo_btnDown .right {
+            background : url(images/button_borders.png) no-repeat 0 -256px;
+        }
+
+        .aristo_btnFocus .left,
+        .aristo_btnOver .left {
+            background : url(images/button_borders.png) no-repeat 0 -96px;
+        }
+
+        .aristo_btnFocus .lbl,
+        .aristo_btnOver .lbl {
+            background : url(images/button_borders.png) repeat-x 0 -128px;
+        }
+
+        .aristo_btnFocus .right,
+        .aristo_btnOver .right {
+            background : url(images/button_borders.png) no-repeat 0 -160px;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isIE7">
+        .aristo_btn .right {
+            margin : 0;
+        }
+        
+        .aristo_btn .left {
+            margin : 0;
+        }
+    </a:style>
+
+    <a:presentation>
+        <a:main caption="div[3]/span/text()" background=".">
+            <div class="aristo_btn">
+                <div class="left"> </div>
+                <div class="right"> </div>
+                <div class="lbl"><span>-</span></div>
+             </div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="blue">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .aristo_btn_blue {
+            color       : #4f4f4f;
+            font-family : Arial;
+            font-size   : 12px;
+            font-weight : bold;
+            height      : 32px;
+            width       : 100px;
+            overflow    : hidden;
+            cursor      : default;
+        }
+
+        .aristo_btn_blue .left {
+            float         : left;
+            width         : 8px;
+            height        : 32px;
+            _margin-right : -3px; /* IE6 bug fix */
+        }
+
+        .aristo_btn_blue .lbl {
+            height        : 28px;
+            padding-top   : 9px;
+            text-align    : center;
+            margin        : 0;
+            _margin       : 0; /* IE6 fix */
+            white-space   : nowrap;
+            overflow      : hidden;
+            text-overflow : ellipsis;
+            text-shadow   : rgba(255, 255, 255, 0.8) 0px 1px 0;
+        }
+
+        .aristo_btn_blue .right {
+            float       : right;
+            width       : 8px;
+            height      : 32px;
+           _margin-left : -3px; /* IE6 bug fix */
+        }
+
+        .aristo_btn_blue .left,
+        .aristo_btn_blueDefault .left {
+            background : url(images/button_borders.png) no-repeat 0 -384px;
+        }
+
+        .aristo_btn_blue .lbl,
+        .aristo_btn_blueDefault .lbl {
+            background : url(images/button_borders.png) repeat-x 0 -416px;
+        }
+
+        .aristo_btn_blue .right,
+        .aristo_btn_blueDefault .right {
+            background : url(images/button_borders.png) no-repeat 0 -448px;
+        }
+
+        .aristo_btn_blue span {
+            padding  : 1px 3px 1px 3px;
+            border   : 1px solid transparent;
+            position : relative;
+            _border  : 0;
+            _padding : 2px 4px 2px 4px;
+            _margin  : 0;
+        }
+
+        .aristo_btn_blueDisabled  {
+            color : #a7a7a7;
+        }
+
+        .aristo_btn_blueDisabled .left {
+            background : url(images/button_borders.png) no-repeat 0 -672px;
+        }
+
+        .aristo_btn_blueDisabled .lbl {
+            background : url(images/button_borders.png) repeat-x 0 -704px;
+        }
+
+        .aristo_btn_blueDisabled .right {
+            background : url(images/button_borders.png) no-repeat 0 -736px;
+        }
+
+        .aristo_btn_blueDown .left {
+            background : url(images/button_borders.png) no-repeat 0 -576px;
+        }
+
+        .aristo_btn_blueDown .lbl {
+            background : url(images/button_borders.png) repeat-x 0 -608px;
+        }
+
+        .aristo_btn_blueDown .right {
+            background : url(images/button_borders.png) no-repeat 0 -640px;
+        }
+
+        .aristo_btn_blueFocus .left,
+        .aristo_btn_blueOver .left {
+            background : url(images/button_borders.png) no-repeat 0 -480px;
+        }
+
+        .aristo_btn_blueFocus .lbl,
+        .aristo_btn_blueOver .lbl {
+            background : url(images/button_borders.png) repeat-x 0 -512px;
+        }
+
+        .aristo_btn_blueFocus .right,
+        .aristo_btn_blueOver .right {
+            background : url(images/button_borders.png) no-repeat 0 -544px;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isIE7">
+        .aristo_btn_blue .right {
+            margin : 0;
+        }
+
+        .aristo_btn_blue .left {
+            margin : 0;
+        }
+    </a:style>
+
+    <a:presentation>
+        <a:main caption="div[3]/span/text()" background=".">
+            <div class="aristo_btn_blue">
+                <div class="left"> </div>
+                <div class="right"> </div>
+                <div class="lbl"><span>-</span></div>
+             </div>
+        </a:main>
+    </a:presentation>
+</a:button>
+<a:checkbox name="checkbox">
+    <a:style><![CDATA[
+        .aristo_cb {
+            padding    : 2px 2px 2px 18px;
+            _padding   : 2px; /* IE6 fix */
+            position   : relative;
+            min-height : 16px;
+            color      : #4b4b4b;
+            background : url(images/spacer.gif);
+            _clear     : both; /* IE6 fix */
+        }
+        
+        .aristo_cb span {
+            font-family : Arial;
+            font-size   : 12px;
+            cursor      : default;
+            padding     : 1px 3px 2px 3px;
+            margin      : -1px 0 0 0;
+            overflow    : hidden;
+            display     : block;
+            float       : left;
+            line-height : 16px;
+        }
+        
+        .aristo_cbFocus span {
+            padding : 0px 2px 1px 2px;
+            border  : 1px dotted #BBB;
+        }
+
+        .aristo_cbChecked.aristo_cbDown.aristo_cbFocus .checkbox {
+            background-position : 0 -32px;
+        }
+
+        .aristo_cb .checkbox {
+            width      : 16px;
+            height     : 16px;
+            overflow   : hidden;
+            position   : absolute;
+            left       : 2px;
+            top        : 2px;
+            _position  : relative; /* IE6 fix */
+            _float     : left; /* IE6 fix */
+            _margin    : -2px 4px 0 0; /* IE6 fix */
+            background : url("images/checkbox.png") no-repeat 0 -16px;
+        }
+
+        .aristo_cbDown .checkbox {
+            background-position : 0 -16px;
+        }
+
+        .aristo_cbChecked .checkbox {
+            background-position : 0 -32px;
+        }
+        
+        .aristo_cbError span {
+            background-color : #ffb500;
+            color            : #fbfbfb;
+        }
+        
+        .aristo_cbDisabled .checkbox {
+            background-position : 0 0;
+        }
+        
+        .aristo_cbDisabled span {
+            color : #bebebe;
+        }
+
+        .aristo_cb br {
+            display : none;
+        }
+    ]]></a:style>
+    <a:style condition="!apf.isIE"><![CDATA[
+        .aristo_cb br {
+            line-height : 0;
+            display     : block;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main label="span/text()">
+            <div class='aristo_cb'>
+                <div class='checkbox'> </div>
+                <span>-</span>
+                <br clear="left" />
+            </div>
+        </a:main>
+    </a:presentation>
+</a:checkbox>
+<a:dropdown name="dropdown">
+    <a:style><![CDATA[
+    .aristo_dropdown {
+        position    : relative;
+        background  : url(images/dropdown_box.png) no-repeat top left;
+        width       : 134px;
+        height      : 24px;
+        margin      : 0;
+        padding     : 2px 27px 0 0;
+        color       : #333;
+        font-family : Arial
+        font-size   : 12px;
+    }
+
+    .aristo_dropdownError {
+    }
+
+    .aristo_dropdownDisabled {
+        color : #bebebe;
+    }
+
+    .aristo_dropdownFocus {
+    }
+
+    .aristo_dropdownOver {
+    }
+
+    .aristo_dropdownDown {
+    }
+
+    .aristo_dropdown .aristo_dropdownRightBorder {
+        background : url(images/dropdown_box.png) no-repeat -1163px 0;
+        position   : absolute;
+        top        : 0;
+        right      : 0;
+        margin     : 0;
+        width      : 27px;
+        height     : 24px;
+    }
+
+    .aristo_dropdown .aristo_dropdownlabel {
+        padding        : 0 0 0 4px;
+        cursor         : default;
+        height         : 22px;
+        line-height    : 22px;
+        vertical-align : middle;
+        margin         : 0 0 0 2px;
+        overflow       : hidden;
+        white-space    : nowrap;
+        text-overflow  : ellipsis;
+    }
+
+    .aristo_dropdownError .aristo_dropdownLeftBorder {
+    }
+
+    .aristo_dropdownError .aristo_dropdownlabel{
+    }
+
+    .aristo_dropdownInitial .aristo_dropdownLeftBorder {
+    }
+
+    .aristo_dropdownInitial .aristo_dropdownlabel {
+        color : #999;
+    }
+
+    .aristo_dropdownInitial.aristo_dropdownFocus .aristo_dropdownRightBorder{
+    }
+
+    .aristo_dropdownInitial.aristo_dropdownFocus .aristo_dropdownlabel{
+    }
+
+    .aristo_dropdownFocus .aristo_dropdownRightBorder{
+    }
+
+    .aristo_dropdownFocus .aristo_dropdownlabel{
+    }
+
+    .aristo_dropdownDown .aristo_dropdownRightBorder {
+    }
+
+    .aristo_dropdownDown .aristo_dropdownlabel{
+    }
+
+    .aristo_options {
+        position    : absolute;
+        top         : 0;
+        left        : 0;
+        width       : 120px;
+        margin      : 0;
+        z-index     : 1000;
+        color       : #333;
+        font-family : Arial;
+        font-size   : 12px;
+        display     : none;
+        overflow    : visible;
+    }
+
+    .aristo_options .content {
+        margin     : 0 5px 0 5px;
+        background : #f4f4f4;
+        padding    : 0;
+        overflow   : auto;
+    }
+
+    .aristo_options .content span {
+        display          : block;
+        height           : 16px;
+        padding          : 6px 3px 2px 16px;
+        white-space      : nowrap;
+        overflow         : hidden;
+        text-overflow    : ellipsis;
+        background-color : #f4f4f4;
+        color            : #333;
+        cursor           : default;
+    }
+
+    .aristo_options .content span.hover {
+        background-color : #5f83b9;
+        color            : #ffffff;
+    }
+
+    .aristo_options .content .selected {
+        background-color : #f0f0f0;
+    }
+
+    .aristo_options .sideLeft {
+        position   : absolute;
+        left       : 0;
+        height     : 100%;
+        margin     : 0;
+        padding    : 0;
+        width      : 5px;
+        background : url(images/dropdown_box.png) repeat-y -1190px 0;
+    }
+
+    .aristo_options .sideRight {
+        position   : absolute;
+        right      : 0;
+        height     : 100%;
+        margin     : 0;
+        padding    : 0;
+        width      : 5px;
+        background : url(images/dropdown_box.png) repeat-y -1195px 0;
+    }
+
+    .aristo_options .topLeft {
+        float      : left;
+        margin     : 0 0 0 1px;
+        padding    : 0;
+        width      : 8px;
+        background : url(images/dropdown_list.png) no-repeat 0 0;
+    }
+
+    .aristo_options .topMiddle {
+        margin     : 0 8px 0 9px;
+        padding    : 0;
+        background : url(images/dropdown_list.png) repeat-x 0 -8px;
+    }
+
+    .aristo_options .topRight {
+        float      : right;
+        margin     : -8px 0 0 0;
+        padding    : 0;
+        width      : 8px;
+        background : url(images/dropdown_list.png) no-repeat 0 -16px;
+    }
+    
+    .aristo_options .bottomLeft {
+        float      : left;
+        margin     : 0 0 0 1px;
+        padding    : 0;
+        width      : 8px;
+        background : url(images/dropdown_list.png) no-repeat 0 -24px;
+    }
+
+    .aristo_options .bottomMiddle {
+        margin     : 0 8px 0 9px;
+        padding    : 0;
+        background : url(images/dropdown_list.png) repeat-x 0 -32px;
+    }
+
+    .aristo_options .bottomRight {
+        float      : right;
+        margin     : -8px 0 0 0;
+        padding    : 0;
+        width      : 8px;
+        background : url(images/dropdown_list.png) no-repeat 0 -40px;
+    }
+
+    .downward .topLeft,
+    .downward .topMiddle,
+    .downward .topRight {
+        height : 0;
+    }
+
+    .downward .bottomLeft,
+    .downward .bottomMiddle,
+    .downward .bottomRight {
+        height : 8px;
+    }
+
+    .downward .sideLeft,
+    .downward .sideRight {
+        bottom : 2px;
+    }
+
+    .upward .bottomLeft,
+    .upward .bottomMiddle,
+    .upward .bottomRight {
+        height : 0;
+    }
+
+    .upward .topLeft,
+    .upward .topMiddle,
+    .upward .topRight {
+        height : 8px;
+    }
+
+    .upward .sideLeft,
+    .upward .sideRight {
+        top : 8px;
+    }
+    ]]></a:style>
+    <a:presentation>
+        <a:main 
+          label           ="div[2]/text()"
+          button          = "."
+          item-height     = "27"
+          width-diff      = "-5"
+          ignore-overflow = "true"
+          ignore-position = "true">
+            <div class="aristo_dropdown">
+                <div class="aristo_dropdownRightBorder"> </div>
+                <div class="aristo_dropdownlabel">-</div>
+            </div>
+        </a:main>
+        <a:container contents="div[4]">
+            <div class="aristo_options">
+                <div class="topLeft"> </div>
+                <div class="topMiddle"> </div>
+                <div class="topRight"> </div>
+                <div class="content"> </div>
+                <div class="sideLeft"> </div>
+                <div class="sideRight"> </div>
+                <div class="bottomLeft"> </div>
+                <div class="bottomMiddle"> </div>
+                <div class="bottomRight"> </div>
+            </div>
+        </a:container>
+        <a:item
+            class   = "."
+            caption = "text()"
+            select  = "."
+        >
+            <span>-</span>
+        </a:item>
+        <a:empty caption=".">
+            <div class="empty">-</div>
+        </a:empty>
+    </a:presentation>
+</a:dropdown>
+<a:label name="label">
+    <a:style><![CDATA[
+        .label {
+            font-size   : 12px;
+            font-family : Arial;
+            overflow    : hidden;
+            cursor      : default;
+            line-height : 1.5em;
+        }
+
+        .labelDisabled {
+            color : #bebebe;
+        }
+        
+        .tiny {
+            font-size : 9px;
+        }
+        
+        .error .label{
+            background : url(images/alert.png) no-repeat 0 0;
+            min-height : 37px;
+            padding    : 3px 0 0 45px;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main caption="." for="@for">
+            <div class="label"> </div>
+        </a:main>
+    </a:presentation>
+</a:label>
+<a:modalwindow name="modalwindow">
+    <a:alias>window</a:alias>
+    
+    <a:style><![CDATA[
+        .north {cursor : url(cursor/n-point.cur);}
+        .west {cursor : url(cursor/w-point.cur);}
+        .east {cursor : url(cursor/e-point.cur);}
+        .south {cursor : url(cursor/s-point.cur);}
+        .same {cursor : not-allowed;}
+    
+        .aristo_window {
+            font-family : Arial;
+            font-size   : 12px;
+            padding     : 64px 0 16px 0;
+        }
+    
+        .aristo_window .topLeft {
+            float         : left;
+            background    : url(images/window_borders.png) no-repeat 0 0;
+            width         : 16px;
+            height        : 60px;
+            margin        : 0;
+            padding       : 0;
+            border        : 0;
+            margin-top    : -26px;
+            _margin-right : -6px; /* IE6 bug fix */
+        }
+        
+        .aristo_windowFocus {
+        
+        }
+        
+        .aristo_window .topRight {
+            float        : right;
+            background   : url(images/window_borders.png) no-repeat 0 -120px;
+            width        : 16px;
+            height       : 60px;
+            margin       : 0;
+            padding      : 0;
+            border       : 0;
+            margin-top   : -26px;
+            _margin-left : -5px; /* IE6 bug fix */
+        }
+        
+        .aristo_window .title {
+            background  : url(images/window_borders.png) repeat-x 0 -60px;
+            height      : 52px;
+            color       : #4f4f4f;
+            position    : relative;
+            margin      : 0 16px 0 16px;
+            padding     : 8px 0 0 0;
+            border      : 0;
+            text-align  : center;
+            font-weight : bold;
+            margin-top  : -26px;
+            cursor      : default;
+            text-shadow : rgba(255, 255, 255, 0.8) 0px 1px 0;
+        }
+        
+        .aristo_window .title img {
+            display : none;
+        }
+        
+        .aristo_window .content {
+            background   : #fff;
+            margin-left  : 8px;
+            margin-right : 8px;
+            position     : relative;
+            height       : 100%;
+            border       : 0;
+        }
+        
+        .aristo_windowMin .content {
+            overflow : hidden;
+        }
+        
+        .aristo_window .borderRight {
+            background   : url(images/window_buttons.png) repeat-y -8px 0;
+            overflow     : hidden;
+            width        : 8px;
+            float        : right;
+            height       : 100%;
+            _margin-left : -8px; /* IE6 bug fix */
+        }
+        
+        .aristo_window .borderLeft {
+            background    : url(images/window_buttons.png) repeat-y 0 0;
+            overflow      : hidden;
+            height        : 100%;
+            float         : left;
+            width         : 8px;
+            _margin-right : -8px; /* IE6 bug fix */
+        }
+        
+        .aristo_window .bottomLeft {
+            float         : left;
+            background    : url(images/window_borders.png) no-repeat 0 -180px;
+            width         : 16px;
+            height        : 16px;
+            _margin-right : -16px; /* IE6 bug fix */
+        }
+        
+        .aristo_window .bottomRight {
+            float        : right;
+            background   : url(images/window_borders.png) no-repeat 0 -212px;
+            width        : 16px;
+            height       : 16px;
+            _margin-left : -3px; /* IE6 bug fix */
+        }
+        
+        .aristo_window .bottomBar {
+            background : url(images/window_borders.png) repeat-x 0 -196px;
+            height     : 16px;
+            color      : #FFFFFF;
+            position   : relative;
+            margin     : 0px 16px 0 16px;
+            border     : 0;
+        }
+        
+        .aristo_window .bottom {
+            position : absolute;
+            bottom   : 0;
+            width    : 100%;
+        }
+        
+        .aristo_cover {
+            background : white;
+            opacity    : 0.3;
+            filter     : progid:DXImageTransform.Microsoft.Alpha(opacity=30);
+            position   : absolute;
+            left       : 0;
+            top        : 0;
+            width      : 100%;
+            height     : 100%;
+            height     : expression(document.documentElement.offsetHeight);
+            z-index    : 10000;
+        }
+        
+        .aristo_window .title blockquote {
+            margin   : 0;
+            width    : 56px;
+            height   : 21px;
+            position : absolute;
+            padding  : 0;
+            top      : 8px;
+            left     : 0;
+        }
+
+        .aristo_window .title blockquote div {
+            width        : 14px;
+            height       : 15px;
+            float        : left;
+            padding      : 0;
+            margin-right : 4px;
+            background   : url(images/window_buttons.png) no-repeat 0 -16px;
+            cursor       : default;
+            _overflow    : hidden; /* IE6 bug fix */
+        }
+        
+        .aristo_window .title .max,
+        .aristo_windowMax .title .max {
+            background-position : -44px 0;
+        }
+        
+        .aristo_window .title .min,
+        .aristo_windowMin .title .min {
+            background-position : -30px 0;
+        }
+        
+        .aristo_window .title .close {
+            background-position : -16px 0;
+        }
+        
+        .aristo_window .title span {
+            width   : 16px;
+            height  : 16px;
+            display : block;
+        }
+        
+        #apf_outline {
+            margin-top : 30px;
+        }
+        
+        #apf_outline.drag,
+        #apf_outline.resize {
+            border     : 1px solid #587e93;
+            background : #85b2cb;
+            opacity    : 0.4;
+            filter     : progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+        }
+    ]]></a:style>
+    <a:style condition="!apf.isIE"><![CDATA[
+        .aristo_window .title .max.down,
+        .aristo_window .title .max.hover,
+        .aristo_windowMax .title .max.down,
+        .aristo_windowMax .title .max.hover {
+            background-position : -44px -15px;
+        }
+        
+        .aristo_window .title .min.down,
+        .aristo_window .title .min.hover,
+        .aristo_windowMin .title .min.down,
+        .aristo_windowMin .title .min.hover {
+            background-position : -30px -15px;
+        }
+        
+        .aristo_window .title .close.down,
+        .aristo_window .title .close.hover {
+            background-position : -16px -15px;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isIE"><![CDATA[
+        .aristo_window .title .down,
+        .aristo_window .title .hover {
+            background-position-y : -15px;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main 
+          collapsed-height = "30"
+          min-width        = "150" 
+          min-height       = "120"
+          container        = "div[6]" 
+          drag             = "div[3]" 
+          title            = "div[3]/text()" 
+          buttons          = "div[3]/blockquote">
+            <div class="aristo_window">
+                <div class="topLeft"> </div>
+                <div class="topRight"> </div>
+                <div class="title"><blockquote> </blockquote>-</div>
+                
+                <div class="borderLeft"> </div>
+                <div class="borderRight"> </div>
+                <div class="content"> </div>
+            
+                <div class="bottomLeft"> </div>
+                <div class="bottomRight"> </div>
+                <div class="bottomBar"> </div>
+            </div>
+        </a:main>
+        <a:button>
+            <div> </div>
+        </a:button>
+        <a:cover>
+            <div class='aristo_cover'> </div>
+        </a:cover>
+    </a:presentation>
+</a:modalwindow>
+<a:radiobutton name="radiobutton">
+    <a:style><![CDATA[
+        .aristo_rb {
+            padding    : 2px;
+            position   : relative;
+            min-height : 17px;
+            color      : #4b4b4b;
+            cursor     : default;
+            _clear     : both; /* IE6 fix */
+        }
+        
+        .aristo_rb span {
+            font-family : Arial
+            font-size   : 12px;
+            padding     : 1px 3px 2px 3px;
+            margin      : -1px 0 0 0;
+            overflow    : hidden;
+            display     : block;
+            float       : left;
+            line-height : 17px;
+        }
+        
+        .aristo_rbFocus span {
+            padding : 0 2px 1px 2px;
+            border  : 1px dotted #BBB;
+        }
+
+        .aristo_rb .radio {
+            width      : 17px;
+            height     : 17px;
+            overflow   : hidden;
+            podition   : relative;
+            float      : left;
+            margin     : 1px 2px 0 0;
+            _padding   : 0;
+            background : url(images/radiobutton.png) no-repeat 0 -17px;
+        }
+
+        .aristo_rbDown .radio {
+            background-position : 0 -17px;
+        }
+
+        .aristo_rbChecked .radio {
+            background-position : 0 -34px;
+        }
+        
+        .aristo_rbDisabled .radio {
+            background-position : 0 0;
+        }
+        
+        .aristo_rbDisabled span {
+            color : #bebebe;
+        }
+        
+        .aristo_rbError span {
+            background-color : #ffb500;
+            color            : #fbfbfb;
+        }
+        
+        .aristo_rb br {
+            display : none;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main label="span">
+            <div class="aristo_rb">
+                <div class="radio"> </div>
+                <span>-</span>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:radiobutton>
+<a:slider name="slider">
+    <a:style><![CDATA[
+        .aristo_slider {
+            background    : url(images/slider_corners.png) no-repeat top right;
+            width         : 300px;
+            height        : 21px;
+            position      : relative;
+            padding-right : 3px;
+            font-family   : Arial
+            font-size     : 10px;
+            text-align    : center;
+        }
+        
+        .aristo_sliderDisabled {
+        }
+        
+        .aristo_slider .left {
+            background : url(images/sliders.png) no-repeat -21px 0;
+            height     : 21px;
+            overflow   : hidden;
+        }
+        
+        .aristo_sliderDisabled .left {
+        }
+        
+        .aristo_slider .grabber {
+            background : url(images/sliders.png) no-repeat -21px -19px;
+            width      : 22px;
+            height     : 22px;
+            overflow   : hidden;
+            position   : absolute;
+        }
+        
+        .aristo_sliderDisabled .grabber {
+            background-position : -21px -48px;
+        }
+
+        .aristo_sliderDown .grabber,
+        .aristo_sliderFocus .grabber {
+            background-position : -21px -42px;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main 
+          slider    = "div[1]" 
+          container = "." 
+          status2   = "div[2]/text()"
+          markers   = "." 
+          direction = "horizontal">
+            <div class="aristo_slider">
+                <div class="grabber"> </div>
+                <div class="left"> </div>
+            </div>
+        </a:main>
+        <marker>
+            <u> </u>
+        </marker>
+    </a:presentation>
+</a:slider>
+
+<a:slider name="vertical">
+    <a:style><![CDATA[
+        .aristo_sliderVert {
+            background  : url(images/sliders.png) no-repeat 0 -21px;
+            width       : 21px;
+            height      : 300px;
+            position    : relative;
+            padding     : 0;
+            font-family : Arial
+            font-size   : 10px;
+            text-align  : center;
+        }
+
+        .aristo_sliderVertDisabled {
+        }
+
+        .aristo_sliderVert .bottom {
+            background : url(images/slider_corners.png) no-repeat 0 -21px;
+            width      : 21px;
+            height     : 3px;
+            margin     : 0 0 -3px 0;
+            padding    : 0;
+            left       : 0;
+            overflow   : hidden;
+        }
+
+        .aristo_sliderVertDisabled .left {
+        }
+
+        .aristo_sliderVert .grabber {
+            background : url(images/sliders.png) no-repeat -21px -19px;
+            width      : 22px;
+            height     : 22px;
+            overflow   : hidden;
+            position   : absolute;
+        }
+
+        .aristo_sliderVertDisabled .grabber {
+            background-position : -21px -48px;
+        }
+
+        .aristo_sliderVertDown .grabber,
+        .aristo_sliderVertFocus .grabber {
+            background-position : -21px -42px;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main 
+          slider    = "div[1]" 
+          container = "." 
+          status2   = "div[2]/text()"
+          markers   = "." 
+          direction = "vertical">
+            <div class="aristo_sliderVert">
+                <div class="grabber"> </div>
+                <div class="bottom"> </div>
+            </div>
+        </a:main>
+        <marker>
+            <u> </u>
+        </marker>
+    </a:presentation>
+</a:slider>
+<a:textbox name="textbox">
+    <a:alias>input</a:alias>
+    <a:alias>secret</a:alias>
+    <a:style><![CDATA[
+        .aristo_tb {
+            position      : relative;
+            background    : url(images/textfields.png) no-repeat 0 -90px;
+            width         :  161px;
+            height        : 30px;
+            color         : #333;
+            border        : 0;
+            margin        : 0;
+            padding       : 0 0 0 17px;
+            outline       : none;
+            font-family   : Arial;
+            font-size     : 14px;
+            text-overflow : ellipsis;
+        }
+        
+        .aristo_tbFocus {
+            background-position : 0 0;
+        }
+        
+        .aristo_tbDisabled {
+            color : #bebebe;
+        }
+        
+        .aristo_tbError {
+            border : 2px solid #ffb500;
+            margin : -1px 0 0 -1px;
+        }
+        
+        .aristo_tbInitial {
+            color : gray;
+        }
+
+        .aristo_tb .aristo_tb_container {
+            height     : 30px;
+            background : url(images/textfields.png) repeat-x 0 -120px;
+            padding    : 0;
+            margin     : 0 17px 0 0;
+        }
+
+        .aristo_tbFocus .aristo_tb_container {
+            background-position : 0 -30px;
+        }
+
+        .aristo_tb .aristo_tb_container input {
+            border     : 0;
+            background : transparent;
+            width      : 100%;
+            height     : 18px;
+            margin     : 8px 0 0 0;
+            padding    : 0;
+        }
+
+        .aristo_tb span {
+            position   : absolute;
+            background : url(images/textfields.png) no-repeat 0 -150px;
+            width      : 17px;
+            height     : 30px;
+            top        : 0px;
+            right      : 0px;
+            margin     : 0;
+            padding    : 0;
+        }
+
+        .aristo_tbFocus span {
+            background-position : 0 -60px;
+        }
+
+        .aristo_tbautoc {
+            border           : 1px solid gray;
+            width            : 250px;
+            overflow-y       : auto;
+            z-index          : 10000000;
+            position         : absolute;
+            background-color : white;
+            margin           : 23px 0 0 0;
+            white-space      : nowrap;
+            display          : none;
+        }
+
+        .aristo_tbautoc div {
+            padding     : 1px 5px 1px 3px;
+            cursor      : default;
+            margin      : 0px;
+            color       : black;
+            font-family : Arial;
+            font-size   : 9pt;
+        }
+
+        .aristo_tbautoc div.hover {
+            background-color : #0B2B7A;
+            color            : white;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isIE"><![CDATA[
+        .aristo_tb .aristo_tb_container input {
+            margin-top : 6px;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main input="div/input">
+            <div class="aristo_tb">
+                <div class="aristo_tb_container">
+                    <input type="text" />
+                </div>
+                <span> </span>
+            </div>
+        </a:main>
+        <a:container>
+            <div class="aristo_tbautoc"> </div>
+        </a:container>
+        <a:item caption=".">
+            <div>-</div>
+        </a:item>
+    </a:presentation>
+</a:textbox>
+
+<!--
+    * Textarea doesn't scroll well -done
+    * Textarea doesn't have a Focus state, should be similar to the textbox - done
+-->
+<a:textbox name="textarea">
+    <a:style><![CDATA[
+        .aristo_ta {
+            border      : 1px solid #c3c3c3;
+            background  : white url("images/textarea_background2.png") no-repeat top left;
+            color       : #4b4b4b;
+            padding     : 6px;
+            font-family : Tahoma;
+            font-size   : 8pt;
+            overflow    : auto;
+            outline     : none;
+            resize      : none;
+        }
+        
+        .aristo_taFocus {
+            border-color : #327fbd;
+        }
+
+        .aristo_taDisabled {
+            border : 1px solid #c3c3c3;
+            color  : #bebebe;
+        }
+        
+        .aristo_taInitial {
+            color : gray;
+        }
+
+        .aristo_taError {
+            border  : 2px solid #ffb500;
+            padding : 5px;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main input=".">
+            <textarea type='text' class="aristo_ta" />
+        </a:main>
+    </a:presentation>
+</a:textbox>
+</a:skin>

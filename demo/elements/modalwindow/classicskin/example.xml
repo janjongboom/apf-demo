@@ -1,0 +1,257 @@
+<examples name="Modalwindow Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Classic skin</description>
+        <source><![CDATA[
+            <a:model id="mdlComponents">
+                <data>
+                    <comp caption="Core" disabled="true" checked="true"></comp>
+                    <comp caption="Charts">
+                        <comp caption="2D line Chart"></comp>
+                        <comp caption="2D bar Chart"></comp>
+                        <comp caption="2D pie Chart"></comp>
+                        <comp caption="3D line Chart"></comp>
+                        <comp caption="3D surface Chart"></comp>
+                        <comp caption="Multiple graphs"></comp>
+                    </comp>
+                    <comp caption="Features">
+                        <comp caption="Smartbindings"></comp>
+                        <comp caption="Drag&amp;#38;Drop"></comp>
+                        <comp caption="Skining"></comp>
+                        <comp caption="Language swiching"></comp>
+                        <comp caption="Animation"></comp>
+                        <comp caption="Keyboard support"></comp>
+                        <comp caption="Validation"></comp>
+                    </comp>
+                    <comp caption="Elements">
+                        <comp caption="Smartbindings"></comp>
+                        <comp caption="Drag&amp;#38;Drop"></comp>
+                        <comp caption="Skining"></comp>
+                        <comp caption="Language swiching"></comp>
+                        <comp caption="Animation"></comp>
+                        <comp caption="Keyboard support"></comp>
+                        <comp caption="Validation"></comp>
+                    </comp>
+                    <comp caption="Containers">
+                        <comp caption="Accordion" />
+                        <comp caption="Bar" />
+                        <comp caption="Frame" />
+                        <comp caption="Modalwindow" />
+                        <comp caption="Panel" />
+                        <comp caption="Statusbar"/>
+                        <comp caption="Tab" />
+                        <comp caption="Toolbar" />
+                    </comp>
+                    <comp caption="Form elements">
+                        <comp caption="Button" />
+                        <comp caption="Caldropdown" />
+                        <comp caption="Calendar" />
+                        <comp caption="Colorpicker" />
+                        <comp caption="Checkbox" />
+                        <comp caption="Dropdown" />
+                        <comp caption="Editor" />
+                        <comp caption="Errorbox" />
+                        <comp caption="Label" />
+                        <comp caption="Palette" />
+                        <comp caption="Progressbar" />
+                        <comp caption="Radiobutton" />
+                        <comp caption="Slider" />
+                        <comp caption="Spinner" />
+                        <comp caption="Text" />
+                        <comp caption="Textarea" />
+                        <comp caption="Textbox" />
+                        <comp caption="Upload" />
+                    </comp>
+                    <comp caption="Selection elements">
+                        <comp caption="Datagrid" />
+                        <comp caption="List" />
+                        <comp caption="Tree" />
+                        <comp caption="Spreadsheet" />
+                        <comp caption="Property editor" />
+                        <comp caption="Menu" />
+                        <comp caption="Pager" />
+                        <comp caption="Toc" />
+                    </comp>
+                    <comp caption="Layout">
+                        <comp caption="Anchoring" />
+                        <comp caption="Alignment" />
+                        <comp caption="Docking" />
+                        <comp caption="Grid" />
+                        <comp caption="Hbox" />
+                        <comp caption="Portal" />
+                        <comp caption="Vbox" />
+                    </comp>
+                    <comp caption="Media">
+                        <comp caption="Audio" />
+                        <comp caption="Browser" />
+                        <comp caption="Img" />
+                        <comp caption="Slideshow" />
+                        <comp caption="Video" />
+                        <comp caption="Notifier" />
+                    </comp>
+                </data>
+            </a:model>
+            <a:window  
+              id="mwWizard"
+              buttons   = "min|max|close" 
+              title     = "Ajax.org v3.0.0 Setup"
+              icon      = "icoInstall.png" 
+              skin      = "window_classicW"
+              visible   = "true" 
+              resizable = "true" 
+              width     = "503"
+              height    = "386"
+              minwidth  = "503"
+              minheight = "386"
+              skinset   = "winskin"> 
+                <a:pages id="wizardTab1" width="498" height="59">
+                    <a:page>
+                        <img src="demo/images/top_installer.png" />
+                        <a:label 
+                          skin  = "label_classicW"
+                          style = "font-weight:bold;"
+                          top   = "5"
+                          left  = "160">License Agreement</a:label>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "250"
+                          top   = "25"
+                          left  = "165">Please review the license terms before installing Ajax.org Platform v3.0.0</a:label>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "440"
+                          top   = "74"
+                          left  = "22">Press Page Down to see the rest of the agreement.</a:label>
+                        <a:text
+                          id="lol"
+                          skin   = "text_classicW"
+                          left   = "22"
+                          top    = "100"
+                          width  = "455"
+                          height = "160"
+                          value  = "[text()]"
+                          model  = "demo/elements/modalwindow/classicskin/lgpl.xml"></a:text>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "420"
+                          top   = "270"
+                          left  = "22">If You accept the terms of the agreement, click I Agree to continue. You must accept the agreement to install Ajax.org Platform v3.0.0.</a:label>
+                    </a:page>
+                    <a:page caption="Choose components">
+                       <img src="siteimg/top_installer.png" />
+                       <a:label 
+                          skin  = "label_classicW"
+                          style = "font-weight:bold;"
+                          top   = "5"
+                          left  = "160">Choose components</a:label>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "250"
+                          top   = "25"
+                          left  = "165">Choose which features of Ajax.org Platform v3.0.0 you want to install.</a:label>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "440"
+                          top   = "74"
+                          left  = "22">Check the components you want to install and uncheck the components you don't want to install. 
+                          Click Next to continue.</a:label>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "150"
+                          top   = "135"
+                          left  = "22">Select components to install:</a:label>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "150"
+                          top   = "260"
+                          left  = "22">Space required: 1.1MB</a:label>
+                        <a:tree 
+                          top    = "115"
+                          left   = "185"
+                          width  = "293" 
+                          height = "165" 
+                          mode   = "check" 
+                          model  = "mdlComponents"
+                          skin   = "checktree_classicW">
+                            <a:each match="[comp]">
+                                <a:caption match="[@caption]"></a:caption>
+                                <a:css match="[@disabled]" value="disabled" />
+                            </a:each>
+                        </a:tree>
+                    </a:page>
+                    <a:page caption="Choose install location">
+                        <img src="siteimg/top_installer.png" />
+                        <a:label 
+                          skin  = "label_classicW"
+                          style = "font-weight:bold;"
+                          top   = "5"
+                          left  = "160">Choose Install Location</a:label>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "250"
+                          top   = "25"
+                          left  = "165">Choose the folder in which to install Ajax.org Platform.</a:label>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "440"
+                          top   = "74"
+                          left  = "22">Setup will install Ajax.org Platform v3.0.0 in the following folder. To install in different folder, click
+                          Browse and select another folder. Click Install to start the installation.</a:label>
+                        <a:frame 
+                          skin    = "frame_classicW"
+                          top     = "185"
+                          left    = "25"
+                          caption = "Destintation folder" 
+                          width   = "450">
+                            <a:table columns="315, 90" cellpadding="14">
+                                <a:textbox 
+                                  height = "22" 
+                                  skin   = "textbox_classicW" 
+                                  value  = "C:\Program Files\Ajax.org Platform"></a:textbox>
+                                <a:button 
+                                  skin   = "button_classicW" 
+                                  height = "22">Browse...</a:button>
+                            </a:table>
+                        </a:frame>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "150"
+                          top   = "265"
+                          left  = "22">Space required: 1.1MB</a:label>
+                        <a:label 
+                          skin  = "label_classicW"
+                          width = "150"
+                          top   = "280"
+                          left  = "22">Space available: 80.7GB</a:label>
+                    </a:page>
+                </a:pages>
+                <a:label 
+                  skin  = "label_classicW"
+                  class = "lblShadow"
+                  width = "420"
+                  top   = "310"
+                  left  = "10">Ajax.org Platform v3.0.0.<span>Ajax.org Platform v3.0.0.</span><hr class="white" /><hr class="gray" /></a:label>
+                <a:button 
+                  disabled = "{wizardTab1.activepage == 0}"
+                  visible  = "{wizardTab1.activepage &gt; 0}"
+                  onclick  = "wizardTab1.set(wizardTab1.activepage-1)"
+                  skin     = "button_classicW"
+                  caption  ="&lt; Back"
+                  width    = "75"
+                  left     = "245"
+                  top      = "327"></a:button>
+                <a:button 
+                  onclick = "wizardTab1.set(wizardTab1.activepage &lt; 3 ? wizardTab1.activepage + 1 : 2)"
+                  skin    = "button_classicW"
+                  width   = "75" 
+                  left    = "320"
+                  top     = "327"
+                  caption = "{wizardTab1.activepage == 0 ? 'I Agree' : (wizardTab1.activepage == 1 ? 'Next &gt;' : 'Install') }"></a:button>
+                <a:button 
+                  skin  = "button_classicW" 
+                  width = "75" 
+                  left  = "405" 
+                  top   = "327">Cancel</a:button>
+            </a:window>
+        ]]></source>
+    </example>
+</examples>

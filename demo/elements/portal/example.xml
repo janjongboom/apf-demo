@@ -1,0 +1,100 @@
+<examples name="Portal Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This demo shows the portal element containing some widgets. Drag docklets to a column of choice and check out the settings panel. For demo purpose this implementation is spread out over many files. This makes loading the portal slower than it would in a real production environment. The userdata.xml file are the settings of the user that is logged in. These settings should come from a permanent data store (on the server or locally). They can easily be saved back because this is the data the portal element is bound on.</description>
+        <source><![CDATA[
+            <a:portal id="portal1" 
+              columns = "30%, 40%, 30%" 
+              height  = "520" 
+              model   = "demo/elements/portal/userdata.xml">
+                <a:each match="[docklet]">
+                    <a:src match="[@src]" />
+                    <a:collapsed match="[node()[@collapsed='true']]" value="1" />
+                    <a:column value="[@column]" />
+                    <a:caption match="[@name]" />
+                </a:each>
+            </a:portal>
+        ]]></source>
+        <xml>
+            <caption>feeds.xml</caption>
+            <source><![CDATA[
+                <a:docklet xmlns:a="http://ajax.org/2005/aml" name="Feed">
+                    <a:script>//<!--
+                        function Feed(){
+                            //Create a Javeline class
+                            apf.makeClass(this);
+                
+                            //Inherit from the portal.docklet baseclass
+                            this.implement(apf.portal.docklet);
+                            this.$init = function(xmlSettings, oDocklet){
+                                //Process xml settings
+                                mdlFeedSettings.load(xmlSettings);
+                            }
+                        }
+                    //--></a:script>
+                    <a:config>
+                        <h3>Choose a feed</h3>
+                        <a:model id="mdlFeedSettings" />
+                        <a:model id="mdlFeed" />
+                
+                        <a:dropdown 
+                          ref           = "feed" 
+                          id            = "ddFeed"
+                          refmodel      = "mdlFeedSettings"
+                          onafterselect = "pgFeed.gotoPage(1)">
+                            <a:item>ohloh</a:item>
+                            <a:item>jira</a:item>
+                            <a:item>forum</a:item>
+                        </a:dropdown>
+                    </a:config>
+                    <a:body>
+                        <a:pager 
+                          id       = "pgFeed"
+                          pageload = "{comm.fetch(ddFeed.value, page, 5)}"
+                          bindings = "bndPager"
+                          model    = "mdlFeed"
+                          autohide = "false"/>
+                        
+                        <div class="feed" model="mdlFeed">
+                            <h4>{ddFeed.value.uCaseFirst()}</h4>
+                            
+                            foreach([item]) {
+                                <h3><a href="[url]" target="_blank">[title]</a></h3>
+                            }
+                        </div>
+                    </a:body>
+                </a:docklet>
+            ]]></source>
+        </xml>
+        <xml>
+            <caption>userdata.xml</caption>
+            <source><![CDATA[
+                <docklets>
+                    <docklet name="Usage" column="0" collapsed="true"
+                      src="demo/elements/portal/docklet1.xml">
+                        <color>green</color>
+                    </docklet>
+                    <docklet name="Usage" column="0" collapsed="true"
+                      src="demo/elements/portal/docklet1.xml" >
+                        <color>red</color>
+                    </docklet>
+                    <docklet name="Usage" column="0" collapsed="true"
+                      src="demo/elements/portal/docklet1.xml">
+                        <color>blue</color>
+                    </docklet>
+                    <docklet name="Feeds" column="1" collapsed="false"
+                      src="demo/elements/portal/feeds.xml">
+                        <feed>forum</feed>
+                    </docklet>
+                    <docklet name="Performance" column="1" collapsed="false" 
+                      src="demo/elements/portal/docklet1.xml" />
+                    <docklet name="Chart" column="2" collapsed="false" 
+                      src="demo/elements/portal/docklet1.xml" />
+                    <docklet name="Chart" column="2" collapsed="false" 
+                      src="demo/elements/portal/docklet1.xml" />
+                    <docklet name="Chart" column="2" collapsed="false" 
+                      src="demo/elements/portal/docklet1.xml" />
+                </docklets>
+            ]]></source>
+        </xml>
+    </example>
+</examples>

@@ -1,0 +1,7 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <!-- 
+        This file contains the main interface of your project
+    -->
+
+    <a:pages id="pgSite" load="url:pages/(page).xml" />
+</a:application>

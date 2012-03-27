@@ -1,0 +1,10 @@
+<examples name="Platform Skins" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Skin title/ description</description>
+        <source><![CDATA[
+            Skin example
+        ]]></source>
+    </example>
+
+    <seealso menu="skins" sub="" name="aristo" display="Aristo Skin" title="See Aristo skin" />
+</examples>

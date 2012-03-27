@@ -1,0 +1,170 @@
+<examples name="Button Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Events</description>
+        <source><![CDATA[
+            <a:table columns="100, 100" cellheight="24">
+                <a:label>Onclick event</a:label>
+                <a:button
+                  width   = "120"
+                  onclick = "alert('Button has been clicked')">
+                    Example button</a:button>
+                <a:label>Onmouseover event</a:label>
+                <a:button 
+                  width       = "120"
+                  onmouseover = "alert('Button has been hovered')">
+                    Example button</a:button>
+                <a:label>Onmouseout event</a:label>
+                <a:button 
+                  width      = "120"
+                  onmouseout = "alert('Mouse hover out button')">
+                    Example button</a:button>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Interaction</description>
+        <source><![CDATA[
+            <a:table columns="250" cellheight="24">
+                <a:button
+                  onclick = "b1.setAttribute('width', '200')" 
+                  width   = "250">
+                    Click me to resize Test button to 200px</a:button>
+                <a:button 
+                  onclick = "b1.setAttribute('width', '50')" 
+                  width   = "250">
+                    Click me to resize Test button to 50px</a:button>
+                <a:button id="b1">Test</a:button>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Tooltips and caption color</description>
+        <source><![CDATA[
+            <a:button
+              tooltip = "This button is clickable"
+              color   = "red">Button</a:button>
+        ]]></source>
+    </example>
+    <!--example>
+        <description>State synchronization<br />
+    <ul class="demodescr">
+        <li>State 1 - Button 1 is pressed, Button 2 is disabled</li>
+        <li>State 2 - Button 1 is in default state, Button 2 is enabled</li>
+    </ul></description>
+        <source><![CDATA[
+            <a:button 
+              value = "[b2.disabled]" 
+              state = "false"
+              width = "200">Button 1 - click me</a:button>
+            <a:button 
+                id = "b2">Button 2</a:button>
+        ]]></source>
+    </example>
+    <example>
+        <description>State synchronization - visibility
+    <ul class="demodescr">
+        <li>State 1 - Button 1 is pressed, Button 2 is visible</li>
+        <li>State 2 - Button 1 is in default state, Button 2 is invisible</li>
+    </ul></description>
+        <source><![CDATA[
+            <a:button 
+              value = "[b3.visible]" 
+              width = "200"
+              state = "false">Button 1 - click me</a:button>
+            <a:button id="b3">Button 2</a:button>
+        ]]></source>
+    </example!-->
+    <example>
+        <description>Toolbar buttons</description>
+        <source><![CDATA[
+            <a:toolbar height="26" width="400">
+                <a:bar>
+                    <a:button 
+                      icon    = "database_save.png"
+                      tooltip = "Save">Save</a:button>
+                    <a:divider />
+                    <a:button
+                      icon    = "arrow_undo.png"
+                      tooltip = "Undo">Undo</a:button>
+                    <a:button 
+                      icon    = "arrow_redo.png"
+                      tooltip = "Redo">Redo</a:button>
+                    <a:divider />
+                    <a:button 
+                      icon    = "textfield_add.png"
+                      tooltip = "Add row">Add row</a:button>
+                    <a:button 
+                      icon    = "textfield_delete.png"
+                      tooltip = "Remove row">Remove row</a:button>
+                </a:bar>
+            </a:toolbar>
+        ]]></source>
+    </example>
+    <example>
+        <description>Target and Action attribute</description>
+        <source><![CDATA[
+            <a:datagrid
+              width   = "300"
+              height  = "100"
+              id      = "ss4"
+              options = "size">
+                <a:each match="[element]">
+                    <a:column 
+                      caption = "Caption 1" 
+                      value   = "[@caption1]"
+                      width   = "50%"></a:column>
+                    <a:column 
+                      caption = "Caption 2" 
+                      value   = "[@caption2]"
+                      width   = "50%"></a:column>
+                </a:each>
+                <a:actions>
+                    <a:rename />
+                    <a:remove /> 
+                    <a:add>
+                        <element caption1="New" caption2="row" />
+                    </a:add>
+                </a:actions>
+                <a:model>
+                    <data>
+                        <element caption1="Text 1" caption2="Text2"></element>
+                    </data>
+                </a:model>
+            </a:datagrid>
+            <a:table columns="150, 150" cellheight="24" padding="5">
+                <a:button action="add" target="ss4">Add new row</a:button>
+                <a:button action="remove" target="ss4">Remove selected row</a:button>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Skinsets</description>
+        <source><![CDATA[
+            <a:table columns="150, 150" cellheight="24" padding="5">
+                <a:button>Default button</a:button>
+                <a:button 
+                  disabled = "true">Default button</a:button>
+                <a:button 
+                  skin = "btn1da">One Day Applications #1</a:button>
+                <a:button 
+                  skin     = "btn1da"
+                  disabled = "true">One Day Applications #1</a:button>
+                <a:button 
+                  skin="btn1dasimple">One Day Applications #2</a:button>
+                <a:button 
+                  skin     = "btn1dasimple"
+                  disabled = "true">One Day Applications #2</a:button>
+                <a:button 
+                  skin = "luxebutton">Lux button</a:button>
+                <a:button 
+                  skin     = "luxebutton"
+                  disabled = "true">Lux button</a:button>
+            </a:table>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="a" name="action" display="Action" title="See action element" />
+    <seealso menu="elements" sub="a" name="actiontracker" display="ActionTracker" title="See actiontracker element" />
+    <seealso menu="elements" sub="b" name="bar" display="Bar" title="See bar element" />
+    <seealso menu="elements" sub="t" name="toolbar" display="Toolbar" title="See toolbar element" />
+</examples>

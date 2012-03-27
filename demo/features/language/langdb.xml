@@ -1,0 +1,54 @@
+<groups>
+    <!-- For French -->
+    <french id="sub">
+        <group id="main">
+            <key id="tab0">Textuele</key>
+            <key id="tab2">Art</key>
+            <key id="title">Bonjour</key>
+            <key id="1">Adresse electronique *</key>
+            <key id="2">Clicker</key>
+            <key id="3">Nom</key>
+            <key id="langvar">Voici les differentes variables de langue</key>
+            <key id="img">fr.png</key>
+        </group>
+    </french>
+    <!-- For English -->
+    <english id="sub">
+        <group id="main">
+            <key id="tab0">Text</key>
+            <key id="tab2">Art</key>
+            <key id="title">Good day</key>
+            <key id="1">E-mail *</key>
+            <key id="2">Click</key>
+            <key id="3">Name</key>
+            <key id="langvar">These are the language variables</key>
+            <key id="img">en.png</key>
+        </group>
+    </english>
+    <!-- For Dutch -->
+    <dutch id="sub">
+        <group id="main">
+            <key id="tab0">Tekst</key>
+            <key id="tab2">Kunst</key>
+            <key id="title">Goedendag</key>
+            <key id="1">Elektronische post *</key>
+            <key id="2">Klik</key>
+            <key id="3">Naam</key>
+            <key id="langvar">Dit zijn taal variables</key>
+            <key id="img">nl.png</key>
+        </group>
+    </dutch>
+    <!-- For Polish -->
+    <polish id="sub">
+        <group id="main">
+            <key id="tab0">Tekst</key>
+            <key id="tab2">Sztuka</key>
+            <key id="title">Dobrego dnia</key>
+            <key id="1">Poczta elektroniczna *</key>
+            <key id="2">Klik</key>
+            <key id="3">Imię</key>
+            <key id="langvar">To są zmienne językowe</key>
+            <key id="img">pl.png</key>
+        </group>
+    </polish>
+</groups>

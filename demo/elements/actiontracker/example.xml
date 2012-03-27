@@ -1,0 +1,49 @@
+<examples name="Actiontracker Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Undo/Redo</description>
+        <source><![CDATA[
+            <a:actiontracker id="dgAt2" 
+                onafterchange="alert('The undo length is now ' + this.undolength)" />
+            
+            <a:datagrid 
+              id            = "ss3" 
+              width         = "300" 
+              height        = "100" 
+              actiontracker = "dgAt2">
+                <a:each match="[element]">
+                    <a:column 
+                      caption = "Caption 1" 
+                      value   = "[@caption1]" 
+                      width   = "50%" />
+                    <a:column 
+                      caption = "Caption 2" 
+                      value   = "[@caption2]" 
+                      width   = "50%" />
+                </a:each>
+                <a:model>
+                    <data>
+                        <element caption1="Text 1" caption2="Text2"></element>
+                        <element caption1="Text 21" caption2="Text22"></element>
+                    </data>
+                </a:model>
+            </a:datagrid>
+            <a:table columns="80, 80, 80" cellheight="24" margin="10 0 0 0">
+                <a:button 
+                  disabled="{!ss3.sellength}"
+                  onclick="ss3.remove()">Remove</a:button>
+                <a:button 
+                  disabled = "{!dgAt2.undolength}" 
+                  action   = "undo" 
+                  target   = "ss3">Undo</a:button>
+                <a:button 
+                  disabled = "{!dgAt2.redolength}" 
+                  action   = "redo" 
+                  target   = "ss3">Redo</a:button>
+            </a:table>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="a" name="action" display="Action" title="See action element" />
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

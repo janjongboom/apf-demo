@@ -1,0 +1,271 @@
+<examples name="Webdav Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Simple DAV file listing.</description>
+        <source><![CDATA[
+            <a:script>//<!--
+                var webdavDemo = {
+                    bars: null,
+
+                    save: function() {
+                        myWebDAV.write(myWebDAV.getItemById(
+                          treeFS.selected.getAttribute("id")).path, txtView.getValue());
+                    },
+
+                    refresh: function() {
+                        if (treeFS.selected.tagName == "folder") {
+                            //apf.getData("{myWebDAV.readdir([@id])}", treeFS.selected)
+                        }
+                        else {
+                            apf.getData("{myWebDAV.read([@id])}", treeFS.selected, {},
+                              function(data){
+                                  txtView.setValue(data);
+                              });
+                        }
+                    },
+
+                    showBar: function(id) {
+                        if (!webdavDemo.bars) {
+                            webdavDemo.bars = {
+                                "intro": txtIntro,
+                                "image": barImage,
+                                "text" : barText,
+                                "audio": barAudio,
+                                "video": barVideo,
+                                "unsupported": barUnsupported
+                            };
+                        }
+                        for (var i in webdavDemo.bars) {
+                            if (i == id) continue;
+                            webdavDemo.bars[i].hide();
+                        }
+                        webdavDemo.bars[id].show();
+                    },
+
+                    fileSelect: function() {
+                        var node = treeFS.selected;
+                        if (node.tagName != "file")
+                            return;
+
+                        myAudio.pause();
+                        myVideo.pause();
+                        if (node.getAttribute("name").match(/(jpg|jpeg|gif|png)$/i)) {
+                            imgView.setValue(myWebDAV.server
+                                + myWebDAV.getItemById(node.getAttribute("id")).path);
+                            webdavDemo.showBar("image");
+                        }
+                        else if (node.getAttribute("name").match(/(txt|html|htm|css)$/i)) {
+                            apf.getData("webdav:read([@id])", node, {}, function(data){
+                                txtView.setValue(data);
+                                webdavDemo.showBar("text");
+                            });
+                        }
+                        else if (node.getAttribute("name").match(/mp3$/i)) {
+                            myAudio.setProperty("src", myWebDAV.server
+                                + myWebDAV.getItemById(node.getAttribute("id")).path);
+                            webdavDemo.showBar("audio");
+                        }
+                        else if (node.getAttribute("name").match(/(flv|mov)$/i)) {
+                            myVideo.setProperty("src", myWebDAV.server
+                                + myWebDAV.getItemById(node.getAttribute("id")).path);
+                            webdavDemo.showBar("video");
+                        }
+                        else {
+                            webdavDemo.showBar("unsupported");
+                        }
+                    },
+
+                    togglePlay: function(o) {
+                        o.paused ? o.play() : o.pause();
+                    },
+
+                    icons: {DOC:"doc",GIF:"image",HTM:"html",HTML:"html",
+                        JPG:"image",PDF:"pdf",PNG:"image",PPT:1,
+                        PSD:"image",SWF:"swf",XML:"xml",MOV:"movie",WMV:"movie",
+                        MP3:"audio", TXT:"txt"},
+
+                    getIcon: function(xmlNode){
+                        xmlNode.getAttribute("name").match(/\.([^\.]*)$/);
+
+                        var ext = RegExp.$1;
+                        return (webdavDemo.icons[ext.toUpperCase()]
+                            ? webdavDemo.icons[ext.toUpperCase()] + ".png"
+                            : "unknown.png");
+                    }
+                };
+
+                function webdavDemoSort(value, args, xmlNode) {
+                    return (xmlNode.tagName == "folder" ? 0 : 1) + value;
+                }
+            //--></a:script>
+            
+            <a:teleport>
+                <a:webdav 
+                  id  = "myWebDAV" 
+                  url = "http://www.ajax.org/demofiles/content_viewer/dav_files/" />
+            </a:teleport>
+            <a:model 
+              id  = "myFilesystem"
+              src = "{myWebDAV.getroot()}" />
+            <a:modalwindow id="winDocs1"
+              visible     = "true"
+              modal       = "false"
+              buttons     = "min|max"
+              width       = "630"
+              height      = "500"
+              minwidth    = "200"
+              minheight   = "200"
+              resizable   = "true"
+              title       = "Documents">
+                <a:toolbar align="top" height="25">
+                    <a:bar>
+                        <a:button id="btnRefresh"
+                          onclick = "webdavDemo.refresh()"
+                          icon    = "arrow_refresh.png"
+                          tooltip = "Refresh" />
+                    </a:bar>
+                </a:toolbar>
+            
+                <a:tree id="treeFS"
+                  model         = "myFilesystem"
+                  align         = "left-splitter"
+                  width         = "176"
+                  contextmenu   = "mnuEdit"
+                  onafterselect = "webdavDemo.fileSelect()">
+                    <a:each
+                      match       = "[file|folder]"
+                      sort        = "[@name]"
+                      sort-method = "webdavDemoSort">
+                        <a:insert
+                          match  = "[node()[@type='folder']]"
+                          get    = "{myWebDAV.readdir([@id])}" />
+                        <a:caption match="[@name]" />
+                        <a:icon match="[folder]" value="Famfolder.gif" />
+                        <a:icon match="[file]" value="webdavDemo.getIcon(xmlNode)" />
+                        <a:drag match="[folder|file]" />
+                        <a:drop
+                          match          = "[folder|file]"
+                          target         = "[folder]"
+                          operation      = "tree-append"
+                          copy-condition = "event.ctrlKey" />
+                    </a:each>
+                    <a:actions>
+                       <a:add type="[folder]" get="{myWebDAV.mkdir([@id], 'New Folder')}" />
+                       <a:add type="[file]" get="{myWebDAV.create([@id], 'New File.txt', '')}" />
+                       <a:rename set="{myWebDAV.rename([@name], [@id])"/>
+                       <a:copy select="[.]" set="{myWebDAV.copy([@id], [../@id])}"/>
+                       <a:move select="[.]" set="{myWebDAV.move([@id], [../@id])}"/>
+                       <a:remove select="[.]" set="{myWebDAV.remove([@id])}"/>
+                    </a:actions>
+                </a:tree>
+            
+                <a:bar id="barPreview" skin="previewBar" align="right">
+                    <a:text id="txtIntro" anchors="10 10 10 10">
+                        When you click an item from the tree on your left, the content of
+                        that file will be presented in this area.
+                        They may be images, audio, video or regular text files!
+                    </a:text>
+            
+                    <a:bar id="barImage" skin="basic" anchors="0 0 0 0" visible="false">
+                        <a:img id="imgView" anchors="10 10 10 10" />
+                    </a:bar>
+            
+                    <a:bar id="barText" skin="basic" anchors="0 0 0 0" visible="false">
+                        <a:textarea 
+                          id      = "txtView"
+                          width   = "100%"
+                          height  = "90%"
+                          anchors = "10 10 10 10" />
+                    </a:bar>
+            
+                    <a:bar id="barAudio" skin="basic" top="10" left="10" width="260"
+                      height="30" visible="false">
+                        <a:audio id="myAudio" autoplay="true" volume="20">
+                            Audio Codec not supported.
+                        </a:audio>
+                        <a:button 
+                          skin       = "buttonmedia"
+                          background = "{!myAudio.paused?'pause2.png':'play2.png'}"
+                          onclick    = "myAudio.paused ? myAudio.play() : myAudio.pause()"
+                          left="3" bottom="3" />
+                        <a:label
+                          value  = "{myAudio.getCounter(myAudio.currentTime, '%M:%S')}"
+                          bottom = "5" left="40" />
+                        <a:slider
+                          realtime = "false"
+                          skin     = "slider16media"
+                          value    = "[myAudio.position]"
+                          progress = "{myAudio.progress}"
+                          left="71" width="134" bottom="6" />
+                        <a:label
+                          value="{myAudio.getCounter(myAudio.currentTime, '%M:%S', true)}"
+                          bottom="5" right="6" />
+                    </a:bar>
+            
+                    <a:bar id="barVideo" skin="basic" top="10" left="10" width="422"
+                      height="353" visible="false">
+                        <a:video 
+                         id       = "myVideo"
+                         autoplay = "true"
+                         controls = "false"
+                         volume   = "90"
+                         left     = "2" 
+                         right    = "4" 
+                         top      = "2" 
+                         bottom   = "30">
+                          Video Codec not supported.
+                        </a:video>
+            
+                        <a:button 
+                          skin       = "buttonmedia"
+                          background = "{!myVideo.paused?'pause2.png':'play2.png'}"
+                          onclick    = "myVideo.paused ? myVideo.play() : myVideo.pause()"
+                          left       = "3" 
+                          bottom     = "3" />
+            
+                        <a:label
+                          value  = "{myVideo.getCounter(myVideo.currentTime, '%M:%S')}"
+                          bottom = "5" 
+                          left   = "40" />
+                        <a:slider
+                          realtime = "false"
+                          skin     = "slider16media"
+                          value    = "[myVideo.position]"
+                          progress = "{myVideo.progress}"
+                          left="71" width="162" bottom="6" />
+                        <a:label
+                          value="{myVideo.getCounter(myVideo.currentTime, '%M:%S', true)}"
+                          bottom="5" right="142" />
+            
+                        <a:iconmap id="icoVolume"
+                          src  = "volume_map.gif"
+                          type = "vertical"
+                          size = "16" />
+                        <a:button
+                          skin    = "buttonvolume"
+                          icon    = "icoVolume: {(!myVideo.muted
+                            ? Math.round(myVideo.volume / 30) : 4)}"
+                          onclick = "myVideo.setAttribute('muted', !myVideo.muted)"
+                          bottom="5" right="119" />
+                        <a:slider
+                          value    = "[myVideo.volume]"
+                          min      = "0"
+                          max      = "100"
+                          disabled = "{myVideo.muted}"
+                          width="60" bottom="9" right="53" />
+                    </a:bar>
+            
+                    <a:bar id="barUnsupported" skin="basic" anchors="10 10 10 10"
+                      visible="false">
+                        <a:text id="txtUnsupported">Unsupported type</a:text>
+                    </a:bar>
+                </a:bar>
+            
+                <a:statusbar align="bottom" height="22" class="sbbare">
+                    <a:bar id="pnlStatus">
+                        Click a Plus sign to expand a folder and view its contents
+                    </a:bar>
+                </a:statusbar>
+            </a:modalwindow>
+        ]]></source>
+    </example>
+</examples>

@@ -1,0 +1,66 @@
+<examples name="Pager Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This example shows how to create a frame with paging.</description>
+        <source><![CDATA[
+            <a:model id="mdlForum">
+                <data current="1" total="3" limit="3">
+                    <item>
+                        <title>Setup &#124; Still can't get this packager.</title>
+                        <desc>I see page is updated today, but still no go with the packager and any of the plugins.
+                            Will continue checking today/tomorrow.</desc>
+                        <url>http://www.ajax.org/forum/viewtopic.php?p=363&amp;#p363</url>
+                    </item>
+                    <item>
+                        <title>Feature Requests - White Papers &#124; Re: j:auth &amp; a:auth objects accepting multiple response types</title>
+                        <desc>Hmmm... could you show me an example of string vs. http response code for authentication? 
+                            Maybe I should re-read the documentation on the authentication.</desc>
+                        <url>http://www.ajax.org/forum/viewtopic.php?p=356&amp;#p356</url>
+                    </item>
+                    <item>
+                        <title>Components &#124; Re: Issues and questions</title>
+                        <desc>Yes agreed, please report this as a bug.- Ruben...</desc>
+                        <url>http://www.ajax.org/forum/viewtopic.php?p=353&amp;#p353</url>
+                    </item>
+                </data>
+            </a:model>
+        
+            <a:rpc 
+              id           = "commX"
+              protocol     = "cgi" 
+              route-server = "rpcproxy.php"
+              autoroute    = "true">
+                <a:method 
+                  name = "fetch" 
+                  url  = "demo/pager_data.php">
+                    <a:param name="section" />
+                    <a:param name="page" />
+                    <a:param name="perpage" />
+                </a:method>
+            </a:rpc>
+        
+            <a:frame 
+                model   = "mdlForum" 
+                caption = "News on Forum" 
+                width   = "360">
+                <?lm
+                    foreach([item]){
+                        <h3><a href="[url]" target="_blank">[title]</a></h3>
+                        <p>[desc]</p>
+                    }
+                ?>
+            </a:frame>
+            <a:pager 
+              disabled = "false" 
+              id       = "pager"
+              pageload = "{commX.fetch('forum', page, 2)}" 
+              model    = "mdlForum">
+                <a:bindings>
+                    <a:total match="[@total]" />
+                    <a:current match="[@current]" />
+                </a:bindings>
+            </a:pager>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="d" name="datagrid" display="Datagrid" title="See datagrid element" />
+</examples>

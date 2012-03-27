@@ -1,0 +1,105 @@
+<examples name="List Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Simple list with multiselecting (use CTRL for multiselect).</description>
+        <source><![CDATA[
+            <a:list width="300" id="list1">
+                <a:item icon="nl.png">The Netherlands</a:item>
+                <a:item icon="us.png">United States of America</a:item>
+                <a:item icon="pl.png">Poland</a:item>
+            </a:list>
+            <a:hbox margin="10 0" height="44">
+                <a:button 
+                  state   = "true" 
+                  value   = "[list1.disabled]" 
+                  caption = "{list1.disabled ? 'Enable list' : 'Disable list'}"
+                  width   = "150">
+                </a:button>
+            </a:hbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Simple list without multiselecting, there is no selection after init.</description>
+        <source><![CDATA[
+            <a:list 
+              width       = "300"
+              multiselect = "false" 
+              autoselect  = "false">
+                <a:item icon="nl.png">The Netherlands</a:item>
+                <a:item icon="us.png">United States of America</a:item>
+                <a:item icon="pl.png">Poland</a:item>
+            </a:list>
+        ]]></source>
+    </example>
+    <example>
+        <description>Checkbox and radio lists.</description>
+        <source><![CDATA[
+            <a:list width="300" mode="check">
+                <a:item icon="nl.png">The Netherlands</a:item>
+                <a:item icon="us.png">United States of America</a:item>
+                <a:item icon="pl.png">Poland</a:item>
+            </a:list>
+            <a:list width="300" mode="radio">
+                <a:item icon="nl.png">The Netherlands</a:item>
+                <a:item icon="us.png">United States of America</a:item>
+                <a:item icon="pl.png">Poland</a:item>
+            </a:list>
+        ]]></source>
+    </example>
+    <example>
+        <description>Loading list using model.</description>
+        <source><![CDATA[
+            <a:list 
+              model   = "demo/xml/friends.xml"
+              each    = "[friend]"
+              caption = "[@name]"
+              icon    = "[@icon]"
+              width   = "300">
+            </a:list>
+        ]]></source>
+    </example>
+    <example>
+        <description>How to use XPath.</description>
+        <source><![CDATA[
+            <a:list model="demo/xml/friends.xml" width="300">
+                <a:each match="[friend]">
+                    <a:caption match="[@name]" />
+                    <a:icon 
+                      match = "[node()[@name='Ruben' or @name='Rik']]" 
+                      value = "medal_gold_1.png" />
+                    <a:icon value="medal_silver_1.png" />
+                </a:each>
+            </a:list>
+        ]]></source>
+    </example>
+    <example>
+        <description>Different looks: list of thumbnails.</description>
+        <source><![CDATA[
+            <a:list skin="thumbnail" width="300" height="230">
+                <a:item image="demo/images/thinkgeek/thinkgeek1.jpg">
+                    The Netherlands
+                </a:item>
+                <a:item image="demo/images/thinkgeek/thinkgeek2.jpg">
+                    United States of America
+                </a:item>
+                <a:item image="demo/images/thinkgeek/thinkgeek3.jpg">
+                    Poland
+                </a:item>
+            </a:list>
+        ]]></source>
+    </example>
+    <example>
+        <description>Different looks: list of comments, press F2 to rename.</description>
+        <source><![CDATA[
+            <a:list skin="listcomments" width="300">
+                <a:item>The Netherlands</a:item>
+                <a:item>United States of America</a:item>
+                <a:item>Poland</a:item>
+            </a:list>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="c" name="checkbox" display="Checkbox" title="See checkbox element" />
+    <seealso menu="elements" sub="d" name="dragdrop" display="Dragdrop" title="See dragdrop element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

@@ -1,0 +1,39 @@
+<examples name="Modalwindow Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Simple modalwindow with rounded edges.</description>
+        <source><![CDATA[
+            <a:window 
+              id        = "win2"
+              buttons   = "close" 
+              title     = "Close me"
+              icon      = "email.png"
+              visible   = "true" 
+              skin      = "roundedged"
+              width     = "200"
+              height    = "190"
+              minwidth  = "170"
+              minheight = "150"> 
+            </a:window>
+            <a:button visible="{!win2.visible}" onclick="win2.show()">
+                Show Window
+            </a:button>
+        ]]></source>
+    </example>
+    <example>
+        <description>Minimized modalwindow with big rounded edge.</description>
+        <source><![CDATA[
+            <a:window 
+              id        = "mw1"
+              title     = "Title"
+              icon      = "application.png"
+              visible   = "true" 
+              skin      = "bigedge"
+              width     = "200"
+              height    = "190"
+              minwidth  = "170"
+              minheight = "150"
+              state     = "minimized"> 
+            </a:window>
+        ]]></source>
+    </example>
+</examples>

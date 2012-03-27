@@ -1,0 +1,185 @@
+<examples name="Dropdown Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>A simple dropdown with inline items.</description>
+        <source><![CDATA[
+            <a:dropdown initial-message="initial message">
+                <a:item>The Netherlands</a:item>
+                <a:item>United States of America</a:item>
+                <a:item>United Kingdom</a:item>
+            </a:dropdown>
+        ]]></source>
+    </example>
+    <example>
+        <description>Dropdown in disabled state.</description>
+        <source><![CDATA[
+            <a:dropdown disabled="true">
+                <a:item>The Netherlands</a:item>
+                <a:item>United States of America</a:item>
+                <a:item>United Kingdom</a:item>
+            </a:dropdown>
+        ]]></source>
+    </example>
+    <example>
+        <description>Dropdown with multiline styled html items.</description>
+        <source><![CDATA[
+            <a:dropdown
+              skin            = "dropdownRich"
+              maxitems        = "10"
+              required        = "true"
+              width           = "200"
+              initial-message = "Select country">
+                <a:item value="ca">
+                    <div class="richItem" style='background-image:url(icns/ca.png);'>
+                        <div class="title">Canada</div>
+                        <div class="descr">Ottawa</div>
+                    </div>
+                </a:item>
+                <a:item value="nl">
+                    <div class="richItem" style='background-image:url(icns/nl.png);'>
+                        <div class="title">The Netherlands</div>
+                        <div class="descr">Amsterdam</div>
+                    </div>
+                </a:item>
+                <a:item value="pl">
+                    <div class="richItem" style='background-image:url(icns/pl.png);'>
+                        <div class="title">Poland</div>
+                        <div class="descr">Warszawa</div>
+                    </div>
+                </a:item>
+            </a:dropdown>
+        ]]></source>
+    </example>
+    <example>
+        <description>A databound dropdown with items loaded from an xml file.</description>
+        <source><![CDATA[
+            <a:dropdown 
+              model   = "demo/xml/friends.xml"
+              each    = "[friend]"
+              caption = "[@name]" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Slide down and up events.</description>
+        <source><![CDATA[
+            <a:model id="mdlDD5">
+                <data>
+                    <friend name="Arnold"></friend>
+                    <friend name="Carmen"></friend>
+                    <friend name="Giannis"></friend>
+                    <friend name="Mike"></friend>
+                    <friend name="Rik"></friend>
+                    <friend name="Ruben"></friend>
+                </data>
+            </a:model>
+            <a:table columns="160, 150" cellheight="19" padding="5">
+                <a:textbox id="txtAr"></a:textbox>
+                <a:dropdown
+                  model       = "mdlDD5"
+                  each        = "[friend]"
+                  caption     = "[@name]"
+                  onslidedown = "txtAr.setValue('slide down')"
+                  onslideup   = "txtAr.setValue('slide up')" />
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Slide down and up events.</description>
+        <source><![CDATA[
+            <a:table columns="170, 100, 100" cellheight="24">
+                <a:table columns="150" cellheight="19" margin="2">
+                    <a:dropdown id="dd1"> 
+                        <a:item>The Netherlands</a:item>
+                        <a:item>United States of America</a:item>
+                        <a:item>United Kingdom</a:item>
+                    </a:dropdown>
+                </a:table>
+                <a:button onclick="dd1.slideDown()">Slide down</a:button>
+                <a:button onclick="dd1.slideUp()">Slide Up</a:button>
+            </a:table>
+            
+        ]]></source>
+    </example>
+    <example>
+        <description>Adding new options to dropdown element.</description>
+        <source><![CDATA[
+            <a:model id="mdlDD6">
+                <data>
+                    <friend name="Arnold"></friend>
+                    <friend name="Carmen"></friend>
+                    <friend name="Giannis"></friend>
+                    <friend name="Mike"></friend>
+                    <friend name="Rik"></friend>
+                    <friend name="Ruben"></friend>
+                </data>
+            </a:model>
+            <a:dropdown
+              id      = "dd2"
+              model   = "mdlDD6"
+              each    = "[friend]"
+              caption = "[@name]">
+            </a:dropdown>
+            <br />
+            <a:button width="110" onclick="dd2.add('&#60;friend name=&#34;Lucas&#34; /&#62;')">Add new option</a:button>
+        ]]></source>
+    </example>
+    <example>
+        <description>Switching tabs.</description>
+        <source><![CDATA[
+            <a:window
+              visible = "true" 
+              width   = "400" 
+              height  = "300" 
+              title   = "Simple Tab" 
+              icon    = "application_view_icons.png">
+                <a:tab 
+                  id           = "tab2" 
+                  anchors      = "10 10 100 10"
+                  activepagenr = "{dd3.value}" 
+                  state        = "true">
+                    <a:page caption="General"> 
+                        <a:checkbox>Example</a:checkbox> 
+                        <a:button>Example</a:button> 
+                    </a:page> 
+                    <a:page caption="Advanced"> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                    </a:page> 
+                    <a:page caption="Javeline"> 
+                        <a:checkbox>This ok?</a:checkbox> 
+                        <a:checkbox>This better?</a:checkbox> 
+                    </a:page> 
+                </a:tab>
+                <a:label bottom="40" left="10">Switch tabs:</a:label>
+                <a:label bottom="40" right="100">Switch tabs:</a:label>
+                <a:button 
+                  width   = "50" 
+                  left    = "10"
+                  bottom  = "10" 
+                  onclick = "tab2.setAttribute('activepagenr', 0)">Tab 1</a:button>
+                <a:button 
+                  width   = "50" 
+                  left    = "70"
+                  bottom  = "10" 
+                  onclick = "tab2.setAttribute('activepagenr', 1)">Tab 2</a:button>
+                <a:button 
+                  width   = "50" 
+                  left    = "130"
+                  bottom  = "10" 
+                  onclick = "tab2.setAttribute('activepagenr', 2)">Tab 3</a:button>
+                 <a:dropdown 
+                   id     = "dd3"
+                   right  = "10" 
+                   bottom = "15" 
+                   value  = "{tab2.activepagenr || 0}">
+                     <a:item value="0">General</a:item>
+                     <a:item value="1">Advanced</a:item>
+                     <a:item value="2">Javeline</a:item>
+                 </a:dropdown>
+            </a:window>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

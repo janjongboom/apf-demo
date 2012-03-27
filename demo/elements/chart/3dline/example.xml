@@ -1,0 +1,78 @@
+<examples name="3dline Chart Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>3D Line Chart</description>
+        <source><![CDATA[
+            <a:bar
+              skin   = "basic"
+              height = "400"
+              width  = "620"
+              style  = "background-color: #1b76bf;">
+                <a:chart id="strokeChart" anchors="0,35,0,0" a="{sld3DLine.value}" anim="10" width="620" height="400">
+                    <a:axis mode="3D"
+                      x1="-8" y1="-6" x2="8" y2="6" z1="-6" z2="6" x3d='2' 
+                      y3d='0.7' z3d='2'
+                      lockyzoom='1'
+                      orbity = "0.1"
+                      orbitxanim='0.01'>
+                        <a:style type="text/chartcss">
+                            plane{fill:null;}
+                            bar{
+                                fill   : null;
+                                stroke : null;
+                            }
+                            label{
+                                color   : white;
+                                scale   : 0.1;
+                                side1   : 0;
+                                side2   : 1;
+                            };
+                            tick{
+                                stroke : white;
+                                scale  : 0.05;
+                            }
+                            axis{
+                                stroke : white;
+                                side1  : 1;
+                                side2  : 1;
+                            }
+                            plane{
+                                stroke : white;
+                                fill   : null;
+                                side   : 1;
+                            }
+                            hbar{
+                                stroke  : white;
+                                opacity : 0.25;
+                                side    : 1;
+                            }
+                            vbar{
+                                stroke  : white;
+                                opacity : 0.25;
+                                side    : 1;
+                            }
+                        </a:style>
+                        <a:graph mode="line" dataslice="1XZ"
+                          steps='50' formula="sin(x+cos(x)-2*n)+cos(2*x+n)*(1-a)">
+                            <a:style type="text/chartcss">
+                                graph{fill:pali(0.2*n,red,white,blue);stroke:pali(0.2*n,red,white,blue);single:1;fillopacity:0.3;strokeopacity:0.5;zpos:-1.5-a;depth:0.4+2*a;}
+                            </a:style>
+                        </a:graph>
+                        <a:graph mode="line" dataslice="1XZ"
+                          steps='50' formula="sin(x-cos(x)-2*n)+cos(4*x+n)*(1-a)">
+                            <a:style type="text/chartcss">
+                                graph{fill:pali(0.2*n+1,red,white,blue);stroke:pali(0.2*n+1,red,white,blue);single:1;fillopacity:0.3;strokeopacity:0.5;depth:0.4+2*a;}
+                            </a:style>
+                        </a:graph>
+                        <a:graph mode="line" dataslice="1XZ"
+                          steps='50' formula="sin(x+cos(x)-2*n)+cos(3*x+n)*(1-a)">
+                            <a:style type="text/chartcss">
+                                graph{fill:pali(0.2*n+2,red,white,blue);stroke:pali(0.2*n+2,red,white,blue);single:1;fillopacity:0.3;strokeopacity:0.5;zpos:1.5+a;depth:0.4+2*a;}
+                            </a:style>
+                        </a:graph>                   
+                    </a:axis>        
+                </a:chart>
+            </a:bar>
+            <a:slider id="sld3DLine" skin="vertical" right="0" height="200" bottom="10" />
+        ]]></source>
+    </example>
+</examples>

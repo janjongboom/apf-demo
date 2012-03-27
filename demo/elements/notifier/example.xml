@@ -1,0 +1,104 @@
+<examples name="Notifier Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Notifiers arrange.</description>
+        <source><![CDATA[
+            <a:notifier 
+              id         = "notiTest3" 
+              margin     = "20" 
+              position   = "bottom-right" 
+              timeout    = "2" 
+              skin       = "smoke"
+              arrange    = "vertical" 
+              columnsize = "200">
+            </a:notifier>
+            <a:frame caption="Choose notifier's arrangement" width="400">
+                <a:radiobutton 
+                  onclick = "notiTest3.setAttribute('arrange','vertical')"
+                  checked = "true" 
+                  group   = "arr">Vertical</a:radiobutton>
+                <a:radiobutton 
+                  onclick = "notiTest3.setAttribute('arrange','horizontal')"
+                  group   = "arr">Horizontal</a:radiobutton>
+            </a:frame>
+            <a:hbox width="400" height="34" margin="10 0 0 0">
+                <a:button 
+                  width   = "100" 
+                  onclick = "notiTest3.popup('Demoing the arrangement feature')">
+                    Show
+                </a:button>
+            </a:hbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Notifier position.</description>
+        <source><![CDATA[
+            <a:notifier 
+              id         = "notiTest2" 
+              position   = "bottom-left" 
+              margin     = "20" 
+              skin       = "bubble"
+              timeout    = "2" 
+              arrange    = "horizontal" 
+              columnsize = "200">
+                <a:event 
+                  when    = "{notiTest2.position}" 
+                  message = "Notifier display position has been changed">
+                </a:event>
+            </a:notifier>
+            <a:frame caption="Choose notifier's position" width="400">
+                <a:radiobutton 
+                  onclick = "notiTest2.setAttribute('position', 'right-top');"
+                  value   = "right-top" 
+                  group   = "pos" 
+                  checked = "true">Right Top</a:radiobutton>
+                <a:radiobutton 
+                  onclick = "notiTest2.setAttribute('position', 'left-top');"
+                  value   = "left-top" 
+                  group   = "pos">Left Top</a:radiobutton>
+                <a:radiobutton 
+                    onclick = "notiTest2.setAttribute('position', 'bottom-left');"
+                    value   = "bottom-left" 
+                    group   = "pos">Left Bottom</a:radiobutton>
+                <a:radiobutton 
+                    onclick = "notiTest2.setAttribute('position', 'bottom-right');" 
+                    value   = "bottom-right" 
+                    group   = "pos">Right Bottom</a:radiobutton>
+                <a:radiobutton 
+                    onclick = "notiTest2.setAttribute('position', 'center-center');" 
+                    value   = "center-center" 
+                    group   = "pos">Center Center</a:radiobutton>
+            </a:frame>
+            <a:hbox width="400" height="34" margin="10 0 0 0">
+                <a:button 
+                  width   = "100" 
+                  onclick = "notiTest2.popup('Demoing the arrangement feature')">
+                    Show
+                </a:button>
+            </a:hbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Choose 24th of December in 2008 (Icons created by http://www.visualpharm.com).</description>
+        <source><![CDATA[
+            <a:notifier 
+              id         = "notiTest4" 
+              position   = "bottom-left" 
+              margin     = "20" 
+              timeout    = "2" 
+              skin       = "bubble"
+              arrange    = "horizontal" 
+              columnsize = "200">
+                <a:event 
+                  when    = "{cdd2.value == '2008-12-24'}" 
+                  message = "Merry Christmas!" 
+                  icon    = "Butterfly_48x48.png">
+                </a:event>
+            </a:notifier>
+            <a:caldropdown 
+              id            = "cdd2" 
+              value         = "2008-12-01"
+              output-format = "yyyy-mm-dd">
+            </a:caldropdown>
+        ]]></source>
+    </example>
+</examples>

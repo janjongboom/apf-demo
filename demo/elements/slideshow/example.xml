@@ -1,0 +1,45 @@
+<examples name="Slideshow Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Slideshow.</description>
+        <source><![CDATA[
+            <a:list 
+              width         = "639"
+              height        = "400"
+              skin          = "thumbnail"
+              onafterchoose = "ss1.select(event.currentTarget.selected)"
+              autoselect    = "false"
+              model         = "mdlSlideshow1">
+                <a:bindings>
+                    <a:image match="[@name]">demo/images/slideshow_img/[@name]_small.jpg</a:image>
+                    <a:caption match="[@title]" />
+                    <a:each match="[picture]" />
+                </a:bindings>
+            </a:list>
+            <a:model 
+              id  = "mdlSlideshow1"
+              src = "demo/xml/slideshow.xml">
+            </a:model>
+            <a:slideshow
+              id            = "ss1"
+              title         = "number+text"
+              skin          = "slideshowdemo"
+              delay         = "5"
+              model         = "mdlSlideshow1"
+              thumbheight   = "60"
+              loadmsg       = "Loading..."
+              defaulttitle  = "Some discription"
+              empty-message = "There are no pictures"
+              scalewidth    = "true">
+                <a:bindings>
+                    <a:src match="[@name]">demo/images/slideshow_img/[@name].jpg</a:src>
+                    <a:title match="[@title]"></a:title>
+                    <a:thumb match="[@name]">demo/images/slideshow_img/[@name]_small.jpg</a:thumb>
+                    <a:each match="[picture]"></a:each>
+                </a:bindings>
+            </a:slideshow>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

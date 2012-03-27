@@ -1,0 +1,28 @@
+<examples name="Hbox Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Way to positioning elements</description>
+        <source><![CDATA[
+            <a:tab width="300" height="100"> 
+                <a:page caption="General"></a:page> 
+                <a:page caption="Advanced"></a:page> 
+            </a:tab>
+            <a:hbox height="29" width="300" lean="right" margin="5 0 0 0">
+                <a:button width="100" edge="5">Button 1</a:button>
+                <a:button width="100">Button 2</a:button>
+            </a:hbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Way to positioning elements</description>
+        <source><![CDATA[
+            <a:tab width="300" height="100"> 
+                <a:page caption="General"></a:page> 
+                <a:page caption="Advanced"></a:page> 
+            </a:tab>
+            <a:hbox height="29" margin="5 0 0 0">
+                <a:button width="100">Button 1</a:button>
+                <a:button width="100" edge="5">Button 2</a:button>
+            </a:hbox>
+        ]]></source>
+    </example>
+</examples>

@@ -1,0 +1,23 @@
+<examples name="Modalwindow Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Modal window ligned center.</description>
+        <source><![CDATA[
+            <a:window 
+              id        = "mw2" 
+              buttons   = "close" 
+              title     = "This is modal window!"
+              icon      = "email.png"
+              visible   = "false" 
+              modal     = "true"
+              width     = "200"
+              popout    = "true"
+              height    = "190"
+              minwidth  = "170"
+              minheight = "150"
+              resizable = "true"
+              center    = "true">
+            </a:window>
+            <a:button onclick="mw2.show()" width="150">Open modal window</a:button>
+        ]]></source>
+    </example>
+</examples>

@@ -1,0 +1,290 @@
+<examples name="2dline Chart Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Line chart</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400" >
+                <a:axis mode="2D" lockyzoom="1" x1="-1" y1="-1" x2="10000" y2="4">
+                    <a:style type="text/chartcss">
+                        label{color:black} 
+                        plane{
+                            fill   : white;
+                            stroke : #ebebeb
+                        }
+                        tiles{
+                            fill   : white;
+                            stroke : #ebebeb;
+                        }
+                        tick{
+                            stroke : #ebebeb;
+                            fill   : null;
+                        }
+                    </a:style>
+                  <a:graph 
+                    smartbinding = "sbZoomChart2" 
+                    model        = "mdlZoomChart2" 
+                    dataslice    = "1XM"
+                    mipstep      = "2" 
+                    mipset       = "avg" 
+                    mipthres     = "100" 
+                    mipmin       = "1"
+                    mode         = "line">
+                      <a:style type="text/chartcss">
+                          graph {
+                            stroke      : #0aa1e9;
+                            weight      : 2;
+                            fill        : #25a8e7;
+                            opacity     : 1;
+                            fillopacity : 0.7;
+                            scale       : _div*0.5,1;
+                            offset      : 0,0;
+                          }
+                      </a:style>
+                  </a:graph>
+                  </a:axis>
+            </a:chart>
+            <a:model id="mdlZoomChart2">
+                <data><series>1</series></data>
+            </a:model>    
+            <a:smartbinding id="sbZoomChart2">
+                <a:bindings>
+                    <a:series 
+                      formula   = "abs(1.5*(t+=random()*0.1-0.05)+0.5*sin(v*0.1))" 
+                      length    = "10000" 
+                      match     = "[series/text()]" 
+                      delimiter = " " 
+                      split     = "," 
+                      css       = "#" />
+                </a:bindings>
+            </a:smartbinding>
+        ]]></source>
+    </example>
+    <example>
+        <description>Line chart</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400">
+                <a:axis 
+                  mode      = "2D" 
+                  lockyzoom = "1" 
+                  x1        = "-1" 
+                  y1        = "-1" 
+                  x2        = "10000" 
+                  y2        = "4">
+                    <a:style type="text/chartcss">
+                        label {color:#f7bd85} 
+                        plane {
+                            fill   : white;
+                            stroke : #dcdcdc
+                        };
+                        tiles {fill:white;stroke:#dcdcdc;};
+                        tick  {stroke:#f7bd85;fill:null;}
+                        axis  {stroke:#f7bd85;side1:1;side2:1;}
+                    </a:style>
+                    <a:graph 
+                      smartbinding = "sbZoomChart3" 
+                      model        = "mdlZoomChart3" 
+                      dataslice    = "1XM"
+                      mipstep      = "2" 
+                      mipset       = "avg" 
+                      mipthres     = "100" 
+                      mipmin       = "1"
+                      mode         = "line">
+                      <a:style type="text/chartcss">
+                          graph {
+                              stroke      : #89c451;
+                              weight      : 2;
+                              fill        : null;
+                              opacity     : 1;
+                              fillopacity : 0.7;
+                              scale       : _div*0.5,1;
+                              offset      : 0,0;
+                          }
+                      </a:style>
+                    </a:graph>
+                </a:axis>
+            </a:chart>
+            <a:model id="mdlZoomChart3">
+                <data><series>1</series></data>
+            </a:model>    
+            <a:smartbinding id="sbZoomChart3">
+                <a:bindings>
+                    <a:series 
+                      formula   = "abs(1.5*(t+=random()*0.1-0.05)+0.5*sin(v*0.1))" 
+                      length    = "10000" 
+                      match     = "[series/text()]" 
+                      delimiter = " " 
+                      split     = "," 
+                      css       = "#" />
+                </a:bindings>
+            </a:smartbinding>
+        ]]></source>
+    </example>
+    <example>
+        <description>Line charts</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400" >
+                <a:axis 
+                  mode      = "2D" 
+                  lockyzoom = "1" 
+                  x1        = "-1" 
+                  y1        = "-1" 
+                  x2        = "10000" 
+                  y2        = "4">
+                    <a:style type="text/chartcss">
+                        plane {fill:white;stroke:#ebebeb};
+                        tiles {fill:white;stroke:#ebebeb;};
+                        label {color:black} 
+                        tick  {stroke:#ebebeb;fill:null;}
+                    </a:style>
+                    <a:graph 
+                      smartbinding = "sbZoomChart4" 
+                      model        = "mdlZoomChart4" 
+                      dataslice    = "1XM"
+                      mipstep      = "2" 
+                      mipset       = "min" 
+                      mipthres     = "100" 
+                      mipmin       = "1"
+                      mode         = "line">
+                        <a:style type="text/chartcss">
+                            graph {stroke:green;weight:5;fill:null;}
+                        </a:style>
+                      
+                    </a:graph>
+                    <a:graph 
+                      smartbinding = "sbZoomChart4" 
+                      model        = "mdlZoomChart4" 
+                      dataslice    = "1XM"
+                      mipstep      = "2" 
+                      mipset       = "min" 
+                      mipthres     = "100" 
+                      mipmin       = "1"
+                      mode        = "line">
+                        <a:style type="text/chartcss">
+                            graph {stroke:#c4df9b;weight:1;fill:null;}
+                        </a:style> 
+                      
+                    </a:graph>
+                    <a:graph 
+                      smartbinding = "sbZoomChart4" 
+                      model        = "mdlZoomChart4" 
+                      dataslice    = "1XM"
+                      mipstep      = "2" 
+                      mipset       = "max" 
+                      mipthres     = "100" 
+                      mipmin       = "1"
+                      mode         = "line">
+                        <a:style type="text/chartcss">
+                            graph {stroke:black;weight:2;fill:null;}
+                        </a:style> 
+                      
+                    </a:graph>
+                 </a:axis>
+            </a:chart>
+            <a:model id="mdlZoomChart4">
+                <data><series>1</series></data>
+            </a:model>    
+            <a:smartbinding id="sbZoomChart4">
+                <a:bindings>
+                    <a:series 
+                      formula   = "abs(1.5*(t+=random()*0.1-0.05)+0.5*random()+0.5*sin(v*0.1))" 
+                      length    = "10000" 
+                      match     = "[series/text()]" 
+                      delimiter = " " 
+                      split     = "," 
+                      css       = "#" />
+                </a:bindings>
+            </a:smartbinding>
+        ]]></source>
+    </example>
+    <example>
+        <description>Linear functions</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400" anim="10">
+                <a:axis 
+                  mode  = "2D"
+                  x1    = "-10" 
+                  y1    = "-10" 
+                  x2    = "10" 
+                  y2    = "10">
+                    <a:style type="text/chartcss">
+                        plane  {fill:white;stroke:#ebebeb};
+                        tiles  {fill:#eeeeee;stroke:#ebebeb;};
+                        margin {left:0;top:0;right:0;bottom:0}
+                        layout {onaxisx:1;onaxisy:1;}
+                    </a:style>
+                    <a:graph 
+                      mode      = "line" 
+                      dataslice = "1X"
+                      formula   = "x*x/10">
+                        <a:style type="text/chartcss">
+                          graph {
+                            fill        : #00aeef;
+                            weight      : 1;
+                            fillopacity : 0.5;
+                            fillout     : 0.9;
+                          }
+                        </a:style>
+                    </a:graph>
+                    <a:graph 
+                      mode      = "line" 
+                      dataslice = "1X"
+                      formula   = "-1*x*x/10">
+                        <a:style type="text/chartcss">
+                          graph {
+                            fill        : #8dc63f;
+                            weight      : 1;
+                            fillopacity : 0.5;
+                            fillout     : 0.9;
+                          }
+                        </a:style>
+                    </a:graph>
+                 </a:axis>
+            </a:chart>
+        ]]></source>
+    </example>
+    <example>
+        <description>Filled line charts</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400" anim="10">
+                <a:axis 
+                  mode  = "2D"
+                  x1    = "-2" 
+                  y1    = "-3" 
+                  x2    = "6" 
+                  y2    = "3">
+                    <a:style type="text/chartcss">
+                        plane  {fill:white;stroke:gray};
+                        tiles  {fill:#eeeeee;stroke:gray;};
+                        margin {left:0;top:0;right:0;bottom:0}
+                        layout {onaxisx:1;onaxisy:1;}
+                    </a:style>
+                    <a:graph 
+                      mode      = "line" 
+                      dataslice = "1X"
+                      formula   = "sin(x*(1+a)+(1+a)*cos(x-2*n)*(1+a)+n)*cos(2*x+n)*2">
+                        <a:style type="text/chartcss">
+                          graph {
+                            fill        : blue;
+                            weight      : 2;
+                            fillopacity : 0.5;
+                            fillout     : 1;
+                          }
+                        </a:style>
+                    </a:graph>
+                    <a:graph 
+                      mode      = "line" 
+                      dataslice = "1X"
+                      formula   = "sin(2*x*(1+a)-cos(x+n)*(1+3*a)-2*n)*cos(x+n)">
+                        <a:style type="text/chartcss">
+                          graph {
+                            fill        : red;
+                            weight      : 2;
+                            fillopacity : 0.5;
+                            fillout     : 1;
+                          }
+                        </a:style>
+                    </a:graph>
+                </a:axis>
+            </a:chart>
+        ]]></source>
+    </example>
+</examples>

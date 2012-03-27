@@ -1,0 +1,55 @@
+<layouts>
+    <layout name="Layout 1" icon="" margin="0 0 0 0">
+        <vbox edge="splitter">
+            <node name="b1" edge="0"/>
+            <hbox edge="0">
+                <vbox weight="1" width="20%">
+                    <node name="b2" caption="Tree Window"/>
+                    <node name="b3" caption="Window of Oppertunity" /><!-- height="20%" -->
+                </vbox>
+                <vbox>
+                    <node name="b4" height="20%" caption="20% window"/>
+                    <hbox>
+                        <vbox>
+                            <node name="b5" caption="Some Window"/>
+                            <node name="b9" caption="Another Window"/>
+                            <hbox>
+                                <node name="b10" caption="Redmond Window"/>
+                                <vbox>
+                                    <node name="b11" caption="Ping Window"/>
+                                    <node name="b12" caption="YAW window"/>
+                                </vbox>
+                            </hbox>
+                        </vbox>
+                        <node name="b8" width="30%" caption="Down Window"/>
+                    </hbox>
+                </vbox>
+                <node name="b6" width="20%" caption="Lesser Window" />
+            </hbox>
+            <node name="b7" height="22" />
+        </vbox>
+    </layout>
+    
+    <layout name="Layout 2" icon="">
+        <vbox edge="splitter">
+            <node name="b1" edge="0" />
+            <node name="b2" height="100" caption="Tree Window"/>
+            <hbox edge="0">
+                <node name="b3" width="20%" caption="Window of Oppertunity" />
+                <node name="b4" width="100" caption="20% window"/>
+                <vbox>
+                    <hbox>
+                        <node name="b6" caption="Lesser Window" />
+                        <node name="b12" caption="YAW window"/>
+                        <node name="b8" caption="Down Window"/>
+                        <node name="b9" caption="Another Window"/>
+                        <node name="b10" caption="Redmond Window"/>
+                        <node name="b11" caption="Ping Window"/>
+                    </hbox>
+                    <node name="b5" caption="Some Window"/>
+                </vbox>
+            </hbox>
+            <node name="b7" height="22" />
+        </vbox>
+    </layout>
+</layouts>

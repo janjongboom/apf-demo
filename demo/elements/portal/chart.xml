@@ -1,0 +1,84 @@
+<a:docklet xmlns:a="http://ajax.org/2005/aml"
+  caption="Billing History" 
+  icon="icoBilling.gif" 
+  name="BillHistory">
+    <a:script><![CDATA[
+        function BillHistory(){
+            //Create a Javeline class
+            apf.makeClass(this);
+            
+            //Inherit from the portal.docklet baseclass
+            this.implement(apf.portal.docklet);
+            this.$init = function(xmlSettings, oDocklet){
+                //Process xml settings
+                
+            }
+        }
+     ]]></a:script>
+    <a:config>
+        <h3>Configuration</h3>
+        <a:dropdown value="red">
+            <a:item>red</a:item>
+            <a:item>green</a:item>
+            <a:item>blue</a:item>
+        </a:dropdown>
+    </a:config>
+    <a:body>
+        <a:chart height="200" width="230" anim="100">
+            <a:axis 
+              mode  = "2D"
+              x1    = "-0.5" 
+              y1    = "-0.3" 
+              x2    = "1.6" 
+              y2    = "1.4"
+              style = "
+                plane{fill:#e1e1e1;stroke:white};
+                tiles{fill:#ebebeb;stroke:white;};
+                margin{left:0;top:0;right:0;bottom:0}
+                axis{stroke:null;}
+                label{family:null;}
+                tick{stroke:null}
+              ">
+                <a:graph 
+                  mode      = "pie" 
+                  dataslice = "1X"
+                  series    = "1#a 0.9#b 2.0#c 1.1#d 0.2#e 0.24#f"
+                  style     = "
+                    graph.a{fill:#ed1c24}
+                    graph.b{fill:#f26522}
+                    graph.c{fill:#f7941d}
+                    graph.d{fill:#fff200}
+                    graph.e{fill:#8dc63f}
+                    graph.f{fill:#39b54a}
+                    graph{fill:#d5242c;stroke:white;strokeopacity:1;notransit:1;}
+                    graph:hoverin {
+                        speed     : 4;
+                        fill      : #00aeef;
+                        stroke      : #00aeef;
+                        weight    : t;
+                        strokeopacity : 0.7*t;
+                        overlay   : base;
+                        opacity     : easein(t);
+                        scale     : 1+easein(nt),1+easein(nt);
+                     }
+                     graph:hover {
+                        fill      : #00aeef;
+                        weight    : 1;
+                        stroke      : #00aeef;
+                        strokeopacity : 0.9;
+                     }
+                     graph:hoverout {
+                        speed   : 1;
+                        stroke    : #00aeef;
+                        fill    : #00aeef;
+                        overlay : base;
+                        opacity   : 0.5;
+                        offset  : 0,t;
+                        scale   : nt,nt;
+                     }
+                  ">
+                </a:graph>
+            </a:axis>
+        </a:chart>
+    </a:body>
+</a:docklet>

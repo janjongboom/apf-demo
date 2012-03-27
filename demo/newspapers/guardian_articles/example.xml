@@ -1,0 +1,55 @@
+<examples name="Guardian_articles Newspapers" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Guardian articles.</description>
+        <source><![CDATA[
+            <a:teleport>
+                <a:rpc
+                  id           = "comm6"
+                  protocol     = "cgi"
+                  http-method  = "get"
+                  route-server = "rpcproxy.php"
+                  autoroute    = "true">
+                    <a:method
+                      name = "guardianArticles"
+                      url  = "http://api.guardianapis.com/content/search">
+                        <a:param
+                          name  = "q"
+                          value = "environment"></a:param>
+                        <a:param
+                          name  = "filter"
+                          value = "/global/article"></a:param>
+                        <a:param
+                          name  = "api_key"
+                          value = "sweyshsmrva876czsyvth3rc"></a:param>
+                    </a:method>
+                </a:rpc>
+            </a:teleport>
+            <a:label style="font-weight:bold;font-size:14px;margin:0 0 10px 0;">
+                Guardian Articles
+            </a:label>
+            <a:datagrid
+              width  = "450"
+              height = "150"
+              id     = "dgGuardian"
+              model  = "{comm6.guardianArticles()}">
+                <a:each match="[results/content]">
+                    <a:column
+                      caption = "Title"
+                      value   = "[standfirst]"
+                      width   = "70%"></a:column>
+                    <a:column
+                      caption = "Created"
+                      value   = "[publication-date]"
+                      width   = "30%"></a:column>
+                </a:each>
+            </a:datagrid>
+            <a:text id="txt"
+              model  = "{dgGuardian.selected}"
+              value  = "[type-specific/body]"
+              style  = "margin-top:5px;border:1px solid #ccc;padding:5px;overflow:auto"
+              empty-message = "This news item doesn't have a summary"
+              width  = "450"
+              height = "200"></a:text>
+        ]]></source>
+    </example>
+</examples>

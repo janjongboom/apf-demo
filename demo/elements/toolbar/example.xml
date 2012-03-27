@@ -1,0 +1,69 @@
+<examples name="Toolbar Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Toolbar menu with 2 bars.</description>
+        <source><![CDATA[
+            <a:toolbar>
+                <a:bar>
+                    <a:button 
+                      icon    = "database_save.png"
+                      tooltip = "Save">Save</a:button>
+                    <a:divider />
+                    <a:button 
+                      icon    = "arrow_undo.png"
+                      tooltip = "Undo">Undo</a:button>
+                    <a:button 
+                      icon    = "arrow_redo.png"
+                      tooltip = "Redo">Redo</a:button>
+                    <a:divider />
+                    <a:button 
+                      icon    = "textfield_add.png"
+                      tooltip = "Add row">Add row</a:button>
+                    <a:button 
+                      icon    = "textfield_delete.png"
+                      tooltip = "Remove row">Remove row</a:button>
+                </a:bar>
+                <a:bar>
+                    <a:button 
+                      icon    = "application_add.png"
+                      tooltip = "Aplication">Aplication</a:button>
+                </a:bar>
+            </a:toolbar>
+        ]]></source>
+    </example>
+    <example>
+        <description>Toolbar inside window element.</description>
+        <source><![CDATA[
+            <a:menu id="menu5">
+                <a:item>About us</a:item>
+                <a:item>Help</a:item>
+            </a:menu>
+            <a:menu id="menu6">
+                <a:item icon="email.png">Tutorials</a:item>
+                <a:item>Live Helps</a:item>
+                <a:divider></a:divider>
+                <a:item>Visit Ajax.org</a:item>
+                <a:item>Exit</a:item>
+            </a:menu>
+            <a:window 
+              id          = "winMail"
+              contextmenu = "menu6"
+              width       = "300"
+              height      = "200" 
+              visible     = "true"
+              resizable   = "true" 
+              title       = "Mail message"
+              icon        = "email.png">
+                <a:toolbar>
+                    <a:menubar>
+                        <a:button submenu="menu6">File</a:button>
+                        <a:button submenu="menu5">Edit</a:button>
+                    </a:menubar>
+                </a:toolbar>
+            </a:window>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bar" display="Bar" title="See bar element" />
+    <seealso menu="elements" sub="b" name="button" display="Button" title="See button element" />
+    <seealso menu="elements" sub="m" name="menu" display="Menu" title="See menu element" />
+</examples>

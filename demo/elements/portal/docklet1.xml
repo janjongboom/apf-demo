@@ -1,0 +1,32 @@
+<a:docklet xmlns:a="http://ajax.org/2005/aml"
+  caption="Billing History" 
+  icon="icoBilling.gif" 
+  name="BillHistory">
+    <a:script><![CDATA[
+        function BillHistory(){
+            //Create a Javeline class
+            apf.makeClass(this);
+            
+            //Inherit from the portal.docklet baseclass
+            this.implement(apf.portal.docklet);
+            this.$init = function(xmlSettings, oDocklet){
+                //Process xml settings
+                var dd = oDocklet.getElementsByTagName("dropdown")[0]; 
+                var model = new apf.model();
+                model.load(xmlSettings);
+                dd.setAttribute("model", model);
+            }
+        }
+     ]]></a:script>
+    <a:config>
+        <h3>Configuration</h3>
+        <a:dropdown ref="color">
+            <a:item>red</a:item>
+            <a:item>green</a:item>
+            <a:item>blue</a:item>
+        </a:dropdown>
+    </a:config>
+    <a:body>
+        <h3>Testing</h3>
+    </a:body>
+</a:docklet>

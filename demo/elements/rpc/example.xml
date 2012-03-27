@@ -1,0 +1,132 @@
+<examples name="Rpc Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>
+            This demo searches flickr.com for 50 fotos on a topic of choice using the xmlrpc module.
+            The proxy script is included in the download section.
+        </description>
+        <source><![CDATA[
+            <a:teleport> 
+                <a:rpc 
+                  id           = "flickr" 
+                  protocol     = "xmlrpc" 
+                  url          = "http://www.flickr.com/services/xmlrpc/" 
+                  route-server = "rpcproxy.php"
+                  autoroute    = "true"> 
+                    <a:method name="search" receive="flickrResult" method-name="flickr.photos.search" />
+                </a:rpc> 
+            </a:teleport> 
+            
+            <a:hbox margin="5 0 10 0" width="230" height="39">
+                <a:textbox 
+                  id         = "txtKeyword" 
+                  value      = "bacon"
+                  width      = "130" 
+                  height     = "19" 
+                  edge       = "5"
+                  style      = "margin-top:2px" 
+                  realtime   = "true"
+                  required   = "true" 
+                  invalidmsg = "Please enter a value" /> 
+                <a:button id="btnSearch" default="true">Search</a:button>
+            </a:hbox>
+            
+            <a:model id="mdlThumbs" /> 
+            
+            <a:thumbnail 
+              id        = "list"
+              model     = "mdlThumbs" 
+              width     = "639" 
+              height    = "300"
+              resizable = "vertical">
+                <a:each match="[photo]"> 
+                    <a:caption match="[@title]" /> 
+                    <a:image>http://static.flickr.com/[@server]/[@id]_[@secret]_s.jpg</a:image>
+                    <a:value>http://www.flickr.com/photos/[@owner]/[@id]</a:value>
+                </a:each>
+            </a:thumbnail> 
+             
+            <a:script>//<!-- 
+                //The request handler
+                function flickrResult(data, state, extra) {
+                    if (state == apf.TIMEOUT)
+                        return apf.retryTimeout(extra, state);
+                    else if (state == apf.ERROR) {
+                        alert("Sorry an error has occurred: " + extra.message);
+                        return;
+                    }
+                
+                    //Load the data into the model
+                    mdlThumbs.load(typeof data == "string" ? apf.getXml(data) : data);
+                };
+                
+                //Interaction
+                btnSearch.onclick = function(){
+                    if (!txtKeyword.validate(true)) 
+                        return; 
+                    
+                    list.clear("loading");
+            
+                    flickr.search({
+                        api_key  : '5ab84bdb606e86015a15a45ffe8d022b',
+                        text     : txtKeyword.value, 
+                        per_page : 50, 
+                        page     : 1
+                    });
+                };
+                 
+                list.onafterchoose = function (){ 
+                    window.open(this.value);
+                };
+                 
+                btnSearch.onclick(); 
+            //--></a:script>
+        ]]></source>
+    </example>
+    <example>
+        <description>This demo fetches the latest news from the new york times.</description>
+        <source><![CDATA[
+            <a:teleport>
+                <a:rpc 
+                  id           = "comm5" 
+                  protocol     = "cgi" 
+                  http-method  = "get"
+                  route-server = "rpcproxy.php"
+                  autoroute    = "true"
+                  url          = "http://api.nytimes.com/svc/news/v2/all/recent.xml">
+                    <a:method name="nyt">
+                        <a:param name="limit" />
+                        <a:param name="api-key" 
+                          value="6864dff571ae7dfcda76392b4566aa13:6:58588488" />
+                    </a:method>
+                </a:rpc>
+            </a:teleport>
+            <a:label style="font-weight:bold; font-size:14px;margin:0 0 10px 0;">
+                New York Times News
+            </a:label>
+            <a:datagrid 
+              width         = "450" 
+              height        = "150" 
+              model         = "{comm5.nyt(3)}"
+              id            = "dgNytNews">
+                <a:each match="[results/news_item]">
+                    <a:column 
+                      caption = "Title" 
+                      value   = "[headline]"
+                      width   = "70%"></a:column>
+                    <a:column 
+                      caption = "Created" 
+                      value   = "[pubdate]"
+                      width   = "30%"></a:column>
+                </a:each>
+            </a:datagrid>
+            <a:text 
+              model         = "{dgNytNews.selected}"
+              value         = "[summary]"
+              width         = "450" 
+              height        = "100" 
+              style         = "margin-top:5px;border:1px solid #ccc;padding:5px;"
+              empty-message = "This news item doesn't have a summary" />
+            
+        ]]></source>
+    </example>
+</examples>

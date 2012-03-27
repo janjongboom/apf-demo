@@ -1,0 +1,41 @@
+<examples name="Interactive Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>A resizable textarea element.</description>
+        <source><![CDATA[
+            <a:textarea width="300" height="200" 
+              resizable = "true" 
+              minwidth  = "100"
+              minheight = "100" />
+        ]]></source>
+    </example>
+    <example>
+        <description>A resizable and draggable window element.</description>
+        <source><![CDATA[
+            <a:window title="Test" icon="note.png" width="200" height="100" 
+              visible   = "true"
+              draggable = "relative" 
+              resizable = "true" />
+        ]]></source>
+    </example>
+    <example>
+        <description>A resizable and draggable list element.</description>
+        <source><![CDATA[
+            <a:list skin="thumbnail" width="300" height="230"
+              draggable = "relative" 
+              resizable = "true">
+                <a:item image="demo/images/thinkgeek/thinkgeek1.jpg">
+                    The Netherlands
+                </a:item>
+                <a:item image="demo/images/thinkgeek/thinkgeek2.jpg">
+                    United States of America
+                </a:item>
+                <a:item image="demo/images/thinkgeek/thinkgeek3.jpg">
+                    Poland
+                </a:item>
+            </a:list>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

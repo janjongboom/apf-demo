@@ -1,0 +1,86 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:teleport>
+        <a:rpc id="commAuth" protocol="cgi">
+            <a:method name="login" url="http://example.com/data.php">
+                <a:variable name="username" />
+                <a:variable name="password" />
+                <a:variable name="cmd" value="login" />
+            </a:method>
+            <a:method name="logout" url="http://example.com/data.php">
+                <a:variable name="cmd" value="logout" />
+            </a:method>
+        </a:rpc>
+    </a:teleport>
+    
+    <a:appsettings>
+        <a:auth
+          autostart       = "false"
+          window          = "winLogin"
+          fail-state      = "stFail"
+          error-state     = "stError"
+          login-state     = "stIdle"
+          logout-state    = "stLogout"
+          waiting-state   = "stLoggingIn"
+          login           = "rpc:commAuth.login(username, password)"
+          logout          = "rpc:commAuth.logout()" />
+    </a:appsettings>
+    
+    <a:state-group btnLogin.visible="true">
+        <a:state id="stFail"
+          loginMsg.value    = "$sub.auth.error_cred$"
+          loginMsg.visible  = "true"
+          auth_pass.value   = ""
+          barLogged.visible = "false"
+          barLogin.visible  = "true"/>
+        <a:state id="stError"
+          loginMsg.value    = "$sub.auth.error_unexp$"
+          loginMsg.visible  = "true"
+          auth_pass.value   = ""
+          barLogin.visible  = "true"/>
+        <a:state id="stLoggingIn"
+          loginMsg.value    = "$sub.auth.state_busy$"
+          loginMsg.visible  = "true"
+          btnLogin.visible  = "false"
+          auth_pass.value   = ""/>
+        <a:state id="stIdle"
+          loginMsg.visible  = "false"
+          barLogin.visible  = "false"
+          barLogged.visible = "true"/>
+        <a:state id="stLogout"
+          loginMsg.visible  = "false"
+          barLogged.visible = "false"
+          barLogin.visible  = "true"/>
+    </a:state-group>
+    
+    <a:window id="winLogin"
+       modal    = "true" 
+       center   = "true" 
+       icon     = "lock_go.png"
+       width    = "320"  
+       height   = "157" 
+       title    = "Inloggen">
+         <a:table id="grTest" columns="85,*" cellheight="19" padding="4" margin="10 10 10 10" class="ontop">
+             <a:label span="2" height="25">
+                 <strong>Please enter your username and password</strong><br />
+             </a:label>
+             <a:label>
+                 Username:
+             </a:label>
+             <a:textbox type="username" value=""
+               required="true" minlength="1" 
+               invalidmsg="Invalid username;Please enter your correct username" />
+             <a:label>
+                 Password:
+             </a:label>
+             <a:textbox type="password" value=""
+               required="true" minlength="1" 
+               invalidmsg="Invalid password;Please enter your password again" />
+         </a:table>
+         
+         <a:label id="loginMsg" left="10" bottom="15" />
+         
+         <a:button action="login" right="10" bottom="10" default="true">
+              Login
+         </a:button>
+    </a:window>
+</a:application>

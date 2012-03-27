@@ -1,0 +1,27 @@
+<examples name="Frame Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Frame is a equivalent tag to html fieldset.</description>
+        <source><![CDATA[
+            <a:frame caption="Options" width="250">
+                <a:radiobutton value="1">Option 1</a:radiobutton>
+                <a:radiobutton value="2">Option 2</a:radiobutton>
+                <a:radiobutton value="3">Option 3</a:radiobutton>
+                <a:radiobutton value="4">Option 4</a:radiobutton>
+            </a:frame>
+        ]]></source>
+    </example>
+    <example>
+        <description>Frame in disabled state.</description>
+        <source><![CDATA[
+            <a:frame 
+              caption  = "Options" 
+              width    = "250"
+              disabled = "true">
+                <a:radiobutton value="1">Option 1</a:radiobutton>
+                <a:radiobutton value="2">Option 2</a:radiobutton>
+                <a:radiobutton value="3">Option 3</a:radiobutton>
+                <a:radiobutton value="4">Option 4</a:radiobutton>
+            </a:frame>
+        ]]></source>
+    </example>
+</examples>

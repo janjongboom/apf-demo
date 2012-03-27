@@ -1,0 +1,127 @@
+<examples name="Form Dragdrop Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Drag &#38; drop between a datagrid and a form</description>
+        <source><![CDATA[
+            <a:bar skin="basic" width="638" height="250">
+                <a:panel caption="Datagrid" class="noborder" align="left-splitter">
+                    <a:toolbar align="top" height="25">
+                        <a:bar>
+                            <a:button icon="add.png" onclick="dg.add()">New</a:button>
+                            <a:button icon="delete.png" onclick="dg.remove()">
+                                Delete
+                            </a:button>
+                            <a:divider />
+                            <a:button disabled="{!atDg.undolength}" onclick="atDg.undo()">
+                                Undo
+                            </a:button>
+                            <a:button disabled="{!atDg.redolength}" onclick="atDg.redo()">
+                                Redo
+                            </a:button>
+                        </a:bar>
+                    </a:toolbar>
+            
+                    <a:datagrid 
+                      id            = "dg" 
+                      align         = "left" 
+                      actiontracker = "atDg" 
+                      multiselect   = "false" 
+                      options       = "size|move">
+                        <a:each match="[element]">
+                            <a:column type="icon"       value="user.png" width="18" />
+                            <a:column caption="Title"   value="[@title]" width="25%" />
+                            <a:column caption="Name"    value="[@name]"  width="25%" />
+                            <a:column caption="Address" value="[text()]" width="50%" />
+                
+                            <a:drag match  = "[element]" />
+                            <a:drop match  = "[element]" 
+                                    target = "[element]" 
+                                    action = "insert-before" />
+                            <a:drop match  = "[element]" 
+                                    target = "[data]" 
+                                    action = "list-append" />
+                        </a:each>
+                        
+                        <a:add><element name="New Contact" /></a:add>
+                        <a:remove />
+                        <a:move />
+
+                        <a:model>
+                            <data>
+                                <element name="Ruben" title="DSc">
+                                    Keizersgracht 241
+                                    1016EA Amsterdam
+                                </element>
+                                <element name="Mike" title="BSc">
+                                    Ricardodrive 4285
+                                </element>
+                                <element name="Rik" title="MSc">
+                                    Anthill 428509098
+                                </element>
+                                <element name="Arnold" title="BSc">
+                                    Slopedrive 98
+                                </element>
+                                <element name="Giannis" title="MSc">
+                                    Lakeside 98
+                                </element>
+                            </data>
+                        </a:model>
+                    </a:datagrid>
+                </a:panel>
+                
+                <a:panel caption="Form" align="right">
+                    <a:model id="mdlForm" />
+                    
+                    <a:table columns="80,*" padding="5" height="100%-20" 
+                      realtime    = "true"
+                      anchors     = "0 0 0 0" 
+                      margin      = "10 10 10 10"
+                      model       = "mdlForm" 
+                      drop        = "true" 
+                      ondragdrop  = "highlight(event, this);" 
+                      ondragover  = "highlight(event, this, 1)" 
+                      ondragout   = "highlight(event, this, 2)">
+                        <a:label>Title</a:label>
+                        <a:dropdown value="[@title]">
+                            <a:item>DSc</a:item>
+                            <a:item>BSc</a:item>
+                            <a:item>MSc</a:item>
+                        </a:dropdown>
+                        <a:label>Name</a:label>
+                        <a:textbox value="[@name]" />
+                        <a:label span="*">Description</a:label>
+                        <a:textarea value="[text()]" height="*" span="*"/>
+                    </a:table>
+                </a:panel>
+            </a:bar>
+            
+            <a:style>
+                .htdrop{
+                    background-color : #c9e8f7;
+                }
+            </a:style>
+            
+            <a:script>//<!--
+                function highlight(e, o, onlyOne){
+                    if (e.data[0].tagName != "element") {
+                        e.preventDefault();
+                        return;
+                    }
+            
+                    if (highlight.control)
+                        highlight.control.stop = true;
+                    
+                    var control = highlight.control = {stop:false};
+                    if (onlyOne == 1)
+                        apf.tween.css(o, 'htdrop', {steps:10, control:control});
+                    else if (onlyOne == 2)
+                        apf.setStyleClass(o.$ext, "", ["htdrop"]);
+                    else if (!onlyOne)
+                        apf.tween.cssRemove(o, 'htdrop', {steps:15, control:control});
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

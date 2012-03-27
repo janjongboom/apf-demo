@@ -1,0 +1,4 @@
+<examples name="Menubar Elements" xmlns:a="http://ajax.org/2005/aml">
+    <seealso menu="elements" sub="b" name="button" display="Button" title="See button element" />
+    <seealso menu="elements" sub="t" name="toolbar" display="Toolbar" title="See toolbar element" />
+</examples>

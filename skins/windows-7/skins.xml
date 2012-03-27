@@ -1,0 +1,2865 @@
+<?xml version='1.0'?>
+<a:skin xmlns:a="http://ajax.org/2005/aml" xmlns="http://www.w3.org/1999/xhtml">
+<a:button name="toolbarbutton">
+    <a:style><![CDATA[
+        .menubar .toolbarbutton {
+            display         : block;
+            height          : 18px;
+            float           : left;
+            cursor          : default;
+            padding         : 4px 8px 0 8px;
+            line-height     : 13px;
+            text-decoration : none;
+            color           : black
+        }
+        
+        .menubar .toolbarbuttonOver, 
+        .menubar .toolbarbuttonDown {
+            color            : black;
+            background-color : #3399ff;
+        }
+        
+        .menubar .toolbarbuttonDown, 
+        .menubar .toolbarbuttonDown {
+            color            : black;
+            background-color : #3399ff;
+        }
+        
+        .menubar .toolbarbuttonDisabled, 
+        .menubar .toolbarbuttonDisabled {
+            background : none;
+            color      : #bebebe;
+        }
+        
+        .toolbar .subbar .toolbarbutton {
+            display         : block;
+            height          : 24px;
+            float           : left;
+            cursor          : default;
+            margin          : 1px 1px 1px 1px;
+            text-decoration : none;
+            text-align      : center;
+            padding         : 0 4px 0 0;
+            line-height     : 13px;
+        }
+
+        .toolbar .subbar .toolbarbutton div {
+            float   : left;
+            margin  : 1;
+            height  : 19px;
+            padding : 5px 4px 0 8px;
+            border  : 0;
+            color   : #1e395b;
+        }
+        
+        .toolbar .subbar .toolbarbuttonOver {
+            background : url("images/toolbar_a_hover_right.png") no-repeat top right;
+        }
+        
+        .toolbar .subbar .toolbarbuttonOver div {
+            background : url("images/toolbar_a_hover.png") no-repeat top left;
+        }
+
+        .toolbar .subbar .toolbarbuttonDown {
+            background : url("images/toolbar_a_down_right.png") no-repeat top right;
+        }
+        
+        .toolbar .subbar .toolbarbuttonDown div {
+            background : url("images/toolbar_a_down.png") no-repeat top left;
+        }
+
+        .toolbar .subbar .toolbarbuttonDisabled, 
+        .toolbar .subbar .toolbarbuttonDisabled div {
+            background : none;
+            color      : #bebebe;
+        }
+        
+        .toolbar .subbar .toolbarbuttonIcon div {
+            padding-left : 4px;
+        }
+        
+        .toolbar .subbar .toolbarbuttonEmpty div {
+            padding : 4px 0 0 7px;
+        }
+        
+        .toolbar .subbar .toolbarbuttonIcon span {
+            display : block;
+            float   : left;
+            width   : 16px;
+            height  : 16px;
+            margin  : -2px 4px 0 0;
+        }
+        
+        .toolbar .subbar .toolbarbuttonEmpty span {
+            margin : -1px 3px 0 0;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main 
+          caption    = "div/text()" 
+          background = "div/span" 
+          icon       = "div/span">
+            <div class='toolbarbutton'>
+                <div>
+                    <span>-</span>
+                </div>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:button>
+<a:button name="button">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn {
+            color       : #000000;
+            font-family : Tahoma;
+            font-size   : 8pt;
+            height      : 21px;
+            width       : 100px;
+            overflow    : hidden;
+            cursor      : default;
+        }
+    
+        .apf_btn .left {
+            float         : left;
+            width         : 3px;
+            height        : 21px;
+            _margin-right : -3px; /* IE6 bug fix */
+        }
+    
+        .apf_btn .lbl {
+            height        : 17px;
+            padding-top   : 4px;
+            text-align    : center;
+            margin        : 0;
+            _margin       : 0; /* IE6 fix */
+            white-space   : nowrap;
+            overflow      : hidden;
+            text-overflow : ellipsis;
+        }
+    
+        .apf_btn .right {
+            float       : right;
+            width       : 3px;
+            height      : 21px;
+           _margin-left : -3px; /* IE6 bug fix */
+        }
+    
+        .apf_btn .left {
+            background : url("images/button_left.png") no-repeat 0 -21px;
+        }
+    
+        .apf_btn .lbl {
+            background : url("images/button_middle.png") repeat-x 0 -21px;
+        }
+    
+        .apf_btn .right {
+            background : url("images/button_right.png") no-repeat 0 -21px;
+        }
+    
+        .apf_btnDefault .left {
+            background : url("images/button_left.png") no-repeat top left;
+        }
+    
+        .apf_btnDefault .lbl {
+            background : url("images/button_middle.png") repeat-x top left;
+        }
+    
+        .apf_btnDefault .right {
+            background : url("images/button_right.png") no-repeat top left;
+        }
+
+        .apf_btn span {
+            padding  : 1px 3px 1px 3px;
+            border   : 1px solid transparent;
+            position : absolute;
+            left     : 2px;
+            right    : 2px;
+            top      : 2px;
+            bottom   : 2px;
+            _border  : 0;
+            _padding : 2px 4px 2px 4px;
+            _margin  : 0;
+        }
+    
+        .apf_btnDisabled  {
+            color : #838383;
+        }
+    
+        .apf_btnDisabled .left {
+            background : url("images/button_left.png") no-repeat 0 -84px;
+        }
+    
+        .apf_btnDisabled .lbl {
+            background : url("images/button_middle.png") repeat-x 0 -84px;
+        }
+    
+        .apf_btnDisabled .right {
+            background : url("images/button_right.png") no-repeat 0 -84px;
+        }
+
+        .apf_btnFocus {
+        }
+    
+        .apf_btnFocus span {
+            border  : 1px dotted #470d09;
+        }
+        
+        .apf_btnOver  {
+        }
+    
+        .apf_btnOver .left {
+            background : url("images/button_left.png") no-repeat 0 -42px;
+        }
+    
+        .apf_btnOver .lbl {
+            background : url("images/button_middle.png") repeat-x 0 -42px;
+        }
+    
+        .apf_btnOver .right {
+            background : url("images/button_right.png") no-repeat 0 -42px;
+        }
+    
+        .apf_btnDown .left {
+            background : url("images/button_left.png") no-repeat 0 -63px;
+        }
+    
+        .apf_btnDown .lbl {
+            background : url("images/button_middle.png") repeat-x 0 -63px;
+        }
+    
+        .apf_btnDown .right {
+            background : url("images/button_right.png") no-repeat 0 -63px;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isIE7">
+        .apf_btn .right {
+            margin : 0;
+        }
+    
+        .apf_btn .left {
+            margin : 0;
+        }
+    </a:style>
+
+    <a:presentation>
+        <a:main 
+          caption    = "div[3]/span/text()" 
+          background = ".">
+            <div class="apf_btn">
+                <div class="left"> </div>
+                <div class="right"> </div>
+                <div class="lbl">
+                    <span>-</span>
+                </div>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:button>
+<a:caldropdown name="caldropdown">
+    <a:style><![CDATA[
+        .caldropdown {
+            position    : relative;
+            width       : 134px;
+            height      : 17px;
+            font-family : 'Segoe UI', Tahoma;
+            margin      : 0;
+            padding     : 4px 18px 0 0;
+            color       : #000000;
+            font-family : Tahoma;
+            font-size   : 11px;
+        }
+
+        .caldropdownError {
+            background-position : right -63px;
+        }
+
+        .caldropdownFocus {
+            background-position : right -21px;
+        }
+
+        .caldropdown .caldropdownLeftBorder {
+            background : url("images/caldrop_dropdown.png") no-repeat top left;
+            position   : absolute;
+            left       : 0;
+            top        : 0;
+            width      : 3px;
+            height     : 21px;
+        }
+        
+        .caldropdown .caldropdownRightBorder {
+            background : url("images/caldrop_dropdown.png") no-repeat top right;
+            position   : absolute;
+            left       : 3px;
+            right      : 0;
+            top        : 0px;
+            height     : 21px;
+        }
+
+        .caldropdown .caldropdownlabel {
+            position : absolute;
+            top      : 4px;
+            left     : 1px;
+            right    : 18px;
+            bottom   : 3px;
+            cursor   : default;
+        }
+
+        .caldropdownError .caldropdownLeftBorder {
+            background-position : 0 -63px;
+        }
+
+        .caldropdownError .caldropdownlabel {
+            background-color : #ffb500;
+            color            : #fbfbfb;
+        }
+
+        .caldropdownInitial .caldropdownLeftBorder {
+        }
+
+        .caldropdownInitial .caldropdownlabel {
+            color : #000000;
+        }
+        
+        .caldropdownInitial.caldropdownFocus .caldropdownLeftBorder {
+            background-position : top left;
+        }
+        
+        .caldropdownInitial.caldropdownFocus .caldropdownRightBorder {
+            background-position : top right;
+        }
+
+        .caldropdownInitial.caldropdownFocus .caldropdownlabel {
+            border : 1px dotted #0d0d0d;
+            top    : 3px;
+            left   : 0px;
+        }
+
+        .caldropdownFocus .caldropdownLeftBorder {
+            background-position : top left;
+        }
+        
+        .caldropdownFocus .caldropdownRightBorder {
+            background-position : top right;
+        }
+
+        .caldropdownFocus .caldropdownlabel {
+            border : 1px dotted #0d0d0d;
+            top    : 3px;
+            left   : 0px;
+        }
+        
+        .caldropdownInitial.caldropdownOver .caldropdownLeftBorder {
+            background-position : left -42px;
+        }
+        
+        .caldropdownInitial.caldropdownOver .caldropdownRightBorder {
+            background-position : right -42px;
+        }
+        
+        .caldropdownOver .caldropdownLeftBorder {
+            background-position : left -42px;
+        }
+        
+        .caldropdownOver .caldropdownRightBorder {
+            background-position : right -42px;
+        }
+        
+        .caldropdownInitial.caldropdownDown .caldropdownLeftBorder {
+            background-position : left -63px;
+        }
+        
+        .caldropdownInitial.caldropdownDown .caldropdownRightBorder {
+            background-position : right -63px;
+        }
+        
+        .caldropdownDown .caldropdownLeftBorder {
+            background-position : left -63px;
+        }
+        
+        .caldropdownDown .caldropdownRightBorder {
+            background-position : right -63px;
+        }
+
+        .caldropdownDown .caldropdownlabel {
+            border : 1px dotted transparent;
+            top    : 3px;
+            left   : 0px;
+        }
+        
+        .calSlider {
+            position         : absolute;
+            top              : 0;
+            left             : 0;
+            width            : 120px;
+            margin-top       : -1px;
+            border           : 1px solid #ebebeb;
+            background-color : #ffffff;
+            z-index          : 1000;
+            color            : #0d5381;
+            font-family      : Tahoma;
+            font-size        : 11px;
+            display          : none;
+            overflow         : auto;
+        }
+        
+        .calSlider .navigation {
+            display : block;
+            margin  : 0 auto;
+            height  : 16px;
+            padding : 3px;
+        }
+        
+        .calSlider .navigation .button {
+            width               : 13px;
+            height              : 13px;
+            position            : relative;
+            color               : #4b4b4b;
+            background-position : 0 0;
+            background-repeat   : no-repeat;
+        }
+
+        .calSlider .navigation .today {
+            display          : none;
+            /*
+            font-size        : 11px;
+            text-align       : right;
+            display          : block;
+            width            : 32px;
+            padding          : 3px;
+            cursor           : pointer;
+            position         : absolute;
+            background-color : white;
+            right            : 37px;
+            z-index          : 100000;
+            */
+        }
+
+        .calSlider .navigation .status {
+            font-size        : 11px;
+            text-align       : center;
+            display          : block;
+            width            : 90px;
+            white-space      : nowrap;
+            padding          : 3px 0 3px 0;
+            left             : 50%;
+            margin-left      : -45px;
+            position         : absolute;
+            z-index          : 80000;
+        }
+
+        .calSlider .navigation .nextMonth {
+            background-image : url(images/caldrop_m_plus.png);
+            margin           : 3px 0 3px 0;
+            position         : absolute;
+            right            : 23px;
+            display          : block;
+            z-index          : 100000;
+        }
+
+        .calSlider .navigation .nextYear {
+            background-image : url(images/caldrop_y_plus.png);
+            margin           : 3px 0 3px 0;
+            position         : absolute;
+            right            : 6px;
+            display          : block;
+            z-index          : 100000;
+        }
+
+
+        .calSlider .navigation .prevMonth {
+            background-image : url(images/caldrop_m_minus.png);
+            margin           : 3px 3px 3px 0;
+            position         : absolute;
+            left             : 23px;
+            display          : block;
+            z-index          : 100000;
+        }
+
+        .calSlider .navigation .prevYear {
+            background-image : url(images/caldrop_y_minus.png);
+            margin           : 3px 3px 3px 0;
+            position         : absolute;
+            left             : 6px;
+            display          : block;
+            z-index          : 100000;
+        }
+
+        .calSlider .navigation .hover {
+            background-position : 0 -13px;
+        }
+
+        .calSlider .daysofweek {
+            margin   : 0 auto;
+            display  : block;
+            position : relative;
+        }
+
+        .calSlider .daysofweek .dayofweek {
+            border              : 1px solid white;
+            border-bottom       : 1px solid #f5f5f5;
+            float               : left;
+            font-family         : Tahoma;
+            font-size           : 11px;
+            color               : black;
+            display             : block;
+            margin              : 1px;
+            text-align          : center;
+            cursor              : default;
+            overflow            : hidden;
+        }
+
+        .calSlider .row {
+            margin   : 0 auto;
+            display  : block;
+            position : relative;
+            padding  : 0 1px 0 1px;
+        }
+
+        .calSlider .row .cell {
+            position         : relative;
+            background-color : white;
+            color            : black;
+            border           : 1px solid white;
+            float            : left;
+            text-align       : center;
+            cursor           : default;
+            display          : block;
+        }
+
+        .calSlider .row .weekend {
+            background-color : white;
+            color            : black;
+            border           : 1px solid white;
+        }
+        
+        .calSlider .row .weeknumber {
+            background-color : white;
+            color            : #d7d7d7;
+            border           : 1px solid white;
+        }
+
+        .calSlider .row .disabled {
+            border           : 1px solid white;
+            color            : #646464;
+            background-color : white;
+            background-image : none;
+        }
+
+        .calSlider .row .hover {
+            border              : 1px solid #b9d7fc;
+            color               : #0066cc;
+            background-image    : url(images/caldrop_cell.png);
+            background-position : 50% 50%;
+        }
+
+        .calSlider .row .active {
+            border              : 1px solid #0066cc;
+            color               : #0066cc;
+            background-image    : url(images/caldrop_cell_sel.png);
+            background-position : 50% 50%;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isGecko"><![CDATA[
+        .calSlider .row .cell {
+            float   : none;
+            display : -moz-grid;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main label="div[2]/div" button=".">
+            <div class='caldropdown'>
+                <div class='caldropdownLeftBorder'> </div>
+                <div class='caldropdownRightBorder'> 
+                    <div class='caldropdownlabel'>-</div>
+                </div>
+            </div>
+        </a:main>
+        <a:container contents="." navigation="div[1]" daysofweek="div[2]">
+            <div class='calSlider'>
+                <div class="navigation"> </div>
+                <div class="daysofweek"> </div>
+            </div>
+        </a:container>
+        <a:cell>
+            <div class="cell"> </div>
+        </a:cell>
+        <a:row>
+            <div class="row"> </div>
+        </a:row>
+        <a:day>
+            <div class="dayofweek"> </div>
+        </a:day>
+        <a:button>
+            <div class="button"> </div>
+        </a:button>
+        <a:empty caption=".">
+            <div class="empty">-</div>
+        </a:empty>
+    </a:presentation>
+</a:caldropdown>
+<a:calendar name="calendar">
+    <a:style><![CDATA[
+        .calendar {
+            position         : absolute;
+            top              : 0;
+            left             : 0;
+            border           : 1px solid #b2b2b2;
+            z-index          : 1000;
+            font-family      : 'Segoe UI', Tahoma;
+            color            : black;
+            background-color : white;
+            font-size        : 11px;
+            display          : block;
+            overflow         : hidden;
+            padding          : 3px;
+            width            : 200px;
+        }
+        
+        .calendar .navigation {
+            height           : 20px;
+            position         : relative;
+            width            : 100%;
+            background-color : white;
+        }
+        
+        .calendar .navigation .nextMonth,
+        .calendar .navigation .prevMonth,
+        .calendar .navigation .nextYear,
+        .calendar .navigation .prevYear,
+        .calendar .navigation .today {
+            width               : 13px;
+            height              : 13px;
+            margin-top          : 3px;
+            position            : absolute;
+            background-position : 0 0;
+            background-repeat   : no-repeat;
+            text-align          : center;
+        }
+        
+        .calendar .navigation .nextMonth:hover,
+        .calendar .navigation .prevMonth:hover,
+        .calendar .navigation .nextYear:hover,
+        .calendar .navigation .prevYear:hover,
+        .calendar .navigation .today:hover {
+            background-position : 0 -13px;
+        }
+        
+        .calendar .navigation .status {
+            width       : 100px;
+            padding-top : 3px;
+            height      : 17px;
+            position    : absolute;
+            margin-left : -50px;
+            left        : 50%;
+            text-align  : center;
+        }
+        
+        .calendar .navigation .nextMonth {
+            right            : 19px;
+            top              : 0;
+            background-image : url(images/cal_m_plus.png);
+        }
+    
+        .calendar .navigation .prevMonth {
+            left             : 19px;
+            top              : 0;
+            background-image : url(images/cal_m_minus.png);
+        }
+    
+        .calendar .navigation .nextYear {
+           right            : 3px;
+           top              : 0;
+           background-image : url(images/cal_y_plus.png);
+        }
+    
+        .calendar .navigation .prevYear {
+            left             : 3px;
+            top              : 0;
+            background-image : url(images/cal_y_minus.png);
+        }
+        
+        .calendar .navigation .today {
+            right   : 35px;
+            top     : 0;
+            display : none;
+        }
+        
+        .calendar .daysofweek {
+            position         : relative;
+            width            : 100%;
+            border           : 1px solid white;
+            border-bottom    : 1px solid #f5f5f5;
+            background-color : white;
+        }
+        
+        .calendar .daysofweek .dayofweek {
+            padding          : 1px;
+            margin           : 0 1px 0 1px;
+            display          : inline-block;
+            position         : relative;
+            text-align       : center;
+            background-color : white;
+            cursor           : pointer;
+            white-space      : nowrap
+        }
+        
+        .calendar .calcontent {
+            width    : 100%;
+            position : relative;
+            overflow : hidden;
+        }
+        
+        .calendar .calcontent .row {
+            margin-top : 2px;
+            position   : relative;
+            overflow   : hidden;
+        }
+        
+        .calendar .calcontent .row .cell {
+           border            : 1px solid white;
+            padding          : 1px 0 2px 0;
+            margin           : 0 1px 0 1px;
+            display          : inline-block;
+            position         : relative;
+            text-align       : center;
+            background-color : white;
+            cursor           : pointer;
+            white-space      : nowrap
+        }
+        
+        .calendar .calcontent .row .disabled {
+            border           : 1px solid white;
+            color            : #646464;
+            background-color : white;
+            background-image : none;
+        }
+        
+        .calendar .calcontent .row .weekend {
+            background-color : white;
+            color            : black;
+            border           : 1px solid white;
+        }
+        
+        .calendar .calcontent .row .weeknumber {
+            background-color : white;
+            color            : #d7d7d7;
+            border           : 1px solid white;
+        }
+        
+        .calendar .calcontent .row .active {
+            border              : 1px solid #0066cc;
+            color               : #0066cc;
+            background-image    : url(images/cal_cell_sel.png);
+            background-position : 50% 50%;
+        }
+        
+        .calendar .calcontent .row .hover {
+            border              : 1px solid #b9d7fc;
+            color               : #0066cc;
+            background-image    : url(images/cal_cell.png);
+            background-position : 50% 50%;
+        }
+    
+    ]]></a:style>
+    <a:style condition="apf.isIE">
+        .calendar .calcontent .row .cell {
+            float : left;
+        }
+        
+        .calendar .daysofweek .dayofweek {
+            float : left;
+        }
+    </a:style>
+    <a:style condition="apf.isIE7">
+        .calendar .calcontent .row .cell {
+            float : left;
+        }
+        
+        .calendar .daysofweek .dayofweek {
+            float : left;
+        }
+    </a:style>
+    
+    <a:presentation>
+        <a:main 
+          contnainer = "." 
+          navigation = "div[1]" 
+          daysofweek = "div[2]" 
+          content    = "div[3]">
+            <div class="calendar">
+                <div class="navigation"> </div>
+                <div class="daysofweek"> </div>
+                <div class="calcontent"> </div>
+            </div>
+        </a:main>
+        <a:cell>
+            <div class="cell"> </div>
+        </a:cell>
+        <a:row>
+            <div class="row"> </div>
+        </a:row>
+        <a:day>
+            <div class="dayofweek"> </div>
+        </a:day>
+        <a:button>
+            <div class="button"> </div>
+        </a:button>
+        <a:empty caption="text()">
+            <div class="empty">-</div>
+        </a:empty>
+    </a:presentation>
+</a:calendar>
+<a:checkbox name="checkbox">
+    <a:style><![CDATA[
+        .cbcontainer {
+            padding    : 2px 2px 2px 18px;
+            _padding   : 2px; /* IE6 fix */
+            position   : relative;
+            min-height : 13px;
+            color      : #4b4b4b;
+            _clear     : both; /* IE6 fix */
+        }
+        
+        .cbcontainer span {
+            font-family : Tahoma;
+            font-size   : 11px;
+            cursor      : default;
+            padding     : 1px 3px 2px 3px;
+            margin      : -1px 0 0 0;
+            overflow    : hidden;
+            display     : block;
+            float       : left;
+            line-height : 13px;
+        }
+        
+        .cbcontainerFocus span {
+            padding : 0px 2px 1px 2px;
+            border  : 1px dotted #BBB;
+        }
+        
+        .cbcontainerError span {
+            background-color : #ffb500;
+            color            : #fbfbfb;
+        }
+        
+        .cbcontainerDisabled span {
+            color : #bebebe;
+        }
+
+        .cbcontainer .checkbox {
+            width      : 13px;
+            height     : 13px;
+            overflow   : hidden;
+            position   : absolute;
+            left       : 2px;
+            top        : 2px;
+            _position  : relative; /* IE6 fix */
+            _float     : left; /* IE6 fix */
+            _margin    : -2px 4px 0 0; /* IE6 fix */
+            background : url("images/checkbox.png") no-repeat 0 0;
+        }
+
+        .cbcontainerOver .checkbox {
+            background-position : 0 -13px;
+        }
+        
+        .cbcontainerDown .checkbox {
+            background-position : 0 -26px;
+        }
+        
+        .cbcontainerDisabled .checkbox {
+            background-position : 0 -39px;
+        }
+        
+        .cbcontainerChecked .checkbox {
+            background-position : -13px 0;
+        }
+        
+        .cbcontainerOver.cbcontainerChecked .checkbox {
+            background-position : -13px -13px;
+        }
+        
+        .cbcontainerDown.cbcontainerChecked .checkbox {
+            background-position : -13px -26px;
+        }
+        
+        .cbcontainerDisabled.cbcontainerChecked .checkbox {
+            background-position : -13px -39px;
+        }
+    ]]></a:style>
+    <a:style condition="!apf.isIE"><![CDATA[
+        .cbcontainer br {
+            line-height : 0;
+            display     : block;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isIE">
+        .cbcontainerChecked .checkbox {
+            background-position-x : -13px;
+        }
+        
+        .cbcontainer .checkbox {
+            background-position-y : 0;
+        }
+        
+        .cbcontainerOver .checkbox {
+            background-position-y : -13px;
+        }
+        
+        .cbcontainerDown .checkbox {
+            background-position-y : -26px;
+        }
+        
+        .cbcontainerDisabled .checkbox {
+            background-position-y : -39px;
+        }
+        
+        .cbcontainerDisabled span {
+            color : #bebebe;
+        }
+    </a:style>
+
+    <a:presentation>
+        <a:main label="span/text()">
+            <div class='cbcontainer'>
+                <div class='checkbox'> </div>
+                <span>-</span>
+                <br clear="left" />
+            </div>
+        </a:main>
+    </a:presentation>
+</a:checkbox>
+<a:colorpicker name="colorpicker">
+    <a:style><![CDATA[
+        .colorpicker {
+            width       : 356px;
+            height      : 176px;
+            overflow    : hidden;
+            position    : relative;
+            background  : url(images/colorpicker_background.png);
+            font-family : Arial, Helvetica, sans-serif;
+        }
+        
+        .colorpicker_color {
+            width      : 150px;
+            height     : 150px;
+            left       : 14px;
+            top        : 13px;
+            position   : absolute;
+            background : #f00;
+            overflow   : hidden;
+            cursor     : crosshair;
+        }
+        
+        .colorpicker_color div {
+            position   : absolute;
+            top        : 0;
+            left       : 0;
+            width      : 150px;
+            height     : 150px;
+            background : url(images/colorpicker_overlay.png);
+        }
+        
+        .colorpicker_color div div {
+            position   : absolute;
+            top        : 0;
+            left       : 0;
+            width      : 19px;
+            height     : 19px;
+            overflow   : hidden;
+            background : url(images/colorpicker_select_cross.png);
+            margin     : -10px 0 0 -9px;
+        }
+        
+        .colorpicker_hue {
+            position : absolute;
+            top      : 13px;
+            left     : 171px;
+            width    : 35px;
+            height   : 150px;
+            cursor   : n-resize;
+        }
+        
+        .colorpicker_hue div {
+            position   : absolute;
+            width      : 35px;
+            height     : 9px;
+            overflow   : hidden;
+            background : url(images/colorpicker_indic.png) left top;
+            margin     : -4px 0 0 0;
+            left       : 0px;
+        }
+        
+        .colorpicker_new_color {
+            position   : absolute;
+            width      : 60px;
+            height     : 30px;
+            left       : 213px;
+            top        : 13px;
+            background : #f00;
+        }
+        
+        .colorpicker_current_color {
+            position   : absolute;
+            width      : 60px;
+            height     : 30px;
+            left       : 283px;
+            top        : 13px;
+            background : #f00;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main 
+          selector       = "div[1]" 
+          selector_indic = "div[1]/div/div" 
+          hue            = "div[2]/div"
+          newcolor       = "div[3]" 
+          customcolor    = "div[4]" 
+          inputs         = "div[5]">
+            <div class="colorpicker">
+                <div class="colorpicker_color">
+                    <div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="colorpicker_hue">
+                    <div></div>
+                </div>
+                <div class="colorpicker_new_color"> </div>
+                <div class="colorpicker_current_color"> </div>
+                <div class="colorpicker_inputs"> </div>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:colorpicker>
+<a:dropdown name="dropdown">
+    <a:style><![CDATA[
+        .dropdown {
+            position    : relative;
+            width       : 134px;
+            height      : 19px;
+            margin      : 0;
+            color       : #4b4b4b;
+            font-family : 'Segoe UI', Tahoma;
+            font-size   : 11px;
+        }
+    
+        .dropdown .dropdownLeftBorder {
+            background : url("images/dropdown_background.png") no-repeat top left;
+            width      : 3px;
+            height     : 21px;
+            position   : absolute;
+            left       : 0;
+            top        : 0;
+        }
+    
+        .dropdown .dropdownlabel {
+            cursor        : default;
+            height        : 17px;
+            padding-top   : 4px;
+            padding-left  : 2px;
+            padding-right : 15px;
+            margin        : 0;
+            overflow      : hidden;
+            white-space   : nowrap;
+            text-overflow : ellipsis;
+            background    : url("images/dropdown_background.png") no-repeat top right;
+            position      : absolute;
+            left          : 3px;
+            right         : 0;
+            top           : 0;
+        }
+        
+        .dropdown .dropdownlabel SPAN {
+            position : absolute;
+            overflow : hidden;
+            left     : 0;
+            top      : 4px;
+            bottom   : 0;
+            right    : 15px;
+        }
+
+        .dropdownError .dropdownlabel {
+            background-position : right -57px;
+        }
+    
+        .dropdownDisabled .dropdownlabel {
+            color : #bebebe;
+        }
+    
+        .dropdownFocus .dropdownlabel {
+        }
+
+        .dropdownFocus .dropdownLeftBorder {
+        }
+
+        .dropdownOver .dropdownlabel {
+            background-position : right -42px;
+        }
+        
+        .dropdownOver .dropdownLeftBorder {
+            background-position : left -42px;
+        }
+        
+        .dropdownDown .dropdownlabel {
+            background-position : right -63px;
+        }
+        
+        .dropdownDown .dropdownLeftBorder {
+            background-position : left -63px;
+        }
+        
+        .dropdownDisabled .dropdownlabel {
+            color : #bebebe;
+            background-position : right -21px;
+        }
+        
+        .dropdownDisabled .dropdownLeftBorder {
+            background-position : left -21px;
+        }
+        
+        .optionList {
+            display          : none;
+            background-color : white;
+            padding          : 0;
+            border-left      : 1px solid #c6c7d2;
+            margin-top       : 3px;
+            overflow         : visible;
+            position         : absolute;
+        }
+    
+        .optionList .options {
+            
+            position    : absolute;
+            top         : 0;
+            left        : 0;
+            right       : 0;
+            height      : 100%;
+            z-index     : 1000;
+            color       : #0d5381;
+            font-family : 'Segoe UI', Tahoma;
+            font-size   : 11px;
+            overflow-y  : auto;
+            overflow-x  : hidden;
+            display     : block;
+        }
+        
+        .optionList .optionListShadowR {
+            width               :4px;
+            background-image    : url(images/dropdown_optionListShadowR.png);
+            background-repeat   : repeat-y;
+            background-position : 0 0;
+            position            : absolute;
+            top                 : 3px;
+            bottom              : 0;
+            overflow            : hidden;
+            display             : block;
+            right               : -4px;
+        }
+        
+        .optionList .optionListShadowB {
+            height              : 5px;
+            background-image    : url(images/dropdown_optionListShadowB.png);
+            background-repeat   : repeat-x;
+            background-position : 0 0;
+            position            : absolute;
+            bottom              : -5px;
+            left                : 9px;
+            right               : 0;
+        }
+        
+        .optionList .optionListCornerRB {
+            height              : 5px;
+            width               : 4px;
+            background-image    : url(images/dropdown_optionListCornerRB.png);
+            background-repeat   : no-repeat;
+            background-position : 0 0;
+            position            : absolute;
+            bottom              : -5px;
+            right               : -4px;
+        }
+        
+        .optionList .optionListCornerLB {
+            height              : 5px;
+            width               : 10px;
+            background-image    : url(images/dropdown_optionListCornerLB.png);
+            background-repeat   : no-repeat;
+            background-position : 0 0;
+            position            : absolute;
+            bottom              : -5px;
+            left                : -1px;
+        }
+        
+        .optionList .optionListBorderT {
+            height           : 1px;
+            left             : 0;
+            right            : 0;
+            top              : -1px;
+            background-color : #83868d;
+            position         : absolute;
+        }
+        
+        .optionList .optionListCornerTL {
+            height           : 1px;
+            width            : 1px;
+            left             : -1px;
+            top              : -1px;
+            background-color : #dddfe0;
+            position         : absolute;
+        }
+        
+        .optionList .optionListCornerTR {
+            height              : 4px;
+            width               : 4px;
+            right               : -4px;
+            top                 : -1px;
+            background-image    : url(images/dropdown_optionListCornerTR.png);
+            background-repeat   : no-repeat;
+            background-position : 0 0;
+            position            : absolute;
+        }
+    
+        .optionList .options SPAN {
+            display          : block;
+            padding          : 0 3px 2px 3px;
+            height           : 11px;
+            white-space      : nowrap;
+            overflow         : hidden;
+            text-overflow    : ellipsis;
+            background-color : white;
+            color            : black;
+            cursor           : default;
+            z-index          : 1000;
+            width            : auto;
+        }
+    
+        .optionList .options SPAN.hover {
+            background-color : #3399ff;
+            color            : #ffffff;
+        }
+    
+        .optionList .options SPAN.selected {
+            background-color : #3399ff;
+            color            : #ffffff;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isSafari"><![CDATA[
+        .dropdown .dropdownlabel SPAN {
+            top : 3px;
+        }
+        
+        .optionList .options SPAN {
+            padding : 0 3px 4px 3px;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isOpera"><![CDATA[
+        .optionList .optionListShadowR {
+            height : 100%;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main 
+          ignore-overflow="true"
+          label       = "div[2]/span/text()" 
+          button      = "." 
+          width-diff  = "-1" 
+          item-height = "28">
+            <div class="dropdown">
+                <div class="dropdownLeftBorder"> </div>
+                <div class="dropdownlabel">
+                    <span>-</span>
+                </div>
+            </div>
+        </a:main>
+        <a:container contents="div">
+            <div class="optionList">
+                <div class="options"> </div>
+                <div class="optionListShadowR"> </div>
+                <div class="optionListShadowB"> </div>
+                <div class="optionListCornerRB"> </div>
+                <div class="optionListCornerLB"> </div>
+                <div class="optionListCornerTL"> </div>
+                <div class="optionListCornerTR"> </div>
+                <div class="optionListBorderT"> </div>
+            </div>
+        </a:container>
+        <a:item
+          class   = "."
+          caption = "text()"
+          select  = "."
+          inherit = "true">
+            <span>-</span>
+        </a:item>
+        <a:empty caption=".">
+            <div class="empty">-</div>
+        </a:empty>
+    </a:presentation>
+</a:dropdown>
+<a:errorbox name="errorbox">
+    <a:style><![CDATA[
+        .errorbox {
+            font-family : Tahoma;
+            font-size   : 8pt;
+            cursor      : default;
+            z-index     : 100000;
+            position    : absolute;
+            overflow    : hidden;
+            margin      : 22px 0 0 16px;
+            width       : 212px;
+        }
+
+        .errorbox .errorboxContent {
+            background       : url(images/errorbox_backg2.png) no-repeat top left;
+            width            : 212px;
+            background-color : transparent;
+        }
+        
+        .errorbox .errorboxContent span {
+            background-color    : transparent;
+            background-image    : url(images/errorbox_backg.png);
+            background-repeat   : no-repeat;
+            background-position : top left;
+        }
+        
+        .errorbox .errorboxTop {
+            background : url("images/errorbox_top.png") no-repeat top left;
+            width      : 212px;
+            height     : 6px;
+        }
+        
+        .errorbox .errorboxBottom {
+            background : url("images/errorbox_bottom.png") no-repeat top left;
+            width      : 212px;
+            height     : 11px;
+        }
+        
+        .errorbox .errorboxTop div {
+            width    : 19px;
+            height   : 11px;
+            position : absolute;
+            top      : -10px;
+            left     : 15px;
+            padding  : 0;
+            margin   : 0;
+            border   : 0;
+            z-index  : 10000000;
+        }
+ 
+        .errorbox .close {
+            width      : 13px;
+            height     : 13px;
+            background : url("images/errorbox_close.png") no-repeat top left;
+            overflow   : hidden;
+            cursor     : default;
+            position   : absolute;
+            right      : 13px;
+            top        : 6px;
+        }
+        
+        .errorbox .close:hover {
+            background-position : 0 -13px;
+        }
+        
+        .errorbox span {
+            display : block;
+            padding : 0 10px 4px 10px;
+            
+        }
+        
+        .errorbox strong {
+            display        : block;
+            line-height    : 13px;
+            margin-top     : 0;
+            padding-top    : 0;
+            padding-bottom : 3px;
+            border         : 0; 
+        }
+        
+        .rightbox {
+            margin-left : -205px;
+        }
+        
+        .rightbox .errorboxTop div {
+            right : 20px;
+            left  : auto;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main 
+          container = "div[2]/span" 
+          close     = "div[1]/a">
+            <div class="errorbox">
+                <div class="errorboxTop">
+                    <div> </div>
+                    <a class="close" href="javascript:void(0)" onclick="return false;"> </a>
+                </div>
+                <div class="errorboxContent">
+                    <span> </span>
+                </div>
+                <div class="errorboxBottom"> </div>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:errorbox>
+<a:frame name="frame">
+    <a:alias>fieldset</a:alias>
+    
+    <a:style><![CDATA[
+        .frame {
+            position    : relative;
+            border      : 1px solid #d5dfe5;
+            color       : black;
+            cursor      : default;
+            font-family : Tahoma;
+            font-size   : 11px;
+            padding     : 15px 17px;
+        }
+        
+        .frame .legend {
+            position         : absolute;
+            top              : -7px;
+            left             : 6px;
+            background-color : white;
+            padding          : 0 2px;
+        }
+        
+        .frame .corner {
+            position            : absolute;
+            background-color    : red;
+            background-position : 0 0;
+            background-repeat   : no-repeat;
+            width               : 2px;
+            height              : 2px;
+        }
+        
+        .frame .lt {
+            top              : -1px;
+            left             : -1px;
+            background-image : url(images/frame_lt_corner.png);
+        }
+        
+        .frame .rt {
+            top              : -1px;
+            right            : -1px;
+            background-image : url(images/frame_rt_corner.png);
+        }
+        
+        .frame .lb {
+            left             : -1px;
+            bottom           : -1px;
+            background-image : url(images/frame_lb_corner.png);
+        }
+        
+        .frame .rb {
+            right            : -1px;
+            bottom           : -1px;
+            background-image : url(images/frame_rb_corner.png);
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main 
+          container = "." 
+          caption   = "div[5]/text()">
+            <div class="frame">
+                <div class="corner lt"> </div>
+                <div class="corner rt"> </div>
+                <div class="corner lb"> </div>
+                <div class="corner rb"> </div>
+                <div class="legend"> </div>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:frame>
+<a:img name="img">
+    <a:style><![CDATA[
+        .img {
+            padding     : 10px;
+            border-top  : 1px solid #a0a0a0;
+            border-left : 1px solid #a0a0a0;
+            background  : white no-repeat 50% 50%;
+            overflow    : hidden;
+            position    : relative;
+            text-align  : center;
+        }
+        
+        .img img {
+            margin   : auto;
+            position : relative;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main image="img/@src">
+            <div class="img">
+                <img src="" />
+            </div>
+        </a:main>
+    </a:presentation>
+</a:img>
+<a:label name="label">
+    <a:style><![CDATA[
+        .label {
+            font-size   : 11px;
+            font-family : Tahoma;
+            overflow    : hidden;
+            cursor      : default;
+            line-height : 1.5em;
+            padding     : 0 0 0 0;
+        }
+
+        .labelDisabled {
+            color : #a0a0a0;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main caption="." for="@for">
+            <div class="label"> </div>
+        </a:main>
+    </a:presentation>
+</a:label>
+<a:list name="list">
+    <a:style><![CDATA[
+        .list {
+            overflow         : auto;
+            position         : relative;
+            background-color : white;
+            cursor           : default;
+        }
+    
+        .white {
+            background : white;
+        }
+    
+        .list, 
+        .draglist {
+            font-family : 'Segoe UI', Tahoma;
+            font-size   : 12px;
+        }
+    
+        .list DIV, 
+        .draglist {
+            padding  : 0;
+            height   : 20px;
+            overflow : hidden;
+            position : relative;
+        }
+        
+        .list DIV.right {
+            width               : 2px;
+            height              : 20px;
+            background-image    : none;
+            background-position : right 0;
+            background-repeat   : no-repeat;
+            position            : absolute;
+            overflow            : hidden;
+            right               : -1px;
+            top                 : 0;
+        }
+    
+        .list SPAN, 
+        .draglist SPAN {
+            float : left;
+        }
+        
+        .list .icon {
+            width      : 20px;
+            background : no-repeat 1px center;
+            height     : 16px;
+            position   : absolute;
+            left       : 0;
+            top        : 0;
+            margin-top : 2px;
+        }
+    
+        .list U, 
+        .draglist U {
+            text-decoration     : none;
+            color               : black;
+            cursor              : default;
+            display             : block;
+            padding             : 2px 4px 2px 20px;
+            height              : 16px;
+            white-space         : nowrap;
+            background-image    : none;
+            background-position : 0 0;
+            background-repeat   : no-repeat;
+            position            : relative;
+        }
+        
+        .list .selected SPAN U {
+            background-image    : url(images/list_backg.png);
+            background-position : 0 -40px;
+            color               : black;
+        }
+        
+        .list .selected SPAN DIV.right {
+            background-image    : url(images/list_backg.png);
+            background-position : right -40px;
+        }
+    
+        .listFocus .indicate U {
+            color : black;
+        }
+    
+        .listFocus SPAN.hover U {
+            background-image    : url(images/list_backg.png);
+            background-position : 0 -60px;
+        }
+        
+        .listFocus SPAN.hover DIV.right {
+            background-image:url(images/list_backg.png);
+            background-position:right -60px;
+        }
+    
+        .listFocus .selected SPAN U {
+            background-image:url(images/list_backg.png);
+            background-position:0 0;
+        }
+        
+        .listFocus .selected SPAN DIV.right {
+            background-image:url(images/list_backg.png);
+            background-position:right 0;
+        }
+    
+        .list #txt_rename {
+            border      : 1px solid black;
+            padding     : 2px 4px 2px 2px;
+            font-family : Tahoma;
+            font-size   : 8pt;
+            color       : black;
+            word-break  : keep-all;
+            overflow    : visible;
+            margin-top  : 0px;
+            margin-left : 17px;
+            cursor      : text;
+            height      : 13px;
+            display     : block;
+            outline     : none;
+        }
+    
+        .list .empty, 
+        .list .offline, 
+        .list .loading {
+            text-align  : center;
+            padding     : 8px 0 0 5px;
+            color       : #AAA;
+            font-weight : normal;
+        }
+    
+        .shortlist {
+            border     : 0;
+            overflow-y : auto;
+            overflow-x : hidden;
+            max-height : 90px;
+            width      : auto;
+        }
+        
+        .listDrop {
+            border : 1px solid #25a8e7;
+        }
+    
+        .draglist_multiple {
+            border     : 2px solid black;
+            width      : 10px;
+            height     : 5px;
+            padding    : 0;
+            background : none;
+        }
+    
+        .draglist_multiple span {
+            display : none;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main container=".">
+            <div class='list'>
+            </div>
+        </a:main>
+        <a:item
+          class   = "."
+          caption = "span/u"
+          icon    = "span/u/div[2]"
+          select  = "span">
+            <div>
+                <span>
+                    <u>-<div class="right"></div><div class="icon"></div></u>
+                </span>
+            </div>
+        </a:item>
+        <a:dragindicator>
+            <div class='draglist'>
+                <span>
+                    <u>-<div class="right"> </div> <div class="icon"></div></u>
+                </span>
+            </div>
+        </a:dragindicator>
+        <a:loading>
+            <div class="loading">Loading...</div>
+        </a:loading>
+        <a:empty caption=".">
+            <div class="message">-</div>
+        </a:empty>
+    </a:presentation>
+</a:list>
+<a:list name="thumbnail">
+    <a:style><![CDATA[
+        .thumbs {
+            background-color : white;
+            border           : 1px solid #828790;
+            overflow         : auto;
+            cursor           : default;
+            padding          : 1px;
+            height           : 200px;
+            position         : relative;
+            width:200px;
+            display:block;
+        }
+        
+        .ajaxthumbs {
+            background : transparent;
+            border     : 0;
+        }
+        
+        .dragthumb {
+            opacity : 0.5;
+            filter  : progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+        }
+        
+        .thumbs, 
+        .dragthumb {
+            font-family : Tahoma;
+            font-size   : 11px;
+            text-align  : center;
+            line-height : 11px;
+        }
+    
+        .thumbs .thumb, 
+        .dragthumb {
+            padding  : 0;
+            float    : left;
+            display  : block;
+            position : relative;
+            overflow : hidden;
+        }
+        
+        .ajaxthumbs .thumb {
+            border-color : transparent;
+        }
+        
+        .thumbs blockquote, 
+        .dragthumb blockquote {
+            width      : 36px;
+            height     : 44px;
+            margin     : 1px;
+            background : transparent no-repeat 50% 50%;
+            float      : left;
+        }
+        
+        .ajaxthumbs blockquote {
+            background-color : #3e7ca7;
+            border-color     : #2c78bd;
+        }
+        
+        .thumbs .primary blockquote {
+            border : 1px solid gray;
+            margin : 1px;
+        }
+        
+        .thumbs .selected, 
+        .dragthumb {
+            background-color : #3399ff;
+        }
+        
+        .thumbs.thumbsFocus .selected, 
+        .dragthumb {
+            border-color : #25a8e7;
+        }
+    
+        .thumbs label, 
+        .dragthumb label {
+            padding    : 3px 0 0 0;
+            margin     : 0 2px 0 2px;
+            height     : 16px;
+            width      : 92px;
+            overflow   : hidden;
+            display    : block;
+            text-align : center;
+        }
+    
+        .thumbs span, 
+        .dragthumb span {
+            text-decoration : none;
+            color           : black;
+            cursor          : default;
+            padding         : 1px 3px 2px 3px;
+            margin          : 1px auto 0 auto;
+            white-space     : nowrap;
+            position        : relative;
+            border-color    : gray;
+            border-width    : 0;
+        }
+        
+        .thumbsFocus .indicate span {
+            border-style : dotted;
+            border-width : 1px;
+            padding      : 0px 2px 1px 2px;
+        }
+    
+        .thumbs .selected span {
+            background-color : #dcdcdc;
+            color            : black;
+            border-color     : white;
+            border-style     : dotted;
+        }
+    
+        .thumbs.thumbsFocus .selected span, 
+        .dragthumb span {
+            color            : white;
+            background-color : #25a8e7;
+        }
+
+        .thumbs .empty, 
+        .thumbs .loading {
+            font-weight : normal;
+            color       : #aaa;
+            padding     : 5px;
+        }
+        
+        .thumbs .dragInsert {
+            margin-left : 4px;
+            border-left : 2px solid gray;
+        }
+        
+        .thumb_attach blockquote {
+            background-color : #fafafa;
+        }
+        
+        .thumbsDrop {
+            border : 1px solid #25a8e7;
+        }
+        
+        .dragthumb_multiple {
+            border     : 2px solid black;
+            width      : 10px;
+            height     : 5px;
+            padding    : 0;
+            background : none;
+        }
+        
+        .dragthumb_multiple blockquote {
+            display : none;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main container=".">
+            <div class='thumbs'>
+            </div>
+        </a:main>
+        <a:item
+          class  = "."
+          image  = "blockquote"
+          select = ".">
+            <div class="thumb">
+                <blockquote> </blockquote>
+            </div>
+        </a:item>
+        <a:dragindicator>
+            <div class='dragthumb'>
+                <blockquote> </blockquote>
+            </div>
+        </a:dragindicator>
+        <a:loading>
+            <div class="loading">Loading...</div>
+        </a:loading>
+        <a:empty caption=".">
+            <div class="empty">-</div>
+        </a:empty>
+    </a:presentation>
+</a:list>
+<a:list name="listiconleft">
+    <a:style><![CDATA[
+        .listiconleft {
+            background-color : white;
+            border           : 1px solid #828790;
+            overflow-y       : auto;
+            overflow-x       : hidden;
+            cursor           : default;
+            height           : 200px;
+            position         : relative;
+            width            : 200px;
+            display          : block;
+        }
+        
+        .listiconleft .viewport {
+            position         : absolute;
+            top              : 1px;
+            left             : 1px;
+            right            : 1px;
+            bottom           : 3px;
+            background-color : white;
+            overflow         : auto;
+        }
+        
+        .ajaxlisticonleft {
+            background : transparent;
+            border     : 0;
+        }
+        
+        .draglisticonleft {
+            opacity : 0.5;
+            filter  : progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+        }
+        
+        .listiconleft, 
+        .draglisticonleft {
+            font-family : Tahoma;
+            font-size   : 11px;
+            text-align  : center;
+            line-height : 11px;
+        }
+        
+        .listiconleft .list_item, 
+        .draglisticonleft {
+            padding  : 0;
+            margin   : 0;
+            height   : 34px;
+            display  : block;
+            position : relative;
+            overflow : hidden;
+        }
+        
+        .ajaxlisticonleft .list_item {
+            border-color : transparent;
+        }
+        
+        .listiconleft SPAN, 
+        .draglisticonleft SPAN {
+            color           : black;
+            cursor          : default;
+            white-space     : nowrap;
+            text-align      : left;
+            position        : absolute;
+            left            : 1px;
+            right           : 1px;
+            top             : 1px;
+            bottom          : 1px;
+            padding         : 10px 0 0 5px;
+        }
+        
+        .listiconleft .selected SPAN {
+            color : white;
+        }
+        
+        .listiconleft SPAN BLOCKQUOTE, 
+        .draglisticonleft SPAN BLOCKQUOTE {
+            width      : 32px;
+            height     : 32px;
+            margin     : 1px;
+            background : transparent no-repeat 50% 50%;
+            position   : absolute;
+            right      : 0;
+            top        : 0;
+        }
+        
+        .ajaxlisticonleft SPAN BLOCKQUOTE {
+            background-color : #3e7ca7;
+            border-color     : #2c78bd;
+        }
+        
+        .listiconleft .primary SPAN BLOCKQUOTE {
+            border : 1px solid gray;
+            margin : 1px;
+        }
+        
+        .listiconleft .selected, 
+        .draglisticonleft {
+            background-color : #3399ff;
+        }
+        
+        .listiconleft.listiconleftFocus .selected, 
+        .draglisticonleft {
+            border-color : #25a8e7;
+        }
+        
+        .listiconleftFocus .selected SPAN {
+            border  : 1px dotted black;
+            padding : 9px 0 0 4px;
+        }
+        
+        .listiconleftFocus .selected SPAN BLOCKQUOTE {
+            top   : -1px;
+            right : -1px;
+        }
+    
+        
+        .listiconleft .empty, 
+        .listiconleft .loading {
+            font-weight : normal;
+            color       : #aaa;
+            padding     : 5px;
+        }
+        
+        .listiconleft .dragInsert {
+            margin-left : 4px;
+            border-left : 2px solid gray;
+        }
+        
+        .listiconleft_attach BLOCKQUOTE {
+            background-color : #fafafa;
+        }
+        
+        .listiconleftDrop {
+            border : 1px solid #25a8e7;
+        }
+        
+        .draglisticonleft_multiple {
+            border     : 2px solid black;
+            width      : 10px;
+            height     : 5px;
+            padding    : 0;
+            background : none;
+        }
+        
+        .draglisticonleft_multiple BLOCKQUOTE {
+            display : none;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main container="div">
+            <div class='listiconleft'>
+                <div class="viewport"> </div>
+            </div>
+        </a:main>
+        <a:item
+          class   = "."
+          image   = "span/blockquote"
+          caption = "span"
+          select  = ".">
+            <div class="list_item">
+                <span>-<blockquote> </blockquote></span>
+            </div>
+        </a:item>
+        <a:dragindicator>
+            <div class='draglisticonleft'>
+                <blockquote> </blockquote>
+            </div>
+        </a:dragindicator>
+        <a:loading>
+            <div class="loading">Loading...</div>
+        </a:loading>
+        <a:empty caption=".">
+            <div class="empty">-</div>
+        </a:empty>
+    </a:presentation>
+</a:list>
+<a:list name="thumbnail_caption">
+    <a:style><![CDATA[
+        .thumbsc {
+            background-color : white;
+            border           : 1px solid #828790;
+            overflow         : auto;
+            cursor           : default;
+            padding          : 1px;
+            height           : 200px;
+            position         : relative;
+            width            : 200px;
+            display          : block;
+        }
+        
+        .ajaxthumbsc {
+            background : transparent;
+            border     : 0;
+        }
+        
+        .dragthumbc {
+            opacity : 0.5;
+            filter  : progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+        }
+        
+        .thumbsc, 
+        .dragthumbc {
+            font-family : 'Segoe UI', Tahoma;
+            font-size   : 12px;
+            text-align  : center;
+            line-height : 11px;
+        }
+    
+        .thumbsc .thumbc, 
+        .dragthumbc {
+            padding    : 0;
+            float      : left;
+            display    : block;
+            position   : relative;
+            overflow   : hidden;
+            background : transparent no-repeat 0 0;
+            width      : 136px;
+            height     : 126px;
+            margin     : 0 1px 1px 0;
+        }
+        
+        .ajaxthumbsc .thumbc {
+            border-color : transparent;
+        }
+        
+        .thumbsc BLOCKQUOTE, 
+        .dragthumbc BLOCKQUOTE {
+            width       : 134px;
+            height      : 17px;
+            padding-top : 107px;
+            margin      : 1px;
+            background  : transparent no-repeat 50% 50%;
+            float       : left;
+        }
+        
+        .ajaxthumbsc BLOCKQUOTE {
+        }
+        
+        .thumbsc .primary BLOCKQUOTE {
+        }
+        
+        .thumbscFocus .hover, 
+        .dragthumbc {
+            background-image    : url(images/list_caption.png);
+            background-position : 0 -126px;
+        }
+        
+        .thumbsc .selected, 
+        .dragthumbc {
+            background-image    : url(images/list_caption.png);
+            background-position : 0 -252px;
+        }
+        
+        .thumbscFocus .selected, 
+        .dragthumbc {
+            background-image    : url(images/list_caption.png);
+            background-position : 0 0;
+        }
+        
+        .thumbsc LABEL, 
+        .dragthumbc LABEL {
+            padding    : 3px 0 0 0;
+            margin     : 0 2px 0 2px;
+            height     : 16px;
+            width      : 92px;
+            overflow   : hidden;
+            display    : block;
+            text-align : center;
+        }
+    
+        .thumbsc SPAN, 
+        .dragthumbc SPAN {
+            text-decoration : none;
+            color           : black;
+            cursor          : default;
+            padding         : 1px 3px 2px 3px;
+            margin          : 1px auto 0 auto;
+            white-space     : nowrap;
+            position        : relative;
+            border-color    : gray;
+            border-width    : 0;
+        }
+        
+        .thumbscFocus .indicate SPAN {
+            
+        }
+    
+        .thumbsc .selected SPAN {
+            background-color : #dcdcdc;
+            color            : black;
+            border-color     : white;
+            border-style     : dotted;
+        }
+    
+        .thumbsc.thumbscFocus .selected SPAN, 
+        .dragthumbc SPAN {
+            color            : white;
+            background-color : #25a8e7;
+        }
+
+        .thumbsc .empty, 
+        .thumbsc .loading {
+            font-weight : normal;
+            color       : #aaa;
+            padding     : 5px;
+        }
+        
+        .thumbsc .dragInsert {
+            margin-left : 4px;
+            border-left : 2px solid gray;
+        }
+        
+        .thumbc_attach BLOCKQUOTE {
+            background-color : #fafafa;
+        }
+        
+        .thumbscDrop {
+            border : 1px solid #25a8e7;
+        }
+        
+        .dragthumbc_multiple {
+            border     : 2px solid black;
+            width      : 10px;
+            height     : 5px;
+            padding    : 0;
+            background : none;
+        }
+        
+        .dragthumbc_multiple BLOCKQUOTE {
+            display : none;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main container=".">
+            <div class='thumbsc'>
+            </div>
+        </a:main>
+        <a:item
+          class   = "."
+          image   = "blockquote"
+          caption = "blockquote"
+          select  = ".">
+            <div class="thumbc">
+                <blockquote> </blockquote>
+            </div>
+        </a:item>
+        <a:dragindicator>
+            <div class='dragthumbc'>
+                <blockquote> </blockquote>
+            </div>
+        </a:dragindicator>
+        <a:loading>
+            <div class="loading">Loading...</div>
+        </a:loading>
+        <a:empty caption=".">
+            <div class="empty">-</div>
+        </a:empty>
+    </a:presentation>
+</a:list>
+<a:menu name="menu">
+    <a:style><![CDATA[
+        .menu  {
+            margin           : -1px 0 0 0;
+            _margin          : 0 0 0 0;
+            padding          : 2px 0 1px 0;
+            z-index          : 10000;
+            position         : absolute;
+            font-family      : 'Segoe UI', Tahoma;
+            font-size        : 12px;
+            color            : black;
+            border           : 1px solid #979797;
+            display          : none;
+            background-color : #f0f0f0;
+        }
+        
+        .menu blockquote {
+            list-style-type  : none;
+            margin           : 0;
+            padding          : 0;
+            border           : 0;
+            background-color : #f0f0f0;
+            position         : relative;
+        }
+    
+        .menu div.item,
+        .menu div.radio,
+        .menu div.check {
+            padding          : 4px 29px 4px 34px;
+            margin-right     : 2px;
+            white-space      : nowrap;
+            cursor           : default;
+            background-color : #f0f0f0;
+            position         : relative;
+            overflow         : hidden;
+        }
+
+        .menu>div {
+            height : 13px;
+        }
+        
+        .menu div.hover {
+            background-image    : url(images/menu_hover.png);
+            background-repeat   : no-repeat;
+            background-position : right 0;
+        }
+    
+        .menu div.menu_divider {
+            overflow            : visible;
+            position            : relative;
+            padding             : 0;
+            height              : 2px;
+            background-color    : #f0f0f0;
+            background-image    : url(images/menu_divider_hor_backg.png);
+            background-repeat   : repeat-x;
+            background-position : 0 0;
+        }
+    
+        .menu>div.menu_divider {
+            height : 0;
+        }
+    
+        .menu div SPAN {
+            right        : 5px;
+            margin-top   : -1px;
+            z-index      : 10;
+            text-align   : right;
+            padding-left : 15px;
+            margin-right : -15px;
+            font-size    : 10px;
+        }
+                
+        .menu div.submenu SPAN {
+            background-image    : url(images/menu_arrow.gif);
+            background-repeat   : no-repeat;
+            background-position : right top;
+            width               : 4px;
+            height              : 7px;
+            display             : block;
+            position            : absolute;
+            right               : 24px;
+            top                 : 18px;
+            z-index             : 10;
+        }
+        
+        .menu div.hover SPAN {
+        }
+    
+        .menu div.submenu>span {
+            margin-top : -10px;
+        }
+    
+        .menu div.disabled {
+            color : #808080;
+        }
+        
+        .menu div.item div.ver_divider,
+        .menu div.radio div.ver_divider,
+        .menu div.check div.ver_divider {
+            width               : 30px;
+            height              : auto;
+            position            : absolute;
+            overflow            : hidden;
+            left                : 0;
+            top                 : 0;
+            bottom              : 0;
+            background-color    : #f0f0f0;
+            background-image    : url(images/menu_divider_ver_backg.png);
+            background-position : right 0;
+            background-repeat   : repeat-y;
+        }
+        
+        .menu div.hover div.ver_divider {
+            background-image    : url(images/menu_hover.png);
+            background-repeat   : no-repeat;
+            background-position : 2px 0;
+        }
+        
+        .menu div.menu_divider div.ver_divider {
+            height              : 2px;
+            width               : 30px;
+            background-color    : #f0f0f0;
+            background-image    : url(images/menu_divider_ver_backg.png);
+            background-position : right 0;
+            background-repeat   : repeat-y;
+            position            : absolute;
+            overflow            : hidden;
+            left                : 0;
+            top                 : 0;
+            bottom              : 0;
+        }
+        
+        .menu div.ver_divider U {
+            width               : 22px;
+            height              : 22px;
+            position            : absolute;
+            left                : 2px;
+            top                 : 0px;
+            background-repeat   : no-repeat;
+            background-position : 50% 50%;
+        }
+        
+        .menu div.selected div.ver_divider U {
+            background-image : url(images/menu_radio.png);
+            
+        }
+        
+        .menu div.checked div.ver_divider U {
+            background-image    : url(images/menu_check.png);
+            background-repeat   : no-repeat;
+            background-position : 0 0;
+        }
+        
+        .menu div.hover div.ver_divider U {
+        }
+    
+        .menu div.menuShadowTop {
+            position : absolute;
+            left     : 0;
+            top      : -2px;
+            margin   : 0;
+            padding  : 0 4px 0 0;
+            width    : 100%;
+            height   : 2px;
+            overflow : hidden;
+            z-index  : -10;
+        }
+                
+        .menu div.menuShadowRight {
+            position   : absolute;
+            right      : -5px;
+            bottom     : -4px;
+            top        : 8px;
+            margin     : 0;
+            padding    : 0 0 4px 0;
+            width      : 5px;
+            height     : auto;
+            overflow   : hidden;
+            z-index    : -10;
+            background : url("images/menu_left_shadow.png") no-repeat right bottom;
+        }
+        
+        .menu div.menuShadowRightCorner {
+            position   : absolute;
+            width      : 5px;
+            height     : 9px;
+            right      : -5px;
+            top        : -1px;
+            background : url("images/menu_right_shadow_corner.png") no-repeat 0 3px;
+        }
+    
+        .menu div.menuShadowBottom {
+            position   : absolute;
+            bottom     : -6px; 
+            right      : 0;
+            margin     : 0;
+            padding    : 0 0 0 3px;
+            width      : 100%;
+            height     : 100%;
+            overflow   : hidden;
+            z-index    : -10;
+            background : url("images/menu_bottom_shadow.png") no-repeat 7px bottom;
+        }
+    
+        .menu div.menuShadowLeft {
+            position   : absolute;
+            left       : -3px;
+            bottom     : 0;
+            margin     : 0;
+            padding    : 2px 0 0 0;
+            width      : 3px;
+            height     : 100%;
+            overflow   : hidden;
+            z-index    : -10;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isIE6">
+        .menu div.menuShadowTop, 
+        .menu div.menuShadowRight, 
+        .menu div.menuShadowLeft, 
+        .menu div.menuShadowBottom {
+           display : none;
+        }
+    </a:style>
+    <a:style condition="apf.isIE">
+        .menu div.submenu SPAN {
+            top : 9px;
+        }
+    </a:style>
+    
+    <a:presentation>
+        <a:main container="blockquote" overlay="strong">
+            <blockquote class='menu'>
+                <blockquote>
+            
+                </blockquote>
+                <div class="menuShadowTop"> </div>
+                <div class="menuShadowRightCorner"> </div>
+                <div class="menuShadowRight"> </div>
+                <div class="menuShadowBottom"> </div>
+                <div class="menuShadowLeft"> </div>
+            </blockquote>
+        </a:main>
+        <a:item 
+          caption = "text()" 
+          icon    = "div/u" 
+          hotkey  = "span" 
+          inherit = "true">
+            <div><div class="ver_divider"><u> </u></div>-
+                <span> </span>
+            </div>
+        </a:item>
+        <a:divider inherit="true">
+            <div class='menu_divider'><div class="ver_divider"></div></div>
+        </a:divider>
+    </a:presentation>
+</a:menu>
+<a:spinner name="spinner">
+    <a:style><![CDATA[
+        .spinner {
+            position         : relative;
+            display          : block;
+            overflow         : visible;
+            height           : 23px;
+            border           : 0;
+            margin           : 0;
+            padding          : 0;
+            min-width        : 35px;
+            background-color : white;
+        }
+        
+        .spinner .left {
+            width               : 2px;
+            position            : absolute;
+            left                : 0;
+            top                 : 0;
+            height              : 23px;
+            background-image    : url(images/spinner_left.png);
+            background-position : 0 0;
+            background-repeat   : no-repeat;
+        }
+
+        .spinner .divfix {
+            display          : block;
+            position         : absolute;
+            text-align       : right;
+            height           : 23px;
+            left             : 2px;
+            right            : 18px;
+            margin           : 0;
+            padding          : 0;
+            border           : 0;
+            z-index          : 9000;
+            overflow         : visible;
+            background-color : white;
+            
+        }
+
+        .spinner .divfix input {
+            outline             : none;
+            display             : block;
+            border              : 0;
+            padding             : 1px 0 0 0;
+            margin              : 0 0 0 0;
+            height              : 20px;
+            position            : absolute;
+            text-align          : right;
+            background-position : 0 0;
+            color               : black;
+            font-family         : 'Segoe UI', Tahoma;
+            font-size           : 13px;
+            width               : 100%;
+            z-index             : 10000;
+            background-color    : white;
+            border-top          : 1px solid #abadb3;
+            border-bottom       : 1px solid #e3e9ef;
+        }
+
+        .spinner .buttons {
+            display  : block;
+            width    : 17px;
+            height   : 19px;
+            position : absolute;
+            right    : 0;
+            z-index  : 11000;
+            overflow : visible;
+        }
+
+        .spinner .buttons .plus {
+            height              : 11px;
+            width               : 18px;
+            position            : absolute;
+            top                 : 0;
+            right               : 0;
+            background-image    : url(images/spinner_plus.png);
+            background-repeat   : no-repeat;
+            background-position : 0 0;
+        }
+
+        .spinner .buttons .minus {
+            height              : 12px;
+            width               : 18px;
+            background-image    : url(images/spinner_minus.png);
+            background-repeat   : no-repeat;
+            background-position : 0 0;
+            position            : absolute;
+            right               : 0;
+            bottom              : -4px;
+        }
+        
+        .spinner .leftFocus {
+            background-position : 0 -23px;
+        }
+        
+        .spinner .divfix .focus {
+            border-top-color    : #3d7bad;
+            border-bottom-color : #b7d9ed;
+        }
+
+        .spinner .buttons .plusFocus {
+            
+        }
+
+        .spinner .buttons .minusFocus {
+            
+        }
+
+        .spinner .buttons .plusDown {
+            background-position : 0 -22px;
+        }
+
+        .spinner .buttons .minusDown {
+            background-position : 0 -24px;
+        }
+
+        .spinner .buttons .plusHover {
+            background-position : 0 -11px;
+        }
+
+        .spinner .buttons .minusHover {
+            background-position : 0 -12px;
+        }
+        
+        .spinnerDisabled .left {
+            background-position : 0 -69px;
+        }
+
+        .spinnerDisabled .divfix input {
+            border-top-color    : #afafaf;
+            border-bottom-color : #afafaf;
+            color               : #6d6d6d;
+        }
+        
+        .spinnerDisabled .buttons .plus {
+            background-position : 0 -33px;
+        }
+
+        .spinnerDisabled .buttons .minus {
+            background-position : 0 -36px;
+        }
+    ]]></a:style>
+    <a:style condition="apf.isChrome"><![CDATA[
+        .spinner .divfix input {
+           
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main
+          container   = "."
+          input       = "div[2]/input"
+          buttonplus  = "div/div[1]"
+          buttonminus = "div/div[2]"
+          left        = "div[3]">
+            <div class="spinner">
+                <div class="buttons">
+                    <div class="plus"> </div>
+                    <div class="minus"> </div>
+                </div>
+                <div class="divfix">
+                    <input type="text"  />
+                </div>
+                <div class="left"> </div>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:spinner>
+<a:textbox name="textbox">
+    <a:alias>input</a:alias>
+    <a:alias>secret</a:alias>
+    
+    <a:style><![CDATA[
+        .textbox {
+            height   : 20px;
+            position : relative;
+            width    : 161px;
+            overflow : visible;
+            border   : 0;
+        }
+        
+        .textbox:hover .left {
+            background-position : 0 -20px;
+        }
+        
+        .textbox:hover .fixdiv {
+            background-position : right -20px;
+        }
+        
+        .textboxDisabled:hover .left {
+            background-position : 0 -40px;
+        }
+        
+        .textboxDisabled:hover .fixdiv {
+            background-position : right -40px;
+        }
+        
+        .textbox .left {
+            width      : 2px;
+            position   : absolute;
+            height     : 20px;
+            left       : 0;
+            top        : 0;
+            overflow   : hidden;
+            background : transparent url(images/textbox.png) no-repeat 0 0;
+        }
+        
+        .textbox .fixdiv {
+            background : transparent url(images/textbox.png) no-repeat right 0;
+            left       : 2px;
+            right      : 0;
+            top        : 0;
+            height     : 20px;
+            position   : absolute;
+            overflow   : hidden;;
+            bottom     : 0;
+            padding    :0 2px 0 0;
+        }
+        
+        .textbox .fixdiv .caption {
+            background-color : transparent;
+            width            : 100%;
+            height           : 20px;
+            color            : black;
+            border           : 0;
+            margin           : 0;
+            outline          : none;
+            padding          : 3px 0;
+            position         : relative;
+            white-space      : nowrap;
+            text-overflow    : ellipsis;
+            overflow         : hidden;
+            font-family      : Tahoma;
+            font-size        : 11px;
+        }
+    
+        .textboxFocus .left {
+            background-position : 0 -20px;
+        }
+        
+        .textboxFocus .fixdiv {
+            background-position : right -20px;
+        }
+    
+        .textboxDisabled .left {
+            background-position : 0 -40px;
+        }
+        
+        .textboxDisabled .fixdiv {
+            background-position : right -40px;
+        }
+        
+        .textboxDisabled .fixdiv .caption {
+            color : #838383;
+        }
+        
+        .textboxError .left {
+        }
+        
+        .textboxError .fixdiv {
+        }
+    
+        .textboxInitial .left {
+        }
+        
+        .textboxInitial .fixdiv {
+        }
+    ]]></a:style>
+    <a:style condition="apf.isChrome">
+        .textbox .fixdiv .caption {
+            padding : 0;
+        }
+        
+        .textboxDisabled .fixdiv .caption {
+            color : #c2c2c2;
+        }
+    </a:style>
+    <a:style condition="apf.isSafari">
+        .textbox .fixdiv .caption {
+            padding : 0;
+        }
+        .textboxDisabled .fixdiv .caption {
+            color : #c2c2c2;
+        }
+    </a:style>
+
+    <a:presentation>
+        <a:main input="div[2]/input">
+            <div class="textbox">
+                <div class="left"> </div>
+                <div class="fixdiv">
+                    <input type='text' class="caption" />
+                </div>
+            </div>
+        </a:main>
+        <a:container>
+            <div class="tbautoc"> </div>
+        </a:container>
+        <a:item caption=".">
+            <div>-</div>
+        </a:item>
+    </a:presentation>
+</a:textbox>
+<a:toolbar name="toolbar">
+    <a:style><![CDATA[
+        .toolbar .menubar {
+            background    : url(images/menubar_row.png) repeat-x top left;
+            height        : 21px;
+            font-family   : 'Segoe UI', Tahoma;
+            font-size     : 12px;
+            position      : relative;
+            color         : black;
+        }
+        
+        .noborder .toolbar {
+            border       : 1px solid #c3c3c3;
+            border-width : 0 1px 0 1px;
+        }
+        
+        .toolbar .subbar {
+            background    : url(images/toolbar_row.png) repeat-x top left;
+            height        : 29px;
+            font-family   : 'Segoe UI', Tahoma;
+            font-size     : 12px;
+            color         : #1e395b;
+            position      : relative;
+            padding       : 2px 0 0 0;
+            width         : 100%;
+        }
+        
+        .toolbar .divider {
+            border-left  : 1px solid #b3c5d9;
+            border-right : 1px solid #FFFFFF;
+            height       : 17px;
+            float        : left;
+            margin       : 4px 0 0 0;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main container=".">
+            <div class="toolbar"> </div>
+        </a:main>
+        <a:bar container="." inherit="true">
+            <div class="subbar"> </div>
+        </a:bar>
+        <a:menubar container="." inherit="true">
+            <div class="menubar">
+            </div>
+        </a:menubar>
+        <a:button link="toolbarbutton" inherit="true" />
+        <a:divider inherit="true">
+            <div class='divider'> </div>
+        </a:divider>
+    </a:presentation>
+</a:toolbar>
+</a:skin>

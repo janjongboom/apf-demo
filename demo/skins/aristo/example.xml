@@ -1,0 +1,132 @@
+<examples name="Aristo Skins" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Aristo skin</description>
+        <source><![CDATA[
+            <a:bar skinset="aristo">
+                <a:modalwindow id="winMail"
+                  modal       = "false"
+                  buttons     = "min|max|close"
+                  left        = "200"  top      = "20"
+                  width       = "300" height    = "450"
+                  minwidth    = "300" minheight = "450"
+                  visible     = "true"
+                  resizable   = "true"
+                  title       = "Mail message"
+                  icon        = "icoXPContacts.gif" >
+                    <a:table id="gridTest" columns="80, *" cellheight="30" margin="10 10 10 10" padding="8" bottom="35" top="0">
+                        <a:label>Subject</a:label>
+                        <a:textbox id="txtSubject" />
+                        <a:label>Subject</a:label>
+                        <a:textbox id="txtSubject" />
+                        <a:label>Subject</a:label>
+                        <a:textbox id="txtSubject" />
+                        <a:label>Subject</a:label>
+                        <a:textbox id="txtSubject" />
+                        <a:label>Subject</a:label>
+                        <a:textbox id="txtSubject" />
+                        <a:label>Subject</a:label>
+                        <a:textbox id="txtSubject" />
+                
+                        <a:label span="*">Message</a:label>
+                        <a:textarea id="txtMessage"
+                            height = "*"
+                            span   = "*"/>
+                    </a:table>
+                
+                    <a:button
+                        caption = "OK"
+                        id      = "btnTest"
+                        right   = "115"
+                        bottom  = "0"
+                        width   = "100"
+                        onclick = "alert('implement')"/>
+                
+                    <a:button
+                        default = "true"
+                        skin    = "blue"
+                        caption = "Cancel"
+                        right   = "10"
+                        bottom  = "0"
+                        width   = "100"
+                        onclick = "alert('implement')"/>
+                </a:modalwindow>
+                
+                <a:modalwindow id="winExample"
+                  modal       = "false"
+                  buttons     = "min|max|close"
+                  left        = "850"  top      = "100"
+                  width       = "300" height    = "420"
+                  minwidth    = "300" minheight = "390"
+                  visible     = "true"
+                  resizable   = "true"
+                  title       = "Controls">
+                    <a:label>Age</a:label>
+                    <a:slider value="0.5" min="0" max="1" width="100" />
+                    <a:label>Length</a:label>
+                    <a:slider skin="vertical" value="0.5" min="0" max="1" height="100" />
+                    <a:table id="gridTest2" columns="80, *" cellheight="25" margin="10 10 10 10" padding="8" bottom="35" top="170">
+                        <a:checkbox values="Yes|No" checked="true">Fixed?</a:checkbox>
+                        <a:checkbox values="Yes|No" checked="false">Actually, no...</a:checkbox>
+                        <a:radiobutton values="1">Option 1</a:radiobutton>
+                        <a:radiobutton values="2">Option 2</a:radiobutton>
+                        <a:dropdown id="ddTest" initial-message="Choose a color" maxitems="10">
+                            <a:item>Red</a:item>
+                            <a:item>Green</a:item>
+                            <a:item>Blue</a:item>
+                            <a:item>Yellow</a:item>
+                            <a:item>Torquoise</a:item>
+                            <a:item>Maroon</a:item>
+                            <a:item>Purple</a:item>
+                            <a:item>Orange</a:item>
+                            <a:item>Midnightblue</a:item>
+                        </a:dropdown>
+                        <a:dropdown id="ddTest" initial-message="Choose a contact" maxitems="20">
+                            <a:item>Rik Arends</a:item>
+                            <a:item>Ruben Daniels</a:item>
+                            <a:item>Mike de Boer</a:item>
+                            <a:item>Steve Coltman</a:item>
+                        </a:dropdown>
+                    </a:table>
+                
+                    <a:button
+                        skin    = "blue"
+                        default = "true"
+                        caption = "OK"
+                        right   = "10"
+                        bottom  = "0"
+                        width   = "100"
+                        onclick = "alert('implement')"/>
+                </a:modalwindow>
+                
+                <a:modalwindow id="winTest"
+                  modal       = "false"
+                  buttons     = "min|max|close"
+                  left        = "530"  top      = "100"
+                  width       = "300" height    = "200"
+                  minwidth    = "300" minheight = "200" maxheight = "200"
+                  visible     = "true"
+                  resizable   = "true"
+                  title       = "Mail message"
+                  icon        = "icoXPContacts.gif" >
+                    <a:table id="gridTest" columns="80, *" cellheight="30" margin="10 10 10 10" padding="5" bottom="35" top="0">
+                        <a:label>Username</a:label>
+                        <a:textbox type="username" value="Ruben"/>
+                        <a:label>Password</a:label>
+                        <a:textbox type="password" />
+                    </a:table>
+                
+                    <a:button
+                        skin    = "blue"
+                        default = "true"
+                        caption = "Test"
+                        right   = "10"
+                        bottom  = "0"
+                        width   = "80"
+                        onclick = "alert(1)"/>
+                </a:modalwindow>
+                </a:bar>
+        ]]></source>
+    </example>
+
+    <seealso menu="skins" sub="" name="platform" display="Platform Skin" title="See Platform (default) skin" />
+</examples>

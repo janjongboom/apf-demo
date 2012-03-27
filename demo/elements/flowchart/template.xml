@@ -1,0 +1,178 @@
+<template>
+    <element type="capacitor" picture="demo/images/blocks/capacitor.png" dwidth="56" dheight="56">
+        <input x="28" y="0" position="top" name="1"></input>
+        <input x="28" y="56" position="bottom" name="2"></input>
+    </element>
+    <element type="jfet_p" picture="demo/images/blocks/jfet_p.png" dwidth="56" dheight="56">
+        <input x="0" y="28" position="left" name="1"></input>
+        <input x="38" y="0" position="top" name="2"></input>
+        <input x="38" y="56" position="bottom" name="3"></input>
+    </element>
+    <element type="jfet_n" picture="demo/images/blocks/jfet_n.png" dwidth="56" dheight="56">
+        <input x="0" y="28" position="left" name="1"></input>
+        <input x="38" y="0" position="top" name="2"></input>
+        <input x="38" y="56" position="bottom" name="3"></input>
+    </element>
+    <element type="mosfet_p" picture="demo/images/blocks/mosfet_p.png" dwidth="56" dheight="56">
+        <input x="0" y="28" position="left" name="1"></input>
+        <input x="41" y="0" position="top" name="2"></input>
+        <input x="41" y="56" position="bottom" name="3"></input>
+    </element>
+    <element type="mosfet_n" picture="demo/images/blocks/mosfet_n.png" dwidth="56" dheight="56">
+        <input x="0" y="28" position="left" name="1"></input>
+        <input x="41" y="0" position="top" name="2"></input>
+        <input x="41" y="56" position="bottom" name="3"></input>
+    </element>
+    <element type="junction" picture="demo/images/blocks/junction.png" dwidth="56" dheight="56">
+        <input x="23" y="28" position="left" name="1"></input>
+        <input x="28" y="23" position="top" name="2"></input>
+        <input x="34" y="28" position="right" name="3"></input>
+        <input x="28" y="34" position="bottom" name="4"></input>
+    </element>
+    <element type="greenArea" css="background-color:#c4df9b;border:5px solid #8dc63f;" dwidth="100" dheight="100" scalex="true" scaley="true">
+    </element>
+    <element type="diode" picture="demo/images/blocks/diode.png" dwidth="56" dheight="56">
+        <input x="28" y="0" position="top" name="1"></input>
+        <input x="28" y="56" position="bottom" name="2"></input>
+    </element>
+    <element type="voltage_source_vc" picture="demo/images/blocks/voltage_source_vc.png" dwidth="56" dheight="56">
+        <input x="0" y="38" position="left" name="1"></input>
+        <input x="0" y="18" position="left" name="2"></input>
+        <input x="56" y="18" position="right" name="3"></input>
+        <input x="56" y="38" position="right" name="4"></input>
+    </element>
+    <element type="current_source_vc" picture="demo/images/blocks/current_source_vc.png" dwidth="56" dheight="56">
+        <input x="0" y="38" position="left" name="1"></input>
+        <input x="0" y="18" position="left" name="2"></input>
+        <input x="56" y="18" position="right" name="3"></input>
+        <input x="56" y="38" position="right" name="4"></input>
+    </element>
+    <element type="voltage_source_cc" picture="demo/images/blocks/voltage_source_cc.png" dwidth="56" dheight="56">
+        <input x="0" y="38" position="left" name="1"></input>
+        <input x="0" y="18" position="left" name="2"></input>
+        <input x="56" y="18" position="right" name="3"></input>
+        <input x="56" y="38" position="right" name="4"></input>
+    </element>
+    <element type="current_source_cc" picture="demo/images/blocks/current_source_cc.png" dwidth="56" dheight="56">
+        <input x="0" y="39" position="left" name="1"></input>
+        <input x="0" y="17" position="left" name="2"></input>
+        <input x="56" y="17" position="right" name="3"></input>
+        <input x="56" y="39" position="right" name="4"></input>
+    </element>
+    <element type="current_source" picture="demo/images/blocks/current_source.png" dwidth="56" dheight="56">
+        <input x="28" y="0" position="top" name="1"></input>
+        <input x="28" y="56" position="bottom" name="2"></input>
+    </element>
+    <element type="magnetic_core" picture="demo/images/blocks/magnetic_core.png" dwidth="56" dheight="56"></element>
+    <element type="inductor" picture="blocks/inductor.png" dwidth="56" dheight="56">
+        <input x="28" y="0" position="top" name="1"></input>
+        <input x="28" y="56" position="bottom" name="2"></input>
+    </element>
+    <element type="transistor_npn" picture="demo/images/blocks/transistor_npn.png" dwidth="56" dheight="56">
+        <input x="0" y="28" position="left" name="1"></input>
+        <input x="28" y="0" position="top" name="2"></input>
+        <input x="28" y="56" position="bottom" name="3"></input>
+    </element>
+    <element type="transistor_pnp" picture="demo/images/blocks/transistor_pnp.png" dwidth="56" dheight="56">
+        <input x="0" y="28" position="left" name="1"></input>
+        <input x="28" y="0" position="top" name="2"></input>
+        <input x="28" y="56" position="bottom" name="3"></input>
+    </element>
+    <element type="resistor" picture="demo/images/blocks/resistor.png" dwidth="56" dheight="56">
+        <input x="28" y="0" position="top" name="1"></input>
+        <input x="28" y="56" position="bottom" name="2"></input>
+    </element>
+    <element type="switch_cc" picture="demo/images/blocks/switch_cc.png" dwidth="56" dheight="56">
+        <input x="0" y="38" position="left" name="1"></input>
+        <input x="0" y="16" position="left" name="2"></input>
+        <input x="56" y="16" position="right" name="3"></input>
+        <input x="56" y="38" position="right" name="4"></input>
+    </element>
+    <element type="switch_vc" picture="demo/images/blocks/switch_vc.png" dwidth="56" dheight="56">
+        <input x="0" y="38" position="left" name="1"></input>
+        <input x="0" y="16" position="left" name="2"></input>
+        <input x="56" y="16" position="right" name="3"></input>
+        <input x="56" y="38" position="right" name="4"></input>
+    </element>
+    <element type="transmission_line" picture="demo/images/blocks/transmission_line.png" dwidth="56" dheight="56">
+        <input x="0" y="38" position="left" name="1"></input>
+        <input x="0" y="19" position="left" name="2"></input>
+        <input x="56" y="19" position="right" name="3"></input>
+        <input x="56" y="38" position="right" name="4"></input>
+    </element>
+    <element type="voltage_source" picture="demo/images/blocks/voltage_source.png" dwidth="56" dheight="56">
+        <input x="28" y="0" position="top" name="1"></input>
+        <input x="28" y="56" position="bottom" name="2"></input>
+    </element>
+    <element type="powerground" picture="demo/images/blocks/powerground.png" dwidth="56" dheight="56">
+        <input x="28" y="0" position="top" name="1"></input>
+    </element>
+    <element type="circle_small_lightgreen" css="color:#2e4515" picture="demo/images/blocks/circle_small_lightgreen.png" dwidth="45" dheight="45">
+        <input x="1" y="23" position="left" name="1"></input>
+        <input x="22" y="1" position="top" name="2"></input>
+        <input x="44" y="23" position="right" name="3"></input>
+        <input x="22" y="44" position="bottom" name="4"></input>
+    </element>
+    <element type="circle_medium_lightgreen" css="color:#2e4515" picture="demo/images/blocks/circle_medium_lightgreen.png" dwidth="90" dheight="90">
+        <input x="1" y="45" position="left" name="1"></input>
+        <input x="45" y="1" position="top" name="2"></input>
+        <input x="88" y="45" position="right" name="3"></input>
+        <input x="45" y="88" position="bottom" name="4"></input>
+    </element>
+    <element 
+        type="rect_small_lightgreen"
+        css="border:1px solid #598527;background-color:#8dc63f;"
+        picture="demo/images/blocks/rect_small_lightgreen.png"
+        dwidth="46"
+        dheight="46"
+        scalex="true"
+        scaley="true">
+        <input x="0" y="23" position="left" name="1"></input>
+        <input x="23" y="0" position="top" name="2"></input>
+        <input x="46" y="23" position="right" name="3"></input>
+        <input x="23" y="46" position="bottom" name="4"></input>
+    </element>
+    <element 
+        type="rect_small_red"
+        css="border:1px solid #000000;background-color:#ff0000;"
+        picture="demo/images/blocks/rect_small_red.png"
+        dwidth="46"
+        dheight="46"
+        scalex="true"
+        scaley="true">
+        <input x="0" y="23" position="left" name="1"></input>
+        <input x="23" y="0" position="top" name="2"></input>
+        <input x="46" y="23" position="right" name="3"></input>
+        <input x="23" y="46" position="bottom" name="4"></input>
+    </element>
+    <element type="arrow_medium_lightblue" picture="demo/images/blocks/arrow_medium_lightblue.png" dwidth="100" dheight="100">
+        <input x="8" y="51" position="left" name="1"></input>
+        <input x="92" y="51" position="right" name="2"></input>
+    </element>
+    <element type="star_medium_lightblue" picture="demo/images/blocks/star_medium_lightblue.png" dwidth="100" dheight="100">
+        <input x="7" y="38" position="left" name="1"></input>
+        <input x="49" y="8" position="top" name="2"></input>
+        <input x="90" y="38" position="right" name="3"></input>
+        <input x="76" y="86" position="right" name="4"></input>
+        <input x="22" y="86" position="left" name="5"></input>
+    </element>
+    <element type="polygon_small_lightblue" picture="demo/images/blocks/polygon_small_lightblue.png" dwidth="46" dheight="46" scalex="true" scaley="true">
+        <input x="2" y="20" position="left" name="1"></input>
+        <input x="20" y="2" position="top" name="2"></input>
+        <input x="44" y="13" position="right" name="3"></input>
+        <input x="40" y="40" position="bottom" name="4"></input>
+        <input x="14" y="44" position="bottom" name="5"></input>
+    </element>
+    <element type="person_medium_lightblue" picture="demo/images/blocks/person_medium_lightblue.png" dwidth="80" dheight="100">
+        <input x="36" y="7" position="top" name="1"></input>
+        <input x="54" y="55" position="right" name="2"></input>
+        <input x="36" y="84" position="bottom" name="3"></input>
+        <input x="19" y="55" position="left" name="4"></input>
+    </element>
+    <element type="rhombus_small_lightgreen" picture="demo/images/blocks/rhombus_small_lightgreen.png" dwidth="46" dheight="46">
+        <input x="1" y="23" position="left" name="1"></input>
+        <input x="23" y="1" position="top" name="2"></input>
+        <input x="45" y="23" position="right" name="3"></input>
+        <input x="22" y="45" position="bottom" name="4"></input>
+    </element>
+</template>

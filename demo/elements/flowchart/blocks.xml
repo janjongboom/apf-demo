@@ -1,0 +1,11 @@
+<blocks>
+    <block caption="Circle (S)" type="circle_small_lightgreen"></block>
+    <block caption="Rect (S)" type="rect_small_lightgreen"></block>
+    <block caption="Rect (S)" type="rect_small_red"></block>
+    <block caption="Polygon (S)" type="polygon_small_lightblue"></block>
+    <block caption="Circle (M)" type="circle_medium_lightgreen"></block>
+    <block caption="Arrow (M)" type="arrow_medium_lightblue"></block>
+    <block caption="Star (M)" type="star_medium_lightblue"></block>
+    <block caption="Person (M)" type="person_medium_lightblue"></block>
+    <block caption="Rhombus (S)" type="rhombus_small_lightgreen"></block>
+</blocks>

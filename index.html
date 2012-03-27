@@ -1,0 +1,262 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:a="http://ajax.org/2005/aml" >
+    <head>
+        <title>Ajax.org - Demo Browser</title>
+        
+        <!-- The line below will make the charts go a lot faster! -->
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        
+        <script type="text/javascript" src="apf_debug.js"></script>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif, Tahoma, Verdana;
+                font-size : 12px;
+                display : none;
+                margin : 0;
+                padding : 0;
+            }
+            html{overflow : hidden;}
+            
+            h1{
+                font-size : 20pt;
+                color : #25a8e7;
+                margin : 15px 0 0 0;
+            }
+            
+            h4 {
+                font-size: 12px;
+                font-weight: bold;
+                color: #2c78bd;
+                margin: 16px 0 6px 0;
+            }
+            
+            p{
+                line-height : 1.3em;
+            }
+            
+            h2{
+                font-size : 11pt;
+                margin : 20px 0 0 0;
+            }
+            
+            div.description{
+                padding : 3px 30px 10px 0;
+            }
+            
+            pre.code {
+                background:white none repeat scroll 0 0;
+                color:black;
+                font-family:Courier New;
+                font-size:10pt;
+                margin:0;
+                padding:5px;
+                width : auto;
+                white-space:pre;
+                border:1px solid #ddd;
+                /*max-height : 600px;*/
+            }
+            
+            .demo_content{
+                padding : 5px 10px 10px 15px;
+                border : 1px solid #c3c3c3;
+                overflow : auto;
+            }
+            
+            .loading{
+                color : gray;
+                padding : 20px;
+            }
+            
+            .treedemo{
+                position : relative;
+                top : 10px;
+            }
+            
+            .barfill{
+                border : 1px solid #c3c3c3;
+                background : #f1f1f1;
+            }
+        </style>
+    </head>
+    <body margin="10 10 10 10">
+        <a:skin src="skins/platform/skins.xml" id="apfskin" media-path="skins/platform/images/" icon-path="demo/icons/" />
+        <a:skin src="demo/skins-demo.xml" media-path="demo/images/" icon-path="demo/icons/" id="apfdemo|winskin" />
+
+        <a:appsettings name="demobrowser" debug="false"
+          disable-right-click = "false"
+          disable-space       = "true"
+          allow-select        = "true"
+          resize-outline      = "{apf.isIE and apf.isIE lt 8 and !apf.isIE7Emulate}"
+          initdelay           = "false">
+            <a:defaults for="window" draggable="relative" />
+        </a:appsettings>
+
+        <a:model id="mdlDemo" />
+
+        <a:textbox id="txtDemosSearch" 
+          align           = "left"
+          initial-message = "Filter"
+          width           = "219"
+          height          = "19"
+          edge            = "5"
+          skin            = "tbempty"
+          onclear         = "demosSearch('', true)"
+          onkeyup         = "if (apf.isCharacter(event.keyCode)) { demosSearch(this.getValue(), false) }"
+          onkeydown       = "
+            if (event.keyCode == 27) {
+                this.clear();
+                this.blur();
+            }
+            else if (event.keyCode == 13) {
+                demosSearch(this.getValue(), true);
+            }"
+           />
+        <a:tree id="trDemos"
+          model           = "demo/xml/menu.xml"
+          align           = "left-splitter"
+          prerender       = "false"
+          removecontainer = "true" 
+          autoselect      = "false"
+          reselectable    = "true"
+          empty-message   = "No demos found"
+          onafterchoose   = "getDemo(this.selected)"
+          onafterselect   = "getDemo(this.selected)">
+            <a:each id="demosSearchEach" match="[category|subcat|item]">
+                <a:caption value = "[@name]" />
+                <a:icon    match = "[@icon]" />
+                <a:icon    value = "Famfolder.gif" />
+                <a:value   match = "[@value]"/>
+                <a:collapsed id="demosSearchColl" match = "[subcat|item]" />
+            </a:each>
+            <a:actions />
+        </a:tree>
+        
+        <a:bar skin="basic" align="right" class="demo_content" model="mdlDemo"><?lm
+            <h1>{apf.htmlentities([@name]).replace(/_/g, ' ')}</h1>
+            var loc = "demo/{mdlDemo.lastDemo.split(".").join("/")}/";
+            <strong>Location on disk: </strong> <a href="{loc}" target="_blank">{loc}example.xml</a>
+            
+            if ([@hub]){
+                <a:collection skinset="apfskin">
+                    [example/source/node()]
+                </a:collection>
+                return output();
+            }
+
+            i = 0;
+            foreach([example]) {
+                <h2>Example {++i}</h2>
+                <div class="description">
+                    {apf.htmlentities([description])}
+                </div>
+                
+                <a:tab skin="demos_lowtab" width="653" skinset="apfskin">
+                    <a:page caption="Demo">
+                        [source/node()]
+                    </a:page>
+                    <a:page caption="Markup API (AML)" render="runtime">
+                        <pre class="code">{
+                            apf.highlightCode([source/node()]);
+                        }</pre>
+                    </a:page>
+                    <a:page caption="Code API (JS)" render="runtime">
+                        <pre class="code">{
+                            apf.highlightJs(apf.convertAmlToJson([source/node()]));
+                        }</pre>
+                    </a:page>
+                    {
+                        foreach([xml]) {
+                            <a:page caption="[caption]" render="runtime">
+                                <pre class="code">{
+                                    apf.highlightCode([source/node()]);
+                                }</pre>
+                            </a:page>
+                        }
+                        foreach([js]) {
+                            <a:page caption="[caption]" render="runtime">
+                                <pre class="code">{
+                                    apf.highlightJs([source/node()])
+                                }</pre>
+                            </a:page>
+                        }
+                    }
+                </a:tab>
+            }
+
+            if (#[seealso]) {
+                <div class="user_examples">
+                    <h2 class="user_example_title">See also</h2>
+                </div>
+
+                <div class="seealso">{
+                    foreach([seealso]) {
+                        <a class="clear" 
+                           title="[@title]" 
+                           href="\#[@menu].[@name]">[@display]</a>
+                        last() ? "" : ", ";
+                    }
+                }</div>
+            }
+        ?></a:bar>
+        
+        <a:script>//<!--
+            function getDemo(selNode) {
+                if(!selNode)
+                    return;
+
+                if (typeof selNode == "string") {
+                    var componentName = selNode.replace(/^#?demos\//, ""),
+                        blank = false;
+                }
+                else {
+                    var componentName = selNode.getAttribute("value"),
+                        blank         = selNode.getAttribute("blank");
+                }
+        
+                if (!componentName)
+                    return;
+        
+                if (blank) {
+                    window.open(componentName,"","resizable=yes");
+                    return;
+                }
+        
+                apf.history.setHash(componentName);
+                gotoPage(componentName);
+            };
+            app = {openDemo: getDemo};
+            
+            function gotoPage(demo){
+                mdlDemo.clear();
+                mdlDemo.lastDemo = demo;
+                mdlDemo.load("demo/" + demo.replace(/\./g, "/") + "/example.xml");
+            }
+            
+            apf.addEventListener("hashchange", function(e){
+                if (!e.page || e.page == "home") return;
+        
+                gotoPage(e.page);
+            });
+            
+            var tmrDemoSearch = null;
+            function demosSearch(value, force) {
+                if (value == undefined) 
+                    return;
+                
+                clearTimeout(tmrDemoSearch);
+                
+                var delay = force ? 0 : 400;
+                
+                tmrDemoSearch = setTimeout(function(){
+                    var query = value == ""
+                        ? "" 
+                        : "[contains(translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + value + "')]";
+                    var XPath = "[category[item" + query + "|subcat/item" + query + "]|subcat[item" + query + "]|item" + query + "]";
+        
+                    demosSearchColl.setAttribute("match", value == "" ? "[subcat|item]" : "[item]");
+                    demosSearchEach.setAttribute("match", XPath);
+                }, delay);
+            }
+        //--></a:script>
+    </body>
+</html>

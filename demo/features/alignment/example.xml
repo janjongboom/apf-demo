@@ -1,0 +1,27 @@
+<examples name="Alignment Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This example shows alignment used to create an outlook like layout.</description>
+        <source><![CDATA[
+            <a:window 
+              title     = "Resize me"
+              icon      = "Glossary.png"
+              visible   = "true"
+              width     = "400"
+              height    = "300" 
+              resizable = "true" 
+              minwidth  = "300" 
+              minheight = "200">
+                <a:toolbar align="top" height="25" edge="2">
+                    <a:bar />
+                </a:toolbar>
+                <a:tree align="left-splitter" width="25%" />
+                <a:datagrid align="right-splitter" height="40%" />
+                <a:text align="right" />
+                <a:statusbar align="bottom" height="21" edge="1" />
+            </a:window>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

@@ -1,0 +1,90 @@
+<examples name="Http Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description></description>
+        <source><![CDATA[
+            <a:button onclick="loadData()">Load Data</a:button>
+            
+            <a:script>//<!--
+                function loadData(){
+                    new apf.http().getXml("demo/xml/testdata.xml",
+                      function(data, state, extra){
+                          if (state == apf.TIMEOUT)
+                              return apf.retryTimeout(extra, state);
+                          else if (state == apf.ERROR) {
+                              alert("Sorry an error has occurred: " + extra.message);
+                          }
+            
+                          alert(data.xml);
+                      });
+                }
+            //--></a:script>
+        ]]></source>
+        <xml>
+            <caption>testdata.xml</caption>
+            <source><![CDATA[
+                <test>This is some test data</test>
+            ]]></source>
+        </xml>
+    </example>
+    <example>
+        <description>Retrieving content over http synchronously</description>
+        <source><![CDATA[
+            <a:button onclick="loadData2()">Get Data</a:button>
+            
+            <a:script>//<!--
+                function loadData2(){
+                    var http = new apf.http();
+                    var data = http.get("http://www.ajax.org", {async: false});
+                    alert(data);
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+    <example>
+        <description>Retrieving content over http synchronously. Using callback function to handle the response.</description>
+        <source><![CDATA[
+            <a:button onclick="loadData3()">Get Data</a:button>
+            
+            <a:script>//<!--
+                function loadData3() {
+                    var http = new apf.http();
+                    http.get("http://www.ajax.org", {
+                       callback : function(data, state, extra) {
+                           if (state != apf.SUCCESS)
+                               return alert('an error has occurred');
+ 
+                           alert(data);
+                       }
+                    });
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+    <example>
+        <description>Asynchronous http request with retry.</description>
+        <source><![CDATA[
+            <a:button onclick="loadData4()">Get Data</a:button>
+            
+            <a:script>//<!--
+                function loadData4() {
+                    var http = new apf.http();
+                    http.get("http://www.ajax.org", {
+                       callback: function(data, state, extra) {
+                           if (state != apf.SUCCESS) {
+                               var oError = new Error(apf.formatErrorString(0, null,
+                               "While loading data", "Could not load data" + extra.message));
+ 
+                               if (extra.tpModule.retryTimeout(extra, state, null, oError) === true)
+                                   return true;
+     
+                               throw oError;
+                           }
+                           alert(data);
+                       }
+                    });
+                }    
+            //--></a:script>
+        ]]></source>
+    </example>
+    
+</examples>

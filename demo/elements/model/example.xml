@@ -1,0 +1,68 @@
+<examples name="Model Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Loading data from model</description>
+        <source><![CDATA[
+            <a:model id="mdl1">
+                <data>
+                    <row content="This is a row 1"></row>
+                    <row content="This is a row 2"></row>
+                    <row content="This is a row 3"></row>
+                </data>
+            </a:model>
+            <a:datagrid width="400" height="100" model="mdl1">
+                <a:each match="[row]">
+                    <a:column 
+                      caption = "Name" 
+                      value   = "[@content]" 
+                      width   = "100%" />
+                </a:each>
+            </a:datagrid>
+        ]]></source>
+    </example>
+    <example>
+        <description>Two components loads data from the same model.</description>
+        <source><![CDATA[
+            <a:model id="mdl1">
+                <data>
+                    <row content="This is a row 1" icon="comment.gif"></row>
+                    <row content="This is a row 2" icon="cog.png"></row>
+                    <row content="This is a row 3" icon="bin_closed.png"></row>
+                </data>
+            </a:model>
+            <a:hbox height="20">
+                <a:label>List component:</a:label>
+            </a:hbox>
+            <a:list 
+              model    = "mdl1" 
+              each     = "[row]"
+              caption  = "[@content]" 
+              icon     = "[@icon]" 
+              width    = "400">
+            </a:list>
+            <a:hbox height="30" margin="7 0 3 0">
+                <a:label>Datagrid component:</a:label>
+            </a:hbox>
+            <a:datagrid width="400" height="100" model="mdl1">
+                <a:each match="[row]">
+                    <a:column 
+                      caption = "Name" 
+                      value   = "[@content]" 
+                      width   = "100%" />
+                </a:each>
+            </a:datagrid>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="d" name="dropdown" display="Dropdown" title="See dropdown element" />
+    <seealso menu="elements" sub="d" name="datagrid" display="Datagrid" title="See datagrid element" />
+    <seealso menu="elements" sub="i" name="img" display="Img" title="See img element" />
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="l" name="load" display="Load" title="See load element" />
+    <seealso menu="elements" sub="r" name="ref" display="Ref" title="See ref element" />
+    <seealso menu="elements" sub="r" name="repeat" display="Repeat" title="See repeat element" />
+    <seealso menu="elements" sub="s" name="slider" display="Slider" title="See slider element" />
+    <seealso menu="elements" sub="s" name="slideshow" display="Slideshow" title="See slideshow element" />
+    <seealso menu="elements" sub="s" name="spreadsheet" display="Spreadsheet" title="See spreadsheet element" />
+    <seealso menu="elements" sub="s" name="submission" display="Submission" title="See submission element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

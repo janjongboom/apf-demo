@@ -1,0 +1,82 @@
+<examples name="List Dragdrop Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Drag and Drop flags from list1 to list2 and vice versa.</description>
+        <source><![CDATA[
+            <a:hbox width="635" height="220">
+                <a:thumbnail
+                  drag     = "true" 
+                  drop     = "true" 
+                  splitter = "4">
+                    <a:model>
+                        <data>
+                            <image src="be.png">Belgium</image>
+                            <image src="ca.png">Canada</image>
+                            <image src="fr.png">French</image>
+                        </data>
+                    </a:model>
+                    <a:each match="[image]">
+                        <a:caption value="[text()]" />
+                        <a:image   value="icns/[@src]" />
+                        <a:icon    value="[@src]" />
+                    </a:each>
+                </a:thumbnail>
+                <a:list 
+                  width    = "250" 
+                  drag     = "true" 
+                  drop     = "true" 
+                  dragcopy = "true">
+                    <a:model>
+                        <data>
+                            <image src="nl.png">The Netherlands</image>
+                            <image src="us.png">United States</image>
+                            <image src="pl.png">Poland</image>
+                        </data>
+                    </a:model>
+                    <a:each match="[image]">
+                        <a:caption value="[text()]" />
+                        <a:image   value="icns/[@src]" />
+                        <a:icon    value="[@src]" />
+                    </a:each>
+                </a:list>
+            </a:hbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Sorting images in a thumbnail list.</description>
+        <source><![CDATA[
+            <a:thumbnail model="mdlData" width="635" height="220">
+                <a:each match="[pictures/picture]">
+                    <a:caption value="[@name]" />
+                    <a:image value="demo/images/thinkgeek/[@img]" />
+            
+                    <a:drag match="[picture]" />
+                    <a:drop 
+                       match  = "[picture]" 
+                       target = "[picture]" 
+                       action = "insert-before" 
+                       parent = "[pictures]" />
+                </a:each>
+            </a:thumbnail>
+                
+            <a:model id="mdlData">
+                <accounts>
+                    <pictures>
+                        <picture name="test4" img="thinkgeek1.jpg" />
+                        <picture name="test5" img="thinkgeek2.jpg" />
+                        <picture name="test6" img="thinkgeek3.jpg" />
+                        <picture name="test4" img="thinkgeek4.jpg" />
+                        <picture name="test5" img="thinkgeek5.jpg" />
+                        <picture name="test6" img="thinkgeek6.jpg" />
+                        <picture name="test4" img="thinkgeek7.jpg" />
+                        <picture name="test5" img="thinkgeek8.jpg" />
+                        <picture name="test6" img="thinkgeek9.jpg" />
+                   </pictures>
+                </accounts>
+            </a:model>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

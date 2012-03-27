@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <person name="Ruben">
+        <lang icon="medal_silver_1.png" name="PHP"></lang>
+        <lang icon="medal_silver_1.png" name="JS"></lang>
+    </person>
+</data>

@@ -1,0 +1,79 @@
+<examples name="Validation Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This demo shows some of the validation features of Ajax.org Platform. The implementation is very close to the HTML5 validation proposal with some additions. For instance check out the postal code check in the bottom. The validation for that field is checked on the server.</description>
+        <source><![CDATA[
+            <a:bar skin="basic" left="340" top="15"><?lm
+                <h3>Your entered information:</h3>
+                <table class="form">{
+                    foreach([mdlExample::node()]){
+                        if ([text()])
+                            <tr><th>{tagName().uCaseFirst()}</th><td>[text()]</td></tr>
+                    }
+                }</table>
+            ?></a:bar>
+            
+            <a:model id="mdlExample" />
+            
+            <a:table columns="100,200" padding="5" realtime="true"
+              margin="10 0 5 10" validgroup="vgExample" model="mdlExample">
+                <a:label>Serial Number</a:label>
+                <a:textbox
+                  value      = "[serial]"
+                  pattern    = "/\w\w\d\d\-\d{4}\-\w\w/"
+                  required   = "true" 
+                  invalidmsg = "Missing Serial Number;It should be like SN12-3456-AA." />
+            
+                <a:label>E-mail</a:label>
+                <a:textbox 
+                  value      = "[email]"
+                  datatype   = "a:email"
+                  invalidmsg = "Invalid Entry;Please enter a correct email address" />
+            
+                <a:label>Password</a:label>
+                <a:secret 
+                  id         = "txtPw" 
+                  value      = "[password]"
+                  invalidmsg = "Invalid Password;Please enter at least 8 characters"
+                  minlength  = "8" />
+            
+                <a:label>Password repeat</a:label>
+                <a:secret 
+                  checkequal = "txtPw"
+                  invalidmsg = "Invalid Password;Passwords don't match" />
+            
+                <a:label>Enter your phone number</a:label>
+                <a:textbox 
+                  value      = "[phonenr]"
+                  mask       = "(000)0000-0000;;_"
+                  required   = "true"
+                  pattern    = "/\(\d{3}\)\d{4}\-\d{4}/"
+                  invalidmsg = "Incorrect phone number;
+                                Please enter a correct US phone number" />
+            
+                <a:label>Country</a:label>
+                <a:dropdown 
+                  height     = "19" 
+                  value      = "[country]"
+                  required   = "true" 
+                  invalidmsg = "Missing Country; Please choose your country">
+                    <a:item>The Netherlands</a:item>
+                    <a:item>United States of America</a:item>
+                    <a:item>United Kingdom</a:item>
+                </a:dropdown>
+            
+                <a:label>Postal code</a:label>
+                <a:textbox value="[postalcode]"
+                  valid-test = "{http.get('demo/files/php/check.php?value=[value]') == 1}"
+                  invalidmsg = "Invalid Postal Code;
+                                The server checked the entered postal 
+                                code and says it's incorrect." />
+            </a:table>
+            <a:hbox width="315" height="24" lean="right">
+                <a:button width="100" onclick="vgExample.validate()">Validate</a:button>
+            </a:hbox>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

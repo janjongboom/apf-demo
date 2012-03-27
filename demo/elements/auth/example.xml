@@ -1,0 +1,163 @@
+<examples name="Auth Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Loging in and out using apf.auth.</description>
+        <source><![CDATA[
+            <a:appsettings
+              debug      = "false"
+              outline    = "false"
+              skinset    = "default"
+              allow-blur = "true"
+              undokeys   = "true">
+                <a:auth
+                  login         = "{comm2.login(username, password)}" 
+                  logout        = "{comm2.logout()}" 
+                  fail-state    = "stFail" 
+                  error-state   = "stError" 
+                  login-state   = "stIdle" 
+                  logout-state  = "stLoggedOut"
+                  waiting-state = "stLoggingIn" />
+            </a:appsettings>
+
+            <a:rpc 
+              id           = "comm2" 
+              protocol     = "cgi" 
+              http-method  = "post" 
+              route-server = "rpcproxy.php"
+              autoroute    = "true">
+                <a:method 
+                  name = "login" 
+                  url  = "demo/login.php">
+                    <a:param name="username" />
+                    <a:param name="password" />
+                </a:method>
+                <a:method 
+                  name = "logout" 
+                  url  = "demo/logout.php"></a:method>
+            </a:rpc>
+
+            <a:state-group 
+              id               = "stGr1" 
+              loginMsg.visible = "false">
+                <a:state 
+                  id                    = "stFail" 
+                  loginMsg.value        = "Username or password incorrect" 
+                  loginMsg.visible      = "true"
+                  log_email.disabled    = "false"
+                  log_password.disabled = "false" />
+                <a:state 
+                  id                    = "stIdle" 
+                  loginMsg.visible      = "false"
+                  winAuthInfo.visible   = "true"
+                  winAuthMain.visible   = "false" />
+                <a:state 
+                  id                    = "stError" 
+                  loginMsg.value        = "Please check your network." 
+                  loginMsg.visible      = "true"
+                  log_email.disabled    = "false"
+                  log_password.disabled = "false" />
+                <a:state 
+                  id                    = "stLoggingIn" 
+                  loginMsg.value        = "Please wait whilst logging in..." 
+                  loginMsg.visible      = "true" 
+                  log_email.disabled    = "true"
+                  log_password.disabled = "true" />
+                <a:state 
+                  id                    = "stLoggedOut" 
+                  loginMsg.value        = "" 
+                  loginMsg.visible      = "false" 
+                  log_email.disabled    = "false" 
+                  log_password.disabled = "false"
+                  winAuthInfo.visible   = "false"
+                  winAuthMain.visible   = "true" />
+                <a:state id="stIdle" />
+            </a:state-group>
+            <a:window
+              skin      = "modalwindow"
+              id        = "winAuthMain"
+              buttons   = "min"
+              visible   = "true"
+              icon      = "bullet_key.png"
+              width     = "270"
+              height    = "140"
+              title     = "Log in"
+              modal     = "false"
+              style     = "position:relative;">
+                <a:table 
+                  columns    = "60,*" 
+                  padding    = "5"
+                  margin     = "15">
+                    <a:label value="Login:" />
+                    <a:textbox
+                      value      = "TestUser"
+                      id         = "log_email"
+                      type       = "username"
+                      required   = "true"
+                      minlength  = "1"
+                      invalidmsg = "Invalid Entry;Please enter a username" />
+                    <a:label value="Password:" />
+                    <a:textbox
+                      value      = "open"
+                      id         = "log_password"
+                      type       = "password"
+                      required   = "true"
+                      minlength  = "1"
+                      invalidmsg = "Invalid Entry;Please enter your password" />
+                </a:table>
+                <a:button
+                  bottom  = "15"
+                  right   = "15"
+                  width   = "70"
+                  action  = "login"
+                  default = "true">Login</a:button>
+                <a:label id="loginMsg"
+                  left   = "15"
+                  bottom = "15" />
+            </a:window>
+            <a:window
+              skin      = "modalwindow"
+              id        = "winAuthInfo"
+              resizable = "true"
+              buttons   = "min"
+              visible   = "false"
+              icon      = "bullet_key.png"
+              width     = "250"
+              height    = "100"
+              title     = "You are logged in"
+              modal     = "false"
+              minwidth  = "250"
+              minheight = "100"
+              style     = "position:relative;">
+                <a:label
+                  id    = "lblLoggedIn"
+                  top   = "25"
+                  left  = "10"
+                  value = "You are logged in as TestUser"
+                  style = "color:green;font-weight:bold;" />
+                <a:button
+                  top     = "55"
+                  left    = "140"
+                  width   = "70"
+                  action  = "logout"
+                  default = "true">Logout</a:button>
+            </a:window>
+            <a:script src="demo/elements/auth/code.js"></a:script>
+        ]]></source>
+        <js>
+            <caption>code.js</caption>
+            <source><![CDATA[
+                apf.auth.onloginsuccess = function(data) {
+                    winAuthInfo.show();
+                    winAuthMain.hide();
+                }
+                apf.auth.onlogoutsuccess = function(data) {
+                    winAuthInfo.hide();
+                    winAuthMain.show();
+                }
+            ]]></source>
+        </js>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="s" name="state" display="State" title="See state element" />
+    <seealso menu="elements" sub="t" name="teleport" display="Teleport" title="See teleport element" />
+</examples>

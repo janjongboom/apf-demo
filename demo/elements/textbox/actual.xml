@@ -1,0 +1,128 @@
+<examples name="Textbox Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Simple not disabled and disabled textbox.</description>
+        <source><![CDATA[
+            <a:table columns="150">
+                <a:textbox value="Text"></a:textbox>
+                <a:textbox value="Text" disabled="true"></a:textbox>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Texbox with simple validation.</description>
+        <source><![CDATA[
+            <a:label for="lbl2">Please enter min. 3 chars</a:label>
+            <a:textbox 
+              id         = "lbl2"
+              minlength  = "3" 
+              maxlength  = "5" 
+              invalidmsg = "Invalid Entry;Please enter min. 3 chars" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Texbox with full validation.</description>
+        <source><![CDATA[
+            <a:label for="lbl3">Enter your email address</a:label>
+            <a:textbox 
+              id         = "lbl3"
+              datatype   = "a:email" 
+              invalidmsg = "Invalid Entry;Please enter a correct email address" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Password box.</description>
+        <source><![CDATA[
+            <a:textbox type="password" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Initial message.</description>
+        <source><![CDATA[
+            <a:textbox initial-message="Enter Your name" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Masks.</description>
+        <source><![CDATA[
+            <a:label 
+              value = "An american style phone number" 
+              for   = "txt71">
+            </a:label>
+            <a:textbox 
+              mask = "(000)0000-0000;;_" 
+              id   = "txt71" />
+            <a:label 
+              value = "A dutch postal code" 
+              for   = "txt72">
+            </a:label>
+            <a:textbox 
+              mask = "0000 AA;;_" 
+              id   = "txt72" />
+            <a:label 
+              value = "A date"
+              for   = "txt73">
+            </a:label>
+            <a:textbox 
+              mask     = "00-00-0000;;_"
+              datatype = "xsd:date"
+              id       = "txt73" />
+            <a:label 
+              value = "A serial number" 
+              for   = "txt74">
+            </a:label>
+            <a:textbox 
+              mask = "'WCS74'0000-00000;1;_" 
+              id   = "txt74" />
+            <a:label 
+              value = "A MAC address" 
+              for   = "txt75" ></a:label>
+            <a:textbox 
+              mask = "XX-XX-XX-XX-XX-XX;;_"
+              id   = "txt75" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Autocomplete.</description>
+        <source><![CDATA[
+            <a:teleport>
+                <a:rpc id="comm3" protocol="cgi" http-method="post">
+                    <a:method 
+                      name  = "getsuggestion" 
+                      url   = "demo/autocomplete.php" 
+                      async = "false">
+                        <a:param name="word" />
+                    </a:method>
+                </a:rpc>
+            </a:teleport>
+            <a:textbox 
+              id              = "suggest" 
+              initial-message = "Search"
+              autocomplete    = "on"
+              realtime        = "true">
+                <a:autocomplete 
+                  nodeset = "{mdlSuggest::suggestion}" 
+                  value   = "[@value]" 
+                  count   = "10" 
+                  method  = "getContext"></a:autocomplete>
+            </a:textbox>
+            <!-- Brakes to resize Demo tab -->
+            <br /><br /><br /><br /><br /><br /><br /><br />
+            <a:model id="mdlSuggest">
+                <data>
+                    <suggestion value="Something"></suggestion>
+                </data>
+            </a:model>
+            <a:script>//<!--
+                function getContext() {
+                    var result = comm3.getsuggestion(suggest.getValue()) || "";
+                    return result.split("|");
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="e" name="errorbox" display="Errorbox" title="See errorbox element" />
+    <seealso menu="elements" sub="l" name="label" display="Label" title="See label element" />
+    <seealso menu="elements" sub="t" name="text" display="Text" title="See text element" />
+    <seealso menu="elements" sub="t" name="textarea" display="Textarea" title="See textarea element" />
+</examples>

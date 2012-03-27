@@ -1,0 +1,27 @@
+<examples name="Xslt Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Xslt transformation</description>
+        <source><![CDATA[
+            <a:model id="mdlXslt1">
+                <data>
+                    <message title="X-Factor" artist="Iron Maiden" />
+                </data>
+            </a:model>
+            <a:xslt model="mdlXslt1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                <h2>My CD Collection</h2>
+                <table border="1">
+                  <tr bgcolor="#9acd32">
+                    <th>Title</th>
+                    <th>Artist</th>
+                  </tr>
+                  <xsl:for-each select="data/message">
+                    <tr>
+                      <td><xsl:value-of select="title" /></td>
+                      <td><xsl:value-of select="artist" /></td>
+                    </tr>
+                  </xsl:for-each>
+                </table>
+            </a:xslt>
+        ]]></source>
+    </example>
+</examples>

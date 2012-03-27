@@ -1,0 +1,26 @@
+<examples name="Live Markup Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Foreach loop</description>
+        <source><![CDATA[
+            <a:model id="mdlChat">
+                <data>
+                    <message from="mike@ajax.org">Hi</message>
+                    <message from="lukasz@ajax.org">Hey</message>
+                    <message from="mike@ajax.org">how was your weekend?</message>
+                    <message from="lukasz@ajax.org">
+                        not bad, i ordered a tickets for a concert</message>
+                    <message from="lukasz@ajax.org">Behemoth on stage hehe</message>
+                    <message from="mike@ajax.org">
+                        aah behemoth... they are quite famous!</message>
+                </data>
+            </a:model>
+            
+            <div model="mdlChat"><?lm
+                foreach([message]) {
+                    <strong>{[@from].split("@")[0].uCaseFirst()} says: </strong> <br />
+                    [text()]<br /><br />
+                }
+            ?></div>
+        ]]></source>
+    </example>
+</examples>

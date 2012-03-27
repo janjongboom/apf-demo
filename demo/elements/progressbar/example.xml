@@ -1,0 +1,74 @@
+<examples name="Progressbar Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>A simple progressbar.</description>
+        <source><![CDATA[
+            <a:progressbar 
+              min   = "0" 
+              max   = "100" 
+              value = "40" 
+              width = "300" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Progressbar in disabled state.</description>
+        <source><![CDATA[
+            <a:progressbar 
+              min      = "0"
+              max      = "100"
+              value    = "40"
+              width    = "300"
+              disabled = "true" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Progressbar in motion.</description>
+        <source><![CDATA[
+            <a:progressbar
+              id    = "pb1"
+              min   = "0"
+              max   = "100"
+              value = "0"
+              width = "300" />
+            <a:script>//<!--
+                pb1.start();
+            //--></a:script>
+        ]]></source>
+    </example>
+    <example>
+        <description>Progressbar in fast motion.</description>
+        <source><![CDATA[
+            <a:progressbar 
+              id    = "pb2" 
+              min   = "0" 
+              max   = "100" 
+              value = "0" 
+              width = "300" />
+            <a:script>//<!--
+                pb2.start(50);
+            //--></a:script>
+        ]]></source>
+    </example>
+    <example>
+        <description>Controlling the progressbar.</description>
+        <source><![CDATA[
+            <a:progressbar
+              id    = "pb3"
+              min   = "0"
+              max   = "100"
+              value = "0"
+              width = "300" />
+            <a:table 
+              columns    = "80, 80, 80, 80"
+              cellheight = "24" 
+              margin     = "15 0">
+                <a:button onclick="pb3.start()">Start</a:button>
+                <a:button onclick="pb3.pause()">Pause</a:button>
+                <a:button onclick="pb3.stop()">Stop</a:button>
+                <a:button onclick="pb3.clear()">Clear</a:button>
+                <a:button onclick="pb3.enable()">Enable</a:button>
+                <a:button onclick="pb3.disable()">Disable</a:button>
+            </a:table>
+            
+        ]]></source>
+    </example>
+</examples>

@@ -1,0 +1,42 @@
+<examples name="Dragdrop Features" xmlns:a="http://ajax.org/2005/aml" hub="true">
+    <example>
+        <source><![CDATA[
+            <a:tree skin="treedemo" skinset="apfdemo" style="margin:-5px 0 0 -5px"
+              removecontainer = "true"
+              autoselect      = "false"
+              startcollapsed  = "false"
+              onafterselect   = "app.openDemo(event.caret.getAttribute('url'))">
+                <a:each match="[group|demo]">
+                    <a:caption match="[group/@caption]" />
+                    <a:caption>
+                        <strong style="background-image:url([@thumb])"></strong>
+                        <h3>[@caption]</h3>
+                        <p>[text()]</p>
+                        <br clear="all" />
+                    </a:caption>
+                </a:each>
+                <a:model>
+                    <groups>
+                        <group caption="Drag&amp;Drop Examples">
+                            <demo caption="List and Thumbnail Drag&amp;Drop" thumb="demo/images/demos/listdragdrop.png" url="#demos/features.dragdrop.list">
+                                No description
+                            </demo>
+                            <demo caption="Tree Drag&amp;Drop" thumb="demo/images/demos/treedragdrop.png" url="#demos/features.dragdrop.tree">
+                                No description
+                            </demo>
+                            <demo caption="Datagrid Drag&amp;Drop" thumb="demo/images/demos/datagriddragdrop.png" url="#demos/features.dragdrop.datagrid">
+                                No description
+                            </demo>
+                            <demo caption="Form Drag&amp;Drop" thumb="demo/images/demos/formdragdrop.png" url="#demos/features.dragdrop.form">
+                                No description
+                            </demo>
+                            <demo caption="Image Organizer" thumb="demo/images/demos/image_organizer.png" url="#demos/features.dragdrop.organizer">
+                                No description
+                            </demo>
+                        </group>
+                    </groups>
+                </a:model>
+            </a:tree>
+        ]]></source>
+    </example>
+</examples>

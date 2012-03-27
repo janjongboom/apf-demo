@@ -1,0 +1,47 @@
+<examples name="Checkbox Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Returned value</description>
+        <source><![CDATA[
+            <a:table columns="100" cellheight="20">
+                <a:checkbox 
+                  id     = "ch1" 
+                  values = "full|empty">the glass is full</a:checkbox>
+                <a:textbox 
+                  value = "{ch1.value}"></a:textbox>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Default value</description>
+        <source><![CDATA[
+            <a:table columns="100" cellheight="20">
+                <a:checkbox 
+                  id      = "ch2" 
+                  values  = "full|empty" 
+                  checked = "true">State</a:checkbox>
+                <a:textbox value="the glass is {ch2.value}"></a:textbox>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Label can be set as checkbox attribute or between checkbox tags</description>
+        <source><![CDATA[
+            <a:checkbox values="full|empty" label="State"></a:checkbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Options list with disabled checkboxes.</description>
+        <source><![CDATA[
+            <a:table columns="100, 100" cellheight="20">
+                <a:checkbox checked="true">Option 1</a:checkbox>
+                <a:checkbox>Option 2</a:checkbox>
+                <a:checkbox checked="true" disabled="true">Option 3</a:checkbox>
+                <a:checkbox disabled="true">Option 4</a:checkbox>
+                <a:checkbox>Option 5</a:checkbox>
+                <a:checkbox>Option 6</a:checkbox>
+            </a:table>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+</examples>

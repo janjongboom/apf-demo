@@ -1,0 +1,83 @@
+<examples name="Caldropdown Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Todays date</description>
+        <source><![CDATA[
+            <a:caldropdown 
+              output-format = "mm-dd-yyyy HH:MM:ss"
+              default       = "today"
+              width         = "150">
+            </a:caldropdown>
+        ]]></source>
+    </example>
+    <example>
+        <description>Predefined date: 07-01-1983</description>
+        <source><![CDATA[
+            <a:caldropdown 
+              output-format  = "mm-dd-yyyy"
+              value          = "07-01-1983"
+              caption-format = "yyyy/mm/dd"
+              width          = "150">
+            </a:caldropdown>
+        ]]></source>
+    </example>
+    <example>
+        <description>Initial message</description>
+        <source><![CDATA[
+            <a:caldropdown 
+              output-format   = "yyyy-mm-dd"
+              caption-format  = "yyyy/mm/dd"
+              width           = "200"
+              initial-message = "Please choose a date">
+            </a:caldropdown>
+        ]]></source>
+    </example>
+    <example>
+        <description>Caldropdown in disabled state.</description>
+        <source><![CDATA[
+            <a:caldropdown 
+              output-format   = "yyyy-mm-dd"
+              disabled        = "true"
+              initial-message = "Choose a date">
+            </a:caldropdown>
+        ]]></source>
+    </example>
+    <example>
+        <description>Caption and returned value</description>
+        <source><![CDATA[
+            <a:vbox width="200" margin="0" height="43">
+                <a:caldropdown 
+                  id              = "cdd1" 
+                  edge            = "5"
+                  output-format   = "ddd, d mmmm yyyy"
+                  caption-format  = "yyyy/mm/dd"
+                  initial-message = "Please choose a date"></a:caldropdown>
+                <a:textbox
+                  value = "{cdd1.value || 'The value of the calendar is displayed here'}">
+                </a:textbox>
+            </a:vbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Calendar connected to spinners</description>
+        <source><![CDATA[
+            <a:caldropdown 
+              id="lol"
+              output-format   = "yyyy/m/d"
+              caption-format  = "yyyy/m/d"
+              value           = "{sp3.value}/{sp2.value}/{sp1.value}"
+              width           = "200"
+              initial-message = "Please choose a date">
+            </a:caldropdown>
+            <a:hbox height="24" margin="5 0 0 0">
+               <a:spinner id="sp1" width="40" edge="5"
+                 min="1" max="28" value="3"></a:spinner>
+               <a:spinner id="sp2" width="40" edge="5"
+                 min="1" max="12" value="3"></a:spinner>
+               <a:spinner id="sp3" width="60" edge="5"
+                 min="1997" max="2012" value="2009"></a:spinner>
+            </a:hbox>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="c" name="calendar" display="Calendar" title="See calendar element" />
+</examples>

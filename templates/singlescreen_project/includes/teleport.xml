@@ -1,0 +1,13 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:teleport>
+        <!-- 
+            Create the API to your server(s) here:
+        
+            <a:rpc id="comm" protocol="cgi">
+                <a:method name="getData" url="http://example.com/data.php">
+                    <a:variable name="type" />
+                </a:method>
+            </a:rpc>
+        -->
+    </a:teleport>
+</a:application>

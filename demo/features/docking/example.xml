@@ -1,0 +1,157 @@
+<examples name="Docking Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This demo shows a window containing child windows which are dockable. This means their position can be altered by the user. Windows can be closed and readded again. Each layout a user creates can be saved. A user can then back and forth between saved layouts. Resize the main window to see the dynamic of the layout.</description>
+        <source><![CDATA[
+            <a:appsettings layout="[mdlLayouts::layout[1]]">
+                <a:defaults for="window" 
+                  buttons  = "min|max|close" 
+                  animate  = "false"
+                  dock     = "true"
+                  dockable = "true" />
+            </a:appsettings>
+            
+            <h4>Inline Example</h4>
+            <a:button onclick="winMain.show()">Show Window</a:button>
+            
+            <h4>Example in new browser window</h4>
+            <p style="width:300px;margin:0 0 10px 0">The entire ajax.org site is a single 
+               APF application. With docking 
+               that can lead to a bit of slowdown in older browsers like IE6 and IE7. 
+               Click below to open the example in a popup</p>
+            <a:button onclick="window.open('demo/features/docking/docking.html')">
+                Open popup
+            </a:button> 
+            
+            <a:model id="mdlLayouts" src="demo/features/docking/layouts.xml" />
+            
+            <a:window 
+              id        = "winMain" 
+              buttons   = "min|max|close" 
+              icon      = "layout.png" 
+              class     = "whitebg"
+              popout    = "true"
+              title     = "Dockable layout" 
+              center    = "true"
+              width     = "800" 
+              height    = "600" 
+              resizable = "true" 
+              minwidth  = "400" 
+              minheight = "350">
+                <a:toolbar id="b1" skin="toolbar2005" height="26">
+                    <a:bar style="border:0">
+                        <a:button 
+                          icon    = "application_add.png" 
+                          onclick = "showWindowChoice();">
+                            Add Closed Windows
+                        </a:button>
+                        <a:button 
+                            icon    = "layout.png" 
+                            onclick = "editLayout.show();editLayout.bringToFront();">
+                              Edit Your Layout
+                        </a:button>
+                    </a:bar>
+                </a:toolbar>
+                
+                <a:window skin="dockwin" title="Tree Window" id="b2" />
+                <a:window skin="dockwin" title="Window of Oppertunity" id="b3"/>
+                <a:window skin="dockwin" title="20% window" id="b4" />
+                <a:window skin="dockwin" title="Some Window" id="b5" />
+                <a:window skin="dockwin" title="Lesser Window" id="b6" />
+                <a:window skin="dockwin" title="Down Window" id="b8" />
+                <a:window skin="dockwin" title="Another Window" id="b9" />
+                <a:window skin="dockwin" title="Redmond Window" id="b10" />
+                <a:window skin="dockwin" title="Ping Window" id="b11" />
+                <a:window skin="dockwin" title="YAW window" id="b12" />
+                
+                <a:statusbar id="b7" style="border:0">
+                    <a:panel icon="layout.png">
+                        Dock and undock the windows!
+                    </a:panel>
+                    <a:panel>Ajax.org PlatForm</a:panel>
+                </a:statusbar>
+            </a:window>
+            
+            <!-- Layout Editing -->
+                
+            <a:window 
+              id        = "editLayout" 
+              buttons   = "close" 
+              title     = "Edit Layout" 
+              popout    = "true"
+              icon      = "layout.png" 
+              visible   = "false"
+              center    = "true"
+              width     = "250" 
+              height    = "200" 
+              resizable = "true"
+              minwidth  = "150" 
+              minheight = "150">
+                <a:list 
+                  id      = "lstLayouts" 
+                  skin    = "layoutlist" 
+                  model   = "mdlLayouts" 
+                  anchors = "8 8 40 8"
+                  allowdeselect  = "false" 
+                  onafterselect  = "if (self.switchLayout) switchLayout()" 
+                  onbeforeremove = "return this.length &gt; 1 
+                    &amp;&amp; confirm('Do you want to permanently delete this layout?')"
+                >
+                    <a:each match="[layout]">
+                        <a:caption match="[@name]" />
+                        <a:icon value="layout.png" />
+                    </a:each>
+                    <a:actions>
+                        <a:rename match="[.]" />
+                        <a:remove match="[.]" />
+                    </a:actions>
+                </a:list>
+                <a:button 
+                  icon    = "layout.png" 
+                  tooltip = "Adds a Layout based on the current layout" 
+                  right   = "8" 
+                  bottom  = "8" 
+                  onclick = "copyLayout()">
+                    Add Layout
+                </a:button>
+            </a:window>
+            
+            <a:window 
+              id        = "editWindows" 
+              buttons   = "close" 
+              icon      = "application_add.png" 
+              title     = "Add Windows" 
+              popout    = "true"
+              center    = "true"
+              visible   = "false" 
+              width     = "180" 
+              height    = "250" 
+              resizable = "true" 
+              modal     = "true"
+              minwidth  = "150" 
+              minheight = "130">
+                <a:list id="lstWindows" 
+                  empty-message = "No windows to add" 
+                  anchors       =  "5 8 40 8"
+                  each          = "[//node[@hidden='true']]"
+                  caption       = "[@caption|@name]"
+                  icon          = "application.png"
+                  allowdeselect = "false" 
+                  onafterchoose = "addWindow()" />
+                <a:button 
+                  icon     = "application_add.png" 
+                  tooltip  = "Adds a Window to this layout" 
+                  right    = "8" 
+                  bottom   = "8" 
+                  disabled = "{!lstWindows.sellength}"
+                  onclick  = "if(addWindow()) editWindows.close();">
+                    Add Window
+                </a:button>
+            </a:window>
+            
+            <a:script src="demo/features/docking/docking.js" />
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

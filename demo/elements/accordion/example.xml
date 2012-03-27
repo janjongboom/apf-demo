@@ -1,0 +1,101 @@
+<examples name="Accordion Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Horizontal accordion. Multiple panels can be expanded at the same time.</description>
+        <source><![CDATA[
+            <a:accordion
+              height        = "240"
+              animtype      = "easein easein"
+              animdelay     = "10"
+              multiexpand   = "true"
+              expand        = "click"
+              startexpanded = "false"
+              skin          = "accordion_apf_hor">
+                <a:bar 
+                  title    = "Iron Maiden"
+                  icon     = "accordion_apf_icon_hor.png"
+                  expanded = "true">
+                    <blockquote>
+                        <b>Discography</b>
+                        <ul>
+                            <li>Piece Of Mind</li>
+                            <li>X Factor</li>
+                        </ul>
+                    </blockquote>
+                </a:bar>
+                <a:bar 
+                  title = "Megadeth"
+                  icon  = "accordion_apf_icon_hor.png">
+                    <blockquote>
+                        <b>Discography</b>
+                        <ul>
+                            <li>Youthanasia</li>
+                        </ul>
+                    </blockquote>
+                </a:bar>
+                <a:bar 
+                  title     = "Judas Priest"
+                  collapsed = "true" 
+                  icon      = "accordion_apf_icon_hor.png">
+                    <blockquote>
+                        <b>Discography</b>
+                        <ul>
+                            <li>Painkiller</li>
+                        </ul>
+                    </blockquote>
+                </a:bar>
+                <a:bar 
+                  title = "Metallica" 
+                  icon  = "accordion_apf_icon_hor.png">
+                    <blockquote>
+                        <b>Discography</b>
+                        <ul>
+                            <li>Load</li>
+                        </ul>
+                    </blockquote>
+                </a:bar>
+                <a:bar 
+                  title = "Behemoth" 
+                  icon  = "accordion_apf_icon_hor.png">
+                    <blockquote>
+                        <b>Discography</b>
+                        <ul>
+                            <li>Satanica</li>
+                        </ul>
+                    </blockquote> 
+                </a:bar>
+            </a:accordion>
+        ]]></source>
+    </example>
+    <example>
+        <description>Horizontal accordion, panels expand with an easein animation. Only one panel can be expanded at the same time. Icons created by <a href="http://www.visualpharm.com" target="_blank">http://www.visualpharm.com</a>.</description>
+        <source><![CDATA[
+            <a:accordion
+              height        = "100"
+              animtype      = "easein easein"
+              animdelay     = "10"
+              multiexpand   = "false"
+              expand        = "click"
+              startexpanded = "false"
+              skin          = "accordion_menu">
+                <a:bar icon="Elephant_48x48.png">
+                    <h1 class="animal">Elephant</h1>
+                </a:bar>
+                <a:bar icon="Butterfly_48x48.png">
+                    <h1 class="animal">Butterfly</h1>
+                </a:bar>
+                <a:bar icon="Dolphin_48x48.png">
+                    <h1 class="animal">Dolphin</h1>
+                </a:bar>
+                <a:bar icon="Hippopotamus_48x48.png">
+                    <h1 class="animal">Hippopotamus</h1>
+                </a:bar>
+                <a:bar icon="Panda_48x48.png">
+                    <h1 class="animal">Panda</h1>
+                </a:bar>
+                <a:bar icon="Turtle_48x48.png" expanded="true">
+                    <h1 class="animal">Turtle</h1>
+                </a:bar>
+            </a:accordion>
+        ]]></source>
+    </example>
+</examples>

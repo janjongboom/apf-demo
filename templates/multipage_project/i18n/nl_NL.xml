@@ -1,0 +1,26 @@
+<groups>
+    <nl_NL id="sub">
+        <key id="ok">OK</key>
+        <key id="cancel">Annuleren</key>
+        <key id="undo">Ongedaan</key>
+        <key id="redo">Opnieuw</key>
+        <key id="save">Opslaan</key>
+        <key id="add">Toevoegen</key>
+        <group id="auth">
+            <key id="loading">Laden...</key>
+            <key id="error_cred">Inloggen Mislukt</key>
+            <key id="error_username">Foutieve invoer;Please enter a correct Username</key>
+            <key id="error_password">Foutieve invoer;Please enter a correct Password</key>
+            <key id="error_unexp">Onverwachte Fout! Check of uw Internet verbinding nog werkt.</key>
+            <key id="state_busy">Even geduld a.u.b...</key>
+            <key id="username">Gebruikernaam</key>
+            <key id="password">Wachtwoord</key>
+            <key id="signin">Inloggen</key>
+            <key id="logoff">Uitloggen</key>
+            <key id="logoff_title">Deze sessie afsluiten</key>
+        </group>
+        <group id="pages">
+            <key id="notfound">404 Pagina niet gevonden</key>
+        </group>
+    </nl_NL>
+</groups>

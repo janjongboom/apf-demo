@@ -1,0 +1,47 @@
+<examples name="New_york_times_news Newspapers" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>New York Times News</description>
+        <source><![CDATA[
+            <a:rpc
+              id           = "comm5"
+              protocol     = "cgi"
+              http-method  = "get"
+              route-server = "rpcproxy.php"
+              autoroute    = "true"
+              url          = "http://api.nytimes.com/svc/news/v2/all/recent.xml">
+                <a:method name="nyt">
+                    <a:param name="limit" />
+                    <a:param name="api-key"
+                      value="6864dff571ae7dfcda76392b4566aa13:6:58588488" />
+                </a:method>
+            </a:rpc>
+
+            <a:label style="font-weight:bold; font-size:14px;margin:0 0 10px 0;">
+                New York Times News
+            </a:label>
+            <a:datagrid
+              width  = "450"
+              height = "150"
+              model  = "{comm5.nyt(3)}"
+              id     = "dgNytNews">
+                <a:each match="[results/news_item]">
+                    <a:column
+                      caption = "Title"
+                      value   = "[headline]"
+                      width   = "70%" />
+                    <a:column
+                      caption = "Created"
+                      value   = "[pubdate]"
+                      width   = "30%" />
+                </a:each>
+            </a:datagrid>
+            <a:text
+              model  = "{dgNytNews.selected}"
+              value  = "[summary]"
+              width  = "450"
+              height = "100"
+              style  = "margin-top:5px;border:1px solid #ccc;padding:5px;"
+              empty-message = "This news item doesn't have a summary" />
+        ]]></source>
+    </example>
+</examples>

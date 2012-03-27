@@ -1,0 +1,42 @@
+<a:docklet xmlns:a="http://ajax.org/2005/aml" name="Feed">
+    <a:script><![CDATA[
+        function Feed(){
+            //Create a Javeline class
+            apf.makeClass(this);
+            
+            //Inherit from the portal.docklet baseclass
+            this.implement(apf.portal.docklet);
+            this.$init = function(xmlSettings, oDocklet){
+                //Process xml settings
+                mdlFeedSettings.load(xmlSettings);
+            }
+        }
+     ]]></a:script>
+    <a:config>
+        <h3>Choose a feed</h3>
+        <a:model id="mdlFeedSettings" />
+        <a:model id="mdlFeed" />
+
+        <a:dropdown value="feed" id="ddFeed" 
+          refmodel      = "mdlFeedSettings" 
+          onafterselect = "pgFeed.gotoPage(1)">
+            <a:item>ohloh</a:item>
+            <a:item>jira</a:item>
+            <a:item>forum</a:item>
+        </a:dropdown>
+    </a:config>
+    <a:body>
+        <a:pager id="pgFeed" 
+          pageload = "{comm.fetch(ddFeed.value, page, 5)}" 
+          bindings = "bndPager" 
+          model    = "mdlFeed" 
+          autohide = "false">
+            <?lm
+                <h4>{ddFeed.value.uCaseFirst()}</h4>
+                foreach([item]) {
+                    <h3><a href="[url/text()]" target="_blank">[title/text()]</a></h3>
+                }
+            ?>
+        </a:pager>
+    </a:body>
+</a:docklet>

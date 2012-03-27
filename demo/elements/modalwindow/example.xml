@@ -1,0 +1,45 @@
+<examples name="Window Elements" xmlns:a="http://ajax.org/2005/aml" hub="true">
+    <example>
+        <source><![CDATA[
+            <a:tree skin="treedemo" skinset="apfdemo" style="margin:-5px 0 0 -5px"
+              removecontainer = "true"
+              autoselect      = "false"
+              startcollapsed  = "false"
+              onafterselect   = "app.openDemo(event.caret.getAttribute('url'))">
+                <a:each match="[group|demo]">
+                    <a:caption match="[group/@caption]" />
+                    <a:caption>
+                        <strong style="background-image:url(demo/images/demos/[@thumb])"></strong>
+                        <h3>[@caption]</h3>
+                        <p>[text()]</p>
+                        <br clear="all" />
+                    </a:caption>
+                </a:each>
+                <a:model>
+                    <groups>
+                        <group caption="Window Examples">
+                            <demo caption="Alert Window" thumb="alertwindow.png" url="#demos/elements.modalwindow.alertwindow">
+                                No description
+                            </demo>
+                            <demo caption="Classic Skin" thumb="classicskin.png" url="#demos/elements.modalwindow.classicskin">
+                                No description
+                            </demo>
+                            <demo caption="Enabling / Disabling" thumb="disablingenabling.png" url="#demos/elements.modalwindow.disablingenabling">
+                                No description
+                            </demo>
+                            <demo caption="Modal Window" thumb="modalwindow.png" url="#demos/elements.modalwindow.modalwindow">
+                                No description
+                            </demo>
+                            <demo caption="Resize feature" thumb="resize.png" url="#demos/elements.modalwindow.resize">
+                                No description
+                            </demo>
+                            <demo caption="Rounded skin" thumb="roundedskin.png" url="#demos/elements.modalwindow.roundedskin">
+                                No description
+                            </demo>
+                        </group>
+                    </groups>
+                </a:model>
+            </a:tree>
+        ]]></source>
+    </example>
+</examples>

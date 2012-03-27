@@ -1,0 +1,3 @@
+<examples name="Page Elements" xmlns:a="http://ajax.org/2005/aml">
+    <seealso menu="elements" sub="t" name="tab" display="Tab" title="See tab element" />
+</examples>

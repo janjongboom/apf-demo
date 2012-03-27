@@ -1,0 +1,118 @@
+<examples name="Organizer Dragdrop Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Easy way to organize your photos.</description>
+        <source><![CDATA[
+            <a:window  
+              buttons     = "min" 
+              title       = "Image organizer" 
+              icon        = "folder_image.png" 
+              visible     = "true" 
+              resizable   = "true" 
+              width       = "630" 
+              height      = "400"
+              minwidth    = "450"
+              minheight   = "200"
+              style       = "position:relative;">
+                <a:toolbar height="25" align="top">
+                    <a:bar style="border-bottom:0">
+                        <a:button
+                          icon   = "folder_picture.png"
+                          action = "add"
+                          target = "treeAlbums">Add album
+                        </a:button>
+                    </a:bar>
+                </a:toolbar>
+                <a:tree 
+                  id             = "treeAlbums" 
+                  align          = "left-splitter"
+                  model          = "mdlAlbum"
+                  startcollapsed = "false">
+                    <a:each match="[folder|picture|album]">
+                        <a:icon match="[@icon]" />
+                        <a:icon match="[folder]" value="icoDir.png" />
+                        <a:icon match="[picture]" value="icoJPG.png" />
+                        <a:caption match="[@name]" />
+                    </a:each>
+                    <a:drag match="[picture]" />
+                    <a:drop
+                      match  = "[picture]"
+                      target = "[album|folder]"
+                      action = "tree-append" />
+                    <a:actions>
+                        <!--a:add parent="[folder|album|../folder]"-->
+                        <a:add parent="[folder|album|..]">
+                            <folder name="New album" />
+                        </a:add>
+                        <a:rename />
+                        <a:move />
+                    </a:actions>
+                </a:tree> 
+                <a:list 
+                  id         = "listPics" 
+                  skin       = "thumbnail_caption" 
+                  model      = "mdlPictures"
+                  align      = "right"
+                  width      = "70%"
+                  thumbsize  = "{sldThumbs.value}">
+                    <a:each match="[picture]">
+                        <a:caption match="[@name]" />
+                        <a:image   match="[@src]" 
+                            value="demo/images/slideshow_img/[@src]" />
+                    </a:each>
+                    <a:drag match="[picture]" />
+                </a:list>
+
+                <a:table columns="80, 120" margin="5 10" align="bottom" height="30">
+                    <a:label>Thumbnail size:</a:label>
+                    <a:slider 
+                      id     = "sldThumbs"
+                      min    = "10" 
+                      max    = "200" 
+                      value  = "90"
+                      height = "8" 
+                      margin = "5 0 0 0"  />
+                </a:table>
+            </a:window>
+            
+            <a:model id="mdlAlbum"> 
+                <album>
+                    <folder name="Albums">
+                        <folder name="Summer 2009">
+                            <picture name="Beach" src="img5.jpg" />
+                        </folder>
+                    </folder>
+                </album>
+            </a:model>
+            
+            <a:model id="mdlPictures"> 
+                <pictures> 
+                    <picture src="img13.jpg" name="Landscape"></picture>
+                    <picture src="img14.jpg" name="Flower"></picture>
+                    <picture src="img15.jpg" name="Trees"></picture>
+                    <picture src="img16.jpg" name="Sunflower"></picture>
+                    <picture src="img17.jpg" name="City"></picture>
+                    <picture src="img18.jpg" name="Meeting"></picture>
+                    <picture src="img19.jpg" name="Call center"></picture>
+                    <picture src="img21.jpg" name="The country"></picture>
+                    <picture src="img22.jpg" name="River"></picture>
+                    <picture src="img24.jpg" name="Wool"></picture>
+                    <picture src="img25.jpg" name="Fabric"></picture>
+                    <picture src="img26.jpg" name="Ocean"></picture>
+                    <picture src="img27.jpg" name="Beach"></picture>
+                    <picture src="img1.jpg" name="Phone"></picture>
+                    <picture src="img2.jpg" name="Lemon... ?"></picture>
+                    <picture src="img3.jpg" name="Mainboard"></picture>
+                    <picture src="img4.jpg" name="Sky"></picture>
+                    <picture src="img5.jpg" name="Beach"></picture>
+                    <picture src="img6.jpg" name="Cogwheel"></picture>
+                    <picture src="img7.jpg" name="Antenna"></picture>
+                    <picture src="img8.jpg" name="Beach"></picture>
+                    <picture src="img9.jpg" name="Cosmodrome"></picture>
+                    <picture src="img10.jpg" name="Outer space"></picture>
+                    <picture src="img11.jpg" name="Planet Earth"></picture>
+                    <picture src="img12.jpg" name="Hands"></picture>
+                </pictures> 
+            </a:model>
+        ]]></source>
+    </example>
+</examples>

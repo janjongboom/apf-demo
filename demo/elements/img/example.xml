@@ -1,0 +1,36 @@
+<examples name="Img Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Image browser.</description>
+        <source><![CDATA[
+            <a:hbox height="250">
+                <a:list 
+                  id    = "lstPics" 
+                  align = "left-splitter"
+                  skin  = "thumbnail"> 
+                    <a:each match="[picture]">
+                        <a:name match="[@title]" />
+                        <a:image match="[@src]" />
+                    </a:each>
+                    <a:model> 
+                        <pictures> 
+                            <picture 
+                              title = "Landscape" 
+                              src   = "demo/images/thinkgeek/wire1.jpg" />
+                            <picture 
+                              title = "Animal" 
+                              src   = "demo/images/thinkgeek/wire2.jpg" />
+                            <picture 
+                              title = "River" 
+                              src   = "demo/images/thinkgeek/wire3.jpg" />
+                        </pictures> 
+                    </a:model>
+                </a:list>
+                <a:img model="{lstPics.selected}" value="[@src]" align="right" />
+            </a:hbox>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

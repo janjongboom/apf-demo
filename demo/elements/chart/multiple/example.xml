@@ -1,0 +1,47 @@
+<examples name="Multiple Chart Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Bar and stroke charts</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400">
+                <a:axis 
+                  mode  = "2D"
+                  x1    = "-1" 
+                  x2    = "15" 
+                  y1    = "-1" 
+                  y2    = "9">
+                    <a:style type="text/chartcss">
+                        plane{fill:#f8f8f8;stroke:#f8f8f8;};
+                        tiles{fill:#f8f8f8;stroke:#f8f8f8;};
+                    </a:style>
+                    <a:graph 
+                      mode      = "line" 
+                      dataslice = "1X"
+                      series    = "1 2 3 8 5 2 4 5 6 8 8 7 7 7 8 0">
+                        <a:style type="text/chartcss">
+                            graph {
+                              fill      : #8dc63f;
+                              fillopacity : 0.7;
+                              notransit : 0.5;
+                              stroke      : #598527;
+                              weight    : 2;
+                            }
+                        </a:style>
+                    </a:graph>
+                    <a:graph 
+                      mode      = "bar" 
+                      dataslice = "1X"
+                      series    = "1#a 0#b 2#c 0#d 3#e 0#a 8#b 0#c 5#d 0#e 2#c">
+                        <a:style type="text/chartcss">
+                            graph.a{fill:#f26522;}
+                            graph.b{fill:#fff200;}
+                            graph.c{fill:#00aeef;}
+                            graph.d{fill:#8dc63f;}
+                            graph.e{fill:#ec008c;}
+                            graph{fill:white;notransit:0.5;stroke:black;weight:1.5;}
+                        </a:style>
+                    </a:graph>
+                </a:axis>
+            </a:chart>
+        ]]></source>
+    </example>
+</examples>

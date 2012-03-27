@@ -1,0 +1,77 @@
+<examples name="Datainstruction Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This demo shows how to dynamically load markup into an element.</description>
+        <source><![CDATA[
+            <a:model 
+              id  = "mdlExample1" 
+              src = "demo/xml/testdata.xml" />
+            <a:button onclick="apf.alert_r(mdlExample1.data)">Model 1</a:button>
+        ]]></source>
+    </example>
+    <example>
+        <description>
+            This demo shows how data instructions are used inside action elements
+            to communicate the changes back to the server. Data is loaded into the
+            tree using a data instruction as well. Use an http debugger like fiddler
+            or firebug to watch the server communication.
+        </description>
+        <source><![CDATA[
+            <a:teleport>
+                <a:rpc protocol="cgi" id="fs">
+                    <a:method name="rename" url="demo/rename.php">
+                        <a:param name="id" />
+                        <a:param name="name" />
+                    </a:method>
+                    <a:method name="remove" url="demo/remove.php">
+                        <a:param name="id" />
+                    </a:method>
+                    <a:method name="unremove" url="demo/unremove.php">
+                        <a:param name="id" />
+                    </a:method>
+                </a:rpc>
+            </a:teleport>
+            
+            <a:tree id="tree" height="200" width="250"
+              model          = "demo/xml/filesystem.xml"
+              actiontracker  = "atExample"
+              startcollapsed = "false" 
+              onerror        = "return false">
+                <a:each match="[folder|drive]">
+                    <a:caption match="[@caption]" />
+                    <a:icon value="Famfolder.gif" />
+                </a:each>
+                <a:actions>
+                    <a:remove set  = "{fs.remove([@fid])}"
+                              undo = "{fs.unremove([@fid])}" />
+                    <a:rename set  = "{fs.rename([@fid], [@caption|@filename])}" />
+                </a:actions>
+            </a:tree>
+            
+            <a:button 
+              caption = "Rename"
+              right   = "10" 
+              top     = "10"
+              onclick = "tree.startRename()" />
+            <a:button 
+              caption  = "Remove"
+              right    = "10"
+              top      = "40"
+              onclick  = "tree.remove()" />
+            <a:button 
+              caption  = "Undo"
+              right    = "10"
+              top      = "70"
+              disabled = "{!atExample.undolength}" 
+              onclick  = "atExample.undo()" />
+            <a:button 
+              caption  = "Redo"
+              right    = "10"
+              top      = "100"
+              disabled = "{!atExample.redolength}" 
+              onclick  = "atExample.redo()" />
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

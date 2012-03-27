@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<news desc="Veilige overstap op balkon">
+    <title>An article</title>
+    <subtitle>2.0 has arrived, wearing a new coat: Ajax.org</subtitle>
+    <body><![CDATA[
+        <p>
+        The next generation. 
+        After the <a href="http://en.wikipedia.org/en/Star_Trek_The_Next_Generation" target="_blank">famous Star Trek series</a>,
+        which we all remember as a worthy and successful sequel, Javeline announces
+        the immediate availability of Platform 2.0.<br />
+
+        So, why 2.0 you ask? The reason is quite simple:<br />
+        a) we used the 1.0 version internally extensively for a couple of large projects and<br />
+        b) the core architecture has changed so dramatically since the last public release of 0.9.8, that 2.0 really is the only way to name it<br />
+        Here\'s a basic overview of the most important changes:<br />
+        <img src="http://www.ajax.org/images/articles/features_2_0b.png" alt="2.0 features" style="width:350px" title="2.0 features" border="0" />
+        </p>
+        <p>
+        All of the above is accompanied by the launch of the new Home for apf: Ajax.org.
+        A brand-spanking new website dedicated entirely to the community and all of its
+        content licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/us/" target="_blank">CC</a>.
+        That means: please, spread the word! Start playing around with the package(s) and
+        tell us what you think in the <a href="http://www.ajax.org/community/forum">forums</a>,
+        share your experience and apf-related knowledge on the wiki!
+        </p>
+        <p>
+
+        This new version of apf is not so much a revolution, but the result of an
+        <em>evolution</em> that has started almost eight years ago. <a href="http://www.rubendaniels.com" target="_blank">Ruben</a>
+        joined the Ajax crowd before it was even there, developed the first publicly
+        available XHR wrapper and that was the start of apf. <a href="http://www.mikedeboer.nl">Mike de Boer</a>
+        joined Ruben in August 2008 to aid in taking apf to the next level, bringing
+        in the lessons learnt while developing the Web Application at technology startup
+        <a href="http://www.ebuddy.com" target="_blank">eBuddy.com</a>.
+        Together, they redesigned the architecture and Lukasz then built further upon
+        these building blocks with a handful of elements/ components.
+        </p>
+    ]]></body>
+    <publication date="19-01-2009" time="00:20:09"/>
+</news>

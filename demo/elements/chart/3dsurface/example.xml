@@ -1,0 +1,156 @@
+<examples name="3dsurface Chart Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>3D Surface Chart</description>
+        <source><![CDATA[
+            <a:bar
+              skin   = "basic"
+              height = "250"
+              style  = "background-color: #1b76bf;">
+                <a:chart width="640" height="250" anim="10">
+                    <a:axis 
+                      mode       = "3D" 
+                      x1         = "-3" 
+                      y1         = "-1" 
+                      x2         = "3" 
+                      y2         = "0.5" 
+                      z1         = "-3" 
+                      z2         = "3" 
+                      x3d        = "2" 
+                      y3d        = "0.5" 
+                      z3d        = "2"
+                      lockyzoom  = "1" 
+                      orbity     = "0.2"
+                      distance   = "3.3"
+                      orbitxanim = "0.01">
+                        <a:style type="text/chartcss">
+                            label{color:white;}
+                            plane{fill:null;}
+                            tick{stroke:white;}
+                            bar{
+                                fill   : null;
+                                stroke : null;
+                            }
+                            axis{
+                                stroke : white;
+                                side1  : 1;
+                                side2  : 1;
+                            }
+                            planexz{
+                                stroke      : white;
+                                fill        : gray;
+                                fillopacity : 0.2;
+                                oneside     : 1;
+                                side        : 0;
+                            }
+                            hbarxz{
+                                oneside : 1;
+                                side    : 0;
+                                stroke  : white;
+                                opacity : 0.5;
+                            }
+                            vbarxz{
+                                oneside : 1;
+                                side    : 0;
+                                stroke  : white;
+                                opacity : 0.5;
+                            }
+                        </a:style>
+                        <a:graph 
+                          mode      = "height" 
+                          dataslice = "1XZ"
+                          steps     = "15" 
+                          formula   = "(abs(4*sin((__e=sqrt(x*x+z*z))-2*n)/(__e+1))-1)
+                          *a+(1-a)*sin((__e=sqrt(x*x+z*z)*3)-2*n)/(__e+0.3)">
+                            <a:style type="text/chartcss">
+                                graph {
+                                  fill          : #f1d309;
+                                  single        : 1;
+                                  fillopacity   : 0.3;
+                                  strokeopacity : 0.5;
+                                  stroke        : #f1d309;
+                                }
+                            </a:style>
+                        </a:graph>
+                    </a:axis>
+                </a:chart>
+            </a:bar>
+        ]]></source>
+    </example>
+    <example>
+        <description>3D Surface Chart</description>
+        <source><![CDATA[
+            <a:bar
+              skin   = "basic"
+              height = "500"
+              style  = "background-color: white;">
+                <a:chart width="600" height="500" anim="10">
+                    <a:axis 
+                      mode       = "3D" 
+                      x1         = "-15" 
+                      y1         = "-1" 
+                      x2         = "15" 
+                      y2         = "15" 
+                      z1         = "-15" 
+                      z2         = "15" 
+                      x3d        = "4" 
+                      y3d        = "4" 
+                      z3d        = "4"
+                      lockyzoom  = "1" 
+                      orbity     = "6.18"
+                      distance   = "6.3"
+                      orbitxanim = "0.01">
+                        <a:style type="text/chartcss">
+                            label{color:white;}
+                            plane{fill:null;}
+                            tick{stroke:white;}
+                            bar{
+                                fill   : null;
+                                stroke : null;
+                            }
+                            axis{
+                                stroke : white;
+                                side1  : 1;
+                                side2  : 1;
+                            }
+                            planexz{
+                                stroke      : white;
+                                fill        : gray;
+                                fillopacity : 0.2;
+                                oneside     : 1;
+                                side        : 0;
+                            }
+                            hbarxz{
+                                oneside : 1;
+                                side    : 0;
+                                stroke  : white;
+                                opacity : 0.5;
+                            }
+                            vbarxz{
+                                oneside : 1;
+                                side    : 0;
+                                stroke  : white;
+                                opacity : 0.5;
+                            }
+                        </a:style>
+                        <a:graph 
+                          mode      = "height" 
+                          dataslice = "1XZ"
+                          steps     = "15" 
+                          formula   = "((x/4+(-1/cos(n)))*x+z*2*(z/3+(-1/cos(n))))/20 
+                          + cos(n)">
+                            <a:style type="text/chartcss">
+                                graph {
+                                  fill          : #00bff3;
+                                  single        : 1;
+                                  fillopacity   : 0.3;
+                                  strokeopacity : 0.5;
+                                  stroke        : #00bff3;
+                                }
+                            </a:style>
+                        </a:graph>
+                    </a:axis>
+                </a:chart>
+            </a:bar>
+        ]]></source>
+    </example>
+</examples>

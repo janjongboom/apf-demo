@@ -1,0 +1,156 @@
+<examples name="Slider Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Slider and Textbox 2 gets its values from Spinner. Textbox 1 gets its value from Spinner caption, which could be set by user using databindings.</description>
+        <source><![CDATA[
+            <a:model id="mdlSpinner1">
+                <overview page="3" pages="50" />
+            </a:model>
+            <a:table columns="150" padding="5" model="mdlSpinner1">
+                <a:spinner 
+                  id    = "sp7" 
+                  min   = "0" 
+                  max   = "50"
+                  value = "[@page]" />
+                
+                <a:slider 
+                  min      = "0" 
+                  max      = "50"
+                  mask     = "#" 
+                  height   = "8"
+                  step     = "1"
+                  value    = "{sp7.value}">
+                </a:slider>
+                
+                <a:label model="mdlSpinner1" value="[@page] of [@pages]"></a:label>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Slider updates it's value realtime and not</description>
+        <source><![CDATA[
+            <a:table columns="150, 150" cellheight="19" padding="5">
+                <a:label>Realtime update</a:label>
+                <a:label>No realtime update</a:label>
+                <a:textbox value="{slider2.value}"></a:textbox>
+                <a:textbox value="{slider2_2.value}"></a:textbox>
+            
+                <a:slider 
+                  id       = "slider2" 
+                  min      = "0" 
+                  max      = "50" 
+                  height   = "8"
+                  realtime = "true">
+                </a:slider>
+                <a:slider 
+                  id       = "slider2_2" 
+                  min      = "0" 
+                  max      = "50" 
+                  height   = "8"
+                  realtime = "false">
+                </a:slider>
+            
+                <a:label height="24" />
+                <a:button onclick="slider2_2.setValue(15)">Set Value to Slider</a:button>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>This example shows three sliders which lets the user indicate a value in a form.</description>
+        <source><![CDATA[
+            <a:table 
+              columns    = "80,150" 
+              padding    = "8" 
+              margin     = "20" 
+              cellheight = "19">
+                <a:label>Numerical</a:label>
+                <a:slider height="8" margin="6 0 0 0"
+                  min      = "0"
+                  mask     = "#"
+                  max      = "65"
+                  step     = "1">
+                </a:slider>
+            
+                <a:label>Labels</a:label>
+                <a:slider height="8" margin="6 0 0 0"
+                  min      = "0"
+                  max      = "6"
+                  step     = "1"
+                  mask     = "No opinion;Terrible;Bad;Acceptable;Decent;Good;Splendid"
+                  markers  = "true"
+                  slide    = "snap">
+                </a:slider>
+            
+                <a:label>Discreet snapping</a:label>
+                <a:slider height="8" margin="6 0 0 0"
+                  width    = "500"
+                  min      = "0"
+                  max      = "100"
+                  step     = "10"
+                  markers  = "true">
+                </a:slider>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Different looks</description>
+        <source><![CDATA[
+            <a:table columns="200, 200" cellheight="8" margin="15 0" padding="20">
+                <a:slider skin="sliderHigh" height="8"></a:slider>
+                <a:slider skin="sliderHigh" height="8" disabled="true"></a:slider>
+                <a:slider skin="slider16" height="16"></a:slider>
+                <a:slider skin="slider16" height="16" disabled="true"></a:slider>
+                <a:slider skin="slider11" height="11"></a:slider>
+                <a:slider skin="slider11" height="11" disabled="true"></a:slider>
+                <a:slider skin="slidermedia" height="11"></a:slider>
+                <a:slider skin="slidermedia" height="11" disabled="true"></a:slider>
+                <a:slider skin="slider16media" height="16"></a:slider>
+                <a:slider skin="slider16media" height="16" disabled="true"></a:slider>
+            </a:table>
+            
+            <a:table 
+              columns    = "8, 8, 16, 16, 11, 11, 8, 8, 16, 16" 
+              cellheight = "150" 
+              margin     = "15" 
+              padding    = "20">
+                <a:slider 
+                  skin = "sliderHigh_ver">
+                </a:slider>
+                <a:slider 
+                  skin     = "sliderHigh_ver"
+                  disabled = "true">
+                </a:slider>
+                <a:slider 
+                  skin = "slider16_ver">
+                </a:slider>
+                <a:slider 
+                  skin     = "slider16_ver"
+                  disabled = "true">
+                </a:slider>
+                <a:slider 
+                  skin = "slider11_ver">
+                </a:slider>
+                <a:slider 
+                  skin     = "slider11_ver"
+                  disabled = "true">
+                </a:slider>
+                <a:slider 
+                  skin = "slidermedia_ver">
+                </a:slider>
+                <a:slider 
+                  skin     = "slidermedia_ver" 
+                  disabled = "true">
+                </a:slider>
+                <a:slider 
+                  skin = "slider16media_ver">
+                </a:slider>
+                <a:slider 
+                  skin     = "slider16media_ver" 
+                  disabled = "true">
+                </a:slider>
+            </a:table>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+    <seealso menu="elements" sub="r" name="ref" display="Ref" title="See ref element" />
+</examples>

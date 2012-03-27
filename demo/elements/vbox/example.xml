@@ -1,0 +1,22 @@
+<examples name="Vbox Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Few ways to positioning elements verticaly</description>
+        <source><![CDATA[
+            <a:vbox height="150" width="100">
+                <a:button height="24" edge="5">Button 1</a:button>
+                <a:button height="24" edge="5">Button 2</a:button>
+                <a:button height="24" edge="5">Button 3</a:button>
+            </a:vbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Few ways to positioning elements verticaly</description>
+        <source><![CDATA[
+            <a:vbox height="150" lean="bottom" width="100">
+                <a:button height="24" edge="5">Button 1</a:button>
+                <a:button height="24" edge="5">Button 2</a:button>
+                <a:button height="24" edge="5">Button 3</a:button>
+            </a:vbox>
+        ]]></source>
+    </example>
+</examples>

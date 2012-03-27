@@ -1,0 +1,177 @@
+<examples name="W3C DOM &amp; Events" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>The API for manipulating Ajax.org Markup is the W3C DOM that we all know and love. By using the DOM you only need to learn one API of the Ajax.org Platform Markup. This demo shows how you can use the DOM to move pages from one tab element to another.</description>
+        <source><![CDATA[
+            <a:window 
+              visible = "true" 
+              width   = "639" 
+              height  = "300" 
+              title   = "Tab Markup Demo" 
+              icon    = "application_view_icons.png">
+                <a:tab id="tab1" anchors="10 50%+5 40 10"> 
+                    <a:page caption="General"> 
+                        <a:checkbox>Example</a:checkbox> 
+                        <a:button>Example</a:button> 
+                    </a:page> 
+                    <a:page caption="Advanced"> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                    </a:page> 
+                    <a:page caption="Ajax.org"> 
+                        <a:checkbox>This ok?</a:checkbox> 
+                        <a:checkbox>This better?</a:checkbox> 
+                    </a:page> 
+                </a:tab> 
+            
+                <a:tab id="tab2" skin="lowtab" anchors="10 10 54 50%+5"> 
+                    <a:page caption="Specific"> 
+                        <a:checkbox>Example</a:checkbox> 
+                        <a:button>Example</a:button> 
+                    </a:page> 
+                    <a:page caption="Simple"> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                    </a:page> 
+                    <a:page caption="Ubuntu"> 
+                        <a:checkbox>This ok?</a:checkbox> 
+                        <a:checkbox>This better?</a:checkbox> 
+                    </a:page> 
+                </a:tab>
+            
+                <a:button id="btn1" onclick="movePage(tab1, tab2, btn1, btn2)" 
+                  bottom="10" left="10">
+                    Move to right
+                </a:button>
+                <a:button id="btn2" onclick="movePage(tab2, tab1, btn2, btn1)" 
+                  bottom="10" right="10">
+                    Move to left
+                </a:button>
+            </a:window>
+            
+            <a:script>//<!--
+                function movePage(t1, t2, b1, b2){
+                    //get the active page
+                    var page = t1.getPage();
+            
+                    //append it to the other tab
+                    t2.appendChild(page);
+            
+                    //disabled buttons if necessary
+                    b1.setAttribute('disabled', t1.getElementsByTagName("a:page").length == 1);
+                    b2.setAttribute('disabled', t2.getElementsByTagName("a:page").length == 1);
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+    <example>
+        <description>This demo is a bit more complex and shows how to remove elements from the dom tree and create new ones and add them. The dropdown sets the column attribute to change the way the grid is rendered.</description>
+        <source><![CDATA[
+            <a:table id="gridExample" 
+              columns    = "80, *"
+              cellheight = "19" 
+              margin     = "5 5 10 5" 
+              padding    = "5"
+              width      = "639"
+              height     = "270">
+                <a:label>Subject</a:label>
+                <a:textbox />
+                <a:label>Name</a:label>
+                <a:textbox />
+                <a:label>Title</a:label>
+                <a:textbox />
+                <a:label>Profession</a:label>
+                <a:textbox />
+                <a:label>Question</a:label>
+                <a:textbox />
+                <a:label>Remark</a:label>
+                <a:textbox />
+                
+                <a:label span="*">Message</a:label>
+                <a:textarea id="txtMessage" 
+                  height = "*" 
+                  span   = "*"/>
+            </a:table>
+            
+            <a:dropdown width="150" height="19" right="10" value="80, *"
+              onafterchange="changeColumns(this.value);">
+                <a:item value="80, *">Two Colum</a:item>
+                <a:item value="60, 250, 60, *">Four Colum</a:item>
+                <a:item value="60, 120, 60, 120, 60, *">Six Colum</a:item>
+            </a:dropdown>
+             
+            <a:hbox width="202" margin="0 5 5 5" height="29">
+                <a:button id="btnRemove" edge="5" onclick="removeNode();">
+                    Remove Node
+                </a:button>
+                <a:button edge="5" onclick="addNode();">
+                    Add Node
+                </a:button>
+            </a:hbox>
+            
+            <!-- Example of DOM operations on the Ajax.org Markup -->
+            <a:script>//<!--
+                function changeColumns(cols){
+                    gridExample.setAttribute("columns", cols);
+                }
+            
+                function removeNode(){
+                    var nodes = gridExample.getElementsByTagName("*");
+                    if (nodes.length) {
+                        gridExample.removeChild(nodes[1]);
+                        gridExample.removeChild(nodes[0]);
+                    }
+                }
+            
+                function addNode(){
+                    var t = apf.document.createElementNS(apf.ns.aml, "textbox");
+                    gridExample.insertBefore(t, gridExample.firstChild);
+                
+                    var l = apf.document.createElementNS(apf.ns.aml, "label");
+                    l.setAttribute("caption", "Added Label");
+                    gridExample.insertBefore(l, gridExample.firstChild);
+                    
+                    /* Alternative JSON API:
+                    gridExample.insertBefore(
+                        new apf.textbox(), 
+                        gridExample.firstChild);
+                    
+                    gridExample.insertBefore(
+                        new apf.label({caption: "Added Label"}), 
+                        gridExample.firstChild);
+                    */
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+    <example>
+        <description>In this demo the W3C Event Model is used on Ajax.org Platform elements.</description>
+        <source><![CDATA[
+            <a:button id="btnExample">Example</a:button>
+            <br />
+            <a:button onclick="addEvent()">Add Event</a:button>
+            <a:button onclick="removeEvent()">Remove Event</a:button>
+            
+            <a:script>//<!--
+                var btn = apf.document.getElementById("btnExample");
+                var eventHandler = function(e){
+                    alert("You've clicked this button");
+                };
+            
+                function addEvent(){
+                    btn.addEventListener("click", eventHandler);
+                }
+            
+                function removeEvent(){
+                    btn.removeEventListener("click", eventHandler);
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="d" name="dropdown" display="Dropdown" title="See dropdown element" />
+    <seealso menu="elements" sub="f" name="frame" display="Frame" title="See frame element" />
+    <seealso menu="elements" sub="g" name="grid" display="Grid" title="See grid element" />
+    <seealso menu="elements" sub="p" name="page" display="Page" title="See page element" />
+</examples>

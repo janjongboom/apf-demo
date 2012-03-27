@@ -1,0 +1,21 @@
+<examples name="Browser Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Browser window simulation.</description>
+        <source><![CDATA[
+            <a:browser
+              id     = "browser"
+              src    = "http://www.google.com"
+              width  = "600"
+              height = "600">
+            </a:browser>
+            <a:hbox width="600" height="34" margin="10 0 0 0">
+                <a:button width="120" 
+                  onclick = "browser.setAttribute('src', 'http://www.google.com')">
+                www.google.com</a:button>
+                <a:button width="120" edge="5"
+                  onclick = "browser.setAttribute('src', 'http://www.w3c.org')">
+                www.w3c.org</a:button>
+            </a:hbox>
+        ]]></source>
+    </example>
+</examples>

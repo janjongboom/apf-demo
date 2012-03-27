@@ -1,0 +1,32 @@
+<examples name="Textarea Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Textarea.</description>
+        <source><![CDATA[
+            <a:hbox height="20">
+                <a:label>Add Your comments below:</a:label>
+            </a:hbox>
+            <a:textarea 
+              height = "100"
+              width  = "250"
+              value  = "Some comments" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Textarea in disabled state.</description>
+        <source><![CDATA[
+            <a:hbox height="20">
+                <a:label>Add Your comments below:</a:label>
+            </a:hbox>
+            <a:textarea 
+              height   = "100"
+              width    = "250"
+              disabled = "true"
+              value    = "Some comments" />
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="e" name="errorbox" display="Errorbox" title="See errorbox element" />
+    <seealso menu="elements" sub="l" name="label" display="Label" title="See label element" />
+    <seealso menu="elements" sub="t" name="text" display="Text" title="See text element" />
+    <seealso menu="elements" sub="t" name="textbox" display="Textbox" title="See textbox element" />
+</examples>

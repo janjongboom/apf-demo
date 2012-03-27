@@ -1,0 +1,164 @@
+<examples name="State Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This example shows a label using property binding to get it's caption based on current state</description>
+        <source><![CDATA[
+            <a:state 
+              group   = "stRole" 
+              id      = "stUser" 
+              caption = "You are a user" 
+              active  = "true" />
+            <a:state 
+               group   = "stRole" 
+               id      = "stAdmin" 
+               caption = "You have super powers" />
+            <a:label value="{stRole.caption}" />
+            <a:hbox height="34" width="200" margin="10 0 0 0">
+                <a:button 
+                  width   = "100" 
+                  onclick = "stUser.activate()">State - User</a:button>
+                <a:button 
+                  width   = "100" 
+                  onclick = "stAdmin.activate()">State - Admin</a:button>
+            </a:hbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>A login form using the auth element to manage state.</description>
+        <source><![CDATA[
+            <a:auth
+              login         = "{comm2.login(username, password)}" 
+              logout        = "{comm2.logout()}" 
+              fail-state    = "stFail" 
+              error-state   = "stError" 
+              login-state   = "stIdle" 
+              logout-state  = "stLoggedOut"
+              waiting-state = "stLoggingIn" />
+            
+            <a:rpc 
+              id           = "comm2" 
+              protocol     = "cgi" 
+              http-method  = "post" 
+              route-server = "rpcproxy.php"
+              autoroute    = "true">
+                <a:method 
+                  name = "login" 
+                  url  = "demo/login.php">
+                    <a:param name="username" />
+                    <a:param name="password" />
+                </a:method>
+                <a:method 
+                  name = "logout" 
+                  url  = "demo/logout.php"></a:method>
+            </a:rpc>
+
+            <a:state-group 
+              id               = "stGr1" 
+              loginMsg.visible = "false">
+                <a:state 
+                  id                    = "stFail" 
+                  loginMsg.value        = "Username or password incorrect" 
+                  loginMsg.visible      = "true"
+                  grid1.visible         = "true"
+                  log_email.disabled    = "false"
+                  log_password.disabled = "false"
+                  btnLogin.disabled     = "false" />
+                <a:state 
+                  id                    = "stIdle" 
+                  loginMsg.visible      = "false"
+                  grid1.visible         = "false"
+                  btnLoggedIn.visible   = "true"
+                  lblLoggedIn.visible   = "true"
+                  btnLogin.visible      = "false" />
+                <a:state 
+                  id                    = "stError" 
+                  loginMsg.value        = "Please check your network." 
+                  loginMsg.visible      = "true"
+                  grid1.visible         = "true"
+                  log_email.disabled    = "false"
+                  log_password.disabled = "false"
+                  btnLogin.disabled     = "false" />
+                <a:state 
+                  id                    = "stLoggingIn" 
+                  loginMsg.value        = "Please wait whilst logging in..." 
+                  loginMsg.visible      = "true" 
+                  log_email.disabled    = "true"
+                  log_password.disabled = "true"
+                  btnLogin.disabled     = "true" />
+                <a:state 
+                  id                    = "stLoggedOut" 
+                  loginMsg.value        = "" 
+                  loginMsg.visible      = "false" 
+                  log_email.disabled    = "false" 
+                  log_password.disabled = "false"
+                  btnLoggedIn.visible   = "false"
+                  lblLoggedIn.visible   = "false"
+                  btnLogin.visible      = "true"
+                  btnLogin.disabled     = "false"
+                  grid1.visible         = "true" 
+                />
+            </a:state-group>
+            
+            <a:window
+              skin      = "modalwindow"
+              id        = "winAuthMain"
+              buttons   = "min"
+              visible   = "true"
+              icon      = "bullet_key.png"
+              width     = "270"
+              height    = "140"
+              title     = "Log in"
+              modal     = "false"
+              style     = "position:relative;">
+                <a:table 
+                  id         = "grid1"
+                  columns    = "60,*" 
+                  padding    = "5"
+                  margin     = "15">
+                    <a:label value="Login:" />
+                    <a:textbox
+                      value      = "TestUser"
+                      id         = "log_email"
+                      type       = "username"
+                      required   = "true"
+                      minlength  = "1"
+                      invalidmsg = "Invalid Entry;Please enter a username" />
+                    <a:label value = "Password:" />
+                    <a:textbox
+                      value      = "open"
+                      id         = "log_password"
+                      type       = "password"
+                      required   = "true"
+                      minlength  = "1"
+                      invalidmsg = "Invalid Entry;Please enter your password" />
+                </a:table>
+                <a:button
+                  id      = "btnLogin"
+                  bottom  = "15"
+                  right   = "15"
+                  width   = "70"
+                  action  = "login"
+                  default = "true">Login</a:button>
+                <a:label id="loginMsg"
+                  left   = "15"
+                  bottom = "15" />
+                <a:label
+                  id      = "lblLoggedIn"
+                  top     = "25"
+                  left    = "10"
+                  visible = "false"
+                  value   = "You are logged in as TestUser"
+                  style   = "color:green;font-weight:bold;" />
+                <a:button
+                  id      = "btnLoggedIn"
+                  top     = "55"
+                  left    = "140"
+                  width   = "70"
+                  visible = "false"
+                  action  = "logout"
+                  default = "true">Logout</a:button>
+            </a:window>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="a" name="auth" display="Auth" title="See auth element" />
+</examples>

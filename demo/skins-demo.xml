@@ -1,0 +1,1087 @@
+<?xml version='1.0'?>
+<a:skin xmlns:a="http://ajax.org/2005/aml" xmlns="http://www.w3.org/1999/xhtml">
+    <a:tree name="treedemo">
+        <a:style><![CDATA[
+            .treedemo{
+                background-color : white;
+                height           : auto;
+                overflow         : hidden;
+                cursor           : default;
+                overflow         : hidden;
+                font-size        : 8pt;
+                margin           : 0 10px 10px 10px;
+            }
+            
+            .treedemo DIV SPAN{
+                width: 15px;
+                height: 18px;
+                background: url(images/bullet_go.png) no-repeat 3px 5px;
+                display: block;
+                margin : -3px 3px 0 -3px;
+                float : left;
+            }
+        
+            .treedemo DIV.pluslast SPAN,
+            .treedemo DIV.plus SPAN{background-image:url(images/plus.png)}
+            
+            .treedemo DIV.minlast SPAN,
+            .treedemo DIV.min SPAN{background-image:url(images/min.png)}
+            
+            .treedemo blockquote div span{
+                display : none;
+            }
+            
+            .treedemo div.root {
+                height:14px;
+                padding:5px 3px 5px 8px;
+                cursor:pointer;
+                border-bottom:2px solid #25a8e7;
+                color: black;
+                font-weight : bold;
+                position:relative;
+                margin-bottom : 10px;
+                cursor : default;
+            }
+            
+            .treedemo blockquote.root div {
+                position:relative;
+            }
+            
+            .treedemo blockquote {
+                margin: 0;
+                display: none;
+                height: 0;
+                overflow: hidden;
+                background: repeat-y 0px center;
+            }
+            
+            .treedemo blockquote.root {
+                padding:0;
+                margin:0;
+            }
+        
+            .treedemo blockquote.root blockquote {
+                margin:0;
+                padding:0;
+            }
+            
+            .treedemo blockquote.root div.plus, 
+            .treedemo blockquote.root div.min {
+                height:14px;
+                width:100%;
+                margin-left:0;
+                padding:5px 3px 5px 5px;
+                border-bottom:1px solid #bbbbbb;
+                background-color:#e6e6e6;
+                margin-bottom:1px;
+                position:relative;
+                cursor:pointer;
+            }
+            
+            .treedemo blockquote.root div strong{
+                display : block;
+                float : left;
+                width : 120px;
+                height : 90px;
+                border : 1px solid gray;
+                margin : 0 8px 0 0;
+            }
+            
+            .treedemo blockquote.root div p{
+                color : #666;
+                height : 62px;
+                overflow : hidden;
+                position:absolute;
+                padding-right : 5px;
+                top:20px;
+                left:135px;
+            }
+            
+            .treedemo blockquote.root div{
+                width : 310px;
+                height : 92px;
+                margin : 0 0 0 10px;
+                cursor : pointer;
+                padding : 5px;
+                display : inline-block;
+            }
+            
+            .treedemo blockquote.root div:hover{
+                background : url(images/demo_over.gif);
+            }
+        ]]></a:style>
+        <a:style condition="!apf.isIE || apf.isIE8">
+            .treedemo div.root {
+                margin-bottom : 0px;
+            }
+            
+            .treedemo blockquote.root div{
+                margin : 10px 10px 0 10px;
+            }
+        </a:style>
+        <a:style condition="apf.isIE &amp;&amp; !apf.isIE8">
+            .treedemo blockquote.root {
+                padding-left:10px;
+                width:100%;
+            }
+            
+            .treedemo blockquote.root div {
+                display:inline;
+                margin:0 20px 10px 0;
+            }
+            .treedemo blockquote.root div.last {
+                float:none;
+                margin-left:0;
+            }
+            .treedemo blockquote.root div p {
+                top:30px;
+            }
+        </a:style>
+        <a:presentation>
+            <a:main container="." startclosed="false">
+                <div class="treedemo">
+    
+                </div>
+            </a:main>
+            <a:item
+            class        = "."
+            caption      = "text()"
+            icon         = "."
+            openclose    = "span"
+            select       = "."
+            container    = "following-sibling::blockquote"
+        >
+                <div><span> </span>-
+                </div>
+                <blockquote> </blockquote>
+            </a:item>
+            <a:dragindicator>
+                <div class='dragtree'>
+                    <span> </span>
+                    <label>
+                        <u>-</u>
+                    </label>
+                </div>
+            </a:dragindicator>
+            <a:loading>
+                <div class="loading">
+                    <span> </span>
+                    <label>Loading...</label>
+                </div>
+            </a:loading>
+            <a:empty caption=".">
+                <div class="message"></div>
+            </a:empty>
+        </a:presentation>
+    </a:tree>
+    <a:pages name="pages">
+        <a:style><![CDATA[
+            .pages {
+                overflow   : hidden;
+                border     : 1px solid gray;
+                width      : 100px;
+                height     : 100px;
+                background : white;
+                /*background-color: #f7f3e9;*/
+            }
+    
+            .pages .page {
+                display  : none;
+                width    : 100%;
+                height   : 100%;
+                overflow : hidden;
+                cursor   : default;
+            }
+            
+            body .pages.nostyle {
+                background : none;
+                border     : 0;
+            }
+    
+            .pages .curpage {
+                display : block;
+            }
+            
+            .whiteness {
+                padding-top : 15px;
+                background  : white url(images/bgform.jpg) no-repeat;
+                height      : 300px;
+            }
+            
+            .whiteness * {
+                color : white;
+            }
+            
+            .whiteness p {
+                position         : absolute;
+                right            : 12px;
+                top              : 12px;
+                padding          : 5px;
+                border           : 1px solid #BBBBBB;
+                width            : 300px;
+                color            : black;
+                color            : #444444;
+                background-color : white;
+                font-family      : Arial;
+                font-size        : 8pt;
+            }
+            
+            .leftcol {
+                float : left;
+                width : 315px;
+            }
+            
+            .leftcol input, 
+            .rightcol input {
+                width : 150px;
+            }
+            
+            .rightcol * {
+            }
+            
+            .input {
+                font-family      : Arial;
+                font-size        : 6pt;
+                border           : 2px inset;
+                float            : left;
+                background-color : white;
+                padding          : 1px;
+                width            : 130px;
+                margin-right     : 1px;
+                height           : 20px;
+                overflow         : hidden;
+                color            : gray;
+                line-height      : 0.9em;
+                word-wrap        : break-word;
+            }
+        ]]></a:style>
+        <a:presentation>
+            <a:main pages=".">
+                <div class='pages'>
+                </div>
+            </a:main>
+            <a:page container=".">
+                <div class='page'></div>
+            </a:page>
+        </a:presentation>
+    </a:pages>
+    <a:tree name="checktree_classicW">
+        <a:style><![CDATA[
+            .checktree_classicW {
+                overflow                  : auto;
+                position                  : relative;
+                background-color          : white;
+                cursor                    : default;
+                border                    : 2px inset white;
+                -moz-border-top-colors    : #808080 black;
+                -moz-border-left-colors   : #808080 black;
+                -moz-border-bottom-colors : white #d4d0c8;
+                -moz-border-right-colors  : white #d4d0c8;
+                padding                   : 3px;
+            }
+    
+            .checktree_classicW SPAN, 
+            .dragchecktree_classicW SPAN {
+                width       : 15px;
+                height      : 18px;
+                background  : url(images/split.gif) no-repeat -1px 0;
+                overflow    : visible;
+                display     : block;
+                margin-left : -29px;
+            }
+            
+            .checktree_classicW DIV {
+                overflow:hidden;
+            
+            }
+            
+            .checktree_classicW .last SPAN {
+                background : url(images/last.gif) no-repeat -1px 0;
+            }
+    
+            .dragchecktree_classicW SPAN{
+                background : transparent;
+            }
+    
+            .checktree_classicW DIV.pluslast SPAN,
+            .checktree_classicW DIV.plus SPAN {
+                background-image    : url(images/plus_classic.png);
+                background-position : 3px 5px;
+            }
+            
+            .checktree_classicW DIV.minlast SPAN,
+            .checktree_classicW DIV.min SPAN {
+                background-image    : url(images/min_classic.png);
+                background-position : 3px 5px;
+            }
+    
+            .checktree_classicW DIV, 
+            .dragchecktree_classicW {
+                padding      : 0;
+                height       : 18px;
+                padding-left : 29px;
+                font-family  : Tahoma, Arial;
+                font-size    : 8.5pt;
+                position     : relative;
+            }
+            .checktree_classicW .focusbug {
+                padding-left : 0;
+            }
+            
+            .dragchecktree_classicW {
+                opacity    : 0.5;
+                background : none;
+            }
+            
+    
+            .checktree_classicW LABEL, 
+            .dragchecktree_classicW LABEL {
+                padding     : 1px 0 0 18px;
+                background  : no-repeat 1px center;
+                height      : 16px;
+                white-space : nowrap;
+                margin-left : 0px;
+                display     : block;
+                float       : left;
+                margin-top  : -18px;
+            }
+    
+            .checktree_classicW DIV.loading LABEL {
+                background : url(icons/icoConnect.gif) no-repeat 1px center;
+            }
+            .checktree_classicW DIV.loading SPAN {
+                background : no-repeat 0px 0px;
+            }
+    
+            .checktree_classicW U, 
+            .dragchecktree_classicW U {
+                text-decoration : none;
+                color           : black;
+                cursor          : default;
+                display         : inline !important; display: block;
+                padding         : 2px 4px 2px 2px;
+                margin-left     : -15px;
+                float           : left;
+                position        : relative;
+            }
+            
+            .checktree_classicWFocus .indicate U {
+                border  : 1px dotted #BBB;/*#25a8e7;*/
+                padding : 1px 3px 1px 1px;
+                color   : black;
+            }
+            
+            .checktree_classicW BLOCKQUOTE {
+                margin     : 0;
+                padding    : 0 0 0 17px;
+                display    : none;
+                height     : 0;
+                overflow   : visible;
+                background : url(images/line.gif) repeat-y -1px center;
+            }
+            
+            .checktree_classicW BLOCKQUOTE.minlast,
+            .checktree_classicW BLOCKQUOTE.pluslast {
+                background-image : none;
+            }
+            
+            .checktree_classicW > DIV.minlast {
+                background       : url(images/split.gif) no-repeat -1px 0;
+                background-color : red;
+            }
+            
+            .checktree_classicW > DIV.pluslast {
+                background : url(images/last.gif) no-repeat -1px 0;
+            }
+            
+            .checktree_classicW DIV.minlast,
+            .checktree_classicW DIV.pluslast {
+                background : url(images/last.gif) no-repeat -1px 0;
+            }
+    
+            .checktree_classicW DIV.min,
+            .checktree_classicW DIV.plus {
+                background : url(images/split2.gif) no-repeat -1px 0;
+            }
+            
+            .checktree_classicW BLOCKQUOTE.root > DIV.min:first-child,
+            .checktree_classicW BLOCKQUOTE.root > DIV.plus:first-child {
+                background : url(images/split.gif) no-repeat -1px 0;
+            }
+    
+            .checktree_classicW #txt_rename {
+                border      : 1px solid black;
+                padding     : 1px 15px 1px 1px;
+                font-family : Tahoma;
+                font-size   : 8pt;
+                color       : black;
+                word-break  : keep-all;
+                overflow    : visible;
+                margin-top  : -2px;
+                *margin-top : 0;
+                cursor      : text;
+                height      : 13px;
+                outline     : none;
+            }
+    
+            .checktree_classicW DIV.dragInsert label {
+                border-top : 2px solid black;
+                height     : 14px;
+                overflow   : hidden;
+            }
+    
+            .checktree_classicW DIV.dragInsert U, 
+            .checktree_classicW DIV.dragDenied U {
+                padding-top : 0;
+            }
+    
+            .checktree_classicW .message {
+                text-align : center;
+                padding    : 8px 10px 0 0;
+                color      : #AAA;
+            }
+            
+            .checktree_classicW b {
+                overflow    : hidden;
+                margin      : 2px;
+                width       : 13px;
+                height      : 13px;
+                background  : url("images/checkbox_classic.png") no-repeat 0 -26px;
+                float       : left;
+                margin-left : -31px;
+            }
+            
+            .checktree_classicWFocus .indicate U {
+                border  : 1px dotted #BBB;/*#25a8e7;*/
+                padding : 1px 3px 1px 1px;
+                color   : black;
+            }
+            
+            .checktree_classicW .selected U, 
+            .checktree_classicW .dragAppend U {
+                background-color : #0a246a;
+                color            : white;
+            }
+            
+            .checktree_classicWFocus .selected U, 
+            .checktree_classicWFocus .dragAppend U, 
+            .dragtree_classicW U {
+                color            : white;
+                background-color : #0a246a;
+            }
+            
+            .checktree_classicW .checked b {
+                background-position : 0 -39px;
+            }
+            
+            .checktree_classicW .partial b {
+                background-position : 0 -52px;
+            }
+            
+            .checktree_classicWDisabled .checked b {
+                background-position : 0 -0px;
+            }
+            
+            .checktree_classicW .disabled b {
+                background-position : 0 -13px;
+            }
+        ]]></a:style>
+    
+        <a:presentation>
+            <a:main container="." startclosed="false">
+                <div class="checktree_classicW">
+    
+                </div>
+            </a:main>
+            <a:item
+              class     = "."
+              caption   = "label/u/text()"
+              icon      = "label"
+              check     = "label/b"
+              openclose = "span"
+              select    = "label"
+              container = "following-sibling::blockquote">
+                <div><span> </span><label><b> </b><u>-</u></label></div>
+                <blockquote> </blockquote>
+            </a:item>
+            <a:dragindicator>
+                <div class='dragchecktree_classicW'><span> </span><label><u>-</u></label></div>
+            </a:dragindicator>
+            <a:loading>
+                <div class="loading"><span> </span><label>Loading...</label></div>
+            </a:loading>
+            <a:empty caption=".">
+                <div class="message"></div>
+            </a:empty>
+        </a:presentation>
+    </a:tree>
+    <a:modalwindow name="window_classicW">
+        <a:style><![CDATA[
+            .window_classicW {
+                font-size   : 11px;
+                font-family : MS Sans Serif;
+                padding     : 21px 0 5px 0;
+                position    : relative;
+            }
+        
+            .window_classicW .topLeft {
+                float         : left;
+                background    : url("images/window_classic_topLeft.png") repeat-x top left;
+                width         : 3px;
+                height        : 22px;
+                margin        : 0;
+                padding       : 0;
+                border        : 0;
+                margin-top    : -21px;
+                _margin-right : -6px; /* IE6 bug fix */
+            }
+            
+            .window_classicWFocus {
+            
+            }
+            
+            .window_classicW .topRight {
+                float        : right;
+                background   : url("images/window_classic_topRight.png") repeat-x top right;
+                width        : 3px;
+                height       : 22px;
+                margin       : 0;
+                padding      : 0;
+                border       : 0;
+                margin-top   : -21px;
+                _margin-left : -3px; /* IE6 bug fix */
+            }
+            
+            .window_classicW .title {
+                background       : url("images/window_classic_title.png") no-repeat top left;
+                background-color : #a5c9ef;
+                height           : 16px;
+                color            : white;
+                position         : relative;
+                margin           : 0 3px 0 3px;
+                padding          : 5px 0 1px 20px;
+                border           : 0;
+                font-weight      : bold;
+                margin-top       : -21px;
+                cursor           : default;
+            }
+            
+            .window_classicW .title img {
+                margin   : -1px 3px 0 -1px;
+                position : absolute;
+                left     : 2px;
+            }
+            
+            .window_classicW .content {
+                background   : #d4d0c8;
+                margin-left  : 3px;
+                margin-right : 3px;
+                position     : relative;
+                height       : 100%;
+                border-right : 1px solid #dcd8d8;
+                border-top   : 1px solid #dcd8d8;
+                border       : 0; /* changed by ruben */
+            }
+            
+            .window_classicWMin .content {
+                overflow : hidden;
+            }
+            
+            .window_classicW .borderRight {
+                background   : url("images/window_classic_borderRight.png") repeat-y top right;
+                overflow     : hidden;
+                width        : 3px;
+                float        : right;
+                height       : 100%;
+                _margin-left : -3px; /* IE6 bug fix */ 
+            }
+            
+            .window_classicW .borderLeft {
+                background    : url("images/window_classic_borderLeft.png") repeat-y top left;
+                overflow      : hidden;
+                height        : 100%;
+                float         : left;
+                width         : 3px;
+                _margin-right : -3px; /* IE6 bug fix */
+            }
+            
+            .window_classicW .bottomLeft {
+                float         : left;
+                background    : url("images/window_classic_bottomLeft.png") no-repeat top left;
+                width         : 3px;
+                height        : 4px;
+                _margin-right : -3px; /* IE6 bug fix */
+                margin-top    : -1px;
+            }
+            
+            .window_classicW .bottomRight {
+                float        : right;
+                background   : url("images/window_classic_bottomRight.png") no-repeat top left;
+                width        : 3px;
+                height       : 4px;
+                _margin-left : -3px; /* IE6 bug fix */
+                margin-top   : -1px;
+            }
+            
+            .window_classicW .bottomBar {
+                background : url("images/window_classic_borderBar.png") repeat-x top left;
+                height     : 4px;
+                color      : #FFFFFF;
+                position   : relative;
+                margin     : -2px 3px 0 3px;
+                border-top : 1px solid #dcd8d8;
+            }
+            
+            .window_classicW .bottom{
+                position : absolute;
+                bottom   : 0;
+                width    : 100%;
+            }
+            
+            .cover {
+                /*background: url(images/spacer.gif);*/
+                background    : white;
+                opacity       : 0.3;
+                filter:progid : DXImageTransform.Microsoft.Alpha(opacity=30);
+                position      : fixed;
+                left          : 0;
+                top           : 0;
+                width         : 100%;
+                height        : 100%;
+                height        : expression(document.documentElement.offsetHeight);
+                z-index       : 10000;
+            }
+            
+            .window_classicW .title blockquote {
+                margin   : 0;
+                width    : 56px;
+                height   : 21px;
+                position : absolute;
+                padding  : 4px 2px 2px 2px;
+                top      : 0;
+                right    : 0;
+                /*background: url(images/title.gif) repeat-x;*/
+            }
+    
+            .window_classicW .title blockquote div {
+                width       : 16px;
+                height      : 14px;
+                float       : right;
+                margin-top  : 1px;
+                margin-left : 1px;
+                cursor      : default;
+                _overflow   : hidden; /* IE6 bug fix */
+            }
+            
+            .window_classicW .title blockquote div.hover {
+    
+            }
+            .window_classicW .title blockquote div.down {
+                background-position : 0 -14px;
+            }
+            
+            .window_classicW .title .max {
+                background-image : url(images/win_classic_max.png);
+            }
+            .window_classicWMax .title .max {
+                background-image : url(images/win_classic_restore.png);
+            }
+            .window_classicW .title .min {
+                background-image : url(images/win_classic_min.png);
+            }
+            .window_classicWMin .title .min {
+                background-image : url(images/win_classic_restore.png);
+            }
+            .window_classicW .title .close {
+                background-image : url(images/win_classic_x.png);
+            }
+            .window_classicW .title span {
+                width   : 16px;
+                height  : 16px;
+                display : block;
+            }
+            
+            #apf_outline {
+    
+            }
+            
+            #apf_outline.drag{
+                border        : 1px solid black;
+                background    : #CCC;
+                opacity       : 0.4;
+                filter:progid : DXImageTransform.Microsoft.Alpha(opacity=40);
+            }
+            
+            #apf_outline.resize {
+                border        : 3px solid black;
+                background    : #CCC;
+                opacity       : 0.3;
+                filter:progid : DXImageTransform.Microsoft.Alpha(opacity=30);
+            }
+        ]]></a:style>
+        
+        <a:presentation>
+            <a:main 
+              collapsed-height = "30" 
+              min-width        = "150" 
+              min-height       = "80"
+              container        = "div[6]" 
+              drag             = "div[3]" 
+              title            = "div[3]/text()" 
+              icon             = "div[3]/img" 
+              buttons          = "div[3]/blockquote">
+                <div class="window_classicW">
+                    <div class="topLeft"> </div>
+                    <div class="topRight"> </div>
+                    <div class="title"><img src="" />-<blockquote> </blockquote></div>
+                    
+                    <div class="borderLeft"> </div>
+                    <div class="borderRight"> </div>
+                    <div class="content"> </div>
+                
+                    <div class="bottomLeft"> </div>
+                    <div class="bottomRight"> </div>
+                    <div class="bottomBar"> </div>
+                </div>
+            </a:main>
+            <a:button>
+                <div> </div>
+            </a:button>
+            <a:cover>
+                <div class='cover'> </div>
+            </a:cover>
+        </a:presentation>
+    </a:modalwindow>
+    <a:label name="label_classicW">
+        <a:style><![CDATA[
+            .label_classicW {
+                color       : black;
+                font-size   : 11px;
+                font-family : MS Sans Serif;
+                overflow    : visible;
+                cursor      : default;
+                line-height : 13px;
+                padding     : 0 0 0 0;
+            }
+            
+            .packTitleText {
+                overflow : visible;
+            }
+            
+            .lblShadow {
+                color : white;
+            }
+            .lblShadow span {
+                position : absolute;
+                left     : -1px;
+                top      : -1px;
+                color    : gray;
+            }
+            
+            .lblShadow hr.white {
+                height   : 1px;
+                color    : white;
+                margin   : 0;
+                width    : 365px;
+                position : absolute;
+                top      : 6px;
+                left     : 115px;
+            }
+            
+            .lblShadow hr.gray {
+                height   : 1px;
+                color    : #8d8d8d;
+                margin   : 0;
+                width    : 365px;
+                position : absolute;
+                top      : 6px;
+                left     : 115px;
+                display  : none;
+            }
+    
+            .label_classicWDisabled{
+                color : #808080;
+            }
+            
+            .tiny {
+                font-size : 9px;
+            }
+            
+            .error .label_classicW {
+                background : url(images/alert.png) no-repeat 0 0;
+                min-height : 37px;
+                padding    : 3px 0 0 45px;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isIE">
+            .lblShadow hr.gray {
+                display : block;
+            }
+            .lblShadow hr.white {
+                top  : 7px;
+                left : 116px;
+            }
+        </a:style>
+    
+        <a:presentation>
+            <a:main caption="." for="@for">
+                <div class="label_classicW"> </div>
+            </a:main>
+        </a:presentation>
+    </a:label>
+    <a:textbox name="textbox_classicW">
+        <a:style><![CDATA[
+            .tb_classicW {
+                width                     : 161px;
+                height                    : 16px;
+                color                     : black;
+                font-size                 : 11px;
+                font-family               : MS Sans Serif;
+                border                    : 2px inset white;
+                -moz-border-top-colors    : #808080 black;
+                -moz-border-left-colors   : #808080 black;
+                -moz-border-bottom-colors : white #d4d0c8;
+                -moz-border-right-colors  : white #d4d0c8;
+                margin                    : 0;
+                padding                   : 2px 0 2px 2px;
+                outline                   : none;
+                text-overflow             : ellipsis;
+            }
+            
+            .tb_classicWFocus {
+                
+            }
+            
+            .tb_classicWDisabled {
+                
+            }
+            
+            .tb_classicWError {
+                border : 2px solid #ffb500;
+                margin : -1px 0 0 -1px;
+            }
+            
+            .tb_classicWInitial {
+                color : gray;
+            }
+    
+            .tb_classicWautoc {
+                border           : 1px solid gray;
+                width            : 250px;
+                overflow-y       : auto;
+                z-index          : 10000000;
+                position         : absolute;
+                background-color : white;
+                margin           : 18px 0 0 0;
+                white-space      : nowrap;
+                display          : none;
+            }
+    
+            .tb_classicWautoc div {
+                padding     : 1px 5px 1px 3px;
+                cursor      : default;
+                margin      : 0px;
+                color       : black;
+                font-family : Tahoma;
+                font-size   : 11px;
+            }
+    
+            .tb_classicWautoc div.hover{
+                background-color : #25a8e7;
+                color            : white;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isIE">
+            .tb_classicW {
+            }
+        </a:style>
+        
+        <a:presentation>
+            <a:main input=".">
+                <input type='text' class="tb_classicW" />
+            </a:main>
+            <a:container>
+                <div class="tb_classicWautoc"> </div>
+            </a:container>
+            <a:item caption=".">
+                <div>-</div>
+            </a:item>
+        </a:presentation>
+    </a:textbox>
+    <a:frame name="frame">
+        <a:style><![CDATA[
+            .frame_classicW {
+                padding                   : 0 3px 9px 7px;
+                border                    : 2px inset white;
+                -moz-border-top-colors    : #808080 white;
+                -moz-border-left-colors   : #808080 white;
+                -moz-border-bottom-colors : white #808080;
+                -moz-border-right-colors  : white #808080;
+                color                     : black;
+                font-size                 : 11px;
+                font-family               : MS Sans Serif;
+                margin                    : 0 0 5px 0;
+                cursor                    : default;
+                position                  : absolute;
+                z-index                   : 1000;
+            }
+            
+            .frame_classicW .frame_shadow {
+                display : none;
+            }
+    
+            .frame_classicW .legend {
+                /*margin-top: 0px;
+                position: absolute;
+                background : #fafbfc;
+                left: 5px;
+                top: -8px;
+                padding: 0 2px 0 2px;
+                margin: 0px;*/
+                margin : 0 0 7px -7px;
+                cursor : default;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isIE6">
+            .frame_classicW {
+                height: 1%;
+            }
+        </a:style>
+        <a:style condition="!apf.isIE">
+            .frame_classicW .legend {
+                margin : 5px 0 7px -3px;
+            }
+        </a:style>
+        <a:style condition="apf.isIE8">
+            .frame_classicW .legend {
+                margin : -2px 0 7px 0;
+            }
+        </a:style> 
+        <a:style condition="apf.isIE">
+            .frame_classicW {
+                border: 2px groove white;
+            }
+        </a:style> 
+        
+        <a:presentation>
+            <a:main container="." caption="legend/text()">
+                <fieldset class='frame_classicW'>
+                    <legend class="legend">-</legend>
+                </fieldset>
+            </a:main>
+        </a:presentation>
+    </a:frame>
+    <a:button name="button_classicW">
+        <a:style><![CDATA[
+            .button_classicW {
+                border-width              : 2px;
+                border-style              : outset;
+                border-color              : #d4d0c8; !important;
+                cursor                    : default;
+                padding                   : 2px 6px 3px 6px;
+                text-align                : center;
+                font-size                 : 11px;
+                font-family               : MS Sans Serif;
+                color                     : black;
+                background-color          : #d4d0c8;
+                width                     : 65px;
+                float                     : right;
+                margin-left               : 5px;
+                -moz-border-top-colors    : #ffffff #d4d0c8;
+                -moz-border-left-colors   : #ffffff #d4d0c8;
+                -moz-border-bottom-colors : #404040 #808080;
+                -moz-border-right-colors  : #404040 #808080;
+            }
+            
+            .button_classicWDisabled {
+                color : gray;
+            }
+    
+            .button_classicWFocus {
+                border-width              : 3px;
+                -moz-border-bottom-colors : black #404040 #808080;
+                -moz-border-right-colors  : black #404040 #808080;
+                -moz-border-top-colors    : black white #d4d0c8;
+                -moz-border-left-colors   : black white #d4d0c8;
+                padding                   : 1px 5px 2px 5px;
+            }
+            
+            .button_classicWDown {
+                border-style              : inset;
+                border-width              : 2px;
+                padding                   : 3px 5px 2px 7px;
+                -moz-border-bottom-colors : black #808080;
+                -moz-border-right-colors  : black #808080;
+                -moz-border-top-colors    : black #808080;
+                -moz-border-left-colors   : black #808080;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isIE || apf.isSafari || apf.isChrome">
+            .button_classicW {
+                border : 2px outset white;
+            }
+            
+            .button_classicWFocus {
+                border  : 2px outset white;
+                padding : 2px 6px 3px 6px;
+            }
+    
+            .button_classicWDown {
+                border : 2px inset white;
+            }
+        </a:style>
+        
+        <a:presentation>
+            <a:main caption="./text()" icon="." background=".">
+                <div class='button_classicW'>-</div>
+            </a:main>
+            
+            <a:helper>
+                <div class='helper'></div>
+            </a:helper>
+        </a:presentation>
+    </a:button>
+    <a:text name="text_classicW">
+        <a:style><![CDATA[
+            .text_classicW {
+                border                    : 2px inset white;
+                -moz-border-top-colors    : #808080 black;
+                -moz-border-left-colors   : #808080 black;
+                -moz-border-bottom-colors : white #d4d0c8;
+                -moz-border-right-colors  : white #d4d0c8;
+                background-color          : white;
+                padding                   : 2px;
+                overflow                  : auto;
+                color                     : black;
+                font-size                 : 11px;
+                font-family               : MS Sans Serif;
+            }
+            
+            .emptyMain, .allMain {
+                background-color : #f1f1f1;
+            }
+    
+            .packager .text_classicW {
+                font-size : 9pt;
+                border    : none;
+                color     : #999999;
+            }
+            
+            .text_classicWEmpty, .text_classicWLoading {
+                font-size   : 8pt;
+                font-weight : normal;
+                color       : #aaa;
+                text-align  : center;
+            }
+            
+            .text_classicWFocus {
+            }
+        ]]></a:style>
+    
+        <a:presentation>
+            <a:main container=".">
+                <div class='text_classicW'></div>
+            </a:main>
+        </a:presentation>
+    </a:text>
+</a:skin>

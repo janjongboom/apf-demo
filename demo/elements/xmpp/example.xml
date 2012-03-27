@@ -1,0 +1,164 @@
+<examples name="Xmpp Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>A basic chat client, using a:xmpp and a:auth.</description>
+        <source><![CDATA[
+            <a:appsettings>
+                <a:auth
+                  login          = "{myXMPP.login(username, password)}"
+                  logout         = "{myXMPP.logout()}"
+                  window         = "winLogin"
+                  autostart      = "false"
+                  fail-state     = "stFail"
+                  error-state    = "stError"
+                  login-state    = "stIdle"
+                  waiting-state  = "stLoggingIn" 
+                  onloginsuccess = "btnLogin.hide(); winChat.show();" />
+            </a:appsettings>
+            
+            <a:teleport>
+                <a:xmpp id="myXMPP"
+                  url   = "{apf.appsettings.baseurl.replace(/\\/$/, '')}:5280/http-bind"
+                  model = "mdlRoster"
+                  type  = "binding" />
+            </a:teleport>
+            
+            <a:model id="mdlMessage"
+              submission    = "{myXMPP.notify([text()], lstRoster.value)}"
+              onaftersubmit = "
+                apf.xmldb.appendChild(lstRoster.selected, mdlMessage.data);
+                this.reset()
+              ">
+                <message to="" />
+            </a:model>
+            
+            <a:button id="btnLogin" onclick="winLogin.show()">Log in</a:button>
+            
+            <a:window id="winChat"
+              icon      = "comment.gif"
+              title     = "{lstRoster.value ? 'Chat with '
+                            + lstRoster.value.split('@')[0] : 'Chat'}"
+              margin    = "5 5 35 5"
+              width     = "250"
+              height    = "300"
+              modal     = "false"
+              buttons   = "min|max|close"
+              minwidth  = "200"
+              minheight = "200"
+              resizable = "true">
+                <a:list 
+                  id             = "lstRoster"
+                  ref            = "[@to]"
+                  refmodel       = "mdlMessage"
+                  model          = "mdlRoster"
+                  onbeforeselect = "mdlMessage.reset()"
+                  align          = "left-splitter"
+                  multiselect    = "false"
+                  width          = "70">
+                    <a:each match="[user]">
+                        <a:caption>[@node]</a:caption>
+                        <a:icon 
+                          match = "[@status[.='unavailable']]" 
+                          value  = "user_offline.gif" />
+                        <a:icon value="user.png" />
+                        <a:select match="[@status[not(.='unavailable')]]" />
+                        <a:value match="[@jid]" />
+                    </a:each>
+                    <a:actions />
+                </a:list>
+            
+                <a:text
+                  model      = "{lstRoster.selected}"
+                  align      = "right-splitter"
+                  class      = "messages"
+                  focussable = "true"
+                  scrolldown = "true">
+                    <a:bindings>
+                        <a:value>
+                            foreach([message]){
+                                <strong>{
+                                    ([@from] || [//account/@node]).split("@")[0] + " says:"
+                                }</strong>
+                                <p>[text()]</p>
+                            }
+                        </a:value>
+                    </a:bindings>
+                </a:text>
+            
+                <a:textarea id="txtChat"
+                  value       = "text()"
+                  model     = "mdlMessage"
+                  required  = "true"
+                  align     = "right"
+                  realtime  = "true"
+                  height    = "50"
+                  multiline = "optional"
+                  disabled  = "{!lstRoster.value}"
+                  tabindex  = "1" />
+            
+                <a:button
+                  default  = "true"
+                  disabled = "{!txtChat.value or !lstRoster.length}"
+                  right    = "5"
+                  bottom   = "5"
+                  tabindex = "2"
+                  onclick  = "mdlMessage.submit()"
+                  caption  = "Send">
+                </a:button>
+            </a:window>
+            
+            <a:window id="winLogin"
+              kbclose   = "true"
+              buttons   = "close"
+              title     = "Log in"
+              popout    = "true"
+              height    = "125"
+              width     = "250"
+              icon      = "disconnect.png"
+              center    = "true"
+              modal     = "true">
+                <a:table columns="70,*" padding="5" margin="10">
+                    <a:label>Username</a:label>
+                    <a:textbox 
+                      id         = "txtUsername"
+                      type       = "username"
+                      required   = "true"
+                      invalidmsg = "Invalid username;A username is required" />
+            
+                    <a:label>Password</a:label>
+                    <a:textbox 
+                      id         = "txtPassword"
+                      type       = "password"
+                      required   = "true"
+                      minlength  = "4"
+                      invalidmsg = "Invalid password;A password is required and 
+                                      should be at least 4 characters long." />
+                </a:table>
+            
+                <a:label id="loginMsg" height="20" left="10" bottom="10" />
+                <a:button 
+                  id      = "btnLogin"
+                  action  = "login"
+                  default = "true"
+                  right   = "10"
+                  bottom  = "10"
+                  caption = "Log in" />
+            </a:window>
+            
+            <a:state-group
+              loginMsg.visible  = "false"
+              winLogin.disabled = "false">
+                <a:state id="stFail"
+                    loginMsg.value   = "Username or password incorrect"
+                    loginMsg.visible = "true" />
+                <a:state id="stError"
+                    loginMsg.value   = "An error has occurred. Please check your network."
+                    loginMsg.visible = "true" />
+                <a:state id="stLoggingIn"
+                    loginMsg.value    = "Please wait while logging in..."
+                    loginMsg.visible  = "true"
+                    winLogin.disabled = "true" />
+                <a:state id="stIdle" />
+            </a:state-group>
+        ]]></source>
+    </example>
+</examples>

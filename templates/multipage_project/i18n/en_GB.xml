@@ -1,0 +1,26 @@
+<groups>
+    <en_GB id="sub">
+        <key id="ok">OK</key>
+        <key id="cancel">Cancel</key>
+        <key id="undo">Undo</key>
+        <key id="redo">Redo</key>
+        <key id="save">Save</key>
+        <key id="add">Add</key>
+        <group id="auth">
+            <key id="loading">Loading...</key>
+            <key id="error_cred">Username or Password incorrect</key>
+            <key id="error_username">Incorrect entry;Please enter a correct Username</key>
+            <key id="error_password">Incorrect entry;Please enter a correct Password</key>
+            <key id="error_unexp">An unexpected error occurred. Please check your Internet connection.</key>
+            <key id="state_busy">One moment please...</key>
+            <key id="username">Username</key>
+            <key id="password">Password</key>
+            <key id="signin">Sign In</key>
+            <key id="logoff">Log off</key>
+            <key id="logoff_title">Sign out of this session</key>
+        </group>
+        <group id="pages">
+            <key id="notfound">404 Page not found</key>
+        </group>
+    </en_GB>
+</groups>

@@ -1,0 +1,51 @@
+<examples name="Skinning Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>The skins of Ajax.org platform are defined in a seperate xml file usually called skins.xml. These definitions contain not only css but also the html that builds up the element. A type of element can have multiple skin definitions in one file. Ajax.org platform lets you change the skin of individual elements on the fly without the need to reload the aplication.</description>
+        <source><![CDATA[
+            <a:window 
+              id        = "win" 
+              width     = "400"
+              height    = "250"
+              minwidth  = "340"
+              minheight = "210" 
+              visible   = "true" 
+              title     = "Skin switching"
+              icon      = "image.png"
+              resizable = "true">
+                <a:list id="list" skin="thumbnail" anchors="10 10 60 10">
+                    <a:item image="demo/images/thinkgeek/thinkgeek1.jpg" icon="nl.png">
+                        The Netherlands
+                    </a:item>
+                    <a:item image="demo/images/thinkgeek/thinkgeek2.jpg" icon="us.png">
+                        United States of America
+                    </a:item>
+                    <a:item image="demo/images/thinkgeek/thinkgeek3.jpg" icon="pl.png">
+                        Poland
+                    </a:item>
+                </a:list>
+                
+                <a:table columns="150, 150" bottom="10" style="border:1px solid red"
+                  margin="0 0 0 10" padding="5" left="0">
+                    <a:label>Change the list skin</a:label>
+                    <a:label>Change the window skin</a:label>
+                    <a:dropdown value="thumbnail"
+                      onafterchange="list.setAttribute('skin', this.value)">
+                        <a:item value="list">Normal skin</a:item>
+                        <a:item value="thumbnail">Thumbnail skin</a:item>
+                        <a:item value="listcomments">Comments skin</a:item>
+                    </a:dropdown>
+                    <a:dropdown value="window"
+                      onafterchange="win.setAttribute('skin', this.value)">
+                        <a:item value="window">Normal skin</a:item>
+                        <a:item value="roundedged">Rounded edges skin</a:item>
+                        <a:item value="bigedge">Big edges skin</a:item>
+                        <a:item value="alert">Alert skin</a:item>
+                    </a:dropdown>
+                </a:table>
+            </a:window>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="w" name="window" display="Window" title="See window element" />
+</examples>

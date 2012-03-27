@@ -1,0 +1,199 @@
+<examples name="Property Tweening" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>You can use CSS tweens to animate to and from CSS classes. This example shows three classes and how you can animate between them.</description>
+        <source><![CDATA[
+            <a:style>
+                .winAnim {
+                    position : absolute;
+                    left : 700px;
+                    top  : 300px;
+                }
+            
+                .win_hover{
+                    opacity : 0.4;
+                }
+                
+                .win_lefttop{
+                    left : 10px;
+                    top : 150px;
+                }
+            </a:style>
+            
+            <a:window 
+              id      = "winExample" 
+              popout  = "true"
+              class   = "winAnim"
+              width   = "300"
+              buttons = "close"
+              height  = "200" 
+              title   = "Example" 
+              icon    = "note.png" >
+                <a:tab bottom="40" top="10" left="10" right="10">
+                    <a:page caption="General">
+                    
+                    </a:page>
+                    <a:page caption="Advanced">
+                    
+                    </a:page>
+                    <a:page caption="Javeline">
+                    
+                    </a:page>
+                </a:tab>
+                
+                <a:button 
+                  id      = "btnSubmit" 
+                  caption = "Submit"
+                  right   = "10"
+                  bottom  = "10" />
+            </a:window>
+            
+            <a:button onclick="winExample.show()">Show Window</a:button>
+            <a:bar visible="{winExample.visible}" skin="basic">
+                <a:button state="true" onclick="this.value ? fadeOut() : fadeIn()">
+                    Fade 
+                </a:button>
+                <a:button onclick="animLeft()">Go to left top</a:button>
+                <a:button onclick="animBack()">Go to start</a:button>
+            </a:bar>
+            
+            <a:script>//<!--
+                function fadeOut(){
+                    apf.tween.css(winExample, "win_hover", {
+                        steps : 10
+                    })
+                }
+                
+                function fadeIn(){
+                    apf.tween.css(winExample, "win_hover", {
+                        steps   : 10, 
+                        interval: 30
+                    }, true)
+                }
+                
+                function animLeft(){
+                    apf.tween.css(winExample, "win_lefttop", {
+                        steps : 20,
+                        anim  : apf.tween.EASEIN
+                    });
+                }
+                
+                function animBack(){
+                    apf.tween.css(winExample, "win_lefttop", {
+                        steps : 20,
+                        anim  : apf.tween.EASEIN
+                    }, true);
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+    <example>
+        <description>This example shows basic single element tweening with a start and a stop button. The return animation is create by chaining the tween calls.</description>
+        <source><![CDATA[
+            <a:bar 
+              id     = "bar" 
+              skin   = "basic" 
+              class  = "barfill" 
+              width  = "100" 
+              height = "100" />
+            
+            <br />
+            <a:button onclick="play()">Start</a:button>
+            <a:button onclick="stop()">Stop</a:button>
+            
+            <a:script>//<!--
+                var control;
+                function play(){
+                    control = {
+                        stop : false
+                    }
+                    
+                    apf.tween.single(bar, {
+                        steps   : 20, 
+                        control : control,
+                        type    : "left", 
+                        anim    : apf.tween.EASEOUT,
+                        from    : 0, 
+                        to    : 530
+                    }).single(bar, {
+                        steps   : 20,
+                        control : control,
+                        type    : "left",
+                        anim    : apf.tween.EASEIN,
+                        from    : 530,
+                        to    : 0
+                    });
+                }
+                
+                function stop(){
+                    if (control) 
+                        control.stop = true
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+    <example>
+        <description>This example shows how to animate multiple properties on multiple elements.</description>
+        <source><![CDATA[
+            <a:bar 
+              id     = "bar2" 
+              skin   = "basic" 
+              class  = "barfill" 
+              width  = "10" 
+              height = "10" />
+            <a:bar 
+              id     = "bar3" 
+              skin   = "basic" 
+              class  = "barfill" 
+              width  = "10" 
+              height = "10" 
+              top   = "7" 
+              left   = "20" />
+            
+            <br />
+            <a:button onclick="play2()">Start</a:button>
+            <a:button onclick="stop2()">Stop</a:button>
+            
+            <a:script>//<!--
+                var control;
+                function play2() {
+                    control = {
+                        stop : false
+                    }
+            
+                    apf.tween.multi(bar2, {
+                        steps   : 30,
+                        control  : control,
+                        anim     : apf.tween.EASEOUT,
+                        interval : 10,
+                        tweens   : [
+                            {type: "width",   from: 10,     to: 200},
+                            {type: "height",  from: 10,     to: 100},
+                            {type: "bgcolor", from: "#f1f1f1", to: "#ff0000", color:true},
+                            
+                            {type: "left",  from: 20,       to: 430,       oHtml: bar3},
+                            {type: "width",   from: 10,     to: 200,       oHtml: bar3},
+                            {type: "height",  from: 10,     to: 100,       oHtml: bar3},
+                            {type: "bgcolor", from: "#f1f1f1", to: "#0000ff", oHtml: bar3, color:true}
+                        ]
+                    }).multi(bar2, {
+                        steps   : 30,
+                        control  : control,
+                        interval : 10,
+                        tweens   : [
+                            {type: "bgcolor", from: "#ff0000", to: "#00ff00", color:true},
+                            {type: "bgcolor", from: "#0000ff", to: "#ff0000", oHtml: bar3, color:true}
+                        ]
+                    });
+                }
+            
+                function stop2(){
+                    if (control)
+                        control.stop = true
+                }
+            //--></a:script>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="w" name="window" display="Window" title="See window element" />
+</examples>

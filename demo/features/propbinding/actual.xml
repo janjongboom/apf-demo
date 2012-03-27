@@ -1,0 +1,118 @@
+<examples name="Live Markup - Property binding" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Property binding is useful to connect a property of one element to that of another (or itself). This connection will maintain sync throughout it's lifetime. Formula's can be used to transform the property value when necessary. Use curly braces to specify the expression.</description>
+        <source><![CDATA[
+            <a:table columns="100,200" padding="5">
+                <a:label>Height</a:label>
+                <a:slider 
+                  id     = "sld1" 
+                  min    = "0"
+                  max    = "1"
+                  height = "8" 
+                  margin = "5 0 0 0" />
+                <a:label>Width</a:label>
+                <a:slider 
+                  id     = "sld2" 
+                  min    = "10"
+                  max    = "300"
+                  height = "8" 
+                  margin = "5 0 0 0"/>
+                <a:label>Width</a:label>
+                <a:textbox 
+                  value    = "{sld2.value}"
+                  realtime = "true" />
+            
+                <a:bar skin="basic" class="barfill"
+                  span   = "2"
+                  width  = "{(sld1.value * 290) + 10}" 
+                  height = "{sld2.value}" />
+                <a:button 
+                  visible = "{sld2.value gt 100}" 
+                  height  = "24" 
+                  width   = "120">
+                    More than 100px
+                </a:button>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Property binding the action tracker. When you change something in the grid, the buttons become enabled. Pressing undo will enable redo.</description>
+        <source><![CDATA[
+            <a:textbox id="tb6" 
+              value         = "[@value]"
+              realtime      = "true"
+              actiontracker = "dgAt3">
+                <a:model>
+                    <data value="text" />
+                </a:model>
+            </a:textbox>
+            <a:table columns="70, 70" cellheight="24" padding="5">
+                <a:button 
+                  disabled = "{!dgAt3.undolength}" 
+                  action   = "undo" 
+                  target   = "tb6">Undo</a:button>
+                <a:button 
+                  disabled = "{!dgAt3.redolength}" 
+                  action   = "redo" 
+                  target   = "tb6">Redo</a:button>
+            </a:table>
+        ]]></source>
+    </example>
+    <example>
+        <description>Property binding a tab element</description>
+        <source><![CDATA[
+            <a:tab width="300" height="50" activepagenr="{dd5.value}">
+                <a:page caption="General" id="General" />
+                <a:page caption="Advanced" id="Advanced" />
+                <a:page caption="Ajax.org" id="Ajax.org" />
+            </a:tab>
+            <br />
+            <a:dropdown id="dd5" value="1">
+                <a:item value="0">General</a:item>
+                <a:item value="1">Advanced</a:item>
+                <a:item value="2">Ajax.org</a:item>
+            </a:dropdown>
+        ]]></source>
+    </example>
+    <example>
+        <description>Property binding an upload element</description>
+        <source><![CDATA[
+            <a:upload id="uplMain"
+                target    = "data/upload.php"
+                rel       = "btnBrowseFile"
+                data      = ""
+                timeout   = "600000"
+                onreceive = "alert(event.data);pgUpload.clear();"
+                oncancel  = "pgUpload.clear()"
+                ontimeout = "pgUpload.clear();" />
+            
+            <a:table columns="90,60" padding="5" cellheight="24">
+                <a:button id="btnBrowseFile"
+                  caption  = "Browse..."
+                  onclick  = "uplMain.browse()"
+                  default  = "true"
+                  disabled = "{uplMain.uploading}" />
+                
+                <a:button
+                  caption  = "{uplMain.uploading ? 'Cancel' : 'Send'}"
+                  disabled = "{!uplMain.value}"
+                  onclick  = "
+                    if (uplMain.uploading)
+                        uplMain.cancel();
+                    else {
+                        uplMain.upload();
+                        pgUpload.start();
+                    }
+                  " />
+                
+                <a:progressbar id="pgUpload"
+                  span   = "2"
+                  class = "lowlabel"
+                  disabled = "{!uplMain.uploading}" />
+            </a:table>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

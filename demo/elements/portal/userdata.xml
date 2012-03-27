@@ -1,0 +1,28 @@
+<docklets>
+    <docklet name="Calendar" column="0" collapsed="true"
+      src="demo/elements/portal/calendar.xml">
+        <color>green</color>
+    </docklet>
+    <docklet name="Translate" column="0" collapsed="true"
+      src="demo/elements/portal/translate.xml" >
+        <color>red</color>
+    </docklet>
+    <docklet name="Feeds" column="1" collapsed="false"
+      src="demo/elements/portal/feeds.xml">
+        <feed>forum</feed>
+    </docklet>
+    <docklet name="Performance" column="1" collapsed="false" 
+      src="demo/elements/portal/chart.xml" />
+    <docklet name="Usage" column="2" collapsed="true"
+      src="demo/elements/portal/docklet1.xml">
+        <color>blue</color>
+    </docklet>
+    <docklet name="Usage" column="2" collapsed="true"
+      src="demo/elements/portal/docklet1.xml">
+        <color>blue</color>
+    </docklet>
+    <docklet name="Usage" column="2" collapsed="true"
+      src="demo/elements/portal/docklet1.xml">
+        <color>blue</color>
+    </docklet>
+</docklets>

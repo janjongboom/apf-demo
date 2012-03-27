@@ -1,0 +1,44 @@
+<examples name="Flickr Yahoo" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Yahoo Flickr</description>
+        <source><![CDATA[
+            
+            <a:teleport>
+                <a:rpc 
+                    id           = "comm4" 
+                    protocol     = "xmlrpc" url="http://api.flickr.com/services/xmlrpc/"
+                    route-server = "rpcproxy.php"
+                    autoroute    = "true">
+                    <a:method 
+                        method-name = "flickr.photos.getRecent"
+                        name        = "flickr" 
+                        receive     = "loadPhotos">
+                    </a:method>
+                </a:rpc>
+            </a:teleport>
+            <a:list 
+                id     = "list_flickr" 
+                skin   = "thumbnail" 
+                width  = "350" 
+                height = "230" 
+                model  = "mdlFlickr">
+                <a:bindings>
+                    <a:traverse match="[photo]"></a:traverse>
+                    <a:image match="[photo]" method="getImageUrl"></a:image>
+                    <a:caption match="[@title]"></a:caption>
+                </a:bindings>
+                <a:model id="mdlFlickr">
+                    <data />
+                </a:model>
+            </a:list>
+            <a:button 
+                id       = "flick_prev" 
+                onclick  = "getImages(-1)" 
+                disabled = "true">Previous</a:button>
+            <a:button 
+                id      = "flick_next" 
+                onclick = "getImages(1)">Next</a:button>
+            <a:script src="demo/yahoo/flickr/code.js"></a:script>
+        ]]></source>
+    </example>
+</examples>

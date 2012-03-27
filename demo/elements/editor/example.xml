@@ -1,0 +1,12 @@
+<examples name="Editor Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>WYSIWYG text editor with powerful formatting capabilities.</description>
+        <source><![CDATA[
+            <a:editor width="635" height="400" 
+              model    = "demo/xml/news.xml"
+              value    = "[body]"
+              realtime = "true">
+            </a:editor>
+        ]]></source>
+    </example>
+</examples>

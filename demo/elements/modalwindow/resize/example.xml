@@ -1,0 +1,18 @@
+<examples name="Modalwindow Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Simple resizable window with title, icon with minimize, maximize and close buttons.</description>
+        <source><![CDATA[
+            <a:window  
+              buttons     = "min|max|close"
+              title       = "Mail message"
+              icon        = "email.png"
+              visible     = "true"
+              resizable   = "true" 
+              width       = "200"
+              height      = "190"
+              minwidth    = "170"
+              minheight   = "150"> 
+            </a:window>
+        ]]></source>
+    </example>
+</examples>

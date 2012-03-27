@@ -1,0 +1,74 @@
+<examples name="Modalwindow Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Disabling/Enabling.</description>
+        <source><![CDATA[
+            
+            <a:window 
+              id        = "mw3" 
+              buttons   = "close" 
+              title     = "{'This window is ' + (mw3.disabled ? 'disabled' : 'enabled')}"
+              icon      = "application.png"
+              visible   = "true"
+              width     = "350"
+              height    = "270">
+                <a:toolbar>
+                    <a:bar>
+                        <a:button 
+                          icon  = "arrow_undo.png" 
+                          tooltip = "Undo">Undo</a:button>
+                        <a:button 
+                          icon  = "arrow_redo.png" 
+                          tooltip = "Redo">Redo</a:button>
+                        <a:divider />
+                        <a:button 
+                          icon  = "textfield_add.png" action="add" target="dd1"
+                          tooltip = "Add row">Add row</a:button>
+                        <a:button 
+                          icon  = "textfield_delete.png" 
+                          tooltip = "Remove row">Remove row</a:button>
+                    </a:bar>
+                </a:toolbar>
+                <a:datagrid anchors="31 5 6 5" id="dd1"> 
+                    <a:each match="[news]"> 
+                        <a:column 
+                          type   = "icon" 
+                          width  = "16" 
+                          value  = "[@icon]" /> 
+                        <a:column 
+                          caption = "Name" 
+                          value   = "[@name]" 
+                          width   = "100%" /> 
+                        <a:column 
+                          caption = "Article counter" 
+                          width   = "140" 
+                          value   = "[@count]" /> 
+                    </a:each> 
+                    <a:actions /> 
+                    <a:model>
+                        <data>
+                            <news name="Ajax" icon="note.png" count="54"></news>
+                            <news name="Ajax.org Platform" icon="note_b.png" count="3237">
+                            </news>
+                            <news name="Android" icon="note.png" count="2"></news>
+                            <news name="Apple" icon="note.png" count="11"></news>
+                            <news name="Aptana" icon="note.png" count="30"></news>
+                            <news name="Canvas" icon="note.png" count="115"></news>
+                            <news name="Chrome" icon="note.png" count="9"></news>
+                            <news name="ColdFusion" icon="note.png" count="10"></news>
+                            <news name="CSS" icon="note.png" count="176"></news>
+                            <news name="Dojo" icon="note.png" count="224"></news>
+                            <news name="JavaScript" icon="note.png" count="1218"></news>
+                            <news name="JSON" icon="note.png" count="59"></news>
+                            <news name="Mac" icon="note.png" count="1"></news>
+                            <news name="Mozilla" icon="note.png" count="11"></news>
+                        </data>
+                    </a:model>
+                </a:datagrid>
+            </a:window>
+            <a:table columns="100, 110" cellheight="24">
+                <a:button onclick="mw3.enable()" disabled="{!mw3.disabled}">Enable window</a:button>
+                <a:button onclick="mw3.disable()" disabled="{mw3.disabled}">Disable window</a:button>
+            </a:table>
+        ]]></source>
+    </example>
+</examples>

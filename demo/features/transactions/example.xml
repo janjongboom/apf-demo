@@ -1,0 +1,202 @@
+<examples name="Transactions Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Transaction support in Ajax.org Platform allows you to group multiple user actions into one action on the undo stack. The user interface that allows this is most used for edit windows, although other uses are possible. In the example below you can add and update records in a grid using an edit window. This is quite an advanced topic so don't worry if it's not immediately clear from looking at the code.</description>
+        <source><![CDATA[
+            <a:model id="mdlItems">
+                <items>
+                    <item>
+                        <name>John Doe</name>
+                        <subject>About those important documents.</subject>
+                        <message>I would really like them back!</message>
+                    </item>
+                </items>
+            </a:model>
+            
+            <a:actions id="actExample">
+                <a:add>
+                    <item />
+                </a:add>
+                <a:update />
+            </a:actions>
+            
+            <a:button 
+              caption = "Add"
+              right   = "10" 
+              top     = "10"
+              onclick = "winMessage.begin('add')" />
+            <a:button id="btn1"
+              caption  = "Undo"
+              right    = "10"
+              top      = "40"
+              disabled = "{!atTransTest1.undolength}" 
+              onclick  = "atTransTest1.undo()" />
+            <a:button id="btn2"
+              caption  = "Redo"
+              right    = "10"
+              top      = "70"
+              disabled = "{!atTransTest1.redolength}" 
+              onclick  = "atTransTest1.redo()" />
+            
+            <a:label height="20">Double click on an item to edit it</a:label>
+            <a:datagrid 
+              id      = "dgItems" 
+              width   = "525" 
+              height  = "100" 
+              model   = "mdlItems" 
+              actions = "actExample"
+              actiontracker ="atTransTest1"
+              onafterchoose = "winMessage.show()">
+                <a:each match="[item]">
+                    <a:column type="icon" value="note.png" width="18"/>
+                    <a:column caption="Name" value="[name]" width="30%"/>
+                    <a:column caption="Subject" value="[subject]" width="70%"/>
+                </a:each>
+            </a:datagrid>
+            
+            <a:window 
+              id          = "winMessage" 
+              transaction = "true"
+              kbclose     = "true"
+              popout      = "true"
+              buttons     = "min|max|close" 
+              width       = "300" 
+              height      = "300" 
+              center      = "true"
+              minwidth    = "300" 
+              minheight   = "290"
+              resizable   = "true"
+              realtime    = "true" 
+              title       = "Message" 
+              icon        = "note.png" 
+              model       = "{dgItems.selected}">
+                <a:table 
+                  columns = "80, *" 
+                  margin  = "10 10 10 10" 
+                  padding = "5" 
+                  bottom  = "35" 
+                  top     = "0">
+                    <a:label>Name</a:label>
+                    <a:textbox value="[name]" id="txt"
+                      required   = "true" 
+                      invalidmsg = "Missing name;The name field is required" />
+                    <a:label>Subject</a:label>
+                    <a:textbox value="[subject]" />
+                    <a:label span="*">Message</a:label>
+                    <a:textarea value="[message]" 
+                        height = "*" 
+                        span   = "*"/>
+                </a:table>
+                
+                <a:button 
+                  action  = "ok"
+                  default = "true"
+                  right   = "170"
+                  bottom  = "10"
+                  width   = "75">OK</a:button>
+                    
+                <a:button 
+                  action  = "cancel"
+                  right   = "90"
+                  bottom  = "10"
+                  width   = "75">Cancel</a:button>
+                
+                <a:button 
+                  action   = "apply"
+                  right    = "10"
+                  bottom   = "10"
+                  width    = "75"
+                  disabled = "{!winMessage.undolength}">Apply</a:button>
+            </a:window>
+        ]]></source>
+    </example>
+    <example>
+        <description>This demo shows transaction support directly on a model, without a list or datagrid in between.</description>
+        <source><![CDATA[
+            <a:model id="mdlItems2">
+                <items>
+                    <item>
+                        <name>Jane Dove</name>
+                        <subject>About my cool laptop.</subject>
+                        <message>It is missing. Have you seen it?</message>
+                    </item>
+                </items>
+            </a:model>
+            
+            <a:actions id="actExample2">
+                <a:add set="{alert([.])}" >
+                    <item />
+                </a:add>
+                <a:update set="{alert([.])}" />
+            </a:actions>
+            
+            <a:hbox height="24" width="200">
+                <a:button
+                  caption = "Add"
+                  edge    = "5"
+                  onclick = "winMessage2.begin('add')" />
+                <a:button
+                  caption = "Update"
+                  edge    = "5"
+                  onclick = "winMessage2.begin('update', mdlItems2.queryNode('item'))" />
+            </a:hbox>
+            
+            <a:window id="winMessage2" 
+              transaction = "true"
+              kbclose     = "true"
+              actions     = "actExample2"
+              popout      = "true"
+              buttons     = "min|max|close" 
+              width       = "300" 
+              height      = "300" 
+              center      = "true"
+              minwidth    = "300" 
+              minheight   = "290"
+              resizable   = "true" 
+              realtime    = "true"
+              title       = "Message" 
+              icon        = "note.png" 
+              model       = "mdlItems2">
+                <a:table 
+                  columns = "80, *" 
+                  margin  = "10 10 10 10" 
+                  padding = "5" 
+                  bottom  = "35" 
+                  top     = "0">
+                    <a:label>Name</a:label>
+                    <a:textbox value="[name]" 
+                      required   = "true" 
+                      invalidmsg = "Missing name;The name field is required" />
+                    <a:label>Subject</a:label>
+                    <a:textbox value="[subject]" />
+                    <a:label span="*">Message</a:label>
+                    <a:textarea value="[message]" 
+                        height = "*" 
+                        span   = "*"/>
+                </a:table>
+                
+                <a:button 
+                  action  = "ok"
+                  default = "true"
+                  right   = "170"
+                  bottom  = "10"
+                  width   = "75">OK</a:button>
+                    
+                <a:button 
+                  action  = "cancel"
+                  right   = "90"
+                  bottom  = "10"
+                  width   = "75">Cancel</a:button>
+                
+                <a:button 
+                  action   = "apply"
+                  right    = "10"
+                  bottom   = "10"
+                  width    = "75"
+                  disabled = "{!winMessage.undolength}">Apply</a:button>
+            </a:window>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="w" name="window" display="Window" title="See window element" />
+</examples>

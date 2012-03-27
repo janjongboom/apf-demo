@@ -1,0 +1,11 @@
+<examples name="Palette Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Palette</description>
+        <source><![CDATA[
+            <a:palette id="pal1"></a:palette>
+            <a:textbox value="{pal1.value}" />
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="t" name="tab" display="Tab" title="See tab element" />
+</examples>

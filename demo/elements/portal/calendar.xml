@@ -1,0 +1,35 @@
+<a:docklet xmlns:a="http://ajax.org/2005/aml"
+  caption="Billing History" 
+  icon="icoBilling.gif" 
+  name="Calendar">
+    <a:script><![CDATA[
+        function Calendar(){
+            //Create a Javeline class
+            apf.makeClass(this);
+            
+            //Inherit from the portal.docklet baseclass
+            this.implement(apf.portal.docklet);
+            this.$init = function(xmlSettings, oDocklet){
+                //Process xml settings
+                
+            }
+        }
+     ]]></a:script>
+    <a:config>
+        <h3>Configuration</h3>
+        <a:dropdown id="ddD3" value="2009-04-12">
+            <a:item value="2009-04-12">Easter</a:item>
+            <a:item value="2009-12-24">Christmas Eve</a:item>
+            <a:item value="2009-07-04">Independence Day</a:item>
+         </a:dropdown>
+    </a:config>
+    <a:body>
+        <a:calendar 
+          id="lol"
+          output-format = "yyyy-mm-dd" 
+          width         = "169"
+          height        = "175"
+          value         = "{ddD3.value}"
+          style         = "position:relative;" />
+    </a:body>
+</a:docklet>

@@ -1,0 +1,160 @@
+<examples name="Flowchart Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>The flowchart element allows you to create a 2D graph consisting of templatable elements and arrows connecting them.</description>
+        <source><![CDATA[
+            <a:model id="mdlFlowchart" save-original="true" 
+              src = "demo/elements/flowchart/myFlowChart.xml" />
+            
+            <a:model id="mdlblocks"
+              src = "demo/elements/flowchart/blocks.xml" />
+            
+            <a:window 
+              width     = "635" 
+              height    = "550" 
+              title     = "Flowchart" 
+              icon      = "application_view_icons.png" 
+              visible   = "true"
+              resizable = "true">
+                <a:toolbar skin="toolbar2005" align="top" height="51">
+                    <a:bar>
+                        <a:button onclick="rotateElement(0);" caption="Rotate CCW" icon="tb/rotate_acw.png" tooltip="Rotate counter-clockwise"></a:button>
+                        <a:button onclick="rotateElement(1);" caption="Rotate CW" icon="tb/rotate_cw.png" tooltip="Rotate clockwise"></a:button>
+                        <a:button onclick="flipv();" caption="Flip V" icon="tb/flipv.png" tooltip="Flip vertical"></a:button>
+                        <a:button onclick="fliph();" caption="Flip H" icon="tb/fliph.png" tooltip="Flip horizontal"></a:button>
+                        <a:button onclick="alert(mdlFlowchart.getXml().xml);" caption="Model" icon="layout.png" tooltip="Show workflow model"></a:button>
+                        <a:button onclick="lockToggleSelected();"  caption="Lock" icon="tb/lock.png" tooltip="Toggle lock"></a:button>
+                    </a:bar>
+                    <a:bar>
+                        <a:button onclick="apf.window.getActionTracker().undo()" caption="Undo" icon="icoUndo.gif" tooltip="Undo last action"></a:button>
+                        <a:button onclick="apf.window.getActionTracker().redo()" caption="Redo" icon="icoRedo.gif" tooltip="Redo last action"></a:button>
+                        <a:button onclick="wfExample.setMode('normal');" caption="Mode:normal" icon="mode_normal.png" tooltip="Mode:normal"></a:button>
+                        <a:button onclick="wfExample.setMode('connection-add');" caption="Mode:conn-add" icon="mode_connection_add.png" tooltip="Mode:connection-add"></a:button>
+                    </a:bar>
+                </a:toolbar>
+                
+                <a:list 
+                  id       = "MainList" 
+                  model    = "mdlblocks" 
+                  skin     = "thumbnail_caption" 
+                  dragcopy = "true"
+                  align    = "left-splitter" 
+                  width    = "148">
+                    <a:bindings>
+                        <a:caption match = "[@caption]" />
+                        <a:image   match = "[ancestor-or-self::node()[@type]]"
+                                   value = "demo/images/blocks/[@type].png" />
+                        <a:each    match = "[block]" />
+                        <a:drag    match = "[block]" copy="true" />
+                    </a:bindings>
+                    <a:actions>
+                        <a:remove match="[node()[@candelete=0]]" />
+                        <a:add />
+                    </a:actions>
+                </a:list>
+            
+                <a:flowchart 
+                  id          = "wfExample" 
+                  drop        = "true"
+                  template    = "demo/elements/flowchart/template.xml" 
+                  title       = "canvas" 
+                  model       = "mdlFlowchart" 
+                  align       = "right">
+                    <a:each match="[block]">
+                        <a:move match="[@move] != false &amp;&amp; [@lock] != true"></a:move>
+                        <a:resize match="[@resize] == true &amp;&amp; [@lock] != true"></a:resize>
+                        <a:css match="{true}" default="locked"></a:css>
+                        <a:left match="[@left]"></a:left>
+                        <a:top match="[@top]"></a:top>
+                        <a:id match="[@id]"></a:id>
+                        <a:width match="[@width]"></a:width>
+                        <a:height match="[@height]"></a:height>
+                        <a:flipv match="[@flipv]"></a:flipv>
+                        <a:fliph match="[@fliph]"></a:fliph>
+                        <a:rotation match="[@rotation]"></a:rotation>
+                        <a:lock match="[@lock]"></a:lock>
+                        <a:type match="[@type]"></a:type>
+                        <a:caption match="[@caption]" default="Untitled block"></a:caption>
+                        <a:cap-pos match="[@cap-pos]"></a:cap-pos>
+                        <a:zindex match="[@zindex]"></a:zindex>
+                        <a:image match="[@src]"></a:image>
+
+                        <!-- Connection Binding Rules -->
+                        <a:connection match="[block/connection]"></a:connection>
+                        <a:ref match="[@ref]"></a:ref>
+                        <a:blockinput match="[@input]"></a:blockinput>
+                        <a:blockoutput match="[@output]"></a:blockoutput>
+                        <a:blocklabel match="[@label]"></a:blocklabel>
+                    </a:each>
+                </a:flowchart>
+            </a:window>
+            
+            <a:script src="demo/elements/flowchart/code.js"></a:script>
+        ]]></source>
+        <js>
+            <caption>code.js</caption>
+            <source><![CDATA[
+                function rotateElement(turn) {
+                    if (!wfExample.selected)
+                        return alert("Select some element");
+                    
+                    var sel = wfExample.selected;
+                    var rotation = parseInt(sel.getAttribute("rotation") || 0);
+                    
+                    rotation += turn == 1 ? 90 : -90;
+                    rotation = rotation > 270 ? 0 : (rotation < 0 ? 270 : rotation);
+                    
+                    wfExample.rotate(sel, rotation);
+                }
+                
+                function flipv() {
+                    if (!wfExample.selected)
+                        return alert("Select some element");
+                    
+                    var sel = wfExample.selected;
+                    wfExample.flipVertical(sel, !(sel.getAttribute("flipv") == "true"));
+                }
+                
+                function fliph() {
+                    if (!wfExample.selected)
+                        return alert("Select some element");
+                    
+                    var sel = wfExample.selected;
+                    wfExample.flipHorizontal(sel, !(sel.getAttribute("fliph") == "true"));
+                }
+                
+                function lockToggleSelected(){
+                    if (!wfExample.selected)
+                        return alert("Select some element");
+                    var sel = wfExample.selected;
+                    var lock = sel.getAttribute("lock") == "true" ? false : true;
+                    wfExample.setLock(sel, lock);
+                }
+            ]]></source>
+        </js>
+        <xml>
+            <caption>myFlowChart.xml</caption>
+            <source><![CDATA[
+                <flowchart>
+                    <block id="b1" cap-pos="inside" type="rhombus_small_lightgreen" caption="x&gt;0" left="221" top="124" width="46" height="46" lock="false" zindex="1001">
+                        <connection ref="b4" output="1" input="2" label="true" type="none-arrow"></connection>
+                        <connection ref="b3" output="3" input="2" label="false" type="none-arrow"></connection>
+                    </block>
+                    <block caption="start" cap-pos="inside" type="circle_small_lightgreen" id="b2" width="45" height="45" lock="false" left="308" top="27" zindex="1001">
+                        <connection ref="b1" output="4" input="2" type="none-arrow"></connection>
+                    </block>
+                    <block caption="End" cap-pos="inside" type="circle_small_lightgreen" id="b3" width="45" height="45" lock="false" left="355" top="330" zindex="1001"></block>
+                    <block caption="z&gt;5" cap-pos="inside" type="rhombus_small_lightgreen" id="b4" width="46" height="46" lock="false" left="136" top="250" zindex="1001">
+                        <connection ref="b3" output="3" input="1" label="false" type="none-arrow"></connection>
+                        <connection ref="b7" output="1" input="2" label="true" type="none-arrow"></connection>
+                    </block>
+                    <block caption="i++" cap-pos="inside" type="rect_small_lightgreen" id="b7" width="46" height="46" lock="false" left="69" top="354" zindex="1001">
+                        <connection ref="b3" output="4" input="4" type="none-arrow"></connection>
+                    </block>
+                </flowchart>
+            ]]></source>
+        </xml>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="toolbar" display="Toolbar" title="See toolbar element" />
+</examples>

@@ -1,0 +1,155 @@
+<examples name="2dpie Chart Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Pie chart</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400" anim="100">
+                <a:axis 
+                  mode  = "2D"
+                  x1    = "-0.5" 
+                  y1    = "-0.3" 
+                  x2    = "1.6" 
+                  y2    = "1.4">
+                    <a:style type="text/chartcss">
+                        plane  {fill:#eff5f5;stroke:white};
+                        tiles  {fill:#eff5f5;stroke:white;};
+                        margin {left:0;top:0;right:0;bottom:0}
+                        axis   {stroke:null;}
+                        label  {family:null;}
+                        tick   {stroke:null}
+                    </a:style>
+                    <a:graph 
+                      mode      = "pie" 
+                      dataslice = "1X"
+                      series="0.1#a 0.2#b 0.24#c 0.7#d 0.7#e 1.1#f 1#g 0.7#h 0.3#i 0.5#j">
+                        <a:style type="text/chartcss">
+                            graph.a{fill:#ff0200}
+                            graph.b{fill:#ff6700}
+                            graph.c{fill:#ff9600}
+                            graph.d{fill:#fbcc00}
+                            graph.e{fill:#f8ff02}
+                            graph.f{fill:#cbff00}
+                            graph.g{fill:#99fe00}
+                            graph.h{fill:#33ff00}
+                            graph.i{fill:#00fe67}
+                            graph.j{fill:#00ff99}
+                            graph{fill:yellow;stroke:white;strokeopacity:0.2;notransit:1;}
+                            graph:hoverin {
+                              speed  : 4;
+                              offset : 0.1*sin(t*t*16)*nt,0.3*easeout(t);
+                            }
+                            graph:hover{
+                              offset : 0,0.3;
+                            }
+                            graph:hoverout{
+                              speed  : 1;
+                              offset : 0.1*sin(t*t*16)*nt,0.3*abs(cos(t*t*16))*nt;
+                            }
+                        </a:style>
+                    </a:graph>
+                </a:axis>
+            </a:chart>
+        ]]></source>
+    </example>
+    <example>
+        <description>Pie chart</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400" anim="100">
+                <a:axis 
+                  mode  = "2D"
+                  x1    = "-0.5" 
+                  y1    = "-0.3" 
+                  x2    = "1.6" 
+                  y2    = "1.4">
+                    <a:style type="text/chartcss">
+                        plane{fill:#e1e1e1;stroke:white};
+                        tiles{fill:#ebebeb;stroke:white;};
+                        margin{left:0;top:0;right:0;bottom:0}
+                        axis{stroke:null;}
+                        label{family:null;}
+                        tick{stroke:null}
+                    </a:style>
+                    <a:graph 
+                      mode      = "pie" 
+                      dataslice = "1X"
+                      series    = "1#a 0.9#b 2.0#c 1.1#d 0.2#e 0.24#f">
+                        <a:style type="text/chartcss">
+                            graph.a{fill:#ed1c24}
+                            graph.b{fill:#f26522}
+                            graph.c{fill:#f7941d}
+                            graph.d{fill:#fff200}
+                            graph.e{fill:#8dc63f}
+                            graph.f{fill:#39b54a}
+                            graph{fill:#d5242c;stroke:white;strokeopacity:1;notransit:1;}
+                            graph:hoverin {
+                                speed         : 4;
+                                fill          : #00aeef;
+                                stroke        : #00aeef;
+                                weight        : t;
+                                strokeopacity : 0.7*t;
+                                overlay       : base;
+                                opacity       : easein(t);
+                                scale         : 1+easein(nt),1+easein(nt);
+                            }
+                            graph:hover {
+                                fill          : #00aeef;
+                                weight        : 1;
+                                stroke        : #00aeef;
+                                strokeopacity : 0.9;
+                            }
+                            graph:hoverout {
+                                speed     : 1;
+                                stroke    : #00aeef;
+                                fill      : #00aeef;
+                                overlay   : base;
+                                opacity   : 0.5;
+                                offset    : 0,t;
+                                scale     : nt,nt;
+                            }
+                        </a:style>
+                    </a:graph>
+                </a:axis>
+            </a:chart>
+        ]]></source>
+    </example>
+    <example>
+        <description>Pie chart</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400" anim="100">
+                <a:axis mode="2D"
+                  x1="-0.5" y1="-0.3" x2="1.6" y2="1.4">
+                    <a:style type="text/chartcss">
+                        plane{fill:#e1e1e1;stroke:white};
+                        tiles{fill:#ebebeb;stroke:white;};
+                        margin{left:0;top:0;right:0;bottom:0}
+                        axis{stroke:null;}
+                        label{family:null;}
+                        tick{stroke:null}
+                    </a:style>
+                    <a:graph mode="pie" dataslice="1X"
+                      series="0.1#a 0.2#b 0.24#c 0.7#d 0.9#e 3.3#f">
+                        <a:style type="text/chartcss">
+                            graph.a{fill:#fa897b}
+                            graph.b{fill:#fa6e5f}
+                            graph.c{fill:#f4412b}
+                            graph.d{fill:#e61a19}
+                            graph.e{fill:#e11629}
+                            graph.f{fill:#ed1c24}
+                            graph{fill:yellow;stroke:white;strokeopacity:1;notransit:1;}
+                            graph:hoverin{
+                              speed:4;
+                              offset:0,0.3*easeout(t);
+                            }
+                            graph:hover{
+                              offset:0,0.3;
+                            }
+                            graph:hoverout{
+                              speed:1;
+                              offset:0,0.3*abs(cos(t*t*8))*nt;
+                            }
+                        </a:style>
+                    </a:graph>
+                </a:axis>
+            </a:chart>
+        ]]></source>
+    </example>
+</examples>

@@ -1,0 +1,9 @@
+<examples name="Teleport" xmlns:a="http://ajax.org/2005/aml">
+    <seealso menu="elements" sub="a" name="auth" display="Auth" title="See auth element" />
+    <seealso menu="google" sub="" name="maps" display="Google Maps" title="See Google Maps" />
+    <seealso menu="google" sub="" name="translate" display="Google Translate" title="See Google Translate" />
+    <seealso menu="newspapers" sub="" name="guardian_articles" display="Guardian - Articles" title="See Guardian - Articles" />
+    <seealso menu="newspapers" sub="" name="new_york_times_news" display="New York Times - News" title="See New York Times - News" />
+    <seealso menu="yahoo" sub="" name="flickr" display="Yahoo Flickr" title="See Yahoo Flickr" />
+    <seealso menu="yahoo" sub="" name="placemaker" display="Yahoo Placemaker" title="See Yahoo Placemaker" />
+</examples>

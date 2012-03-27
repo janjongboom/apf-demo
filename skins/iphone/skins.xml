@@ -1,0 +1,1641 @@
+<?xml version='1.0'?>
+<a:skin xmlns:a="http://ajax.org/2005/aml" xmlns="http://www.w3.org/1999/xhtml">
+<a:bar name="bar">
+    <a:alias>panel</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_basic {
+            width  : auto;
+            height : auto;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main container=".">
+            <div class="apf_bar"> </div>
+        </a:main>
+    </a:presentation>
+</a:bar>
+
+<a:bar name="row">
+    <a:alias>panel</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_row {
+            position              : relative;
+            min-height            : 42px;
+            border-bottom         : 1px solid #999999;
+            -webkit-border-radius : 0;
+            text-align            : right;
+        }
+
+        fieldset > .apf_row:last-child {
+            border-bottom : none !important;
+        }
+        
+        .apf_row > input[type|=radio],
+        .apf_row > input[type|=checkbox] {
+            margin : 7px 7px 0 0;
+            height : 25px;
+            width  : 25px;
+        }
+
+        .apf_row > span {
+            position : absolute;
+            padding  : 12px 10px 0 110px;
+            margin   : 0;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main container=".">
+            <div class="apf_row"> </div>
+        </a:main>
+    </a:presentation>
+</a:bar>
+<a:button name="toolbutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_toolbtn {
+            overflow             : hidden;
+            margin               : 0;
+            border-width         : 0 5px;
+            padding              : 0 3px;
+            height               : 30px;
+            width                : auto;
+            line-height          : 30px;
+            font-family          : inherit;
+            font-size            : 12px;
+            font-weight          : bold;
+            color                : #FFFFFF;
+            text-shadow          : rgba(0, 0, 0, 0.6) 0px -1px 0;
+            text-overflow        : ellipsis;
+            text-decoration      : none;
+            white-space          : nowrap;
+            background           : none;
+            -webkit-border-image : url(images/toolButtons.png) 0 5 150 5;
+            z-index              : 1;
+        }
+
+        .apf_toolbtn.lightblue {
+            -webkit-border-image : url(images/toolButtons.png) 30 5 120 5;
+        }
+
+        .apf_toolbtn.red {
+            -webkit-border-image : url(images/toolButtons.png) 60 5 90 5;
+        }
+
+        .apf_toolbtn.black {
+            -webkit-border-image : url(images/toolButtons.png) 90 5 60 5;
+        }
+
+        .apf_toolbtn.blackmatte {
+            -webkit-border-image : url(images/toolButtons.png) 120 5 30 5;
+        }
+
+        .apf_toolbtn.darkgrey {
+            -webkit-border-image : url(images/toolButtons.png) 150 5 0 5;
+            color                : #c8c8c8;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_toolbtn">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="bluebutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn_blue {
+            overflow             : hidden;
+            margin               : 0;
+            border-width         : 0 5px;
+            padding              : 0 3px;
+            width                : auto;
+            height               : 30px;
+            line-height          : 30px;
+            font-family          : inherit;
+            font-size            : 12px;
+            font-weight          : bold;
+            color                : #FFFFFF;
+            text-shadow          : rgba(0, 0, 0, 0.6) 0px -1px 0;
+            text-overflow        : ellipsis;
+            text-decoration      : none;
+            white-space          : nowrap;
+            background           : none;
+            -webkit-border-image : url(images/blueButton.png) 0 5 0 5;
+            z-index              : 1;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_btn_blue">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="leftbutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn_left {
+            position             : absolute;
+            overflow             : hidden;
+            top                  : 8px;
+            left                 : 6px;
+            right                : auto;
+            margin               : 0;
+            border-width         : 0 5px;
+            padding              : 0 3px;
+            width                : auto;
+            height               : 30px;
+            line-height          : 30px;
+            font-family          : inherit;
+            font-size            : 12px;
+            font-weight          : bold;
+            color                : #FFFFFF;
+            text-shadow          : rgba(0, 0, 0, 0.6) 0px -1px 0;
+            text-overflow        : ellipsis;
+            text-decoration      : none;
+            white-space          : nowrap;
+            background           : none;
+            -webkit-border-image : url(images/toolButton.png) 0 5 0 5;
+            z-index              : 1;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_btn_left">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="backbutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn_back {
+            position             : absolute;
+            overflow             : hidden;
+            top                  : 8px;
+            left                 : 6px;
+            right                : auto;
+            margin               : 0;
+            border-width         : 0 8px 0 14px;
+            padding              : 0;
+            max-width            : 55px;
+            width                : auto;
+            height               : 30px;
+            line-height          : 30px;
+            font-family          : inherit;
+            font-size            : 12px;
+            font-weight          : bold;
+            color                : #FFFFFF;
+            text-shadow          : rgba(0, 0, 0, 0.6) 0px -1px 0;
+            text-overflow        : ellipsis;
+            text-decoration      : none;
+            white-space          : nowrap;
+            background           : none;
+            -webkit-border-image : url(images/navButtons.png) 0 8 30 14;
+            z-index              : 1;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_btn_back">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="forwardbutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn_forward {
+            position             : absolute;
+            overflow             : hidden;
+            top                  : 8px;
+            left                 : 6px;
+            right                : auto;
+            margin               : 0;
+            border-width         : 0 8px 0 14px;
+            padding              : 0;
+            max-width            : 55px;
+            width                : auto;
+            height               : 30px;
+            line-height          : 30px;
+            font-family          : inherit;
+            font-size            : 12px;
+            font-weight          : bold;
+            color                : #FFFFFF;
+            text-shadow          : rgba(0, 0, 0, 0.6) 0px -1px 0;
+            text-overflow        : ellipsis;
+            text-decoration      : none;
+            white-space          : nowrap;
+            background           : none;
+            -webkit-border-image : url(images/navButtons.png) 30 14 0 8;
+            z-index              : 1;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_btn_forward">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="whitebutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn_white {
+            display              : block;
+            border-width         : 0 12px;
+            padding              : 10px;
+            margin               : 0 0 8px 0;
+            text-align           : center;
+            font-size            : 20px;
+            font-weight          : bold;
+            text-decoration      : inherit;
+            color                : #000;
+            -webkit-border-image : url(images/largeButtons.png) 0 12 230 12;
+            z-index              : 1;
+        }
+        
+        .apf_btn_whiteDown {
+            color                : #fff;
+            -webkit-border-image : url(images/largeButtons.png) 92 12 138 12;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_btn_white">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="greenbutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn_green {
+            display              : block;
+            border-width         : 0 12px;
+            padding              : 10px;
+            margin               : 0 0 8px 0;
+            text-align           : center;
+            font-size            : 20px;
+            font-weight          : bold;
+            text-decoration      : inherit;
+            color                : #fff;
+            -webkit-border-image : url(images/largeButtons.png) 230 12 0 12;
+            text-shadow          : rgba(0, 0, 0, 0.7) 0 -1px 0;
+            z-index              : 1;
+        }
+
+        .apf_btn_greenDown {
+            -webkit-border-image : url(images/largeButtons.png) 92 12 138 12;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_btn_green">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="redbutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn_red {
+            display              : block;
+            border-width         : 0 12px;
+            padding              : 10px;
+            margin               : 0 0 8px 0;
+            text-align           : center;
+            font-size            : 20px;
+            font-weight          : bold;
+            text-decoration      : inherit;
+            color                : #fff;
+            -webkit-border-image : url(images/largeButtons.png) 138 12 92 12;
+            text-shadow          : rgba(0, 0, 0, 0.7) 0 -1px 0;
+            z-index              : 1;
+        }
+
+        .apf_btn_redDown {
+            -webkit-border-image : url(images/largeButtons.png) 184 12 46 12;
+        }
+    ]]></a:style>
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_btn_red">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="windowbutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn_window {
+            position             : relative;
+            float                : left;
+            margin-left          : 8px;
+            margin-top           : 46px;
+            border-width         : 0 5px;
+            width                : 100px;
+            padding              : 8px 4px 8px 8px;
+            text-align           : center;
+            font-size            : 18px;
+            font-weight          : bolder;
+            text-decoration      : inherit;
+            color                : inherit;
+            -webkit-border-image : url(images/windowButton.png) 0 5 42 5;
+            text-shadow          : rgba(0, 0, 0, 0.7) 0 0 1px;
+            z-index              : 1;
+        }
+        
+        .apf_btn_windowDefault {
+            -webkit-border-image : url(images/windowButton.png) 42 5 0 5;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_btn_window">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+
+<a:button name="greybutton">
+    <a:alias>submit</a:alias>
+    <a:alias>reset</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_btn_grey {
+            display              : block;
+            border-width         : 0 12px;
+            padding              : 10px;
+            text-align           : center;
+            font-size            : 20px;
+            font-weight          : bold;
+            text-decoration      : inherit;
+            color                : #fff;
+            -webkit-border-image : url(images/largeButtons.png) 46 12 184 12;
+            color                : #FFFFFF;
+            z-index              : 1;
+        }
+        .apf_btn_greyDown {
+            color: #fff;
+            -webkit-border-image : url(images/largeButtons.png) 92 12 138 12;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main caption="text()" background=".">
+            <div class="apf_btn_grey">-</div>
+        </a:main>
+    </a:presentation>
+</a:button>
+<a:chart name="chart">
+    <a:style><![CDATA[
+        .chart {
+            background-color : transparent;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main container=".">
+            <div class='chart' style="position:relative; overflow:hidden;"></div>
+        </a:main>
+    </a:presentation>
+</a:chart>
+<a:checkbox name="checkbox">
+    <a:style><![CDATA[
+        .toggle {
+            position              : absolute;
+            top                   : 6px;
+            right                 : 6px;
+            width                 : 100px;
+            height                : 28px;
+            border                : 1px solid #888888;
+            -webkit-border-radius : 6px;
+            background            : #FFFFFF url(images/toggle.png) repeat-x;
+            font-size             : 19px;
+            font-weight           : bold;
+            line-height           : 30px;
+            z-index               : 1;
+        }
+
+        .toggleChecked {
+            border     : 1px solid #143fae;
+            background : #194fdb url(images/toggleOn.png) repeat-x;
+        }
+
+        .toggleOn {
+            display     : none;
+            position    : absolute;
+            width       : 60px;
+            text-align  : center;
+            left        : 0;
+            top         : 0;
+            color       : #FFFFFF;
+            text-shadow : rgba(0, 0, 0, 0.6) 0px -1px 0;
+        }
+
+        .toggleOff {
+            position   : absolute;
+            width      : 60px;
+            text-align : center;
+            right      : 0;
+            top        : 0;
+            color      : #666666;
+        }
+
+        .toggleChecked > .toggleOn {
+            display : block;
+        }
+
+        .toggleChecked > .toggleOff {
+            display : none;
+        }
+
+        .thumb {
+            position              : absolute;
+            top                   : -1px;
+            left                  : -1px;
+            width                 : 40px;
+            height                : 28px;
+            border                : 1px solid #888888;
+            -webkit-border-radius : 6px;
+            background            : #ffffff url(images/thumb.png) repeat-x;
+        }
+
+        .toggleChecked > .thumb {
+            left  : auto;
+            right : -1px;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main>
+            <div class="toggle">
+                <span class="thumb"> </span>
+                <span class="toggleOn">ON</span>
+                <span class="toggleOff">OFF</span>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:checkbox>
+<a:frame name="frame">
+    <a:alias>fieldset</a:alias>
+    <a:style><![CDATA[
+        .apf_frame {
+            position : relative;
+            margin   : 0 0 20px 0;
+            padding  : 0;
+        }
+
+        .apf_frame fieldset {
+            position              : relative;
+            margin                : 0;
+            padding               : 0;
+            background            : #FFFFFF;
+            -webkit-border-radius : 10px;
+            -moz-border-radius    : 10px;
+            border                : 1px solid #999999;
+            text-align            : right;
+            font-size             : 16px;
+        }
+        
+        .apf_frame h2 {
+            margin      : 0 0 8px 14px;
+            font-size   : inherit;
+            font-weight : bold;
+            color       : #4d4d70;
+            text-shadow : rgba(255, 255, 255, 0.75) 2px 2px 0;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main container="fieldset" caption="h2/text()">
+            <div class="apf_frame">
+                <h2>-</h2>
+                <fieldset> </fieldset>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:frame>
+<a:label name="label">
+    <a:style><![CDATA[
+        .apf_label {
+            position    : absolute;
+            margin      : 0 0 0 14px;
+            line-height : 42px;
+            font-weight : bold;
+        }
+
+        .apf_labelDisabled {
+            color : #bebebe;
+        }
+
+        .tiny {
+            font-size : 9px;
+        }
+
+        .error .apf_label {
+            background : url(images/alert.png) no-repeat 0 0;
+            min-height : 37px;
+            padding    : 3px 0 0 45px;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main caption="." for="@for">
+            <div class="apf_label"> </div>
+        </a:main>
+    </a:presentation>
+</a:label>
+<a:list name="list">
+    <a:style><![CDATA[
+        ul.list {
+            margin  : 0;
+            padding : 0;
+        }
+
+        ul.list li {
+            position      : relative;
+            margin        : 0;
+            border-bottom : 1px solid #E0E0E0;
+            padding       : 8px 0 8px 10px;
+            font-size     : 20px;
+            font-weight   : bold;
+            list-style    : none;
+            z-index       : 1;
+        }
+
+        ul.list li.group {
+            position      : relative;
+            top           : -1px;
+            margin-bottom : -2px;
+            border-top    : 1px solid #7d7d7d;
+            border-bottom : 1px solid #999999;
+            padding       : 1px 10px;
+            background    : url(images/listGroup.png) repeat-x;
+            font-size     : 17px;
+            font-weight   : bold;
+            text-shadow   : rgba(0, 0, 0, 0.4) 0 1px 0;
+            color         : #FFFFFF;
+        }
+
+        ul.list li.group:first-child {
+            top        : 0;
+            border-top : none;
+        }
+
+        ul.list li.title {
+            background    : url(images/listheader.gif) repeat-x;
+            height        : 22px!important;
+            width         : 100%;
+            color         : #fff;
+            font-weight   : bold;
+            font-size     : 16px;
+            text-shadow   : gray 0 1px 0;
+            line-height   : 22px;
+            padding-left  : 20px;
+            border-bottom : none!important;
+        }
+
+        ul.list li > div {
+            display         : block;
+            margin          : -8px 0 -8px -10px;
+            padding         : 8px 32px 8px 10px;
+            text-decoration : none;
+            color           : inherit;
+            background      : url(images/listArrow.png) no-repeat right center;
+        }
+
+        ul.list div[target="_replace"] {
+            box-sizing         : border-box;
+            -webkit-box-sizing : border-box;
+            padding-top        : 25px;
+            padding-bottom     : 25px;
+            font-size          : 18px;
+            color              : cornflowerblue;
+            background-color   : #FFFFFF;
+            background-image   : none;
+        }
+
+        ul.list div[selected],
+        ul.list div:active {
+            background-color    : #194fdb !important;
+            background-image    : url(images/listArrowSel.png), url(images/selection.png) !important;
+            background-repeat   : no-repeat, repeat-x;
+            background-position : right center, left top;
+            color               : #FFFFFF !important;
+        }
+
+        ul.list div[selected="progress"] {
+            background-image : url(images/loading.gif), url(images/selection.png) !important;
+        }
+
+        ul.list #txt_rename {
+            border      : 1px solid #bbb;
+            padding     : 1px 15px 1px 1px;
+            font-family : Tahoma;
+            font-size   : 8pt;
+            color       : black;
+            word-break  : keep-all;
+            overflow    : visible;
+            margin-top  : 0px;
+            cursor      : text;
+            height      : 13px;
+            display     : block;
+            outline     : none;
+        }
+
+        .list .empty, 
+        .list .offline, 
+        .list .loading {
+            text-align  : center;
+            padding     : 8px 0 0 5px;
+            color       : #AAA;
+            font-weight : normal;
+        }
+
+        /*
+        .list, 
+        .draglist {
+            font-family : Tahoma;
+            font-size   : 8pt;
+        }
+
+        .list DIV, 
+        .draglist {
+            padding : 0;
+            height  : 18px;
+        }
+
+        .list SPAN, 
+        .draglist SPAN {
+            padding    : 0 0 0 20px;
+            background : no-repeat 1px center;
+            height     : 16px;
+            float      : left;
+        }
+        */
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main container=".">
+            <ul class="list"> </ul>
+        </a:main>
+        <a:item
+            class   = "."
+            caption = "div"
+            icon    = "."
+            select  = "."
+        >
+            <li><div>-</div></li>
+        </a:item>
+        <a:dragindicator>
+            <li class="draglist"><div>-</div></li>
+        </a:dragindicator>
+        <a:loading>
+            <div class="loading">Loading...</div>
+        </a:loading>
+        <a:empty caption=".">
+            <div class="message">-</div>
+        </a:empty>
+    </a:presentation>
+</a:list>
+
+<a:list name="chat">
+    <a:style><![CDATA[
+        .chatlist {
+            background : #DBE1ED;
+            height     : auto;
+        }
+
+        .chatlist div.bubble {
+            margin : 10px 10px 0 0px;
+            width  : 80%;
+            clear  : both;
+        }
+
+        .chatlist div.from {
+            float : right;
+        }
+
+        .chatlist div.to {
+            float : left;
+        }
+
+        .chatlist div.from p {
+            border-width : 10px 20px 12px 10px;
+        }
+
+        .chatlist div.to p {
+            border-width : 10px 10px 12px 20px;
+        }
+
+        .chatlist div.to.lime p {
+            -webkit-border-image : url(images/chat_bubbles_lime_l.png) 10 10 13 19;
+        }
+
+        .chatlist div.to.lemon p {
+            -webkit-border-image : url(images/chat_bubbles_lemon_l.png) 10 10 13 19;
+        }
+
+        .chatlist div.to.orange p {
+            -webkit-border-image : url(images/chat_bubbles_orange_l.png) 10 10 13 19;
+        }
+
+        .chatlist div.to.aqua p {
+            -webkit-border-image : url(images/chat_bubbles_aqua_l.png) 10 10 13 19;
+        }
+
+        .chatlist div.to.purple p {
+            -webkit-border-image : url(images/chat_bubbles_purple_l.png) 10 10 13 19;
+        }
+
+        .chatlist div.to.pink p {
+            -webkit-border-image : url(images/chat_bubbles_pink_l.png) 10 10 13 19;
+        }
+
+        .chatlist div.to.graphite p {
+            -webkit-border-image : url(images/chat_bubbles_graphite_l.png) 10 10 13 19;
+        }
+
+        .chatlist div.to.clear p {
+            -webkit-border-image : url(images/chat_bubbles_clear_l.png) 10 10 13 19;
+        }
+
+        .chatlist div.from.aqua p {
+            -webkit-border-image : url(images/chat_bubbles_aqua_r.png) 10 19 13 10;
+        }
+
+        .chatlist div.from.lemon p {
+            -webkit-border-image : url(images/chat_bubbles_lemon_r.png) 10 19 13 10;
+        }
+
+        .chatlist div.from.lime p {
+            -webkit-border-image : url(images/chat_bubbles_lime_r.png) 10 19 13 10;
+        }
+
+        .chatlist div.from.purple p {
+            -webkit-border-image : url(images/chat_bubbles_purple_r.png) 10 19 13 10;
+        }
+
+        .chatlist div.from.pink p {
+            -webkit-border-image : url(images/chat_bubbles_pink_r.png) 10 19 13 10;
+        }
+
+        .chatlist div.from.graphite p {
+            -webkit-border-image : url(images/chat_bubbles_graphite_r.png) 10 19 13 10;
+        }
+
+        .chatlist div.from.clear p {
+            -webkit-border-image : url(images/chat_bubbles_clear_r.png) 10 19 13 10;
+        }
+
+        .chatlist div.bubble p {
+            color     : #000;
+            font-size : 16px;
+            margin    : 0;
+        }
+
+        .chatlist div.bubble + p {
+            color       : #666;
+            text-align  : center;
+            font-size   : 12px;
+            font-weight : bold;
+            margin      : 0;
+            padding     : 10px 0 0 0;
+            clear       : both;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main container=".">
+            <div class="chatlist"> </div>
+        </a:main>
+        <a:item
+          class   = "."
+          caption = "p"
+          icon    = "p"
+          select  = ".">
+            <div class="bubble"><p class="lime"> </p></div>
+        </a:item>
+        <a:dragindicator>
+            <div class="bubble drag"><p class="lime"> </p></div>
+        </a:dragindicator>
+        <a:loading>
+            <div class="loading">Loading...</div>
+        </a:loading>
+        <a:empty caption=".">
+            <div class="message">-</div>
+        </a:empty>
+    </a:presentation>
+</a:list>
+<a:modalwindow name="modalwindow">
+    <a:alias>window</a:alias>
+    
+    <a:style><![CDATA[
+        .window {
+            background            : url(images/modalGlow.png) no-repeat top center
+                                  , url(images/dialogBack.png) repeat-x top right;
+            border                : 3px solid #dfe1e6;
+            -webkit-border-radius : 12px;
+            -webkit-box-shadow    : 0px 4px 0px rgba(0, 0, 0, 0.2);
+            color                 : white;
+            text-shadow           : rgba(0, 0, 0, 0.7) 0 0 1px;
+            min-height            : 80px !important;
+        }
+
+        .window .title {
+            background  : transparent;
+            height      : 21px;
+            color       : #fffff;
+            position    : relative;
+            margin      : 8px 5px 0 6px;
+            padding     : 6px 0 0 20px;
+            border      : 0;
+            font-size   : 18px;
+            font-weight : bold;
+            cursor      : default;
+        }
+
+        .window .title img {
+            margin   : -1px 3px 0 -1px;
+            position : absolute;
+            left     : 2px;
+        }
+
+        .window .content {
+            background   : transparent;
+            margin-left  : 3px;
+            margin-right : 3px;
+            position     : relative;
+            height       : 100%;
+        }
+
+        .window .content > *:not(.apf_btn_window) {
+            position    : absolute;
+            top         : 0px;
+            width       : 100%;
+            text-align  : center;
+            color       : #ffffff;
+            font-size   : 18px;
+            font-weight : normal;
+        }
+
+        .windowMin .content {
+            overflow : hidden;
+        }
+
+        .cover {
+            position : absolute;
+            left     : 0;
+            top      : 0;
+            width    : 100%;
+            height   : 100%;
+            z-index  : 10000;
+        }
+
+        .window .title blockquote {
+            margin   : 0;
+            width    : 56px;
+            height   : 21px;
+            position : absolute;
+            padding  : 4px 4px 2px 2px;
+            top      : 0;
+            right    : 0;
+        }
+        
+        #apf_outline {
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main 
+          collapsed-height = "30"
+          container        = "div[2]" 
+          drag             = "div[1]" 
+          title            = "div[1]/text()"
+          icon             = "div[1]/img" 
+          buttons          = "div[1]/blockquote">
+            <div class="window">
+                <div class="title"><img src="" />-<blockquote> </blockquote></div>
+
+                <div class="content"> </div>
+            </div>
+        </a:main>
+        <a:button>
+            <div> </div>
+        </a:button>
+        <a:cover>
+            <div class="cover"> </div>
+        </a:cover>
+    </a:presentation>
+</a:modalwindow>
+
+<a:modalwindow name="bottomwindow">
+    <a:alias>window</a:alias>
+    
+    <a:style><![CDATA[
+        .window_bottom {
+            position   : absolute;
+            background : transparent url(images/modalBack.png) repeat-x top right;
+            border     : none;
+            color      : white;
+            min-height : 80px !important;
+            margin     : 0;
+            bottom     : -1000px;
+            z-index    : 40;
+        }
+
+        .window_bottom .title {
+            background  : transparent;
+            height      : 21px;
+            color       : inherit;
+            position    : relative;
+            float       : center;
+            margin      : 4px 0 8px 0;
+            padding     : 6px 0 0 20px;
+            border      : 0;
+            font-size   : 13px;
+            font-weight : normal;
+            text-shadow : rgba(0, 0, 0, 0.7) 0 0 1px;
+            cursor      : default;
+        }
+
+        .window_bottom .title img {
+            margin   : -1px 3px 0 -1px;
+            position : absolute;
+            left     : 2px;
+        }
+
+        .window_bottom .content {
+            background   : transparent;
+            margin-left  : 3px;
+            margin-right : 3px;
+            position     : relative;
+            height       : 100%;
+        }
+
+        /*
+        .window_bottom .content > *:not(.apf_btn_window) {
+            position    : absolute;
+            top         : 0px;
+            width       : 100%;
+            text-align  : center;
+            color       : #ffffff;
+            font-size   : 18px;
+            font-weight : normal;
+        }
+        */
+
+        .window_bottomMin .content {
+            overflow : hidden;
+        }
+
+        .cover {
+            position : absolute;
+            left     : 0;
+            top      : 0;
+            width    : 100%;
+            height   : 100%;
+            z-index  : 10000;
+        }
+
+        .window_bottom .title blockquote {
+            margin : 0;
+            /*
+            width    : 56px;
+            height   : 21px;
+            position : absolute;
+            padding  : 4px 4px 2px 2px;
+            top      : 0;
+            right    : 0;
+            */
+        }
+
+        #apf_outline {
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main 
+          collapsed-height = "30"
+          container        = "div[2]" 
+          drag             = "div[1]" 
+          title            = "div[1]/text()"
+          icon             = "div[1]/img" 
+          buttons          = "div[1]/blockquote">
+            <div class="window_bottom">
+                <div class="title"><img src="" />-<blockquote> </blockquote></div>
+
+                <div class="content"> </div>
+            </div>
+        </a:main>
+        <a:button>
+            <div> </div>
+        </a:button>
+        <a:cover>
+            <div class="cover"> </div>
+        </a:cover>
+    </a:presentation>
+</a:modalwindow>
+<a:panel name="greypanel">
+    <a:style><![CDATA[
+        body > .apf_panel_grey {
+            box-sizing         : border-box;
+            -moz-box-sizing    : border-box;
+            -webkit-box-sizing : border-box;
+            padding            : 10px;
+            background         : #c8c8c8 url(images/pinstripes.png);
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main container=".">
+            <div class="apf_panel_grey"> </div>
+        </a:main>
+    </a:presentation>
+</a:panel>
+<a:progressbar name="progressbar">
+    <a:style><![CDATA[
+        .progressbar {
+            position     : relative;
+            background   : url(images/progressDown.png) repeat-x top right;
+            border-right : 1px solid #d7d7d7;
+            width        : 226px;
+            height       : 12px;
+            margin       : 14px 0 0 14px;
+            cursor       : default;
+            overflow     : visible;
+        }
+
+        .progressbar .lbl {
+            display : none;
+        }
+
+        .progressbarDisabled {
+            color : #bebebe;
+        }
+
+        .progressbar .filledbar {
+            background   : url(images/progressDownFill.png) repeat-x top left;
+            position     : absolute;
+            margin       : 0;
+            height       : 12px;
+            overflow     : hidden;
+            padding      : 0 0 0 3px;
+            border-left  : 1px solid #5e8ed6;
+            width        : 1%;
+            margin-right : -1px;
+            z-index      : 1000;
+        }
+
+        .progressbarDisabled .filledbar {
+            background-position : 0 -8px;
+            border-right        : 1px solid #cfd0d0;
+        }
+
+        .progressbarRunning .filledbar {
+            display : block;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main progress="div[2]" caption="div[1]/text()">
+            <div class="progressbar">
+                <div class="lbl">0%</div>
+                <div class="filledbar"> </div>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:progressbar>
+
+<a:progressbar name="activity">
+    <a:style><![CDATA[
+        .progress_activity {
+            position             : relative;
+            background           : none;
+            -border-width        : 0 7px;
+            -webkit-border-image : url(images/progressActivity.png) 0 7 0 7;
+            width                : 150px;
+            height               : 12px;
+            margin               : 14px 0 0 14px;
+            cursor               : default;
+            overflow             : visible;
+        }
+
+        .progress_activity .lbl {
+            display : none;
+        }
+
+        .progress_activityDisabled {
+            color : #bebebe;
+        }
+
+        .progress_activity .filledbar {
+            position             : absolute;
+            background           : none;
+            -border-width        : 0 7px;
+            -webkit-border-image : url(images/progressActivityFill.png) 0 7 0 7;
+            margin               : -3px 0 0 -3px;
+            height               : 12px;
+            overflow             : hidden;
+            padding              : 0 0 0 3px;
+            width                : 1%;
+            margin-right         : -1px;
+            z-index              : 1000;
+        }
+
+        .progress_activityRunning .filledbar {
+            display : block;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main progress="div[2]" caption="div[1]/text()">
+            <div class="progress_activity">
+                <div class="lbl">0%</div>
+                <div class="filledbar"> </div>
+            </div>
+        </a:main>
+    </a:presentation>
+</a:progressbar>
+<a:slider name="slider">
+    <a:style><![CDATA[
+        .apf_slider {
+            position              : relative;
+            background            : url(images/sliderGutter.png) repeat-x top right;
+            border                : 1px solid #e1e1e1;
+            border-top            : 0;
+            -webkit-border-radius : 5px;
+            margin                : 14px 0 0 14px;
+            width                 : 220px;
+            height                : 9px;
+            position              : relative;
+            padding-right         : 0px;
+            font-size             : 9px;
+            text-align            : center;
+            z-index               : 1;
+        }
+
+        .apf_slider .apf_fill {
+            position                          : absolute;
+            background                        : url(images/sliderFill.png) repeat-x top right;
+            border                            : 1px solid #2f5e9e;
+            border-bottom-color               : #5792d1;
+            -webkit-border-top-left-radius    : 5px;
+            -webkit-border-bottom-left-radius : 5px;
+            top                               : 0px;
+            left                              : 0px;
+            width                             : 1px;
+            height                            : 8px;
+        }
+
+        .apf_sliderDisabled {
+            background-position : right -16px;
+        }
+
+        .apf_slider .apf_knob {
+            background : url(images/sliderKnob.png) no-repeat top right;
+            width      : 26px;
+            height     : 27px;
+            top        : -8px;
+            overflow   : hidden;
+            position   : absolute;
+        }
+
+        .apf_sliderDisabled .apf_knob {
+            background-position : left -48px;
+        }
+
+        /*
+        .apf_sliderDown .apf_knob {
+            background-position : right -16px;
+        }
+
+        .apf_sliderFocus .apf_knob {
+            background-position : right -32px;
+        }
+        */
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main 
+          slider    = "div[2]" 
+          fill      = "div[1]" 
+          container = "." 
+          markers   = "." 
+          direction = "horizontal">
+            <div class="apf_slider">
+                <div class="apf_fill"> </div>
+                <div class="apf_knob"> </div>
+            </div>
+        </a:main>
+        <marker>
+            <u> </u>
+        </marker>
+    </a:presentation>
+</a:slider>
+
+<a:slider name="chromeslider">
+    <a:style><![CDATA[
+        .apf_slider_chrome {
+            position              : relative;
+            background            : url(images/sliderGutterChrome.png) repeat-x top right;
+            border                : 1px solid #e1e1e1;
+            border-top            : 0;
+            -webkit-border-radius : 5px;
+            margin                : 14px 0 0 14px;
+            width                 : 220px;
+            height                : 10px;
+            position              : relative;
+            padding               : 0;
+            font-size             : 10px;
+            text-align            : center;
+            z-index               : 1;
+        }
+
+        .apf_slider_chrome .apf_fill_chrome {
+            position                          : absolute;
+            background                        : url(images/sliderFillChrome.png) repeat-x top right;
+            border                            : 1px solid #b2c8ed;
+            -webkit-border-top-left-radius    : 5px;
+            -webkit-border-bottom-left-radius : 5px;
+            top                               : 1px;
+            left                              : -1px;
+            width                             : 1px;
+            height                            : 8px;
+        }
+
+        .apf_slider_chromeDisabled {
+            background-position : right -16px;
+        }
+
+        .apf_slider_chrome .apf_knob_chrome {
+            background : url(images/sliderKnobChrome.png) no-repeat top right;
+            width      : 26px;
+            height     : 27px;
+            top        : -8px;
+            overflow   : hidden;
+            position   : absolute;
+        }
+
+        .apf_slider_chromeDisabled .apf_knob_chrome {
+            background-position : left -48px;
+        }
+
+        /*
+        .apf_slider_chromeDown .apf_knob_chrome {
+            background-position : right -16px;
+        }
+
+        .apf_slider_chromeFocus .apf_knob_chrome {
+            background-position : right -32px;
+        }
+        */
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main 
+          slider    = "div[2]" 
+          fill      = "div[1]" 
+          container = "."
+          markers   = "."  
+          direction = "horizontal">
+            <div class="apf_slider_chrome">
+                <div class="apf_fill_chrome"> </div>
+                <div class="apf_knob_chrome"> </div>
+            </div>
+        </a:main>
+        <marker>
+            <u> </u>
+        </marker>
+    </a:presentation>
+</a:slider>
+<a:tab name="tab">
+    <a:style><![CDATA[
+        .blacktabs {
+            position    : relative;
+            color       : #c6c6c5;
+            font-family : inherit;
+            font-size   : 10px;
+            padding     : 0 0 26px 0;
+            height      : 100%;
+        }
+
+        .blacktabs .btncontainer {
+            position   : absolute;
+            background : url(images/blackTabs.png) repeat-x 0 0;
+            bottom     : 0px;
+            left       : 0px;
+            width      : 100%;
+            height     : 49px;
+            cursor     : default;
+            z-index    : 1;
+        }
+
+        .blacktabs .btncontainer div {
+            position              : relative;
+            cursor                : default;
+            display               : block;
+            float                 : left;
+            margin                : 2px 0 0 2px;
+            padding               : 0 0 2px 0;
+            background            : transparent;
+            border                : 1px solid transparent;
+            -webkit-border-radius : 6px;
+            width                 : 73px;
+            height                : 41px;
+            text-align            : center;
+            vertical-align        : bottom;
+        }
+
+        .blacktabs .btncontainer .curbtn {
+            background : url(images/blackTabs.png) repeat-x 0 -49px;
+            color      : #fff;
+        }
+
+        .blacktabs .btncontainer .btn span:first-child {
+            position : relative;
+            top      : 0px;
+            left     : 21px;
+            width    : 32px;
+            height   : 32px;
+            display  : block;
+        }
+
+        .blacktabs .btncontainer .curbtn span:first-child {
+            background-position-y : 0px !important;
+        }
+
+        .blacktabs .btncontainer .btn span:last-child {
+            bottom   : 2px;
+            position : relative;
+            display  : block;
+        }
+
+        .blacktabs .page {
+            clear    : both;
+            display  : none;
+            height   : 332px;
+            overflow : auto;
+            padding  : 7px;
+            margin   : 0;
+            position : relative;
+        }
+
+        .blacktabs .page.curpage {
+            display : block;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main pages="." buttons="div">
+            <div class="blacktabs">
+                <div class="btncontainer"> </div>
+            </div>
+        </a:main>
+        <a:button icon="span[1]" caption="span[2]">
+            <div class="btn"><span class="icon"> </span><span class="caption"> </span></div>
+        </a:button>
+        <a:page container=".">
+            <div class="page"> </div>
+        </a:page>
+    </a:presentation>
+</a:tab>
+<a:tab name="segmented">
+    <a:style><![CDATA[
+        .segmentedtabs {
+            position    : relative;
+            color       : #c6c6c5;
+            font-family : inherit;
+            font-size   : 10px;
+            padding     : 0 0 26px 0;
+            height      : 100%;
+        }
+
+        .segmentedtabs .btncontainer {
+            position       : relative;
+            background     : white;
+            text-align     : center;
+            vertical-align : middle;
+            width          : auto;
+            display        : block;
+            height         : 44px;
+            overflow       : hidden;
+            cursor         : default;
+            z-index        : 1;
+        }
+
+        .segmentedtabs .btncontainer div {
+            box-sizing         : border-box;
+            -moz-box-sizing    : border-box;
+            -webkit-box-sizing : border-box;
+            cursor             : default;
+            display            : block;
+            position           : relative;
+            float              : left;
+            margin             : 2px 0 2px 0;
+            padding            : 10px 24px 12px 24px;
+            background         : url(images/segmentedTabs.png) repeat-x 0 0;
+            border             : 1px solid #e1e1e1;
+            width              : auto;
+            height             : 37px;
+            text-align         : center;
+            text-overflow      : ellipsis;
+            overflow           : hidden;
+            vertical-align     : top;
+            color              : #8b8b8b;
+            font-size          : 150%;
+            font-weight        : bold;
+            text-shadow        : rgba(255, 255, 255, 0.6) 0px 1px 0;
+        }
+
+        .segmentedtabs .btncontainer div:first-child {
+            -webkit-border-top-left-radius    : 12px;
+            -webkit-border-bottom-left-radius : 12px;
+        }
+
+        .segmentedtabs .btncontainer div:last-child {
+            -webkit-border-top-right-radius    : 12px;
+            -webkit-border-bottom-right-radius : 12px;
+            border-left-color                  : transparent;
+        }
+
+        .segmentedtabs .btncontainer div.curbtn {
+            background   : url(images/segmentedTabs.png) repeat-x 0 -40px;
+            color        : #fff;
+            border-color : transparent;
+            text-shadow  : rgba(0, 0, 0, 0.6) 0px -1px 0;
+        }
+
+        .segmentedtabs .btncontainer div.curbtn span:first-child,
+        .segmentedtabs .btncontainer div.curbtn span:last-child {
+            width      : 14px;
+            height     : 80px;
+            position   : absolute;
+            right      : -1px;
+            top        : -1px;
+            background : url(images/segmentedTabs.png) no-repeat 0px -80px;
+        }
+
+        .segmentedtabs .btncontainer div.curbtn span:first-child {
+            background-position : -12px -80px;
+            right               : none !important;
+            left                : -2px;
+        }
+
+        .segmentedtabs .btncontainer div.curbtn:first-child span:first-child,
+        .segmentedtabs .btncontainer div.curbtn:last-child span:last-child {
+            display : none;
+        }
+
+        .segmentedtabs .page {
+            clear      : both;
+            display    : none;
+            background : white;
+            height     : 332px;
+            overflow   : auto;
+            padding    : 7px;
+            margin     : 0;
+            position   : relative;
+        }
+
+        .segmentedtabs .page.curpage {
+            display : block;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main pages="." buttons="div">
+            <div class="segmentedtabs">
+                <div class="btncontainer"> </div>
+            </div>
+        </a:main>
+        <a:button caption="span[2]/text()">
+            <div class="btn">
+                <span> </span><span>-</span><span> </span>
+            </div>
+        </a:button>
+        <a:page container=".">
+            <div class="page"> </div>
+        </a:page>
+    </a:presentation>
+</a:tab>
+<a:textbox name="textbox">
+    <a:alias>input</a:alias>
+    <a:alias>secret</a:alias>
+    
+    <a:style><![CDATA[
+        .apf_textbox {
+            padding              : 6px;
+            border-width         : 7px 7px;
+            font-weight          : normal;
+            border-color         : white;
+            height               : 10px;
+            -webkit-border-image : url(images/textfield.png) 7 7 7 7;
+            -webkit-appearance   : none;
+            line-height          : 8px;
+            font-size            : 18px;
+            margin               : 3px auto;
+            display              : block;
+            position             : absolute;
+            width                : 90%;
+            right                : 6px !important;
+            z-index              : 1;
+        }
+
+        .apf_textboxDisabled {
+            color : #bebebe;
+        }
+
+        .apf_textboxInitial {
+            color : gray;
+        }
+    ]]></a:style>
+
+    <a:presentation>
+        <a:main input=".">
+            <input type="text" class="apf_textbox" />
+        </a:main>
+        <a:container>
+            <div class="tbautoc"> </div>
+        </a:container>
+        <a:item caption=".">
+            <div>-</div>
+        </a:item>
+    </a:presentation>
+</a:textbox>
+<a:toolbar name="toolbar">
+    <a:style><![CDATA[
+        body > .toolbar {
+            box-sizing         : border-box;
+            -moz-box-sizing    : border-box;
+            -webkit-box-sizing : border-box;
+            border-bottom      : 1px solid #2d3642;
+            border-top         : 1px solid #6d84a2;
+            padding            : 10px;
+            height             : 45px;
+            background         : url(images/toolbar.png) #6d84a2 repeat-x;
+            z-index            : 1;
+        }
+
+        .toolbar h1 {
+            position      : absolute;
+            overflow      : hidden;
+            left          : 50%;
+            margin        : 1px 0 0 -75px;
+            height        : 45px;
+            font-size     : 20px;
+            width         : 150px;
+            font-weight   : bold;
+            text-shadow   : rgba(0, 0, 0, 0.4) 0px -1px 0;
+            text-align    : center;
+            text-overflow : ellipsis;
+            white-space   : nowrap;
+            color         : #FFFFFF;
+        }
+
+        body[orient="landscape"] > .toolbar h1 {
+            margin-left : -125px;
+            width       : 250px;
+        }
+    ]]></a:style>
+    
+    <a:presentation>
+        <a:main container=".">
+            <div class="toolbar"> </div>
+        </a:main>
+        <a:bar container=".">
+            <div class="subbar"> </div>
+        </a:bar>
+        <a:divider>
+            <div class="divider"> </div>
+        </a:divider>
+    </a:presentation>
+</a:toolbar>
+</a:skin>

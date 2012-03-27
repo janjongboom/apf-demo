@@ -1,0 +1,65 @@
+<examples name="Spinner Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Spinners connected with calendar.</description>
+        <source><![CDATA[
+            <a:caldropdown 
+              output-format   = "yyyy/m/d"
+              caption-format  = "yyyy/m/d"
+              value           = "{sp10.value}/{sp9.value}/{sp8.value}"
+              initial-message = "Please choose a date"></a:caldropdown>
+            <a:hbox height="24" margin="5 0 0 0">
+                <a:spinner id="sp8" width="40" edge="5" min="1" max="28" value="3"></a:spinner>
+                <a:spinner id="sp9" width="40" edge="5" min="1" max="12" value="3"></a:spinner>
+                <a:spinner id="sp10" width="60" edge="5" min="1999" max="2012" value="2009"></a:spinner>
+            </a:hbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Minimal and maximal value.</description>
+        <source><![CDATA[
+            <a:spinner 
+              width = "40" 
+              min   = "-10" 
+              max   = "28" 
+              value = "3">
+            </a:spinner>
+        ]]></source>
+    </example>
+    <example>
+        <description>Spinner in disabled state.</description>
+        <source><![CDATA[
+            <a:spinner 
+              width    = "40"
+              min      = "-10"
+              max      = "28"
+              value    = "3"
+              disabled = "true">
+            </a:spinner>
+        ]]></source>
+    </example>
+    <!--example>
+        <description>Slider and Textbox 2 gets its values from Spinner. Textbox 1 gets its value from Spinner caption, which could be set by user using databindings.</description>
+        <source><![CDATA[
+            <a:model id="mdlSpinner1">
+                <overview page="1" pages="50" />
+            </a:model>
+            <a:table columns="150" padding="5">
+                <a:spinner 
+                  id      = "sp7" 
+                  min     = "0" 
+                  model   = "mdlSpinner1"
+                  value   = "[@page]"
+                  max     = "[@pages]"
+                  caption = "[@page] of [@pages]">
+                </a:spinner>
+                <a:slider 
+                  min    = "0" 
+                  max    = "50" 
+                  height = "8"
+                  value  = "{sp7.value}">
+                </a:slider>
+                <a:label value="{sp7.caption}"></a:label>
+            </a:table>
+        ]]></source>
+    </example-->
+</examples>

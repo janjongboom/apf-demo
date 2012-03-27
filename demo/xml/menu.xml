@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <category name="Open Webservices">
+        <item name="Google Maps" value="google.maps" icon="google_maps.png"/>
+        <item name="Google Translate" value="google.translate" icon="google.png" />
+        <!--item name="Yahoo Placemaker" value="yahoo.placemaker" icon="yahoo.png"/-->
+        <item name="Guardian Articles" value="newspapers.guardian_articles" icon="guardian.png" />
+        <item name="New York Times News" value="newspapers.new_york_times_news" icon="new_york_times.png"/>
+    </category>
+    <category name="Features">
+        <item name="Smartbindings" value="features.smartbindings" icon="smartbindings.png" />
+        <item name="DragDrop" value="features.dragdrop" icon="folder_brick.png" />
+        <item name="Property binding" value="features.propbinding" icon="node.png" />
+        <item name="Skinning" value="features.skinning" icon="skining.png" />
+        <item name="Language switching" value="features.language" icon="locale.png"/>
+        <item name="Transaction support" value="features.transactions"/>
+        <!--item name="Remote smartbinding" value="features.rsb"/-->
+        <item name="W3C DOM &amp; Event model" value="features.amldom" icon="w3c.png"/>
+        <!--item name="Offline support" value="features.offline"/-->
+        <item name="Animation" value="features.animation" icon="animation.gif" />
+        <!--item name="Debug window" value="features.debugwindow"/-->
+        <item name="Keyboard support" value="features.keyboard" icon="keyboard.png"/>
+        <item name="Interactive" value="features.interactive" icon="mouse2.png" />
+        <item name="Locking and auto-undo" value="features.locking" icon="key-new.png" />
+        <item name="Dynamically loading markup" value="features.dynloading" icon="dynamicloading.png" />
+        <item name="Validation" value="features.validation" icon="spellcheck.png"/>
+    </category>
+    <category name="Charts">
+        <item name="2D line chart" value="elements.chart.2dline" icon="chart_curve.png" />
+        <item name="2D bar chart" value="elements.chart.2dbar" icon="chart_bar.png" />
+        <item name="2D pie chart" value="elements.chart.2dpie" icon="chart_pie.png" />
+        <item name="3D line chart" value="elements.chart.3dline" icon="chart_line.png" />
+        <!--item name="3D bar chart" value="elements.chart.3dbar"/-->
+        <item name="3D surface chart" value="elements.chart.3dsurface" icon="chart_line.png" />
+        <item name="Multiple graphs" value="elements.chart.multiple" icon="chart_curve.png" />
+    </category>
+    <!--category name="Skins">
+        <item name="Aristo" value="skins.aristo"/>
+        <item name="Platform" value="skins.platform"/>
+    </category-->
+    <category name="Elements">
+        <subcat name="Containers">
+            <item name="Accordion" value="elements.accordion" icon="ui-accordion.png" />
+            <item name="Bar" value="elements.bar" icon="layout-select.png" />
+            <item name="Frame" value="elements.frame" icon="ui-group-box.png" />
+            <item name="Modalwindow" value="elements.modalwindow" icon="application-blue.png" />
+            <item name="Section" value="elements.section" icon="section.png"/>
+            <!-- add panel demo -->
+            <item name="Statusbar" value="elements.statusbar" icon="layout-select-footer.png"/>
+            <item name="Tab" value="elements.tab" icon="ui-tab-content.png"/>
+            <item name="Toolbar" value="elements.toolbar" icon="ui-toolbar.png"/>
+        </subcat>
+        <subcat name="Form elements">
+            <item name="Button" value="elements.button" icon="ui-button.png" />
+            <item name="Caldropdown" value="elements.caldropdown" icon="ui-combo-box-calendar.png"/>
+            <item name="Calendar" value="elements.calendar" icon="data.png" />
+            <item name="Colorpicker" value="elements.colorpicker" icon="color-swatch.png" />
+            <item name="Checkbox" value="elements.checkbox" icon="ui-check-box.png"/>
+            <item name="Dropdown" value="elements.dropdown" icon="ui-combo-box.png" />
+            <item name="Editor" value="elements.editor" icon="ui-editor.png" />
+            <item name="Errorbox" value="elements.errorbox" icon="ui-text-errorbox.png" />
+            <item name="Label" value="elements.label" icon="ui-label.png"/>
+            <item name="Palette" value="elements.palette" icon="palette.png"/>
+            <item name="Progressbar" value="elements.progressbar" icon="ui-progress-bar.png" />
+            <item name="Radiobutton" value="elements.radiobutton" icon="ui-radio-button.png" />
+            <item name="Slider" value="elements.slider" icon="ui-slider.png" />
+            <item name="Spinner" value="elements.spinner" icon="ui-spin.png" />
+            <item name="Text" value="elements.text" icon="ui-textarea.png" />
+            <item name="Textarea" value="elements.textarea" icon="ui-textarea.png" />
+            <item name="Textbox" value="elements.textbox" icon="ui-text-field.png" />
+            <!--<item name="Upload" value="elements.upload"/>-->
+        </subcat>
+        <subcat name="Selection elements">
+            <item name="Datagrid" value="elements.datagrid" icon="table-fugue.png" />
+            <item name="List" value="elements.list" icon="text_list_bullets.png"/>
+            <item name="Tree" value="elements.tree" icon="tree.png" />
+            <!--item name="Property editor" value="elements.propedit" icon="table.png" /-->
+            <item name="Menu" value="elements.menu" icon="ui-menu.png" />
+            <item name="Pager" value="elements.pager" icon="pager.png" />
+            <!--item name="Toc" value="elements.toc"/-->
+        </subcat>
+        <subcat name="Layout">
+            <item name="Anchoring" value="features.anchoring" icon="layout-3-mix.png" />
+            <item name="Alignment" value="features.alignment" icon="layout-header-3-mix.png" />
+            <item name="Docking" value="features.docking" icon="layout_content.png" />
+            <item name="Table" value="elements.table" icon="grid.png" />
+            <item name="Hbox" value="elements.hbox" icon="hbox.png" />
+            <!--item name="Portal" value="elements.portal" icon="layout.png" /-->
+            <item name="Vbox" value="elements.vbox" icon="vbox.png" />
+        </subcat>
+        <subcat name="Media">
+            <!--<item name="Audio" value="elements.audio" icon="sound.png"/>-->
+            <item name="Browser" value="elements.browser" icon="application-browser.png"/>
+            <item name="Img" value="elements.img" icon="image.png" />
+            <item name="Slideshow" value="elements.slideshow" icon="application-image.png" />
+            <!--<item name="Video" value="elements.video"/>-->
+            <item name="Notifier" value="elements.notifier" icon="sticky-note.png" />
+        </subcat>
+        <subcat name="Visualization">
+            <item name="Flowchart" value="elements.flowchart" icon="node-select.png"/>
+        </subcat>
+        <subcat name="Templating">
+            <item name="Live Markup" value="elements.lm" icon="document-code.png" />
+        </subcat>
+        <subcat name="Logic">
+            <item name="Action" value="elements.action" />
+            <item name="Actiontracker" value="elements.actiontracker"/>
+            <item name="Auth" value="elements.auth" icon="document-auth.png" />
+            <item name="Bindings" value="elements.bindings" icon="document-block.png" />
+            <item name="Insert" value="elements.insert" icon="document-hf-insert.png" />
+            <item name="Load" value="elements.load"/>
+            <item name="Model" value="elements.model" icon="document-template.png" />
+            <item name="Script" value="elements.script" icon="document-code.png" />
+            <item name="State" value="elements.state"/>
+            <!--item name="Submission" value="elements.submission"/>-->
+        </subcat>
+        <subcat name="Teleport">
+            <item name="Rpc" value="elements.rpc" icon="table_refresh.png" />
+            <!--item name="Xmpp" value="elements.xmpp" icon="comments.png" />
+            <item name="Webdav" value="elements.webdav"/-->
+            <item name="Http" value="elements.http" icon="application-import.png"/>
+            <item name="Data instructions" value="features.datainstruction" icon="application-import.png" />
+        </subcat>
+    </category>
+</data>

@@ -1,0 +1,33 @@
+<examples name="Label Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>"For" attribute connects the label to the form element.</description>
+        <source><![CDATA[
+            <a:label for="txtAddress">Address</a:label>
+            <a:textbox id="txtAddress" />
+        ]]></source>
+    </example>
+    <example>
+        <description>"For" attribute connects the label to the form element.</description>
+        <source><![CDATA[
+            <a:label for="txtAddress2" value="Address"></a:label>
+            <a:textbox id="txtAddress2" />
+        ]]></source>
+    </example>
+    <example>
+        <description>Label in disabled state.</description>
+        <source><![CDATA[
+            <a:label 
+              for      = "txtAddress3"
+              disabled = "true" 
+              value    = "Disabled label"></a:label>
+            <a:textbox id="txtAddress3" />
+            <a:label 
+              for   = "txtAddress4" 
+              value = "Not disabled"></a:label>
+            <a:textbox id="txtAddress4" />
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="t" name="textarea" display="Textarea" title="See textarea element" />
+    <seealso menu="elements" sub="t" name="textbox" display="Textbox" title="See textbox element" />
+</examples>

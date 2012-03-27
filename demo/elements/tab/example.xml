@@ -1,0 +1,163 @@
+<examples name="Tab Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Simple tab with 3 pages.</description>
+        <source><![CDATA[
+            <a:window 
+              visible = "true" 
+              width   = "400" 
+              height  = "150" 
+              title   = "Simple Tab" 
+              icon    = "application_view_icons.png">
+                <a:tab anchors="10 10 10 10"> 
+                    <a:page caption="General"> 
+                        <a:checkbox>Example</a:checkbox> 
+                        <a:button>Example</a:button> 
+                    </a:page> 
+                    <a:page caption="Advanced"> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                        <a:checkbox>Test checkbox</a:checkbox> 
+                    </a:page> 
+                    <a:page caption="Ajax.org"> 
+                        <a:checkbox>This ok?</a:checkbox> 
+                        <a:checkbox>This better?</a:checkbox> 
+                    </a:page> 
+                </a:tab> 
+            </a:window>
+        ]]></source>
+    </example>
+    <example>
+        <description>A lot more tabs, to show off the scroll feature.</description>
+        <source><![CDATA[
+            <a:window
+              visible = "true"
+              width   = "400"
+              height  = "200"
+              title   = "Scrolling Tabs"
+              icon    = "application_view_icons.png">
+                <a:tab anchors="10 10 10 10">
+                    <a:page caption="General">
+                        <a:checkbox>Example</a:checkbox>
+                        <a:button>Example</a:button>
+                    </a:page>
+                    <a:page caption="Advanced" id="advanced">
+                        <a:checkbox>Test checkbox</a:checkbox>
+                        <a:checkbox>Test checkbox</a:checkbox>
+                        <a:checkbox>Test checkbox</a:checkbox>
+                    </a:page>
+                    <a:page caption="Ajax.org">
+                        <a:checkbox>This ok?</a:checkbox>
+                        <a:checkbox>This better?</a:checkbox>
+                    </a:page>
+                    <a:page caption="Demo tab 1">
+                        <h1>Demo tab 1</h1>
+                    </a:page>
+                    <a:page caption="Demo tab 2">
+                        <h1>Demo tab 2</h1>
+                    </a:page>
+                    <a:page caption="Demo tab 3">
+                        <h1>Demo tab 3</h1>
+                    </a:page>
+                    <a:page caption="Demo tab 4" type="advanced" />
+                    <a:page caption="Demo tab 5">
+                        <h1>Demo tab 5</h1>
+                    </a:page>
+                    <a:page caption="Demo tab 6">
+                        <h1>Demo tab 6</h1>
+                    </a:page>
+                    <a:page caption="Demo tab 7">
+                        <h1>Demo tab 7</h1>
+                    </a:page>
+                    <a:page caption="Demo tab 8">
+                        <h1>Demo tab 8</h1>
+                    </a:page>
+                    <a:page caption="Demo tab 9">
+                        <h1>Demo tab 9</h1>
+                    </a:page>
+                    <a:page caption="Demo tab 10">
+                        <h1>Demo tab 10</h1>
+                    </a:page>
+                    <a:page caption="Demo tab 11">
+                        <h1>Demo tab 11</h1>
+                    </a:page>
+                </a:tab>
+            </a:window>
+        ]]></source>
+    </example>
+    <example>
+        <description>Switching tabs with page id (similarly, by number is possible as well).</description>
+        <source><![CDATA[
+            <a:window
+              visible = "true"
+              width   = "400"
+              height  = "220"
+              title   = "Simple Tab"
+              icon    = "application_view_icons.png">
+                <a:tab 
+                  id           = "tab4" 
+                  anchors      = "10 10 70 10"
+                  activepagenr = "{dd5.value}" 
+                  state        = "true">
+                <a:page caption="General" id="General"> 
+                    <a:checkbox>Example</a:checkbox> 
+                    <a:button>Example</a:button> 
+                </a:page> 
+                <a:page caption="Advanced" id="Advanced"> 
+                    <a:checkbox>Test checkbox</a:checkbox> 
+                    <a:checkbox>Test checkbox</a:checkbox> 
+                    <a:checkbox>Test checkbox</a:checkbox> 
+                </a:page> 
+                <a:page caption="Ajax.org" id="Ajax.org"> 
+                    <a:checkbox>This ok?</a:checkbox> 
+                    <a:checkbox>This better?</a:checkbox> 
+                </a:page>
+                </a:tab> 
+                <a:label bottom="40" left="10">Switch tabs:</a:label>
+                <a:label bottom="40" right="100">Switch tabs:</a:label>
+                <a:button 
+                  width   = "60" 
+                  left    = "10"
+                  bottom  = "10" 
+                  onclick = "tab4.setAttribute('activepage', 'General')">
+                  Tab 1</a:button>
+                <a:button 
+                  width   = "60" 
+                  left    = "75"
+                  bottom  = "10" 
+                  onclick = "tab4.setAttribute('activepage', 'Advanced')">
+                  Tab 2</a:button>
+                <a:button 
+                  width   = "60" 
+                  left    = "140"
+                  bottom  = "10" 
+                  onclick = "tab4.setAttribute('activepage', 'Ajax.org')">
+                  Tab 3</a:button>
+                 <a:dropdown id="dd5" right="10" bottom="15" value="{tab4.activepagenr || 0}">
+                     <a:item value="0">General</a:item>
+                     <a:item value="1">Advanced</a:item>
+                     <a:item value="2">Ajax.org</a:item>
+                 </a:dropdown>
+            </a:window>
+        ]]></source>
+    </example>
+    <example>
+        <description>Different look.</description>
+        <source><![CDATA[
+            <a:tab skin="tablowms"> 
+                <a:page caption="General"> 
+                    <a:checkbox>Example</a:checkbox> 
+                    <a:button>Example</a:button> 
+                </a:page> 
+                <a:page caption="Advanced"> 
+                    <a:checkbox>Test checkbox</a:checkbox> 
+                    <a:checkbox>Test checkbox</a:checkbox> 
+                    <a:checkbox>Test checkbox</a:checkbox> 
+                </a:page> 
+                <a:page caption="Ajax.org"> 
+                    <a:checkbox>This ok?</a:checkbox> 
+                    <a:checkbox>This better?</a:checkbox> 
+                </a:page> 
+            </a:tab>
+        ]]></source>
+    </example>
+</examples>

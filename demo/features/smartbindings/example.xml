@@ -1,0 +1,185 @@
+<examples name="Smartbindings Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>This demonstration shows how Smartbindings can be used to create a filemanager like application. Including undo/redo and two views on the same data.</description>
+        <source><![CDATA[
+            <a:window
+              title         = "Smartbindings Demonstration"
+              icon          = "application_view_icons.png"
+              visible       = "true"
+              resizable     = "true"
+              height        = "300"
+              width         = "500"
+              actiontracker = "atSbExample">
+                <a:toolbar align="top" height="25">
+                    <a:bar style="border-bottom:0">
+                        <a:button
+                          disabled = "{!atSbExample.undolength}"
+                          onclick  = "atSbExample.undo()">Undo</a:button>
+                        <a:button
+                          disabled = "{!atSbExample.redolength}"
+                          onclick  = "atSbExample.redo()">Redo</a:button>
+                        <a:divider />
+                        <a:radiobutton group="filedisp"
+                          skin    = "toolbarradio" 
+                          value   = "list" 
+                          tooltip = "List view"
+                          icon    = "application_view_tile.png" 
+                          checked = "true" />
+                        <a:radiobutton group="filedisp"
+                          skin    = "toolbarradio" 
+                          value   = "col" 
+                          tooltip = "Column view"
+                          icon    = "application_view_columns.png" />
+                    </a:bar>
+                </a:toolbar>
+                
+                <a:tree id="tree" align="left-splitter" width="200"
+                  model          = "demo/xml/filesystem.xml" 
+                  startcollapsed = "false" 
+                  contextmenu    = "mnuEdit"
+                  onafterchoose  = "openFolder(this)"> 
+                    <a:each match="[folder|drive]">
+                        <a:caption match="[@caption]" /> 
+                        <a:icon match="[@icon]" /> 
+                        <a:icon match="[drive]" value="icoDrive.png" /> 
+                        <a:icon                 value="Famfolder.gif" /> 
+                    </a:each>
+                    
+                    <a:remove set="{pnlStatus.setAttribute('caption', 'Removed item')}" />
+                    <a:rename match="[folder]" 
+                      set="{pnlStatus.setAttribute('caption', 'Renamed item')}" /> 
+                </a:tree> 
+                
+                <a:list 
+                  id            = "list" 
+                  model         = "{tree.selected}" 
+                  align         = "right"
+                  contextmenu   = "mnuEdit"
+                  visible       = "{filedisp.value == 'list'}"
+                  onafterchoose = "openFolder(this)"> 
+                    <a:each match="[folder|file]">
+                        <a:caption match="[@caption]" /> 
+                        <a:caption match="[@filename]" /> 
+                        <a:icon match="[@icon]" /> 
+                        <a:icon match="[folder]" value="Famfolder.gif" /> 
+                        <a:icon match="[file]"   value="{getIcon([@filename])}" /> 
+                    </a:each>
+
+                    <a:remove set="{pnlStatus.setAttribute('caption', 'Removed item')}"/>
+                    <a:rename set="{pnlStatus.setAttribute('caption', 'Rename item')}" />
+                </a:list> 
+                
+                <a:datagrid 
+                  id            = "dg" 
+                  model         = "{tree.selected}" 
+                  align         = "right"
+                  contextmenu   = "mnuEdit"
+                  visible       = "{filedisp.value == 'col'}"
+                  onafterchoose = "openFolder(this)">
+                    <a:each match="[folder|file]">
+                        <a:column width="18" type="icon"><?lm
+                           if (%[@icon]) [@icon]
+                           else if (%[@caption]) "Famfolder.gif"
+                           else if (%[@filename]) getIcon([@filename])
+                        ?></a:column>
+                        <a:column 
+                          caption = "Filename" 
+                          width   = "60%" 
+                          value   = "[@caption|@filename]" /> 
+                        <a:column 
+                          caption = "Date" 
+                          width   = "40%" 
+                          value   = "[@date]" /> 
+                    </a:each>
+                    <a:remove set="{pnlStatus.setAttribute('caption', 'Removed item')}" />
+                </a:datagrid>
+                
+                <a:statusbar align="bottom" height="22" class="sbbare">
+                    <a:section id="pnlStatus">
+                        Press F2 to rename an item in the tree or list. 
+                        Use Ctrl-Z or Ctrl-Y to undo / redo.
+                    </a:section>
+                </a:statusbar>
+            </a:window>
+            
+            <a:menu id="mnuEdit">
+                <a:item onclick="event.opener.startRename()">Rename</a:item>
+                <a:item onclick="event.opener.remove()">Remove</a:item>
+                <a:divider />
+                <a:item onclick="event.opener.selectAll()">Select All</a:item>
+            </a:menu>
+            
+            <a:script>//<!--
+                var known = ["DOC", "GIF", "HTML", "JPG", "PDF", "XLS", "ZIP", 
+                    "TXT", "JS", "XML", "SWF", "PPT", "PSD", "WMA"];
+                
+                function getIcon(filename){
+                    var ext = filename.trim().replace(/^.*\.([^\.]*)$/, "$1").toUpperCase();
+                    return known.indexOf(ext) == -1 ?
+                        "icoAnything.gif" : "ico" + ext + ".png";
+                }
+            
+                apf.config.undokeys = true;
+                
+                //Double click on a folder to enter it
+                function openFolder(o){
+                    if (o.selected.tagName == "folder")
+                        tree.select(o.selected);
+                }
+            //--></a:script>
+        ]]></source>
+        <xml>
+            <caption>treedata.xml</caption>
+            <source><![CDATA[
+                <data>
+                    <drive caption="Boot Disk (C:)" date="">
+                        <folder caption="My Documents" fid="1" icon="icoXPFolderPictures.gif" date="21-06-1980">
+                            <folder caption="Assets" fid="2" date="21-06-1980">
+                                <file filename="bach.swf" fileid="2" date="21-06-1980" />
+                                <file filename="escher.zip" fileid="2" date="21-06-1980" />
+                                <file filename="godel.doc" fileid="2" date="21-06-1980" />
+                                <file filename="Todo.txt" fileid="2" date="21-06-1980" />
+                            </folder>
+                            <folder caption="Presentation" icon="icoXPFolderPictures.gif" fid="3" date="21-06-1980" >
+                                <file filename="SmartBindings.ppt" fileid="2" date="21-06-1980" />
+                                <file filename="aboutus.doc" fileid="2" date="21-06-1980" />
+                            </folder>
+                            <folder caption="Website" fid="4" date="21-06-1980" >
+                                <folder caption="HTML files" fid="5" date="21-06-1980" >
+                                    <file filename="Getting Started.html" fileid="2" date="21-06-1980" />
+                                </folder>
+                                <file filename="Check this out.ppt" fileid="1" date="21-06-1980" />
+                                <file filename="Todo.txt" fileid="2" date="21-06-1980" />
+                                <file filename="Test.zip" fileid="3" date="21-06-1980" />
+                            </folder>
+                            <folder caption="My Images" fid="6" date="21-06-1980">
+                                <file filename="myself.jpg" fileid="2" date="21-06-1980" />
+                                <file filename="me.xls" fileid="2" date="21-06-1980" />
+                                <file filename="i.gif" fileid="2" date="21-06-1980" />
+                            </folder>
+                            <folder caption="Development" icon="icoXPFolderMusic.gif" fid="8" date="21-06-1980" >
+                                <folder caption="Ajax" icon="icoXPFolderPictures.gif" fid="9" >
+                                    <file filename="Visitors.xls" fileid="4" date="21-06-1980" />
+                                    <file filename="Business Plan.doc" fileid="5" date="21-06-1980" />
+                                    <file filename="Test.zip" fileid="6" date="21-06-1980" />
+                                </folder>
+                                <file filename="AboutCharts.pdf" fileid="7" date="21-06-1980" />
+                                <file filename="Test.html" fileid="8" date="21-06-1980" />
+                                <file filename="Test.zip" fileid="9" date="21-06-1980" />
+                            </folder>
+                            <file filename="Project.xls" fileid="10" date="21-06-1980" />
+                            <file filename="UX.doc" fileid="11" date="21-06-1980" />
+                            <file filename="Example.swf" fileid="12" date="21-06-1980" />
+                            <file filename="Blah.jpg" fileid="13" date="21-06-1980" />
+                            <file filename="LogoDesign.psd" fileid="14" date="21-06-1980" />
+                        </folder>
+                        <folder caption="Javeline Test Folder" fid="10" date="21-06-1980" />
+                    </drive>
+                </data>
+            ]]></source>
+        </xml>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

@@ -1,0 +1,72 @@
+<examples name="Bindings Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Bindings.</description>
+        <source><![CDATA[
+            <a:list 
+              model   = "demo/xml/friends.xml" 
+              each    = "[friend]" 
+              caption = "[@name]" 
+              icon    = "[@icon]" 
+              width   = "300">
+            </a:list>
+        ]]></source>
+    </example>
+    <example>
+        <description>Bindings.</description>
+        <source><![CDATA[
+            <a:list model="demo/xml/friends.xml" width="300">
+                <a:each match = "[friend]">
+                    <a:caption match = "[@name]" />
+                    <a:icon match = "[@icon]" />
+                </a:each>
+            </a:list>
+        ]]></source>
+    </example>
+    <example>
+        <description>Bindings in slider component.</description>
+        <source><![CDATA[
+            <a:slider height="8" min="[@min]" max="[@max]" value="[@value]">
+                <a:model>
+                    <settings min="0" max="50" value="25" />
+                </a:model>
+            </a:slider>
+        ]]></source>
+    </example>
+    <example>
+        <description>Bindings in textbox component.</description>
+        <source><![CDATA[
+            <a:textbox value="[@value]">
+                <a:model>
+                    <settings value="Text inside the textbox" />
+                </a:model>
+            </a:textbox>
+        ]]></source>
+    </example>
+    <example>
+        <description>Bindings in text component.</description>
+        <source><![CDATA[
+            <a:text 
+              width  = "300" 
+              height = "100">
+                <a:value match="[@value]" />
+                <a:model>
+                    <settings 
+                      value="
+                        Long text inside text component
+                        Long text inside text component
+                        Long text inside text component
+                        Long text inside text component
+                        Long text inside text component
+                        Long text inside text component
+                      " />
+                </a:model>
+            </a:text>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="a" name="action" display="Action" title="See action element" />
+    <seealso menu="elements" sub="a" name="actiontracker" display="ActionTracker" title="See actiontracker element" />
+    <seealso menu="elements" sub="d" name="dropdown" display="Dropdown" title="See dropdown element" />
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="s" name="spreadsheet" display="Spreadsheet" title="See spreadsheet element" />
+</examples>

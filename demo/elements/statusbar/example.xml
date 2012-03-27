@@ -1,0 +1,17 @@
+<examples name="Statusbar Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Default statusbar.</description>
+        <source><![CDATA[
+            <a:window width="500" height="100" visible="true"
+              icon="application.png" title="Statusbar" resizable="true" minwidth="300">
+                <a:statusbar>
+                    <a:section icon="application.png">Ajax.org</a:section>
+                    <a:section>Some status information</a:section>
+                    <a:section>
+                        <a:progressbar anchors="6 5 5 5" autostart="true" />
+                    </a:section>
+                </a:statusbar>
+            </a:window>
+        ]]></source>
+    </example>
+</examples>

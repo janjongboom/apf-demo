@@ -1,0 +1,121 @@
+<examples name="Language Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Any application made with Ajax.org Platform can very quickly be turned into a multilingual application. A language file can be dynamically loaded to set one or more languages in the application. In this demonstration a language file is loaded with 3 languages. In a real application there would be one file per language. Use the dropdown below to switch the language.</description>
+        <source><![CDATA[
+            <a:appsettings language="[mdlLang::english]" />
+                    
+            <a:model id="mdlLang" src="demo/features/language/langdb.xml" />
+            
+            <a:window title="\$[sub/main/title]" icon="Glossary.png" margin="0 0 40 0"
+              width="500" height="300" visible="true" resizable="true" id="winTest">
+                <a:tree id="tr" align="left-splitter" width="40%" startcollapsed="false"
+                  caption="[@caption]" icon="Glossary.png" each="test">
+                    <a:actions />
+                    <a:model>
+                        <data>
+                            <test caption="\$[sub/main/tab0]">
+                                <test caption="\$[sub/main/1]" />
+                            </test>
+                            <test caption="\$[sub/main/tab2]">
+                                <test caption="\$[sub/main/2]" />
+                                <test caption="\$[sub/main/title]" />
+                            </test>
+                        </data>
+                    </a:model>
+                </a:tree>
+                
+                <a:bar skin="basic" align="right">
+                    <a:tab anchors="10 10 10 10">
+                        <a:page caption="\$[sub/main/tab0]" model="mdlTest">
+                            <a:table columns="120,*" padding="5">
+                                <a:label>\$[sub/main/3]</a:label>
+                                <a:textbox />
+                                <a:label>\$[sub/main/1]</a:label>
+                                <a:textbox />
+                            </a:table>
+                            <a:button default="true">\$[sub/main/2]</a:button>
+                            
+                            <a:model id="mdlTest">
+                                <data />
+                            </a:model>
+                            
+                            <br />
+                            <?lm
+                                <strong>\$[sub/main/langvar]:</strong>
+                                <ul>
+                                    <li>\$[sub/main/2]</li>
+                                    <li>\$[sub/main/1]</li>
+                                    <li>\$[sub/main/tab2]</li>
+                                </ul>
+                            ?>
+                        </a:page>
+                        <a:page caption="\$[sub/main/tab2]">
+                            <a:img src="icns/\$[sub/main/img]" />
+                        </a:page>
+                    </a:tab>
+                </a:bar>
+                
+                <a:dropdown 
+                  bottom = "10" 
+                  left   = "10" 
+                  width  = "150" 
+                  value  = "english"
+                  initial-message = "Choose a language"
+                  onafterselect   = "apf.language.load(mdlLang.queryNode(this.value));"> 
+                    <a:item icon="us.gif" value="english">English</a:item>
+                    <a:item icon="fr.gif" value="french">French</a:item>
+                    <a:item icon="bl.gif" value="dutch">Dutch</a:item>
+                </a:dropdown>
+            </a:window>
+        ]]></source>
+        <xml>
+            <caption>langdb.xml</caption>
+            <source><![CDATA[
+                <groups>
+                    <!-- For French -->
+                    <french id="sub">
+                        <group id="main">
+                            <key id="tab0">Textuele</key>
+                            <key id="tab2">Art</key>
+                            <key id="title">Bonjour</key>
+                            <key id="1">Adresse electronique *</key>
+                            <key id="2">Clicker</key>
+                            <key id="3">Nom</key>
+                            <key id="langvar">Voici les differentes variables de langue</key>
+                            <key id="img">french.png</key>
+                        </group>
+                    </french>
+                    <!-- For English -->
+                    <english id="sub">
+                        <group id="main">
+                            <key id="tab0">Text</key>
+                            <key id="tab2">Art</key>
+                            <key id="title">Good day</key>
+                            <key id="1">E-mail *</key>
+                            <key id="2">Click</key>
+                            <key id="3">Name</key>
+                            <key id="langvar">These are the language variables</key>
+                            <key id="img">english.png</key>
+                        </group>
+                    </english>
+                    <!-- For Dutch -->
+                    <dutch id="sub">
+                        <group id="main">
+                            <key id="tab0">Tekst</key>
+                            <key id="tab2">Kunst</key>
+                            <key id="title">Goedendag</key>
+                            <key id="1">Elektronische post *</key>
+                            <key id="2">Klik</key>
+                            <key id="3">Naam</key>
+                            <key id="langvar">Dit zijn taal variables</key>
+                            <key id="img">dutch.png</key>
+                        </group>
+                    </dutch>
+                </groups>
+            ]]></source>
+        </xml>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="w" name="window" display="Window" title="See window element" />
+</examples>

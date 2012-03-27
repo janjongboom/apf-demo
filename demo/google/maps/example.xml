@@ -1,0 +1,121 @@
+<examples name="Maps Google" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Google Navigator</description>
+        <source><![CDATA[
+            <a:window 
+              visible   = "true" 
+              width     = "407" 
+              height    = "530"
+              title     = "Google Maps"
+              resizable = "false"
+              icon        = "application.png">
+                <a:bar 
+                  align  = "top" 
+                  height = "300" 
+                  skin   = "basic" 
+                  style  = "border-bottom:1px solid black">
+                    <div 
+                      id    = "map_canvas" 
+                      style = "
+                        left    : 0; 
+                        top        : 0; 
+                        width    : 100%; 
+                        height    : 100%; 
+                      ">
+                    </div>
+                </a:bar>
+                <a:bar align="bottom" skin="basic">
+                    <a:label
+                      top   = "10"
+                      left  = "10" 
+                      style = "font-weight:bold;">Current position:</a:label>
+                    <a:label id="map_position"
+                      top  = "10" 
+                      left = "110">(0, 0)</a:label>
+                    <a:tab anchors="40 10 10 10"> 
+                        <a:page caption="Location"> 
+                            <a:table columns="60,*" padding="5">
+                                <a:label span="2">
+                                    To see map of town, select
+                                    a location below.
+                                </a:label>
+                                <a:label>Location</a:label> 
+                                <a:dropdown id="map_dd1"
+                                  onafterselect = "google_maps_choose()">
+                                    <a:item value="52.425035|4.924622">Amsterdam</a:item>
+                                    <a:item value="48.883908|2.367897">Paris</a:item>
+                                    <a:item value="53.793715|18.524896">Skórcz</a:item>
+                                </a:dropdown> 
+                            </a:table>    
+                        </a:page> 
+                        <a:page caption="Markers"> 
+                            <a:table columns="80,*" padding="5">
+                                <a:label>Latitude:</a:label> 
+                                <a:textbox id="map_marker_lat"></a:textbox>
+                                <a:label>Longitude:</a:label> 
+                                <a:textbox id="map_marker_lng"></a:textbox>
+                                <a:label>Cloud caption:</a:label>
+                                <a:textbox id="map_cloud_caption"></a:textbox>
+                            </a:table>
+                            <a:button 
+                              top      = "90" 
+                              right    = "10" 
+                              disabled = "{!map_marker_lat.value 
+                                || !map_marker_lng.value}" 
+                              onclick  = "google_maps_add()">Add</a:button>
+                        </a:page> 
+                    </a:tab> 
+                </a:bar>
+            </a:window>
+            <a:script src="demo/google/maps/code.js"></a:script>
+        ]]></source>
+        <js>
+            <caption>init.js</caption>
+            <source><![CDATA[
+                var map;
+                function google_maps_initialize() {
+                    if (GBrowserIsCompatible()) {
+                        map = new GMap2(
+                            document.getElementById("map_canvas"),
+                            { size: new GSize(400, 300) }
+                        );
+                        map.setCenter(new GLatLng(52.425035,4.924622), 14);
+                        var customUI = map.getDefaultUI();
+                        customUI.controls.scalecontrol = false;
+                        map.setUI(customUI);
+                        GEvent.addListener(map, "click", function(overlay, latlng) {
+                            if (latlng) {
+                                map_marker_lat.setValue(latlng.lat());
+                                map_marker_lng.setValue(latlng.lng());
+                            }
+                        });
+                        GEvent.addListener(map,"mousemove", function(latlng) {
+                            if (latlng) {
+                                map_position.setValue(
+                                    "(" + latlng.lat() + " "+ latlng.lng() +")"
+                                );
+                            }
+                        });
+                    }
+                }
+                function google_maps_choose() {
+                    var value = map_dd1.getValue();
+                    var location = value.split("|");
+                    map.setCenter(new GLatLng(location[0], location[1]), 11);
+                }
+                function google_maps_add() {
+                    var point = new GLatLng(
+                        map_marker_lat.getValue(), 
+                        map_marker_lng.getValue()
+                    );
+                    map.addOverlay(new GMarker(point));
+                    map.openInfoWindow(
+                        point, 
+                        document.createTextNode(map_cloud_caption.getValue() || "Location")
+                    );
+                }
+                google_maps_initialize();
+            ]]></source>
+        </js>
+    </example>
+</examples>

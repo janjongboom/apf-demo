@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:a="http://ajax.org/2005/aml" >
+    <head>
+        <title>AppName</title>
+        
+        <script src="js/apf_debug.js"></script>
+        
+        <!-- This file contains the error handlers for this project -->
+        <script src="js/errors.js"></script>
+        
+        <!-- This file contains the event handling for this project -->
+        <script src="js/events.js"></script>
+        
+        <!-- This file contains the custom css for this project-->
+        <link rel="stylesheet" href="skin/style.css" type="text/css" />
+        
+        <!--
+            Optionally add favicons to your project
+        
+            <link rel="icon" type="image/ico" href="/images/favicon.ico"/>
+            <link rel="shortcut icon" type="image/ico" href="/images/favicon.ico"/>
+        -->
+    </head>
+    <body>
+        <!-- The line sets application-wide settings for this project -->
+        <a:appsettings debug="true" resource-path="resources/" />
+        
+        <!-- The line below loads the skin for this project -->
+        <a:skin src="skin/skins.xml" media-path="skin/images/" icon-path="skin/icons/" />
+        
+        <!-- This file contains all the models of this project -->
+        <a:include src="includes/models.xml" />
+            
+        <!-- This file contains all the windows of this project -->
+        <a:include src="includes/windows.xml" />
+            
+        <!-- This file contains the teleport definition for this project -->
+        <a:include src="includes/teleport.xml" />
+            
+        <!-- This file contains this project's settings -->
+        <a:include src="includes/settings.xml" />
+        
+        <!-- This file contains the main user interface -->
+        <a:include src="includes/main.xml" />
+        
+        <!-- 
+            Uncomment the modules you want to activate by uncommenting the
+            lines below. Please check the files you are including. Usually
+            There are settings that can be tweaked/changed in those files.
+        
+            Authentication 
+            <a:include src="modules/auth.xml" />
+
+            Chat (via xmpp)
+            <a:include src="modules/chat.xml" />
+        -->
+        
+        <noscript>
+            <div class="noscript">
+                <h1>AppName</h1>
+                <p>AppName is what AppName does best.</p>
+                
+                <p><i>
+                    AppName requires JavaScript. 
+                    Please turn JavaScript on to use this website
+                </i></p>
+            </div>
+        </noscript>
+        
+        <!-- This loader is displayed at the start of the application -->
+        <a:loader>
+            <div id="loadscreen">
+                <span>Loading...</span>
+            </div>
+        </a:loader>
+    </body>
+</html>

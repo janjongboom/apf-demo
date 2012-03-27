@@ -1,0 +1,40 @@
+<examples name="Anchoring Features" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Demonstration of basic anchoring the edges of an element to it's parent.</description>
+        <source><![CDATA[
+            <a:window 
+              title     = "Resize me"
+              icon      = "Glossary.png"
+              visible   = "true" 
+              width     = "639"
+              height    = "300" 
+              resizable = "true" 
+              minwidth  = "300" 
+              minheight = "200">
+                <a:bar left="15" top="15" right="200" bottom="40" />
+                <a:bar width="180" right="10" top="45" bottom="25" />
+            </a:window>
+        ]]></source>
+    </example>
+    <example>
+        <description>Demonstration of anchoring the edges of an element by mixing percentages with integers.</description>
+        <source><![CDATA[
+            <a:window 
+              title     = "Resize me"
+              icon      = "Glossary.png"
+              visible   = "true" 
+              width     = "639"
+              height    = "300" 
+              resizable = "true" 
+              minwidth  = "300" 
+              minheight = "200">
+                <a:bar left="15" top="15" right="40%+5" bottom="50%+10" />
+                <a:bar left="15" top="50%" right="40%+5" bottom="40" />
+                <a:bar left="60%+5" right="10" top="45" bottom="25" />
+            </a:window>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="l" name="list" display="List" title="See list element" />
+    <seealso menu="elements" sub="t" name="tree" display="Tree" title="See tree element" />
+</examples>

@@ -1,0 +1,86 @@
+<examples name="Submission Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Submission - POST method.</description>
+        <source><![CDATA[
+            <a:model
+              id              = "mdlSubmission"
+              saveoriginal    = "true"
+              submission      = "post demo/submission.php"
+              onbeforesubmit  = ""
+              onsubmiterror   = "alert('Unable to submit your note');"
+              onsubmitsuccess = "alert(event.data)">
+                <data>
+                    <user name="Ruben" surname="Daniels" icon="comment.gif"></user>
+                    <user name="Lukasz" surname="Lipinski" icon="comment.gif"></user>
+                </data>
+            </a:model>
+            
+            <a:label>Press F2 to rename an item</a:label>
+            <a:list 
+              width    = "150" 
+              height   = "50" 
+              model    = "mdlSubmission" 
+              caption  = "[@name]" 
+              each     = "[user]"
+              icon     = "[@icon]" />
+            <br />
+            <a:button
+              width   = "200"
+              action  = "submit"
+              target  = "mdlSubmission"
+              tooltip = "Save inserts">Submit the model to the server</a:button>
+            
+            <br />
+            <h3>View on the model</h3>
+            <div class="basic"><?lm
+                <pre class="code">
+                    {apf.highlightXml(apf.formatXml(apf.getCleanCopy([mdlSubmission::data]).xml))}
+                </pre>
+            ?></div>
+        ]]></source>
+    </example>
+    <example>
+        <description>Submission - GET method.</description>
+        <source><![CDATA[
+            <a:model
+              id              = "mdlSubmission2"
+              saveoriginal    = "true"
+              submission      = "demo/submission.php"
+              onbeforesubmit  = ""
+              onsubmiterror   = "alert('Unable to submit your note');"
+              onsubmitsuccess = "alert(event.data)">
+                <data>
+                    <user name="Ruben" surname="Daniels" icon="comment.gif"></user>
+                    <user name="Lukasz" surname="Lipinski" icon="comment.gif"></user>
+                </data>
+            </a:model>
+            
+            <a:label>Press F2 to rename an item</a:label>
+            <a:list 
+              width    = "150" 
+              height   = "50" 
+              model    = "mdlSubmission2"
+              caption  = "[@name]" 
+              each     = "[user]"
+              icon     = "[@icon]" />
+            <br />
+            <a:button
+              width   = "200"
+              action  = "submit"
+              target  = "mdlSubmission2"
+              icon    = "arrow_up.png"
+              tooltip = "Save inserts">Submit the model to the server</a:button>
+            <br />
+            <h3>View on the model</h3>
+            <div class="basic"><?lm
+                <pre class="code">
+                    {apf.highlightXml(apf.formatXml(apf.getCleanCopy([mdlSubmission2::data]).xml))}
+                </pre>
+            ?></div>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="a" name="action" display="Action" title="See action element" />
+    <seealso menu="elements" sub="b" name="button" display="Button" title="See button element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

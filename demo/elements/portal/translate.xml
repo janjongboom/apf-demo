@@ -1,0 +1,74 @@
+<a:docklet xmlns:a="http://ajax.org/2005/aml"
+  caption="Word Translator" 
+  icon="icoTranslate.gif" 
+  name="Translate">
+    <a:script><![CDATA[
+        function Translate(){
+            //Create a Javeline class
+            apf.makeClass(this);
+            
+            //Inherit from the portal.docklet baseclass
+            this.implement(apf.portal.docklet);
+            this.$init = function(xmlSettings, oDocklet){
+                function translate() {
+                    if (!self.google) return;
+                    var text = txtFromText.getValue();
+
+                    google.language.detect(text, function(result) {
+                    if (!result.error && result.language) {
+                        google.language.translate(text, result.language, ddLang.getValue(), function(result) {
+                            if (result.translation) {
+                                txtToText.setValue(result.translation);
+                            }
+                        });
+                    }
+                  });
+                }
+                
+                self.translate = translate;
+                
+                btnTranslate.onclick = translate;
+                 
+                document.write = function(str){
+                    str = str.replace(/<scr.pt.*?src="(.*?)".*?>.*?<\/scr.pt>/g, function(m, src){
+                        apf.include(src, null, "banner");
+                        return "";
+                    });
+                }
+                 
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "http://www.google.com/jsapi?key=ABQIAAAAuvG0LHN7Q8s8C5HGKxmlbhT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQXy5tpLE2vU6SI5O348wkQ6Py4cw";
+                document.body.appendChild(script);
+                 
+                var googleTranslateTimer = setInterval(function(){
+                    if(!self.google) return;
+                 
+                    clearTimeout(googleTranslateTimer);
+                    google.load("language", "1");
+                }, 100);
+            }
+        }
+     ]]></a:script>
+    <a:config>
+        <h3>Configuration</h3>
+        <a:dropdown width="140" id="ddLang" value="en">
+            <a:item value="nl">Dutch</a:item>
+            <a:item value="en">English</a:item>
+            <a:item value="pl">Polish</a:item>
+        </a:dropdown> 
+    </a:config>
+    <a:body>
+        <a:table columns="150" margin="5 5 40 5">
+            <a:label>Text to translate</a:label>
+            <a:textbox 
+                id    = "txtFromText"
+                value = "你好，很高興見到你。" />
+            <a:label>Translated text</a:label>
+            <a:textbox 
+                id    = "txtToText" 
+                value = ""></a:textbox>
+        </a:table>
+        <a:button left="10" bottom="10" id="btnTranslate">Translate</a:button>
+    </a:body>
+</a:docklet>

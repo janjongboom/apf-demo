@@ -1,0 +1,80 @@
+<examples name="Menu Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>A simple menu triggered from the toolbar. Some menu items and second menu are disabled.</description>
+        <source><![CDATA[
+            <a:menu id="menu1">
+                <a:item>Tutorials</a:item>
+                <a:item icon="email.png">Contact</a:item>
+                <a:divider></a:divider>
+                <a:item 
+                  icon    = "application_view_icons.png"
+                  hotkey  = "Ctrl+T"
+                  onclick = "setTimeout(function(){alert('You did it');}, 1000)">
+                  Tutorials</a:item>
+                <a:divider />
+                <a:item disabled="true">Visit Ajax.org</a:item>
+                <a:item>Exit</a:item>
+            </a:menu>
+            <a:window
+              width     = "400"
+              height    = "150"
+              visible   = "true"
+              resizable = "true"
+              title     = "Mail message"
+              icon      = "email.png">
+                <a:toolbar>
+                    <a:menubar>
+                        <a:button submenu="menu1">File</a:button>
+                        <a:button submenu="menu1" disabled="true">Edit</a:button>
+                    </a:menubar>
+                </a:toolbar>
+            </a:window>
+        ]]></source>
+    </example>
+    <example>
+        <description>A more advanced menu. The file menu contains radio and check options. The window has a context menu which can be accessed by right clicking on it's body.</description>
+        <source><![CDATA[
+            <a:menu id="menu4">
+                <a:item>About us</a:item>
+                <a:item>Help</a:item>
+            </a:menu>
+        
+            <a:iconmap id="tbicons" src="toolbar.icons.gif" 
+                type="horizontal" size="20" offset="2,2"></a:iconmap>
+            
+            <a:menu id="menu3" skin="menu2005">
+                <a:item icon="tbicons:1">Tutorials</a:item>
+                <a:item icon="tbicons:2" hotkey="Ctrl+M">Live Helps</a:item>
+                <a:divider></a:divider>
+                <a:radio>Item 1</a:radio>
+                <a:radio>Item 2</a:radio>
+                <a:radio>Item 3</a:radio>
+                <a:radio>Item 4</a:radio>
+                <a:divider></a:divider>
+                <a:check hotkey="Ctrl+T">Shortcuts</a:check>
+                <a:check hotkey="F3">Statusbar</a:check>
+                <a:divider></a:divider>
+                <a:item icon="tbicons:11" submenu="menu4">Visit Ajax.org</a:item>
+                <a:item icon="tbicons:10">Exit</a:item>
+            </a:menu>
+            
+            <a:window
+              contextmenu = "menu3"
+              width     = "300"
+              height    = "200"
+              visible   = "true"
+              resizable = "true"
+              title     = "Mail message"
+              icon      = "email.png">
+                <a:toolbar>
+                    <a:menubar>
+                        <a:button submenu="menu3">File</a:button>
+                        <a:button submenu="menu4">Edit</a:button>
+                    </a:menubar>
+                </a:toolbar>
+            </a:window>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="t" name="toolbar" display="Toolbar" title="See toolbar element" />
+</examples>

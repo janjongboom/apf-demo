@@ -1,0 +1,79 @@
+<examples name="2dbar Chart Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Bar chart</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400">
+                <a:axis mode="2D" x1="-1" y1="-0.2" x2="15" y2="1.1">
+                    <a:style type="text/chartcss">
+                        plane{
+                            fill   : white;
+                            stroke : #ebebeb;
+                        };
+                        tiles{
+                            fill   : white;
+                            stroke : #ebebeb;
+                        };
+                    </a:style>
+                    <a:graph 
+                      mode      = "bar" 
+                      dataslice = "1X"
+                      series    = "0.1#a 0.4#b 0.3#c 0.7#d 0.1#a 0.6#b 0.2#c 0.6#d 0.5#a 0.9#b 1#c 0.9#d">
+                        <a:style type="text/chartcss">
+                            graph.a{fill:#c4df9b}
+                            graph.b{fill:#acd373}
+                            graph.c{fill:#8dc63f}
+                            graph.d{fill:#598527}
+                            graph{
+                                fill      : #fff200;
+                                notransit : 0.5;
+                                stroke    : #406618;
+                            }
+                        </a:style>
+                    </a:graph>
+                </a:axis>
+            </a:chart>
+        ]]></source>
+    </example>
+    <example>
+        <description>Bar chart</description>
+        <source><![CDATA[
+            <a:chart width="500" height="400">
+                <a:axis 
+                  mode  = "2D"
+                  x1    = "-1" 
+                  x2    = "15" 
+                  y1    = "-1" 
+                  y2    = "9">
+                    <a:style type="text/chartcss">
+                        plane {
+                            fill   : #f8f8f8;
+                            stroke : #f8f8f8;
+                        };
+                        tiles {
+                            fill   : #f8f8f8;
+                            stroke : #f8f8f8;
+                        };
+                    </a:style>
+                    <a:graph 
+                      mode      = "bar" 
+                      dataslice = "1X"
+                      series    = "1#a 0#b 2#c 0#d 3#e 0#a 8#b 0#c 5#d 0#e 2#c">
+                        <a:style type="text/chartcss">
+                            graph.a{fill:#18abf1}
+                            graph.b{fill:#3ab3ea}
+                            graph.c{fill:#52bcec}
+                            graph.d{fill:#6ac6ef}
+                            graph.e{fill:#5dc3f1}
+                            graph{
+                                fill      : white;
+                                notransit : 0.5;
+                                stroke    : #00aeef;
+                                weight    : 2;
+                            }
+                        </a:style>
+                    </a:graph>
+                </a:axis>
+            </a:chart>
+        ]]></source>
+    </example>
+</examples>

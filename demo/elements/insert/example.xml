@@ -1,0 +1,87 @@
+<examples name="Insert Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Inserting subnodes from file to a:tree element.</description>
+        <source><![CDATA[
+            <a:tree 
+              model  = "demo/xml/friends.xml" 
+              height = "150" 
+              width  = "300">
+                <a:each match="[friend|lang]">
+                    <a:caption 
+                      match = "[@name]" />
+                    <a:icon 
+                      match = "[@icon]"/>
+                    <a:insert 
+                      match = "[friend]" 
+                      get   = "demo/xml/friends_subnodes.xml" />
+                </a:each>
+            </a:tree>
+        ]]></source>
+    </example>
+    <example>
+        <description>Inserting subnodes from model to a:tree element.</description>
+        <source><![CDATA[
+            <a:tree
+              model  = "demo/xml/friends.xml" 
+              height = "170" 
+              width  = "300">
+                <a:each match="[friend|lang]">
+                    <a:caption 
+                      match = "[@name]" />
+                    <a:icon 
+                      match = "[@icon]"/>
+                    <a:insert 
+                      match = "[friend]" 
+                      get    = "{mdlExDi.data}" />
+                </a:each>
+            </a:tree>
+            <a:model id="mdlExDi">
+                <data>
+                    <lang icon="medal_silver_1.png" name="PHP"></lang>
+                    <lang icon="medal_silver_1.png" name="JS"></lang>
+                </data>
+            </a:model>
+        ]]></source>
+    </example>
+    <example>
+        <description>Inserting subnodes to a:tree element from file (we know which nodes have subnodes).</description>
+        <source><![CDATA[
+            <a:tree 
+              model  = "demo/xml/friends.xml" 
+              height = "160" 
+              width  = "320">
+                <a:each match="[friend|lang]">
+                    <a:caption 
+                      match = "[@name]" />
+                    <a:icon 
+                      match = "[@icon]"/>
+                    <a:insert 
+                      match = "[friend[@langs]]" 
+                      get    = "demo/getSubnodes.php?name=[@name]" />
+                </a:each>
+            </a:tree>
+        ]]></source>
+    </example>
+    <example>
+        <description>Inserting subnodes to a:tree element from file (we don't know which nodes have subnodes).</description>
+        <source><![CDATA[
+            <a:tree 
+              model  = "demo/xml/friends.xml" 
+              height = "170" 
+              width  = "300">
+                <a:each match = "[friend|lang]">
+                    <a:caption 
+                      match = "[@name]" />
+                    <a:icon 
+                      match = "[@icon]"/>
+                    <a:insert 
+                      match = "[friend]" 
+                      get    = "demo/getSubnodes.php?name=[@name]" />
+                </a:each>
+            </a:tree>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

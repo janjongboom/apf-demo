@@ -1,0 +1,138 @@
+<examples name="Tree Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>A tree with inline items.</description>
+        <source><![CDATA[
+            <a:tree width="150" height="100">
+                <a:item caption="root" icon="icoUsers.gif" >
+                    <a:item icon="icoUsers.gif" caption="test">
+                        <a:item icon="icoUsers.gif" caption="test" />
+                        <a:item icon="icoUsers.gif" caption="test" />
+                        <a:item icon="icoUsers.gif" caption="test" />
+                    </a:item>
+                    <a:item icon="icoUsers.gif" caption="test" />
+                    <a:item icon="icoUsers.gif" caption="test" />
+                    <a:item icon="icoUsers.gif" caption="test" />
+                </a:item>
+            </a:tree>
+        ]]></source>
+    </example>
+    <example>
+        <description>A tree with checkbox items.</description>
+        <source><![CDATA[
+            <a:tree 
+              width  = "150" 
+              height = "150" 
+              skin   = "checktree" 
+              mode   = "check">
+                <a:item caption="root" icon="icoUsers.gif" >
+                    <a:item icon="icoUsers.gif" caption="test">
+                        <a:item icon="icoUsers.gif" caption="test" />
+                        <a:item icon="icoUsers.gif" caption="test" />
+                        <a:item icon="icoUsers.gif" caption="test" />
+                    </a:item>
+                    <a:item icon="icoUsers.gif" caption="test" />
+                    <a:item icon="icoUsers.gif" caption="test" />
+                    <a:item icon="icoUsers.gif" caption="test" />
+                </a:item>
+            </a:tree>
+        ]]></source>
+    </example>
+    <example>
+        <description>Loading tree using model. The tree is dynamically extended by loading new data when the user clicks on the plus sign.</description>
+        <source><![CDATA[
+            <a:tree 
+              model  = "demo/xml/friends.xml" 
+              height = "150" 
+              width  = "150">
+                <a:each match="[friend|lang]">
+                    <a:caption match="[@name]" />
+                    <a:icon match="[@icon]"/>
+                    <a:insert 
+                      match = "[friend]" 
+                      get   = "demo/xml/friends_subnodes.xml" />
+                </a:each>
+                <a:actions />
+            </a:tree>
+        ]]></source>
+    </example>
+    <example>
+        <description>All tree nodes are expanded after init. Multiselect is turned on allowing the user to select multiple nodes.</description>
+        <source><![CDATA[
+            <a:tree 
+              width          = "150" 
+              height         = "150"
+              multiselect    = "true"
+              startcollapsed = "false">
+                <a:item caption="root" icon="icoUsers.gif" >
+                    <a:item icon="icoUsers.gif" caption="test">
+                        <a:item icon="icoUsers.gif" caption="test" />
+                        <a:item icon="icoUsers.gif" caption="test" />
+                        <a:item icon="icoUsers.gif" caption="test" />
+                    </a:item>
+                    <a:item icon="icoUsers.gif" caption="test" />
+                    <a:item icon="icoUsers.gif" caption="test" />
+                    <a:item icon="icoUsers.gif" caption="test" />
+                </a:item>
+            </a:tree>
+        ]]></source>
+    </example>
+    <example>
+        <description>Tree with check states.</description>
+        <source><![CDATA[
+            <a:window 
+              title     = "Sports" 
+              icon      = "sport_soccer.png" 
+              width     = "200" 
+              height    = "400"
+              minwidth  = "190"
+              minheight = "300"
+              visible   = "true"
+              draggable = "true"
+              resizable = "true">
+                <a:tree 
+                  id             = "trSports" 
+                  anchors        = "10 10 45 10"
+                  mode           = "check"
+                  allowdeselect  = "true"
+                  skin           = "checktree"
+                  startcollapsed = "false" 
+                  multiselect    = "true">
+                    <a:item icon="sport_soccer.png" caption="Football" />
+                    <a:item icon="Famfolder.gif" caption="Ball sports">
+                        <a:item icon="sport_basketball.png" caption="Basketball" />
+                        <a:item icon="sport_8ball.png" caption="Billard" />
+                        <a:item icon="sport_football.png" caption="Rugby" />
+                        <a:item icon="sport_golf.png" caption="Golf" />
+                        <a:item icon="txt.png" caption="Athletics" />
+                    </a:item>
+                    <a:item icon="Famfolder.gif" caption="Other sports">
+                        <a:item icon="sport_shuttlecock.png" caption="Badminton" />
+                        <a:item icon="sport_raquet.png" caption="Tennis" />
+                        <a:item icon="txt.png" caption="Athletics" />
+                        <a:item icon="txt.png" caption="Javelineering" />
+                        <a:item icon="sport_tennis.png" caption="Tennis" />
+                    </a:item>
+                    <a:item icon="txt.png" caption="Javelineering" />
+                </a:tree>
+            
+                <a:button 
+                  id       = "btnExpand" 
+                  left     = "10" 
+                  bottom   = "10"
+                  expanded = "true"
+                  caption  = "{btnExpand.expanded ? 'Collapse All' : 'Expand All'}"
+                  onclick  = "
+                    if (!this.expanded)
+                        trSports.expandAll();
+                    else
+                        trSports.collapseAll();
+                    this.setProperty('expanded', !this.expanded);
+                  ">
+                </a:button>
+            </a:window>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="bindings" display="Bindings" title="See bindings element" />
+    <seealso menu="elements" sub="m" name="model" display="Model" title="See model element" />
+</examples>

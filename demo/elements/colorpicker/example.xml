@@ -1,0 +1,8 @@
+<examples name="Colorpicker Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Colorpicker</description>
+        <source><![CDATA[
+            <a:colorpicker></a:colorpicker>
+        ]]></source>
+    </example>
+</examples>

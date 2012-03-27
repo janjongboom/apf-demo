@@ -1,0 +1,56 @@
+<examples name="Calendar Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Todays date</description>
+        <source><![CDATA[
+            <a:calendar
+              id="cal"
+              output-format = "mm-dd-yyyy HH:MM:ss" 
+              default       = "today"
+              width         = "150"
+              style         = "position:relative;">
+            </a:calendar>
+        ]]></source>
+    </example>
+    <example>
+        <description>Predefined date: July 1, 1983</description>
+        <source><![CDATA[
+            <a:calendar 
+              output-format = "dd-mm-yyyy" 
+              width         = "150"
+              style         = "position:relative;">
+            </a:calendar>
+        ]]></source>
+    </example>
+    <example>
+        <description>Calendar in disabled state.</description>
+        <source><![CDATA[
+            <a:calendar 
+              output-format = "dd-mm-yyyy" 
+              width         = "150"
+              disabled      = "true"
+              style         = "position:relative;">
+            </a:calendar>
+        ]]></source>
+    </example>
+    <example>
+        <description>Calendar connected with spinners</description>
+        <source><![CDATA[
+            <a:calendar id="caltest"
+              output-format = "yyyy/m/d"
+              value         = "{sp6.value}/{sp5.value}/{sp4.value}"
+              width         = "240"
+              style         = "position:relative;">
+            </a:calendar>
+            <a:hbox height="24" margin="5 0 0 0">
+               <a:spinner id="sp4" width="40" edge="5" 
+                 min="1" max="28" value="3"></a:spinner>
+               <a:spinner id="sp5" width="40" edge="5" 
+                 min="1" max="12" value="3"></a:spinner>
+               <a:spinner id="sp6" width="60" edge="5" 
+                 min="1999" max="2012" value="1999"></a:spinner>
+            </a:hbox>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="c" name="caldropdown" display="Caldropdown" title="See caldropdown element" />
+</examples>

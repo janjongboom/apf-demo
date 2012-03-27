@@ -1,0 +1,67 @@
+<flowchart>
+    <block 
+      id      = "b1" 
+      cap-pos = "inside" 
+      type    = "rhombus_small_lightgreen" 
+      caption = "x&gt;0" 
+      left    = "221" 
+      top     = "124"  
+      width   = "46" 
+      height  = "46" 
+      lock    = "false" 
+      zindex  = "1001">
+        <connection ref="b4" output="1" input="2" label="true" type="none-arrow"></connection>
+        <connection ref="b3" output="3" input="2" label="false" type="none-arrow"></connection>
+    </block>
+    <block 
+      caption = "start" 
+      cap-pos = "inside" 
+      type    = "circle_small_lightgreen" 
+      id      = "b2" 
+      width   = "45" 
+      height  = "45" 
+      lock    = "false" 
+      left    = "308" 
+      top     = "27" 
+      zindex  = "1001">
+        <connection ref="b1" output="4" input="2" type="none-arrow"></connection>
+    </block>
+    <block 
+      caption = "End" 
+      cap-pos = "inside" 
+      type    = "circle_small_lightgreen" 
+      id      = "b3" 
+      width   = "45" 
+      height  = "45" 
+      lock    = "false" 
+      left    = "355" 
+      top     = "330" 
+      zindex  = "1001"></block>
+    <block 
+      caption = "z&gt;5" 
+      cap-pos = "inside" 
+      type    = "rhombus_small_lightgreen" 
+      id      = "b4" 
+      width   = "46" 
+      height  = "46" 
+      lock    = "false" 
+      left    = "136" 
+      top     = "250" 
+      zindex  = "1001">
+        <connection ref="b3" output="3" input="1" label="false" type="none-arrow"></connection>
+        <connection ref="b7" output="1" input="2" label="true" type="none-arrow"></connection>
+    </block>
+    <block 
+      caption = "i++" 
+      cap-pos = "inside" 
+      type    = "rect_small_lightgreen" 
+      id      = "b7" 
+      width   = "46" 
+      height  = "46" 
+      lock    = "false" 
+      left    = "69" 
+      top     = "354" 
+      zindex  = "1001">
+        <connection ref="b3" output="4" input="4" type="none-arrow"></connection>
+    </block>
+</flowchart>

@@ -1,0 +1,72 @@
+<examples name="Bar Elements" xmlns:a="http://ajax.org/2005/aml">
+    <example>
+        <description>Toolbar menu with 2 bars</description>
+        <source><![CDATA[
+            <a:toolbar width="400">
+                <a:bar>
+                    <a:button
+                      icon    = "database_save.png"
+                      tooltip = "Save">Save</a:button>
+                    <a:divider />
+                    <a:button 
+                      icon    = "arrow_undo.png"
+                      tooltip = "Undo">Undo</a:button>
+                    <a:button 
+                      icon    = "arrow_redo.png"
+                      tooltip = "Redo">Redo</a:button>
+                    <a:divider />
+                    <a:button 
+                      icon    = "textfield_add.png"
+                      tooltip = "Add row">Add row</a:button>
+                    <a:button 
+                      icon    = "textfield_delete.png"
+                      tooltip = "Remove row">Remove row</a:button>
+                </a:bar>
+                <a:bar>
+                    <a:button 
+                      icon    = "application_add.png"
+                      tooltip = "Aplication">Aplication</a:button>
+                </a:bar>
+            </a:toolbar>
+        ]]></source>
+    </example>
+    <example>
+        <description>Bar with two disabled buttons and disabled bar.</description>
+        <source><![CDATA[
+            <a:toolbar width="400">
+                <a:bar>
+                    <a:button
+                      icon     = "database_save.png"
+                      tooltip  = "Save"
+                      disabled = "true">Save</a:button>
+                    <a:divider />
+                    <a:button 
+                      icon    = "arrow_undo.png"
+                      tooltip = "Undo">Undo</a:button>
+                    <a:button 
+                      icon     = "arrow_redo.png"
+                      tooltip  = "Redo"
+                      disabled = "true">Redo</a:button>
+                    <a:divider />
+                    <a:button 
+                      icon    = "textfield_add.png"
+                      tooltip = "Add row">Add row</a:button>
+                    <a:button 
+                      icon    = "textfield_delete.png"
+                      tooltip = "Remove row">Remove row</a:button>
+                </a:bar>
+                <a:bar disabled="true">
+                    <a:button 
+                      icon    = "application_add.png"
+                      tooltip = "Aplication">Aplication</a:button>
+                    <a:button 
+                      icon    = "application_edit.png"
+                      tooltip = "Aplication">Aplication Edit</a:button>
+                </a:bar>
+            </a:toolbar>
+        ]]></source>
+    </example>
+
+    <seealso menu="elements" sub="b" name="button" display="Button" title="See button element" />
+    <seealso menu="elements" sub="t" name="toolbar" display="Toolbar" title="See toolbar element" />
+</examples>
