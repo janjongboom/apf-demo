@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:a="http://ajax.org/2005/aml" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script src="../apf_release.js"></script>
+        
+        <style>
+            body {
+                background: #6999ab;
+            }
+        </style>
+    </head>
+    <body style="display:none">
+        <a:skin 
+          src        = "../skins/platform/skins.xml"
+          media-path = "../skins/platform/images/" />
+          
+        <a:model id="mdlSpeakers">
+            <speakers>
+                <speaker name="jan" caption="Jan Jongboom"/>
+                <speaker name="ruben" caption="Ruben Daniels"/>
+                <speaker name="rik" caption="Rik Arends"/>
+            </speakers>
+        </a:model>
+
+        <h1>More Data binding</h1>
+        
+        <div style="width: 200px">        
+        </div>
+    </body>
+    
+    <script>
+    </script>
+</html>
+
+<!--
+            <a:list
+              id="lstSpeakers"
+              flex="1"
+              model="mdlSpeakers"
+              autoselect="false">
+                <a:each match="[speaker]">
+                    <a:caption value="[@caption]" />
+                </a:each>
+             </a:list>    
+-->
+
+<!--
+
+        <div>You selected <strong><?lm {lstSpeakers.selected.getAttribute("name")} ?></strong></div>
+-->
+
+<!--
+mdlSpeakers.addEventListener("update", function (ev) { console.log("mdlSpeakers", ev); })
+-->
+
+<!--
+        <div>
+            <h2>Add new speaker</h2>
+            <span>Name</span> <a:textbox id="addNewName" placeholder="Name" /><br/>
+            <span>Caption</span> <a:textbox id="addNewCaption" placeholder="Caption" /><br/>
+            <a:button onclick="
+                var item = mdlSpeakers.data.parentNode.createElement('speaker');
+                item.setAttribute('name', addNewName.value);
+                item.setAttribute('caption', addNewCaption.value);
+                apf.xmldb.appendChild(mdlSpeakers.queryNode('//speakers'), item);
+                
+                addNewCaption.clear();
+                addNewName.clear();
+            " caption="Add!"/>
+        </div>
+-->
